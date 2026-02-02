@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"]
+    }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

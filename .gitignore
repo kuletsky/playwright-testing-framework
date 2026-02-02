@@ -8,3 +8,6 @@ node_modules/
 /playwright/.auth/
 .DS_Store
 tests/example.spec.ts
+.env
+*.code-workspace
+browserstack.yml
