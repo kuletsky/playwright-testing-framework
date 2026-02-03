@@ -8,6 +8,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@percy/cli": "^1.31.8",
+    "@percy/playwright": "^1.0.10",
     "@playwright/test": "^1.58.1",
     "@types/node": "^25.2.0",
     "browserstack-node-sdk": "^1.49.6",
