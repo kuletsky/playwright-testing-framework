@@ -101,7 +101,7 @@ export class AnalyticsPage {
   // ═══════════════════════════════════════════════════════════════════════════
 
   async goto() {
-    await this.page.goto('https://empwrretiremtstg.prod.acquia-sites.com/empulsify/tp-analytics-events-empulsify');
+    await this.page.goto('/empulsify/tp-analytics-events-empulsify');
     await this.page.waitForLoadState('domcontentloaded');
   }
 

@@ -16,7 +16,7 @@ export default defineConfig({
 
   reporter: 'html',
   use: {
-    // baseURL: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL,
     actionTimeout: 30 * 1000,
     navigationTimeout: 60 * 1000,
 

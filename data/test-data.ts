@@ -126,3 +126,9 @@ export const hoverSubmenuData = [
   { element: 'privetClientMenu',     detail: '' },
   // { element: 'personalStrategyMenu', detail: '' },
 ];
+
+export const marketingParamsData = [
+  { element: 'defaultForm',               paramValue: '',                          skipValue: '',       headingText: 'Set up your Empower Personal Dashboard™', newURL: '/signup/onboarding' }, 
+  { element: 'RetirementIntentAffiliate', paramValue: 'RetirementIntentAffiliate', skipValue: 'false',  headingText: 'Set up your Empower Personal Dashboard™', newURL: 'signup/tools?marketing_param=RetirementIntentAffiliate' },
+
+];   
