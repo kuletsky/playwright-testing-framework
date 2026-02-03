@@ -1,0 +1,31 @@
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
+
+projectName: Playwright Analytics Tests
+buildName: VISUAL DESKTOP tests
+framework: playwright
+
+platforms:
+  - os: Windows
+    osVersion: 11
+    browserName: chrome
+    browserVersion: latest
+
+testOrchestrationOptions:
+  retryTestsOnFailure:
+    enabled: true
+    maxRetries: 3
+
+parallelsPerPlatform: 1
+idleTimeout: 240
+browserstackLocal: false
+
+
+debug: true
+networkLogs: true
+consoleLogs: info
+testObservability: true
+video: true
+
+percy: true
+percyCaptureMode: manual
