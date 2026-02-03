@@ -128,7 +128,7 @@ export const hoverSubmenuData = [
 ];
 
 export const marketingParamsData = [
-  { element: 'defaultForm',               paramValue: '',                          skipValue: '',       headingText: 'Set up your Empower Personal Dashboard™', newURL: '/signup/onboarding' }, 
-  { element: 'RetirementIntentAffiliate', paramValue: 'RetirementIntentAffiliate', skipValue: 'false',  headingText: 'Set up your Empower Personal Dashboard™', newURL: 'signup/tools?marketing_param=RetirementIntentAffiliate' },
+  { element: 'defaultForm',               paramValue: '',                          skipValue: '',       headingText: 'Set up your Empower Personal Dashboard™', url: '/signup/onboarding' }, 
+  { element: 'RetirementIntentAffiliate', paramValue: 'RetirementIntentAffiliate', skipValue: 'false',  headingText: 'Set up your Empower Personal Dashboard™', url: 'signup/tools?marketing_param=RetirementIntentAffiliate' },
 
 ];   
