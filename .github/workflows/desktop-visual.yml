@@ -1,5 +1,4 @@
-name: Desktop Visual (BrowserStack + Percy)
-
+name: Desktop Visual Tests on BrowserStack
 on:
   workflow_dispatch:
   schedule:
