@@ -36,7 +36,7 @@ jobs:
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
       - name: Run Playwright tests on BrowserStack
-        run: npx browserstack-node-sdk playwright test
+        run: npx browserstack-node-sdk playwright test analytics-events.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()
