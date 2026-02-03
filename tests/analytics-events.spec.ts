@@ -8,6 +8,8 @@ import {
   menuData,
   submenuData,
   modalData,
+  hoverSubmenuData,
+  hoverMenuData,
 } from '../data/test-data';
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -38,7 +40,7 @@ test.describe('Click Events', () => {
 // SOCIAL BUTTONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
-test.describe('Social Buttons', () => {
+test.describe('Social Button Click', () => {
   for (const data of socialButtonsData) {
     test(`${data.element}`, async ({ page }) => {
       const analyticsPage = new AnalyticsPage(page);
@@ -62,7 +64,7 @@ test.describe('Social Buttons', () => {
 // PRIMARY MENU
 // ═══════════════════════════════════════════════════════════════════════════════
 
-test.describe('Primary Menu', () => {
+test.describe('Primary Menu Click', () => {
   for (const data of primaryMenuData) {
     test(`${data.element}`, async ({ page }) => {
       const analyticsPage = new AnalyticsPage(page);
@@ -149,7 +151,7 @@ test.describe('FAQ Expand/Contract', () => {
 // MENU NAVIGATION
 // ═══════════════════════════════════════════════════════════════════════════════
 
-test.describe('Menu Navigation', () => {
+test.describe('Menu Navigation Click', () => {
   for (const data of menuData) {
     test(`${data.element}`, async ({ page }) => {
       const analyticsPage = new AnalyticsPage(page);
@@ -174,7 +176,7 @@ test.describe('Menu Navigation', () => {
 // SUBMENU NAVIGATION
 // ═══════════════════════════════════════════════════════════════════════════════
 
-test.describe('Submenu Navigation', () => {
+test.describe('Submenu Navigation Click', () => {
   for (const data of submenuData) {
     test(`${data.element}`, async ({ page }) => {
       const analyticsPage = new AnalyticsPage(page);
@@ -226,6 +228,47 @@ test.describe('Modal Events', () => {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 test.describe('Hover Events', () => {
+
+  for (const data of hoverMenuData) {
+    test('Hover menu ' + `${data.element}`, async ({ page }) => {
+      const analyticsPage = new AnalyticsPage(page);
+      await analyticsPage.goto();
+      await analyticsPage.openProductsMenu();
+
+      const element = analyticsPage.getElement(data.element);
+      const elementText = await analyticsPage.getText(element);
+
+      const event = await analyticsPage.hoverAndCapture(element, 'navigation_hover', 'navigation_hover');
+
+      expect(event).not.toBeNull();
+      expect(event.event).toBe('navigation_hover');
+      expect(event.event_name).toBe('navigation_hover');
+      expect(event.event_category).toBe(elementText);
+      expect(event.event_detail).toBe(data.detail);
+    });
+  }
+
+
+  for (const data of hoverSubmenuData) {
+    test('Hover Submenu ' + `${data.element}`, async ({ page }) => {
+      const analyticsPage = new AnalyticsPage(page);
+      await analyticsPage.goto();
+      await analyticsPage.openProductsMenu();
+      await analyticsPage.openWealthManagementSubmenu();
+
+      const element = analyticsPage.getElement(data.element);
+      const elementText = await analyticsPage.getText(element);
+
+      const event = await analyticsPage.hoverAndCapture(element, 'navigation_hover', 'navigation_hover');
+
+      expect(event).not.toBeNull();
+      expect(event.event).toBe('navigation_hover');
+      expect(event.event_name).toBe('navigation_hover');
+      expect(event.event_category).toBe(elementText);
+      expect(event.event_detail).toBe(data.detail);
+    });
+  }
+
   test('Bento Box Hover', async ({ page }) => {
     const analyticsPage = new AnalyticsPage(page);
     await analyticsPage.goto();
@@ -238,24 +281,6 @@ test.describe('Hover Events', () => {
     expect(event).not.toBeNull();
     expect(event.event).toBe('hover_event');
     expect(event.event_name).toBe('bento_hover');
-    expect(event.event_category).toBe(elementText);
-    expect(event.event_detail).toBe('');
-  });
-
-  test('Submenu Hover - Private Client', async ({ page }) => {
-    const analyticsPage = new AnalyticsPage(page);
-    await analyticsPage.goto();
-    await analyticsPage.openProductsMenu();
-    await analyticsPage.openWealthManagementSubmenu();
-
-    const element = analyticsPage.getElement('privetClientMenu');
-    const elementText = await analyticsPage.getText(element);
-
-    const event = await analyticsPage.hoverAndCapture(element, 'navigation_hover', 'navigation_hover');
-
-    expect(event).not.toBeNull();
-    expect(event.event).toBe('navigation_hover');
-    expect(event.event_name).toBe('navigation_hover');
     expect(event.event_category).toBe(elementText);
     expect(event.event_detail).toBe('');
   });

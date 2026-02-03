@@ -78,7 +78,7 @@ export async function captureHoverEvent(
 
   // Real hover
   await element.hover();
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(2000);
 
   return await page.evaluate(() => (window as any).__capturedHoverEvent);
 }

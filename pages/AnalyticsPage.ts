@@ -14,10 +14,11 @@ export class AnalyticsPage {
 
   private locators: Record<string, string> = {
     // Buttons
-    primaryButton: "[data-once='click-primary-button empulsify-button-ripple']",
+    primaryButton: "[data-once='click-primary-button empulsify-button-ripple']:nth-of-type(1) [class]",
+    primaryButton_PC: "[data-once='click-primary-button empulsify-button-ripple']:nth-of-type(2) [class]",
     brandedGoldButton: '.layout__region.layout__region--second .branded-btn',
-    secondaryButton: "[data-once='click-secondary-light-button empulsify-button-ripple']",
-    secondaryButton_PC: '.btn.btn--large.btn--light.private-client.secondary-btn.shrink-0 > .z-10',
+    secondaryButton: "[data-once='click-secondary-light-button empulsify-button-ripple']:nth-of-type(1) [class]",
+    secondaryButton_PC: ".btn.btn--large.btn--light.inline-flex.items-center.justify-center.private-client.secondary-btn.shrink-0 > .z-10",
     secondaryBentoButton: "[data-once='click-bento-secondary-button click-secondary-light-button empulsify-button-ripple']",
     PrimaryBentoButton: "[data-once='click-bento-primary-button click-primary-button empulsify-button-ripple']",
 
@@ -80,10 +81,12 @@ export class AnalyticsPage {
     FinancialProfessMenu: "li:nth-of-type(3) > .antialiased.block.font-medium.px-8.text-primary-blue",
 
     // Submenu
+    privetClientMenu: "#dropdown-desktop-0-0 [aria-label='Private Client']",
+    personalStrategyMenu: "[data-once='click-secondary-light-button empulsify-button-ripple']:nth-of-type(2) [class]",
+
+    //Menu
     expendSubmenuMain: "[aria-label='Products \\& Services Secondary'] [type] .items-center",
     wealthManagementMenu: "[aria-controls='dropdown-desktop-0-0']",
-    privetClientMenu: "#dropdown-desktop-0-0 [aria-label='Private Client']",
-    personalStrategyMenu: "#dropdown-desktop-0-0 [aria-label='Personal Strategy']",
     highYieldMenu: "nav[aria-label='Products & Services Secondary'] [aria-label='High-yield cash account']",
     rolloverMenu: "nav[aria-label='Products & Services Secondary'] [aria-label='Rollover']",
     irasMenu: "nav[aria-label='Products & Services Secondary'] [aria-label='IRAs']",
@@ -98,7 +101,7 @@ export class AnalyticsPage {
   // ═══════════════════════════════════════════════════════════════════════════
 
   async goto() {
-    await this.page.goto('/empulsify/tp-analytics-events-empulsify');
+    await this.page.goto('https://empwrretiremtstg.prod.acquia-sites.com/empulsify/tp-analytics-events-empulsify');
     await this.page.waitForLoadState('domcontentloaded');
   }
 
@@ -113,15 +116,15 @@ export class AnalyticsPage {
     }
 
     // Handle indexed elements
-    if (name === 'primaryButton') {
-      return this.page.locator(selector).first();
-    }
-    if (name === 'primaryButton_PC') {
-      return this.page.locator(this.locators['primaryButton']).nth(1);
-    }
-    if (name === 'secondaryButton') {
-      return this.page.locator(selector).first();
-    }
+    // if (name === 'primaryButton') {
+    //   return this.page.locator(selector).first();
+    // }
+    // if (name === 'primaryButton_PC') {
+    //   return this.page.locator(this.locators['primaryButton']).nth(1);
+    // }
+    // if (name === 'secondaryButton') {
+    //   return this.page.locator(selector).first();
+    // }
 
     return this.page.locator(selector);
   }

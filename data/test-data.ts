@@ -93,9 +93,8 @@ export const menuData = [
 // ═══════════════════════════════════════════════════════════════════════════
 
 export const submenuData = [
-  { element: 'wealthManagementMenu', eventName: 'sub_navigation_click', detail: 'Expand' },
   { element: 'privetClientMenu',     eventName: 'navigation_click',     detail: '/products-solutions/private-client' },
-  { element: 'personalStrategyMenu', eventName: 'navigation_click',     detail: '/products-solutions/personal-strategy' },
+  // { element: 'personalStrategyMenu', eventName: 'navigation_click',     detail: '/products-solutions/personal-strategy' },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -105,4 +104,25 @@ export const submenuData = [
 export const modalData = [
   { element: 'continueButton', detail: '' },
   { element: 'cancelButton',   detail: '' },
+];
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MENU NAVIGATION
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const hoverMenuData = [
+  { element: 'wealthManagementMenu',  detail: '' },
+  { element: 'highYieldMenu',         detail: '' },
+  { element: 'rolloverMenu',          detail: '' },
+  { element: 'investmentMenu',        detail: '' },
+  { element: 'irasMenu',              detail: '' },
+];
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SUBMENU NAVIGATION
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const hoverSubmenuData = [
+  { element: 'privetClientMenu',     detail: '' },
+  // { element: 'personalStrategyMenu', detail: '' },
 ];

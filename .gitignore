@@ -11,3 +11,9 @@ tests/example.spec.ts
 .env
 *.code-workspace
 browserstack.yml
+log/
+*.log
+local.log
+playwright-browserstack-sdk.config.ts
+playwright-browserstack-sdk.config.temp.json
+browserstackSetupConfig.json

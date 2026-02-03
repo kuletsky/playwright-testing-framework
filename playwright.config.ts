@@ -6,6 +6,9 @@ dotenv.config();
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
+    timeout: 90000,
+    expect: { timeout: 10 * 1000 },
+
 
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -13,7 +16,9 @@ export default defineConfig({
 
   reporter: 'html',
   use: {
-    baseURL: process.env.BASE_URL,
+    // baseURL: process.env.BASE_URL,
+    actionTimeout: 30 * 1000,
+    navigationTimeout: 60 * 1000,
     
     // HTTP credentials
     httpCredentials: {
