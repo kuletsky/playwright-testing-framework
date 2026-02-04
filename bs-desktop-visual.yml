@@ -1,7 +1,7 @@
 userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
-projectName: EmpowerMarketingTestAutomationFramework
+projectName: Playwright Analytics tests
 buildName: VISUAL DESKTOP tests
 framework: playwright
 
