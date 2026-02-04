@@ -1,13 +1,13 @@
-name: Desktop Visual Tests on BrowserStack
+name: BS Marketing Params Tests
+
 on:
   workflow_dispatch:
   schedule:
-    # GitHub Actions cron is UTC.
-    # 8:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *"  # 01:00 UTC daily (~8 PM New York in winter)
+
 
 jobs:
-  desktop-visual:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,21 +28,20 @@ jobs:
           echo "AUTH_PASS=${{ secrets.AUTH_PASS }}" >> .env
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
 
-      - name: Write BrowserStack config
+      - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-desktop-visual.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-marketing-params.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
-      - name: Run visual spec on BrowserStack
-        run: |
-          npx browserstack-node-sdk playwright test visual.spec.ts
+      - name: Run Playwright tests on BrowserStack
+        run: npx browserstack-node-sdk playwright test marketing-params.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-visual-artifacts
+          name: test-results
           path: |
-            playwright-report/
             test-results/
+            playwright-report/

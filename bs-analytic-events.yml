@@ -2,13 +2,17 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: VISUAL DESKTOP tests
+buildName: ANALYTIC EVENTS tests
 framework: playwright
 
 platforms:
   - os: Windows
     osVersion: 11
     browserName: chrome
+    browserVersion: latest
+  - os: OS X
+    osVersion: Sonoma
+    browserName: playwright-webkit
     browserVersion: latest
 
 testOrchestrationOptions:
@@ -26,6 +30,3 @@ networkLogs: true
 consoleLogs: info
 testObservability: true
 video: true
-
-percy: true
-percyCaptureMode: manual
