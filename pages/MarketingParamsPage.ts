@@ -40,7 +40,7 @@ export class MarketingParamsPage {
 
     async goto() {
         await this.page.goto('/demo-single-front-door-ctas');
-        await this.page.waitForLoadState('domcontentloaded');
+        // await this.page.waitForLoadState('domcontentloaded');
     }
 
     async clickElement(selector: string) {
