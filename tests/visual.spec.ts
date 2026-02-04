@@ -3,7 +3,7 @@ import { stabilizeHeroCarousel } from '../utils/stabilize';
 const { percyScreenshot } = require("@percy/playwright");
 
 test('Individuals page', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('');
   await stabilizeHeroCarousel(page);
   await percyScreenshot(page, 'Individuals page', {fullpage: true });
   expect(true).toBeTruthy();
