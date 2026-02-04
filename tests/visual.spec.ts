@@ -5,7 +5,7 @@ import { stabilizeHeroCarousel } from '../utils/stabilize';
 
 test('Individuals page', async ({ page }) => {
   await page.goto('/');
-  // await stabilizeHeroCarousel(page);
+  await stabilizeHeroCarousel(page);
   await percySnapshot(page, 'Individuals page');
   expect(true).toBeTruthy();
 });

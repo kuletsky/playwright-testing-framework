@@ -10,6 +10,11 @@ jobs:
   desktop-visual:
     runs-on: ubuntu-latest
 
+    env:
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,7 +41,7 @@ jobs:
 
       - name: Run visual spec on BrowserStack
         run: |
-          npx browserstack-node-sdk playwright test visual.spec.ts
+          npx percy exec -- npx browserstack-node-sdk playwright test visual.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()
