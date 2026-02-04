@@ -11,7 +11,7 @@ platforms:
     browserName: chrome
     browserVersion: latest
   - os: OS X
-    osVersion: Sonoma
+    osVersion: Sequoia
     browserName: playwright-webkit
     browserVersion: latest
 
