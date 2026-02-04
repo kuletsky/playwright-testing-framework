@@ -27,5 +27,5 @@ consoleLogs: info
 testObservability: true
 video: true
 
-percy: true
-percyCaptureMode: manual
+# percy: true
+# percyCaptureMode: manual
