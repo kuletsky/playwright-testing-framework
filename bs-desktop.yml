@@ -2,7 +2,7 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: Playwright Analytics Tests
-buildName: Analytics Build
+buildName: ANALYTIC EVENTS tests
 framework: playwright
 
 platforms:
