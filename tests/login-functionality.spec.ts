@@ -9,7 +9,7 @@ test.describe('Individuals Login-v1 Functionality', () => {
         await loginPage.clickLoginButton();
         await loginPage.clickLoginRetirementAccount();
 
-        console.log('URL after click:', page.url());
+        // console.log('URL after click:', page.url());
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/participant\//);
@@ -80,6 +80,6 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test.describe('Financial Professionals Login Functionality', () => {
-
+        
     });
 });
