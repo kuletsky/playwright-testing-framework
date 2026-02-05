@@ -1,4 +1,4 @@
-name: BS Desktop Visual Tests
+name: BS Visual DESKTOP Tests
 on:
   workflow_dispatch:
   schedule:
