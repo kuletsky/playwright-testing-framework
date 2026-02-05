@@ -1,19 +1,18 @@
 import { test, expect } from '@playwright/test';
-import { removeShaking, suppressCookieBanner, waitCarousel } from '../utils/stabilize';
+import { removeShaking, suppressCookieBanner } from '../utils/stabilize';
 const { percyScreenshot } = require("@percy/playwright");
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
 });
 
-test.describe('Empower pages on Stage', () => {
+test.describe('Stage site', () => {
 
   test('Individuals page', async ({ page }) => {
     test.setTimeout(240_000);
     await page.goto('');
 
     await suppressCookieBanner(page);
-    await waitCarousel(page);
     await removeShaking(page);
 
     await percyScreenshot(page, 'Individuals page', { fullPage: true });
@@ -25,7 +24,6 @@ test.describe('Empower pages on Stage', () => {
     await page.goto('/plan-sponsors');
 
     await suppressCookieBanner(page);
-    await waitCarousel(page);
     await removeShaking(page);
 
     await percyScreenshot(page, 'Plan Sponsors page', { fullPage: true });
@@ -43,7 +41,12 @@ test.describe('Empower pages on Stage', () => {
     expect(true).toBeTruthy();
   });
 
-    test('High-yield cash account', async ({ page }) => {
+
+
+
+
+
+  test('High-yield cash account', async ({ page }) => {
     test.setTimeout(240_000);
     await page.goto('/wealth-management');
 
@@ -60,9 +63,22 @@ test.describe('Empower pages on Stage', () => {
 
 
 
+
+
+
+
+
+
+
+
+
 });
 
 
+
+
+
+//bew teests
 test.describe('Signup pages', () => {
   test('Individuals Open account page', async ({ page }) => {
     test.setTimeout(240_000);
@@ -118,7 +134,13 @@ test.describe('Signup pages', () => {
     await percyScreenshot(page, 'Personal Dashboard account', { fullPage: true });
     expect(true).toBeTruthy();
   });
+
+
+
 });
+
+
+
 
 
 test.describe('Components', () => {
@@ -230,7 +252,7 @@ test.describe('Components', () => {
 
     await suppressCookieBanner(page);
     await removeShaking(page);
-
+    
     await percyScreenshot(page, 'Hero Side By Header + SFD registration form', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -401,5 +423,7 @@ test.describe('Components', () => {
     await percyScreenshot(page, 'Video', { fullPage: true });
     expect(true).toBeTruthy();
   });
+
+
 
 });

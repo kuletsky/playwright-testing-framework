@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
   schedule:
     # GitHub Actions cron is UTC.
-    # 8:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 2 * * *"
+    # 11:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
+    - cron: "0 3 * * *"
 
 jobs:
   desktop-visual:
