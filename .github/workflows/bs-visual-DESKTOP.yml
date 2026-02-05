@@ -35,7 +35,7 @@ jobs:
 
       - name: Write BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-desktop-visual.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-visual-DESKTOP.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 

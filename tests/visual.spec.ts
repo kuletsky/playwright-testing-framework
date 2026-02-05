@@ -43,7 +43,7 @@ test.describe('Empower pages on Stage', () => {
     expect(true).toBeTruthy();
   });
 
-    test('High-yield cash account', async ({ page }) => {
+  test('High-yield cash account', async ({ page }) => {
     test.setTimeout(240_000);
     await page.goto('/wealth-management');
 
@@ -53,6 +53,18 @@ test.describe('Empower pages on Stage', () => {
     await percyScreenshot(page, 'High-yield cash account', { fullPage: true });
     expect(true).toBeTruthy();
   });
+
+  test('Rollover page', async ({ page }) => {
+    test.setTimeout(240_000);
+    await page.goto('/products-solutions/rollover');
+
+    await suppressCookieBanner(page);
+    await removeShaking(page);
+
+    await percyScreenshot(page, 'Rollover page', { fullPage: true });
+    expect(true).toBeTruthy();
+  });
+
 
 
 
