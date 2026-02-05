@@ -11,7 +11,10 @@ test.describe('Individuals Login-v1 functionality', () => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
         await individualsPage.clickLoginButton();
-        await individualsPage.clickLoginRetirementAccount();
+
+        const loginV1Page = new IndividualsLoginV1Page(page);
+
+        await loginV1Page.clickLoginRetirementAccount();
 
         // console.log('URL after click:', page.url());
 
@@ -43,7 +46,9 @@ test.describe('Individuals Login-v1 functionality', () => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
         await individualsPage.clickLoginButton();
-        await individualsPage.clickLoginPersonalDashboard();
+
+        const loginV1Page = new IndividualsLoginV1Page(page);
+        await loginV1Page.clickLoginPersonalDashboard();
 
         await expect.soft(page).not.toHaveURL('/login-v1');
         await expect.soft(page).toHaveURL(/\/page\/login\/goHome$/);
@@ -54,7 +59,9 @@ test.describe('Individuals Login-v1 functionality', () => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
         await individualsPage.clickLoginButton();
-        await individualsPage.clickLoginPersonalWealth();
+
+        const loginV1Page = new IndividualsLoginV1Page(page);
+        await loginV1Page.clickLoginPersonalWealth();
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/participant\//);
@@ -65,7 +72,9 @@ test.describe('Individuals Login-v1 functionality', () => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
         await individualsPage.clickLoginButton();
-        await individualsPage.clickLoginRetirementPlanSponsors();
+
+        const loginV1Page = new IndividualsLoginV1Page(page);
+        await loginV1Page.clickLoginRetirementPlanSponsors();
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/planweb\//);
@@ -76,7 +85,9 @@ test.describe('Individuals Login-v1 functionality', () => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
         await individualsPage.clickLoginButton();
-        await individualsPage.clickLoginRetirementPlanFinancialProfessionals();
+
+        const loginV1Page = new IndividualsLoginV1Page(page);
+        await loginV1Page.clickLoginRetirementPlanFinancialProfessionals();
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/planweb\//);
