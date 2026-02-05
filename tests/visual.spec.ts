@@ -406,6 +406,7 @@ test.describe('Empower pages on Stage', () => {
 
       await suppressCookieBanner(page);
       await waitCarousel(page);
+      await page.waitForTimeout(120_000);
       await removeShaking(page);
 
       await percyScreenshot(page, 'Individuals page', { fullPage: true });
@@ -472,6 +473,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/tools');
 
       await suppressCookieBanner(page);
+      await page.waitForTimeout(120_000);
       await removeShaking(page);
 
       await percyScreenshot(page, 'Tools View All page', { fullPage: true });
@@ -547,6 +549,7 @@ test.describe('Empower pages on Stage', () => {
 
       await suppressCookieBanner(page);
       await waitCarousel(page);
+      await page.waitForTimeout(120_000);
       await removeShaking(page);
 
       await percyScreenshot(page, 'Plan Sponsors page', { fullPage: true });
@@ -585,6 +588,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/financial-professionals');
 
       await suppressCookieBanner(page);
+      await page.waitForTimeout(120_000);
       await removeShaking(page);
 
       await percyScreenshot(page, 'Financial Professionals page', { fullPage: true });
