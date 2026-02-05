@@ -4,6 +4,7 @@ const { percyScreenshot } = require("@percy/playwright");
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.setDefaultNavigationTimeout(120_000);
 });
 
 
@@ -239,7 +240,7 @@ test.describe('Components', () => {
 
   test('Multi card container (Standard card)', async ({ page }) => {
     test.setTimeout(240_000);
-    await page.goto('/empulsify/tp-multi-card-container-standard-cards  ');
+    await page.goto('/empulsify/tp-multi-card-container-standard-cards');
     await suppressCookieBanner(page);
     await removeShaking(page);
     await percyScreenshot(page, 'Multi card container (Standard card)', { fullPage: true });
