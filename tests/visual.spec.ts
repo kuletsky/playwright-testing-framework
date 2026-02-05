@@ -536,62 +536,62 @@ test.describe('Empower pages on Stage', () => {
 
 
 
+  });
 
 
 
-    test.describe('Plan Sponsors pages', () => {
-      test('Plan Sponsors Home page', async ({ page }) => {
-        test.setTimeout(240_000);
-        await page.goto('/plan-sponsors');
+  test.describe('Plan Sponsors pages', () => {
+    test('Plan Sponsors Home page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/plan-sponsors');
 
-        await suppressCookieBanner(page);
-        await waitCarousel(page);
-        await removeShaking(page);
+      await suppressCookieBanner(page);
+      await waitCarousel(page);
+      await removeShaking(page);
 
-        await percyScreenshot(page, 'Plan Sponsors page', { fullPage: true });
-        expect(true).toBeTruthy();
-      });
+      await percyScreenshot(page, 'Plan Sponsors page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
 
-      test('Markets Government page', async ({ page }) => {
-        test.setTimeout(240_000);
-        await page.goto('/plan-sponsors/what-we-offer/government');
+    test('Markets Government page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/plan-sponsors/what-we-offer/government');
 
-        await suppressCookieBanner(page);
-        await removeShaking(page);
+      await suppressCookieBanner(page);
+      await removeShaking(page);
 
-        await percyScreenshot(page, 'Markets Government page', { fullPage: true });
-        expect(true).toBeTruthy();
-      });
+      await percyScreenshot(page, 'Markets Government page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
 
-      test('Markets Taft-Hartley Plans page', async ({ page }) => {
-        test.setTimeout(240_000);
-        await page.goto('/plan-sponsors/what-we-offer/taft-hartley-plans');
+    test('Markets Taft-Hartley Plans page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/plan-sponsors/what-we-offer/taft-hartley-plans');
 
-        await suppressCookieBanner(page);
-        await removeShaking(page);
+      await suppressCookieBanner(page);
+      await removeShaking(page);
 
-        await percyScreenshot(page, 'Markets Taft-Hartley Plans page', { fullPage: true });
-        expect(true).toBeTruthy();
-      });
+      await percyScreenshot(page, 'Markets Taft-Hartley Plans page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+  });
 
 
+
+  test.describe('Financial Professionals pages', () => {
+    test('Financial Professionals Home page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/financial-professionals');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Financial Professionals page', { fullPage: true });
+      expect(true).toBeTruthy();
     });
 
 
 
-    test.describe('Financial Professionals pages', () => {
-      test('Financial Professionals Home page', async ({ page }) => {
-        test.setTimeout(240_000);
-        await page.goto('/financial-professionals');
-
-        await suppressCookieBanner(page);
-        await removeShaking(page);
-
-        await percyScreenshot(page, 'Financial Professionals page', { fullPage: true });
-        expect(true).toBeTruthy();
-      });
-
-
-    });
   });
 });
