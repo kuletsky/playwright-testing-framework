@@ -3,8 +3,9 @@ name: BS Analytics Events Tests
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 1 * * *"  # 01:00 UTC daily (~9 PM New York in winter)
 
+    # 9:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
+    - cron: "0 1 * * *"  # 01:00 UTC daily (~9 PM New York in winter)
 
 
 jobs:

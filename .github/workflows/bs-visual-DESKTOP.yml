@@ -1,8 +1,9 @@
 name: BS Visual DESKTOP Tests
+
 on:
   workflow_dispatch:
   schedule:
-    # GitHub Actions cron is UTC.
+    
     # 10:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
     - cron: "0 2 * * *"
 

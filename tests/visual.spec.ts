@@ -30,6 +30,18 @@ test.describe('Login pages', () => {
     expect(true).toBeTruthy();
   });
 
+  test('Plan Sponsors Login page', async ({ page }) => {
+    test.setTimeout(240_000);
+    await page.goto('/plan-sponsors');
+
+    await suppressCookieBanner(page);
+    await removeShaking(page);
+
+    await percyScreenshot(page, 'Plan Sponsors Login page', { fullPage: true });
+    expect(true).toBeTruthy();
+  });
+
+
 });
 
 
@@ -466,16 +478,64 @@ test.describe('Empower pages on Stage', () => {
       expect(true).toBeTruthy();
     });
 
-    test('Tools Retirement plan', async ({ page }) => {
+    test('Tools Retirement plan page', async ({ page }) => {
       test.setTimeout(240_000);
       await page.goto('/tools/retirement-planner');
 
       await suppressCookieBanner(page);
       await removeShaking(page);
 
-      await percyScreenshot(page, 'Tools Retirement plan', { fullPage: true });
+      await percyScreenshot(page, 'Tools Retirement plan page', { fullPage: true });
       expect(true).toBeTruthy();
     });
+
+    test('Learn Investment Insights page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/investment-insights');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Learn Investment Insights page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('Learn The Currency', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/the-currency');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Learn The Currency page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('Why Empower Cybersecurity page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/individuals/about-empower/cybersecurity');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Why Empower Cybersecurity page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('Why Empower Press Center page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/press-center');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Why Empower Press Center page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+
+
+
 
 
 
@@ -491,6 +551,32 @@ test.describe('Empower pages on Stage', () => {
         await percyScreenshot(page, 'Plan Sponsors page', { fullPage: true });
         expect(true).toBeTruthy();
       });
+
+      test('Markets Government page', async ({ page }) => {
+        test.setTimeout(240_000);
+        await page.goto('/plan-sponsors/what-we-offer/government');
+
+        await suppressCookieBanner(page);
+        await waitCarousel(page);
+        await removeShaking(page);
+
+        await percyScreenshot(page, 'Markets Government page', { fullPage: true });
+        expect(true).toBeTruthy();
+      });
+
+      test('Markets Taft-Hartley Plans page', async ({ page }) => {
+        test.setTimeout(240_000);
+        await page.goto('/plan-sponsors/what-we-offer/taft-hartley-plans');
+
+        await suppressCookieBanner(page);
+        await waitCarousel(page);
+        await removeShaking(page);
+
+        await percyScreenshot(page, 'Markets Taft-Hartley Plans page', { fullPage: true });
+        expect(true).toBeTruthy();
+      });
+
+
     });
 
 
@@ -506,20 +592,8 @@ test.describe('Empower pages on Stage', () => {
         await percyScreenshot(page, 'Financial Professionals page', { fullPage: true });
         expect(true).toBeTruthy();
       });
+
+
     });
-
-
-
   });
-
-
-
-
-
-
-
-
-
-
-
 });
