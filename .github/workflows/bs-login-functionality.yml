@@ -1,4 +1,4 @@
-name: BS Login-v1 Tests
+name: BS Login Functionality Tests
 
 on:
   workflow_dispatch:
