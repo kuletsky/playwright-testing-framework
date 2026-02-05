@@ -6,8 +6,8 @@ dotenv.config();
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-    timeout: 150_000,
-    expect: { timeout: 10 * 1000 },
+  timeout: 150_000,
+  expect: { timeout: 10 * 1000 },
 
 
   forbidOnly: !!process.env.CI,
@@ -25,11 +25,11 @@ export default defineConfig({
       username: process.env.AUTH_USER || '',
       password: process.env.AUTH_PASS || '',
     },
-    
+
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    
+
     // Viewport
     viewport: { width: 1920, height: 1080 },
   },
