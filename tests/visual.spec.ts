@@ -557,7 +557,6 @@ test.describe('Empower pages on Stage', () => {
         await page.goto('/plan-sponsors/what-we-offer/government');
 
         await suppressCookieBanner(page);
-        await waitCarousel(page);
         await removeShaking(page);
 
         await percyScreenshot(page, 'Markets Government page', { fullPage: true });
@@ -569,7 +568,6 @@ test.describe('Empower pages on Stage', () => {
         await page.goto('/plan-sponsors/what-we-offer/taft-hartley-plans');
 
         await suppressCookieBanner(page);
-        await waitCarousel(page);
         await removeShaking(page);
 
         await percyScreenshot(page, 'Markets Taft-Hartley Plans page', { fullPage: true });
