@@ -6,77 +6,37 @@ test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
 });
 
-test.describe('Empower pages on Stage', () => {
 
-  test('Individuals page', async ({ page }) => {
+test.describe('Login pages', () => {
+  test('Individuals Login page', async ({ page }) => {
     test.setTimeout(240_000);
-    await page.goto('');
-
-    await suppressCookieBanner(page);
-    await waitCarousel(page);
-    await removeShaking(page);
-
-    await percyScreenshot(page, 'Individuals page', { fullPage: true });
-    expect(true).toBeTruthy();
-  });
-
-  test('Plan Sponsors page', async ({ page }) => {
-    test.setTimeout(240_000);
-    await page.goto('/plan-sponsors');
-
-    await suppressCookieBanner(page);
-    await waitCarousel(page);
-    await removeShaking(page);
-
-    await percyScreenshot(page, 'Plan Sponsors page', { fullPage: true });
-    expect(true).toBeTruthy();
-  });
-
-  test('Financial Professionals page', async ({ page }) => {
-    test.setTimeout(240_000);
-    await page.goto('/financial-professionals');
+    await page.goto('/login-v1');
 
     await suppressCookieBanner(page);
     await removeShaking(page);
 
-    await percyScreenshot(page, 'Financial Professionals page', { fullPage: true });
+    await percyScreenshot(page, 'Individuals Login page', { fullPage: true });
     expect(true).toBeTruthy();
   });
 
-  test('High-yield cash account', async ({ page }) => {
+  test('Financial Professionals Login page', async ({ page }) => {
     test.setTimeout(240_000);
-    await page.goto('/wealth-management');
+    await page.goto('/financial-professionals-login');
 
     await suppressCookieBanner(page);
     await removeShaking(page);
 
-    await percyScreenshot(page, 'High-yield cash account', { fullPage: true });
+    await percyScreenshot(page, 'Financial Professionals Login page', { fullPage: true });
     expect(true).toBeTruthy();
   });
-
-  test('Rollover page', async ({ page }) => {
-    test.setTimeout(240_000);
-    await page.goto('/products-solutions/rollover');
-
-    await suppressCookieBanner(page);
-    await removeShaking(page);
-
-    await percyScreenshot(page, 'Rollover page', { fullPage: true });
-    expect(true).toBeTruthy();
-  });
-
-
-
-
-
-
-
 
 });
 
 
+
+
 test.describe('Signup pages', () => {
-  test('Individuals Open account page', async ({ page }) => {
+  test('Individuals Open account', async ({ page }) => {
     test.setTimeout(240_000);
     await page.goto('/signup');
 
@@ -84,6 +44,17 @@ test.describe('Signup pages', () => {
     await removeShaking(page);
 
     await percyScreenshot(page, 'Individuals Open account page', { fullPage: true });
+    expect(true).toBeTruthy();
+  });
+
+  test('Personal Strategy account', async ({ page }) => {
+    test.setTimeout(240_000);
+    await page.goto('/signup/personal-strategy?marketing_param=ao_personalstrategy');
+
+    await suppressCookieBanner(page);
+    await removeShaking(page);
+
+    await percyScreenshot(page, 'Personal Strategy account', { fullPage: true });
     expect(true).toBeTruthy();
   });
 
@@ -144,9 +115,6 @@ test.describe('Components', () => {
     await percyScreenshot(page, 'Accordion (v3)', { fullPage: true });
     expect(true).toBeTruthy();
   });
-
-
-
 
   test('Bento Box ', async ({ page }) => {
     test.setTimeout(240_000);
@@ -413,5 +381,145 @@ test.describe('Components', () => {
     await percyScreenshot(page, 'Video', { fullPage: true });
     expect(true).toBeTruthy();
   });
+
+});
+
+
+
+test.describe('Empower pages on Stage', () => {
+  test.describe('Individuals pages', () => {
+    test('Individuals Home page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('');
+
+      await suppressCookieBanner(page);
+      await waitCarousel(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Individuals page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('High-yield cash account', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/wealth-management');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'High-yield cash account', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('Rollover page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/products-solutions/rollover');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Rollover page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('IRAs page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/products-solutions/iras');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'IRAs page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('Investment Accounts page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/products-solutions/investment-accounts');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Investment Accounts page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('Private Client page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/products-solutions/private-client');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Private Client page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('Tools View All page', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/tools');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Tools View All page', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+    test('Tools Retirement plan', async ({ page }) => {
+      test.setTimeout(240_000);
+      await page.goto('/tools/retirement-planner');
+
+      await suppressCookieBanner(page);
+      await removeShaking(page);
+
+      await percyScreenshot(page, 'Tools Retirement plan', { fullPage: true });
+      expect(true).toBeTruthy();
+    });
+
+
+
+    test.describe('Plan Sponsors pages', () => {
+      test('Plan Sponsors Home page', async ({ page }) => {
+        test.setTimeout(240_000);
+        await page.goto('/plan-sponsors');
+
+        await suppressCookieBanner(page);
+        await waitCarousel(page);
+        await removeShaking(page);
+
+        await percyScreenshot(page, 'Plan Sponsors page', { fullPage: true });
+        expect(true).toBeTruthy();
+      });
+    });
+
+
+
+    test.describe('Financial Professionals pages', () => {
+      test('Financial Professionals Home page', async ({ page }) => {
+        test.setTimeout(240_000);
+        await page.goto('/financial-professionals');
+
+        await suppressCookieBanner(page);
+        await removeShaking(page);
+
+        await percyScreenshot(page, 'Financial Professionals page', { fullPage: true });
+        expect(true).toBeTruthy();
+      });
+    });
+
+
+
+  });
+
+
+
+
+
+
+
+
+
+
 
 });
