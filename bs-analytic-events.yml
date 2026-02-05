@@ -2,7 +2,7 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: Analytic Events tests
+buildName: Analytic Events tests (Windows11 + Chrome, MacOS + Safari Sonoma)
 framework: playwright
 
 platforms:
