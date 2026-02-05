@@ -144,6 +144,7 @@ test.describe('Components', () => {
     await page.goto('/products-solutions/personal-strategy');
 
     await suppressCookieBanner(page);
+    await page.waitForTimeout(60_000);
     await removeShaking(page);
 
     await percyScreenshot(page, 'Breadcrumbs (Light theme)', { fullPage: true });
