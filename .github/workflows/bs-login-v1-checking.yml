@@ -1,11 +1,11 @@
-name: BS Analytics Events Tests
+name: BS Login-v1 Tests
 
 on:
   workflow_dispatch:
   schedule:
 
-    # 9:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 1 * * *"  
+    # 12:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
+    - cron: "0 4 * * *"  
 
 
 jobs:
@@ -32,12 +32,12 @@ jobs:
 
       - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-analytic-events.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-login-v1-checking.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
       - name: Run Playwright tests on BrowserStack
-        run: npx browserstack-node-sdk playwright test analytics-events.spec.ts
+        run: npx browserstack-node-sdk playwright test login-v1-function.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()
