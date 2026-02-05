@@ -1,15 +1,17 @@
 import { test, expect } from '@playwright/test';
 import { IndividualsPage } from '../pages/IndividualsPage';
 import { FinancialProfessionalsPage } from '../pages/FinancialProfessionalsPage';
+import { IndividualsLoginV1Page } from '../pages/IndividualsLoginV1Page';
+import { IndividualsSignupPage } from '../pages/IndividualsSignupPage';
 
 
 
-test.describe('Individuals Login-v1 Functionality', () => {
+test.describe('Individuals Login-v1 functionality', () => {
     test('Login Retirement account', async ({ page }) => {
-        const loginPage = new IndividualsPage(page);
-        await loginPage.gotoIndividualsPage();
-        await loginPage.clickLoginButton();
-        await loginPage.clickLoginRetirementAccount();
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickLoginButton();
+        await individualsPage.clickLoginRetirementAccount();
 
         // console.log('URL after click:', page.url());
 
@@ -84,7 +86,7 @@ test.describe('Individuals Login-v1 Functionality', () => {
 
 
 
-test.describe('Financial Professionals Login Functionality', () => {
+test.describe('Financial Professionals Login functionality', () => {
     test('Login Finansial Professionals', async ({ page }) => {
         const finProPage = new FinancialProfessionalsPage(page);
         await finProPage.gotoFinProfPage();
@@ -126,3 +128,17 @@ test.describe('Financial Professionals Login Functionality', () => {
 
 
 
+test.describe('Individuals Open an account functionality', () => {
+    test('Go to retirement account', async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickOpenAccountButton();
+
+        const signupPage = new IndividualsSignupPage(page);
+        await signupPage.clickGoToRetirementAccount();
+
+        await expect.soft(page).toHaveURL(/\/participant\//);
+        // await expect.soft(page.locator('.site-tagline')).toHaveText("Your Retirement Plan");
+    });
+
+});

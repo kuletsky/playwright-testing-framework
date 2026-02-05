@@ -45,6 +45,6 @@ export class FinancialProfessionalsPage extends BasePage {
     }
 
     async clickRegisterFinancialProfessionalsButton() {
-        await this.loginFinancialProfessionalsButton.click();
+        await this.registerFinancialProfessionalsButton.click();
     }
 }

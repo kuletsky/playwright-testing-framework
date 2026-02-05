@@ -10,6 +10,7 @@ export class IndividualsPage extends BasePage {
     private loginPersonalWealthButtonLocator: Locator
     private loginRetirementPlanSponsorsButtonLocator: Locator
     private loginRetirementPlanFinancialProfessionalsButtonLocator: Locator
+    private openAccountButton: Locator
 
     constructor(page: Page) {
         super(page);
@@ -19,6 +20,7 @@ export class IndividualsPage extends BasePage {
         this.loginPersonalWealthButtonLocator = this.page.locator("[aria-label='Log in to individual account']");
         this.loginRetirementPlanSponsorsButtonLocator = this.page.locator("[aria-label='Log in as a retirement plan sponsor']");
         this.loginRetirementPlanFinancialProfessionalsButtonLocator = this.page.locator("[aria-label='Log in as a financial professional']");
+        this.openAccountButton = this.page.locator("a[class='btn btn--dark btn--small primary-btn inline-flex justify-center items-center shrink-0'] span[class='z-10']");
     }
 
     async clickLoginRetirementAccount() {
@@ -41,4 +43,7 @@ export class IndividualsPage extends BasePage {
         await this.loginButtonLocator.click();
     }
 
+    async clickOpenAccountButton() {
+        await this.openAccountButton.click();
+    }
 }
