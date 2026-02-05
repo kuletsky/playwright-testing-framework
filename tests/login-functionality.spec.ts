@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { LoginFunctionalityPage } from "../pages/LoginFunctionalityPage";
+import { IndividualsPage } from '../pages/IndividualsPage';
+import { FinancialProfessionalsPage } from '../pages/FinancialProfessionalsPage';
+
 
 
 test.describe('Individuals Login-v1 Functionality', () => {
     test('Login Retirement account', async ({ page }) => {
-        const loginPage = new LoginFunctionalityPage(page);
+        const loginPage = new IndividualsPage(page);
         await loginPage.gotoIndividualsPage();
         await loginPage.clickLoginButton();
         await loginPage.clickLoginRetirementAccount();
@@ -36,10 +38,10 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test('Login Personal Dashboard', async ({ page }) => {
-        const loginPage = new LoginFunctionalityPage(page); ``
-        await loginPage.gotoIndividualsPage();
-        await loginPage.clickLoginButton();
-        await loginPage.clickLoginPersonalDashboard();
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickLoginButton();
+        await individualsPage.clickLoginPersonalDashboard();
 
         await expect.soft(page).not.toHaveURL('/login-v1');
         await expect.soft(page).toHaveURL(/\/page\/login\/goHome$/);
@@ -47,10 +49,10 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test('Login Personal Wealth', async ({ page }) => {
-        const loginPage = new LoginFunctionalityPage(page);
-        await loginPage.gotoIndividualsPage();
-        await loginPage.clickLoginButton();
-        await loginPage.clickLoginPersonalWealth();
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickLoginButton();
+        await individualsPage.clickLoginPersonalWealth();
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/participant\//);
@@ -58,10 +60,10 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test('Login Retirement plan sponsors', async ({ page }) => {
-        const loginPage = new LoginFunctionalityPage(page);
-        await loginPage.gotoIndividualsPage();
-        await loginPage.clickLoginButton();
-        await loginPage.clickLoginRetirementPlanSponsors();
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickLoginButton();
+        await individualsPage.clickLoginRetirementPlanSponsors();
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/planweb\//);
@@ -69,17 +71,58 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test('Login Retirement plan financial professionals', async ({ page }) => {
-        const loginPage = new LoginFunctionalityPage(page);
-        await loginPage.gotoIndividualsPage();
-        await loginPage.clickLoginButton();
-        await loginPage.clickLoginRetirementPlanFinancialProfessionals();
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickLoginButton();
+        await individualsPage.clickLoginRetirementPlanFinancialProfessionals();
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/planweb\//);
         await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");
     });
-
-    test.describe('Financial Professionals Login Functionality', () => {
-        
-    });
 });
+
+
+
+test.describe('Financial Professionals Login Functionality', () => {
+    test('Login Finansial Professionals', async ({ page }) => {
+        const finProPage = new FinancialProfessionalsPage(page);
+        await finProPage.gotoFinProfPage();
+        await finProPage.clickLoginButton();
+        await finProPage.clickIAgreePopup();
+        await finProPage.clickLoginFinancialProfessionalsButton();
+
+        await expect(page).toHaveURL(/\/planweb\//);
+        await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");
+
+    });
+
+    test('Register Financial Professionals', async ({ page }) => {
+        const finProfPage = new FinancialProfessionalsPage(page);
+        await finProfPage.gotoFinProfPage();
+        await finProfPage.clickLoginButton();
+        await finProfPage.clickIAgreePopup();
+        await finProfPage.clickRegisterFinancialProfessionalsButton();
+
+        await expect(page).toHaveURL(/\/planweb\//);
+        await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");
+
+
+    });
+
+    test('Register Rixtrema', async ({ page }) => {
+        const finProfPage = new FinancialProfessionalsPage(page);
+        await finProfPage.gotoFinProfPage();
+        await finProfPage.clickLoginButton();
+        await finProfPage.clickIAgreePopup();
+        await finProfPage.clickRegisterRixtremaButton();
+        await finProfPage.clickContinueButton();
+
+        await expect(page).toHaveURL(/\/empowerlogin\//);
+        await expect(page.locator('h1')).toHaveText("Sign In");
+    });
+
+});
+
+
+
