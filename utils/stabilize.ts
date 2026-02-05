@@ -3,10 +3,10 @@ import { Page } from '@playwright/test';
 export async function waitCarousel(page: Page) {
 
   const STAGE = '.owl-stage';
-  const ACTIVE_SLIDE = '.owl-item.active.center';
+  // const ACTIVE_SLIDE = '.owl-item.active.center';
 
   await page.waitForSelector(STAGE, { state: 'visible', timeout: 120000 });
-  await page.waitForSelector(ACTIVE_SLIDE, { state: 'visible', timeout: 120000 });
+  // await page.waitForSelector(ACTIVE_SLIDE, { state: 'visible', timeout: 120000 });
 
 }
 

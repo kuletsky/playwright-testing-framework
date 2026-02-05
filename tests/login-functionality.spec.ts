@@ -1,11 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { LoginV1Page } from "../pages/LoginV1Page";
-
+import { LoginFunctionalityPage } from "../pages/LoginFunctionalityPage";
 
 
 test.describe('Individuals Login-v1 Functionality', () => {
     test('Login Retirement account', async ({ page }) => {
-        const loginPage = new LoginV1Page(page);
+        const loginPage = new LoginFunctionalityPage(page);
         await loginPage.gotoIndividualsPage();
         await loginPage.clickLoginButton();
         await loginPage.clickLoginRetirementAccount();
@@ -14,7 +13,7 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test('Login Personal Dashboard', async ({ page }) => {
-        const loginPage = new LoginV1Page(page);
+        const loginPage = new LoginFunctionalityPage(page);
         await loginPage.gotoIndividualsPage();
         await loginPage.clickLoginButton();
         await loginPage.clickLoginPersonalDashboard();
@@ -23,7 +22,7 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test('Login Personal Wealth', async ({ page }) => {
-        const loginPage = new LoginV1Page(page);
+        const loginPage = new LoginFunctionalityPage(page);
         await loginPage.gotoIndividualsPage();
         await loginPage.clickLoginButton();
         await loginPage.clickLoginPersonalWealth();
@@ -32,7 +31,7 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test('Login Retirement plan sponsors', async ({ page }) => {
-        const loginPage = new LoginV1Page(page);
+        const loginPage = new LoginFunctionalityPage(page);
         await loginPage.gotoIndividualsPage();
         await loginPage.clickLoginButton();
         await loginPage.clickLoginRetirementPlanSponsors();
@@ -41,7 +40,7 @@ test.describe('Individuals Login-v1 Functionality', () => {
     });
 
     test('Login Retirement plan financial professionals', async ({ page }) => {
-        const loginPage = new LoginV1Page(page);
+        const loginPage = new LoginFunctionalityPage(page);
         await loginPage.gotoIndividualsPage();
         await loginPage.clickLoginButton();
         await loginPage.clickLoginRetirementPlanFinancialProfessionals();
