@@ -2,7 +2,7 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: Visual Desktop tests (Samsung Galaxy S24 + Chrome) 
+buildName: Visual Desktop tests | Samsung Galaxy S24 + Chrome
 framework: playwright
 
 platforms:
