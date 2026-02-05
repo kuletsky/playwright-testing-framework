@@ -12,10 +12,10 @@ export async function waitCarousel(page: Page) {
 
 export async function removeShaking(page: Page) {
   await waitForFonts(page, 30_000);
-  // await waitForAboveTheFoldImages(page, 45_000);
+  await waitForAboveTheFoldImages(page, 45_000);
 
   // await closeCookieBanner(page);
-  // await waitCarousel(page);
+  await waitCarousel(page);
 
   await freezeMotion(page);
   await waitForLayoutStable(page, 1200, 25_000);
