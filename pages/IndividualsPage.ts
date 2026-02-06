@@ -14,12 +14,16 @@ export class IndividualsPage extends BasePage {
     }
 
 
-    
+
     async clickLoginButton() {
         await this.loginButtonLocator.click();
     }
 
     async clickOpenAccountButton() {
         await this.openAccountButton.click();
+    }
+
+    async clickLegalMenuLink(linkText: string) {
+        await this.page.getByRole('link', { name: linkText, exact: true }).click();
     }
 }
