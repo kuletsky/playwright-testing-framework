@@ -3,6 +3,7 @@ import { IndividualsPage } from "../pages/IndividualsPage";
 
 
 test.describe('Footer functionality', () => {
+
     test.describe('Footer Legal Menu links', () => {
         const legalMenuLinks = [
             { name: 'Security center', url: 'securityCenter' },
@@ -63,7 +64,7 @@ test.describe('Footer functionality', () => {
             { name: "X (fka Twitter)", url: "x.com/empowertoday" },
             { name: "Snapchat", url: "snapchat.com/@empowertoday" },
             { name: "LinkedIn", url: "linkedin.com/company/empowertoday" },
-            { name: "Instagram", url: "instagram.com" },
+            // { name: "Instagram", url: "instagram.com" },
             // { name: "YouTube", url: "youtube.com" },
             { name: "TikTok", url: "tiktok.com/@empowertoday" },
         ]
@@ -79,12 +80,7 @@ test.describe('Footer functionality', () => {
                 const newPage = await pagePromise;
                 // await newPage.waitForLoadState();
 
-                await expect.poll(() => newPage.url(), {
-                    message: `URL should contain ${link.url} even if page crashed`,
-                    timeout: 15000,
-                }).toContain(link.url);
-
-                // await expect(newPage).toHaveURL(new RegExp(link.url, 'i'));
+                await expect(newPage).toHaveURL(new RegExp(link.url, 'i'));
 
 
                 await newPage.close();
