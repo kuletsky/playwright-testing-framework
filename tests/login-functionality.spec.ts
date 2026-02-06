@@ -122,14 +122,24 @@ test.describe('Individuals Open an account functionality', () => {
         await expect(page.locator('h2.u-padding-left-from-desktop')).toHaveText("Set up a call with an advisor in just a few steps");
     });
 
+    test("Register Personal Cash", async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickOpenAccountButton();
+
+        const signupPage = new IndividualsSignupPage(page);
+        await signupPage.clickPersonalCashButton();
+
+        await expect(page).toHaveURL(/\/signup\/cash/);
+        await expect(page.locator('//strong[contains(text(), "Make your cash count")]')).toBeVisible();
+    });
 
 
 
-    
 
 });
 
-test.describe('Plan Sponsonsors Login functionality', async() => {
+test.describe('Plan Sponsonsors Login functionality', async () => {
     test('Login Retirement plan sponsors', async ({ page }) => {
         const planSponsors = new PlanSponsorsPage(page);
         await planSponsors.gotoPlanSponsorsPage();
