@@ -23,7 +23,7 @@ export class IndividualsPage extends BasePage {
         await this.openAccountButton.click();
     }
 
-    async clickLegalMenuLink(linkText: string) {
+    async clickLink(linkText: string) {
         await this.page.getByRole('link', { name: linkText, exact: true }).click();
     }
 

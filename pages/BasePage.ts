@@ -4,10 +4,12 @@ import path from "node:path";
 
 
 export class BasePage {
-    protected page: Page;
+    protected readonly page: Page;
+    protected readonly continueButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
+        this.continueButton = this.page.locator('button:has-text("Continue")');
     }
 
 
@@ -18,5 +20,9 @@ export class BasePage {
             console.log("Page took too long, stopping navigation manually.");
             await this.page.evaluate(() => window.stop());
         }
+    }
+
+    async clickContinueButton() {
+        await this.continueButton.click();
     }
 }

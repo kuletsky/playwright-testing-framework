@@ -2,15 +2,10 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: Visual MOBILE tests  -->  Samsung Galaxy S23 + Chrome
+buildName: Visual MOBILE tests  -->  Samsung Galaxy S23 (Android 13) + Chrome
 framework: playwright
 
 platforms:
-  # - deviceName: Iphone 15
-  #   osVersion: 26
-  #   browserName: safari
-  #   deviceOrientation: portrait
-
   - deviceName: Samsung Galaxy S23
     osVersion: 13
     browserName: chrome
