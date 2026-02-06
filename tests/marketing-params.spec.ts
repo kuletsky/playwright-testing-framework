@@ -16,7 +16,7 @@ for (const data of marketingParamsData) {
 
         const headingLocator = MPpage.getFormHeading(data.element);
         await expect(headingLocator).toHaveText(data.headingForm);
-
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
         await expect(page).toHaveURL(data.url);
     });
 };

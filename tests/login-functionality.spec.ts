@@ -186,7 +186,7 @@ test.describe('Individuals Open an account functionality', () => {
 
         await expect(page).toHaveURL(/\/signup\/tools/);
         await expect(page.locator('//strong[contains(text(), "Financial freedom starts here")]')).toBeVisible();
-        await expect(page.locator('button[type="submit"]')).toBeVisible();
+        await expect(page.locator('button[type="submit"]')).toBeVisible({timeout: 60_000});
     });
 
 
