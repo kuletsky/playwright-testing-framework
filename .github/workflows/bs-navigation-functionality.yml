@@ -1,11 +1,11 @@
-name: BS Login Functionality tests
+name: BS Navigation Functionality tests
 
 on:
   workflow_dispatch:
   schedule:
 
-    # 12:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 4 * * *"  
+    # 1:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
+    - cron: "0 5 * * *"  
 
 
 jobs:
@@ -32,12 +32,12 @@ jobs:
 
       - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-login-functionality.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-navigation-functionality.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
       - name: Run Playwright tests on BrowserStack
-        run: npx browserstack-node-sdk playwright test login-functionality.spec.ts
+        run: npx browserstack-node-sdk playwright test navigation-functionality.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()

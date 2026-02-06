@@ -1,4 +1,4 @@
-name: BS Marketing Params Tests
+name: BS Marketing Params tests
 
 on:
   workflow_dispatch:

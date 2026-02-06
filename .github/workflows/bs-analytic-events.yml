@@ -1,4 +1,4 @@
-name: BS Analytics Events Tests
+name: BS Analytics Events tests
 
 on:
   workflow_dispatch:
