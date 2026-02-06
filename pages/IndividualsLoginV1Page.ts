@@ -24,7 +24,6 @@ export class IndividualsLoginV1Page {
     async clickLoginRetirementAccount() {
         await this.loginRetirementButtonLocator.click();
     }
-
     async clickLoginPersonalDashboard() {
         await this.loginPersonalDashboardButtonLocator.click();
     }

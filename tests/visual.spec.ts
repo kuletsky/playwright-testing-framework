@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { removeShaking, suppressCookieBanner, waitCarousel } from '../utils/stabilize';
+import { FinancialProfessionalsPage } from '../pages/FinancialProfessionalsPage';
 const { percyScreenshot } = require("@percy/playwright");
 
 test.beforeEach(async ({ page }) => {
@@ -23,6 +24,7 @@ test.describe('Login pages', () => {
   test('Financial Professionals Login page', async ({ page }) => {
     test.setTimeout(240_000);
     await page.goto('/financial-professionals-login');
+    await new FinancialProfessionalsPage(page).clickIAgreePopup();
 
     await suppressCookieBanner(page);
     await removeShaking(page);
