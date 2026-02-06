@@ -6,10 +6,15 @@ buildName: Visual MOBILE tests  -->  Samsung Galaxy S23 + Chrome
 framework: playwright
 
 platforms:
-  - deviceName: Samsung Galaxy S23
-    osVersion: 16
-    browserName: chrome
+  - deviceName: Iphone 15
+    osVersion: 26
+    browserName: safari
     deviceOrientation: portrait
+
+  # - deviceName: Samsung Galaxy S23
+  #   osVersion: 13
+  #   browserName: chrome
+  #   deviceOrientation: portrait
 
 testOrchestrationOptions:
   retryTestsOnFailure:
