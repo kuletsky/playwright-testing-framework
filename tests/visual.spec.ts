@@ -50,7 +50,7 @@ test.describe('Login pages', () => {
 
 
 
-test.describe('Signup Form pages', () => {
+test.describe('Individuals Signup Form pages', () => {
   test('Individuals Open account', async ({ page }) => {
     test.setTimeout(240_000);
     await page.goto('/signup');
