@@ -7,6 +7,7 @@ export class IndividualsSignupPage {
     private scheduleAcallButton: Locator
     private continueButton: Locator
     private personalCashButton: Locator;
+    private premierIRAButton: Locator;
 
 
     constructor(page: Page) {
@@ -15,6 +16,7 @@ export class IndividualsSignupPage {
         this.scheduleAcallButton = this.page.getByText('Schedule a call');
         this.continueButton = this.page.locator('button:has-text("Continue")');
         this.personalCashButton = this.page.locator('a').filter({ hasText: 'Open account' }).first();
+        this.premierIRAButton = this.page.locator('a[href*="premier-ira"]');
     }
 
     async clickGoToRetirementAccount() {
@@ -29,8 +31,12 @@ export class IndividualsSignupPage {
         await this.continueButton.click();
     }
 
-    async clickPersonalCashButton() {
+    async clickPersonalCashOpenAccount() {
         await this.personalCashButton.click();
+    }
+
+    async clickPremierIRAOpenAccount() {
+        await this.premierIRAButton.click();
     }
 
 }

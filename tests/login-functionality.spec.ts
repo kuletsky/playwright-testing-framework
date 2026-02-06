@@ -128,11 +128,25 @@ test.describe('Individuals Open an account functionality', () => {
         await individualsPage.clickOpenAccountButton();
 
         const signupPage = new IndividualsSignupPage(page);
-        await signupPage.clickPersonalCashButton();
+        await signupPage.clickPersonalCashOpenAccount();
 
         await expect(page).toHaveURL(/\/signup\/cash/);
         await expect(page.locator('//strong[contains(text(), "Make your cash count")]')).toBeVisible();
     });
+
+    test("Register Premier IRA", async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickOpenAccountButton();
+
+        const signupPage = new IndividualsSignupPage(page);
+        await signupPage.clickPremierIRAOpenAccount();
+
+        await expect(page).toHaveURL(/\/signup\/premier-ira/);
+        await expect(page.locator('//strong[contains(text(), "Invest in your financial future")]')).toBeVisible();
+    });
+
+
 
 
 
