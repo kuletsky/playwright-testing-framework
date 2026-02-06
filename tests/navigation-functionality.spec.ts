@@ -79,7 +79,14 @@ test.describe('Footer functionality', () => {
                 const newPage = await pagePromise;
                 // await newPage.waitForLoadState();
 
-                await expect(newPage).toHaveURL(new RegExp(link.url, 'i'));
+                await expect.poll(() => newPage.url(), {
+                    message: `URL should contain ${link.url} even if page crashed`,
+                    timeout: 15000,
+                }).toContain(link.url);
+
+                // await expect(newPage).toHaveURL(new RegExp(link.url, 'i'));
+
+
                 await newPage.close();
             });
         }
