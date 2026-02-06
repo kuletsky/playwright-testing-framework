@@ -21,6 +21,7 @@ test.describe('Individuals Login-v1 functionality', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/participant\//);
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
 
         // const a = page.locator('.site-tagline', { hasText: 'Your Retirement Plan' });
         // const b = page.locator('h1', { hasText: 'participant.empower-retirement.com' });
@@ -54,6 +55,8 @@ test.describe('Individuals Login-v1 functionality', () => {
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/page\/login\/goHome/);
         await expect.soft(page.locator('#form-email .legend')).toHaveText("Sign in to Empower Personal Dashboard™");
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+
     });
 
     test('Login Personal Wealth', async ({ page }) => {
@@ -66,7 +69,7 @@ test.describe('Individuals Login-v1 functionality', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/participant\//);
-
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 
     test('Login Retirement plan sponsors', async ({ page }) => {
@@ -80,6 +83,7 @@ test.describe('Individuals Login-v1 functionality', () => {
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/planweb\//);
         await expect(page.locator('.site-tagline')).toHaveText("Plan Service Center");
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 
     test('Login Retirement plan financial professionals', async ({ page }) => {
@@ -92,7 +96,8 @@ test.describe('Individuals Login-v1 functionality', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/planweb\//);
-        await expect(page.locator('.site-tagline')).toHaveText("Plan Service Center");
+        await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 });
 
@@ -107,6 +112,7 @@ test.describe('Individuals Open an account functionality', () => {
 
         await expect.soft(page).toHaveURL(/\/participant\//);
         // await expect.soft(page.locator('.site-tagline')).toHaveText("Your Retirement Plan");
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 
     test("Let's schedule a call", async ({ page }) => {
@@ -116,13 +122,13 @@ test.describe('Individuals Open an account functionality', () => {
 
         const signupPage = new IndividualsSignupPage(page);
         await signupPage.clickScheduleACallButton();
-        await signupPage.clickContinueButton();
+        // await signupPage.clickContinueButton();
 
         await expect(page).toHaveURL(/\/schedule-appointment/);
         await expect(page.locator('h2.u-padding-left-from-desktop')).toHaveText("Set up a call with an advisor in just a few steps");
     });
 
-    test("Register Personal Cash", async ({ page }) => {
+    test("Personal Cash open account", async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
         await individualsPage.clickOpenAccountButton();
@@ -132,9 +138,10 @@ test.describe('Individuals Open an account functionality', () => {
 
         await expect(page).toHaveURL(/\/signup\/cash/);
         await expect(page.locator('//strong[contains(text(), "Make your cash count")]')).toBeVisible();
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 
-    test("Register Premier IRA", async ({ page }) => {
+    test("Premier IRA open account", async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
         await individualsPage.clickOpenAccountButton();
@@ -144,9 +151,43 @@ test.describe('Individuals Open an account functionality', () => {
 
         await expect(page).toHaveURL(/\/signup\/premier-ira/);
         await expect(page.locator('//strong[contains(text(), "Invest in your financial future")]')).toBeVisible();
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 
+    test("Brokerage IRA open account", async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickOpenAccountButton();
 
+        await page.locator('a[href*="netxinvestor"]').nth(0).click();
+
+        await expect(page).toHaveURL(/\/nxi\/account/);
+        await expect(page.locator('.accountTypeHeader')).toHaveText('Open an account and start investing!');
+    });
+
+    test("Premier Investment open account", async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickOpenAccountButton();
+
+        await page.locator('a[href*="premier-investment"]').click();
+
+        await expect(page).toHaveURL(/\/signup\/premier-investment-account/);
+        await expect(page.locator('//strong[contains(text(), "No-strings investing")]')).toBeVisible();
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
+    });
+
+    test("Brokerage Investment open account", async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+        await individualsPage.clickOpenAccountButton();
+
+        await page.locator('a[href*="signup/tools"]').click();
+
+        await expect(page).toHaveURL(/\/signup\/tools/);
+        await expect(page.locator('//strong[contains(text(), "Financial freedom starts here")]')).toBeVisible();
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
+    });
 
 
 
@@ -162,6 +203,7 @@ test.describe('Plan Sponsonsors Login functionality', async () => {
         await expect(page).not.toHaveURL('/plan-sponsors');
         await expect(page).toHaveURL(/\/planweb\//);
         await expect(page.locator('.site-tagline')).toHaveText("Plan Service Center");
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 });
 
@@ -176,6 +218,7 @@ test.describe('Financial Professionals Login functionality', () => {
 
         await expect(page).toHaveURL(/\/planweb\//);
         await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
 
     });
 
@@ -189,8 +232,7 @@ test.describe('Financial Professionals Login functionality', () => {
 
         await expect(page).toHaveURL(/\/planweb\//);
         await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");
-
-
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 
     test('Register Rixtrema', async ({ page }) => {
