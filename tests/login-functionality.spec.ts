@@ -54,7 +54,7 @@ test.describe('Individuals Login-v1 functionality', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/page\/login\/goHome/);
-        await expect.soft(page.locator('#form-email .legend')).toHaveText("Sign in to Empower Personal Dashboard™");
+        await expect(page.locator('#form-email .legend')).toHaveText("Sign in to Empower Personal Dashboard™");
         // await expect(page.locator('button[type="submit"]')).toBeVisible();
 
     });
