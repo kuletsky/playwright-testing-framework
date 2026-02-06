@@ -26,4 +26,8 @@ export class IndividualsPage extends BasePage {
     async clickLegalMenuLink(linkText: string) {
         await this.page.getByRole('link', { name: linkText, exact: true }).click();
     }
+
+    async gotoIndividualsPage() {
+        await super.goto('/individuals');
+    };
 }

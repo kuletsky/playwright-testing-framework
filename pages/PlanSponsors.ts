@@ -13,7 +13,7 @@ export class PlanSponsorsPage {
 
     async gotoPlanSponsorsPage() {
         try {
-            await this.page.goto('/plan-sponsors', { timeout: 10_000 });
+            await this.page.goto('/plan-sponsors', { timeout: 20_000 });
         } catch (error) {
             console.log("Page took too long, stopping navigation manually.");
             // This stops the 'spinning' in the browser

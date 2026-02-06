@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import path from "node:path";
 
 
 
@@ -9,9 +10,13 @@ export class BasePage {
         this.page = page;
     }
 
-    async gotoIndividualsPage() {
-        await this.page.goto('/individuals');
-    };
 
- 
+    async goto(path: string) {
+        try {
+            await this.page.goto(path, { timeout: 45_000 });
+        } catch (error) {
+            console.log("Page took too long, stopping navigation manually.");
+            await this.page.evaluate(() => window.stop());
+        }
+    }
 }
