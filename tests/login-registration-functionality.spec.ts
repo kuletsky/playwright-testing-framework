@@ -18,7 +18,7 @@ test.describe('Individuals Login-v1 functionality', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         // await expect(page).toHaveURL(new RegExp('participant|cloudflare|challenge|verify', 'i'));
-        await expect(page).toHaveURL(/\/participiant|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
 
     });
 
@@ -49,7 +49,7 @@ test.describe('Individuals Login-v1 functionality', () => {
         await loginV1Page.clickLoginPersonalWealth();
 
         await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/\/participiant|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
     });
 
     test('Login Retirement plan sponsors', async ({ page }) => {
@@ -95,7 +95,7 @@ test.describe('Individuals Open an account functionality', () => {
         const signupPage = new IndividualsSignupPage(page);
         await signupPage.clickGoToRetirementAccount();
 
-        await expect(page).toHaveURL(/\/participiant\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/participant\/|cloudflare|challenge|verify/i);
 
 
         // await expect.soft(page).toHaveURL(/\/participant\//);
