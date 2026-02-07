@@ -1,4 +1,4 @@
-name: BS Login/Regression Functionality tests
+name: BS Login/Registration Functionality tests
 
 on:
   workflow_dispatch:

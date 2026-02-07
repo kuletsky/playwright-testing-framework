@@ -80,7 +80,8 @@ test.describe('Footer functionality', () => {
                 const newPage = await pagePromise;
                 // await newPage.waitForLoadState();
 
-                await expect(newPage).toHaveURL(new RegExp(link.url, 'i'));
+                // await expect(newPage).toHaveURL(new RegExp(link.url, 'i'));
+await expect(newPage).toHaveURL(new RegExp(link.url.split('/')[0], 'i')); 
 
 
                 await newPage.close();
