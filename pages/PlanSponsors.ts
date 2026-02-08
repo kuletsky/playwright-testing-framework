@@ -61,4 +61,44 @@ export class PlanSponsorsPage {
         const openMenu = this.page.locator("#markets-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
     }
+
+    async clickSolutionsItem(linkText: string) {
+        const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverSolutionsItem(linkText: string) {
+        const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async clickExperienceItem(linkText: string) {
+        const openMenu = this.page.locator("#experience-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverExperienceItem(linkText: string) {
+        const openMenu = this.page.locator("#experience-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async clickLearnItem(linkText: string) {
+        const openMenu = this.page.locator("#learn-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverLearnItem(linkText: string) {
+        const openMenu = this.page.locator("#learn-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+     async clickWhyEmpowerItem(linkText: string) {
+        const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverWhyEmpowerItem(linkText: string) {
+        const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
 }

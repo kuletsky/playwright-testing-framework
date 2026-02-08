@@ -123,16 +123,14 @@ test('Verify Why Empower menu is displayed', async ({ page }) => {
 });
 
 
-// Data-driven tests for Plan Sponsors menu items
+// Data-driven tests for Markets menu items
 const marketsLinks = [
     { name: 'Small and growing businesses', menuHeading: 'Small and growing businesses', url: '/plan-sponsors/what-we-offer/small-and-growing-businesses', pageHeading: "Small and growing businesses" },
-    { name: 'Large and mega corporations', menuHeading: 'Large and mega corporations', url: '/plan-sponsors/what-we-offer/large-and-mega-corporations',  pageHeading: "Built on partnership. Defined by results." },
+    { name: 'Large and mega corporations', menuHeading: 'Large and mega corporations', url: '/plan-sponsors/what-we-offer/large-and-mega-corporations', pageHeading: "Built on partnership. Defined by results." },
     { name: 'Multiple employer plans', menuHeading: "Multiple employer plans", url: '/plan-sponsors/what-we-offer/multiple-employer', pageHeading: "Multiple-Employer" },
     { name: 'Government', menuHeading: "Government", url: '/plan-sponsors/what-we-offer/government', pageHeading: "Built on experience. Focused on results." },
     { name: 'Not-for-profit​', menuHeading: "Not-for-profit", url: '/plan-sponsors/what-we-offer/not-for-profit-overview', pageHeading: "Put our 60+ years of experience to work for you" },
     { name: 'Taft-Hartley​', menuHeading: "Taft-Hartley", url: '/plan-sponsors/what-we-offer/taft-hartley-plans', pageHeading: "Backing members. Securing futures." },
-
-
 ]
 for (const link of marketsLinks) {
     test(`Click Markets - ${link.name}`, async ({ page }) => {
@@ -156,6 +154,44 @@ for (const link of marketsLinks) {
         await plansponsorsPage.hoverMarketsItem(link.name);
 
         const dropdown = page.locator("#markets-dropdown .nav-dropdown-right");
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+    });
+}
+
+// Data-driven tests for Solutions menu items
+const solutionsLinks = [
+    { name: 'Integrated workplace solutions', menuHeading: 'Integrated workplace solutions', url: '/plan-sponsors/what-we-offer/integrated-workplace-solutions', pageHeading: "The future of workplace is here" },
+    { name: 'Advisory services​', menuHeading: 'Advisory services', url: '/plan-sponsors/what-we-offer/advisory-services', pageHeading: "Advisory Services" },
+    { name: 'Retirement solutions​', menuHeading: 'Retirement solutions', url: '/plan-sponsors/what-we-offer/retirement-solutions', pageHeading: "Retirement Solutions Group" },
+    { name: 'Defined contribution plans', menuHeading: 'Defined contribution plans', url: '/plan-sponsors/what-we-offer/defined-contribution-plans', pageHeading: "Defined contribution plans. Built to engage. Trusted to deliver." },
+    { name: 'Defined benefit plans', menuHeading: 'Defined benefit plans', url: '/plan-sponsors/what-we-offer/defined-benefit-plans', pageHeading: "Defined benefit plans. Smarter for you. Simpler for them." },
+    { name: 'Nonqualified plans', menuHeading: 'Nonqualified plans', url: '/plan-sponsors/what-we-offer/nonqualified-plans', pageHeading: "The edge in workplace wealth" },
+    { name: 'Empower benefit consulting services', menuHeading: 'Empower benefit consulting services', url: '/plan-sponsors/what-we-offer/empower-benefit-consulting-services', pageHeading: "Measured excellence. Proven expertise." },
+    { name: 'Stock plan services​', menuHeading: 'Stock plan services', url: '/plan-sponsors/what-we-offer/stock-plan-services', pageHeading: "Global stock plans simplified. Yes, really." },
+    { name: 'Consumer-directed health', menuHeading: 'Consumer-directed health', url: '/plan-sponsors/what-we-offer/consumer-directed-health', pageHeading: "Integrated health and wealth" },
+]
+for (const link of solutionsLinks) {
+    test(`Click Solutions - ${link.name}`, async ({ page }) => {
+        const plansponsorsPage = new PlanSponsorsPage(page);
+        await plansponsorsPage.gotoPlanSponsorsPage();
+        await plansponsorsPage.openSolutionsMenu();
+        await plansponsorsPage.clickSolutionsItem(link.name);
+
+        if (link.url) {
+            await expect(page).toHaveURL(link.url);
+            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+        }
+    });
+
+    test(`Hover Solutions - ${link.name}`, async ({ page }) => {
+        const plansponsorsPage = new PlanSponsorsPage(page);
+        await plansponsorsPage.gotoPlanSponsorsPage();
+        await plansponsorsPage.openSolutionsMenu();
+
+        await expect(page.locator('#solutions-dropdown')).toBeVisible();
+        await plansponsorsPage.hoverSolutionsItem(link.name);
+
+        const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
         await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
     });
 }
