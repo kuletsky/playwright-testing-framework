@@ -22,7 +22,7 @@ test.describe('Footer functionality', () => {
                 const individualsPage = new IndividualsPage(page);
                 await individualsPage.gotoIndividualsPage();
 
-                await individualsPage.clickLink(link.name);
+                await individualsPage.clickFooterLink(link.name);
 
                 await expect(page).toHaveURL(new RegExp(`${link.url}(\\?|#|$)`));
                 if (link.assert) {
@@ -50,7 +50,7 @@ test.describe('Footer functionality', () => {
                 const individualsPage = new IndividualsPage(page);
                 await individualsPage.gotoIndividualsPage();
 
-                await individualsPage.clickLink(link.name);
+                await individualsPage.clickFooterLink(link.name);
 
                 await expect(page).toHaveURL(new RegExp(`${link.url}(\\?|#|$)`));
                 await expect(page.getByText(link.assert).first()).toBeVisible();
@@ -74,14 +74,14 @@ test.describe('Footer functionality', () => {
                 await individualsPage.gotoIndividualsPage();
 
                 const pagePromise = context.waitForEvent('page');
-                await individualsPage.clickLink(link.name);
+                await individualsPage.clickFooterLink(link.name);
                 await individualsPage.clickContinueButton();
 
                 const newPage = await pagePromise;
                 // await newPage.waitForLoadState();
 
                 // await expect(newPage).toHaveURL(new RegExp(link.url, 'i'));
-await expect(newPage).toHaveURL(new RegExp(link.url.split('/')[0], 'i')); 
+                await expect(newPage).toHaveURL(new RegExp(link.url.split('/')[0], 'i'));
 
 
                 await newPage.close();
@@ -93,4 +93,90 @@ await expect(newPage).toHaveURL(new RegExp(link.url.split('/')[0], 'i'));
 
 test.describe('Header Menu functionality', () => {
 
+    test('Verify Contextual menu is displayed', async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+
+        const links = page.locator("li a[data-once='nav-main-contextual-link-click']");
+        await expect(links).toHaveCount(3);
+
+        const linksText = (await links.allTextContents()).map(t => t.trim());
+        expect(linksText).toEqual([
+            "Individuals",
+            "Plan Sponsors",
+            "Financial Professionals"
+        ]);
+    });
+
+    test('Verify Primary menu is displayed', async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.gotoIndividualsPage();
+
+        const links = page.locator("button[data-once*='desktopPrimaryNav']");
+        await expect(links).toHaveCount(4);
+
+        const linksText = (await links.allTextContents()).map(t => t.trim());
+        expect(linksText).toEqual([
+            "Products & Services",
+            "Tools",
+            "Learn",
+            "Why Empower"
+        ]);
+    });
+
+    test.describe('Individuals menu', () => {
+
+        test('Verify ProductService menu is displayed', async ({ page }) => {
+            const individualsPage = new IndividualsPage(page);
+            await individualsPage.gotoIndividualsPage();
+            await individualsPage.clickMenuProductServices();
+
+            const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
+            await expect(links).toHaveCount(6);
+
+            const linksText = (await links.allTextContents()).map(t => t.trim());
+            expect(linksText).toEqual([
+                "Wealth Management",
+                "High-yield cash account",
+                "Rollover",
+                "IRAs",
+                "Investment accounts",
+                "Tax filing"
+            ]);
+
+            const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
+            await expect(dropdown.getByText("Products & services")).toBeVisible();
+        });
+
+        // const menu = [
+
+        // ];
+        // test(`Verify click ${menu} ProductService menu`, async({page}) => {
+
+        // });
+
+        const PSmenuLinks = [
+            // { name: 'Wealth Management', menuHeading: 'Wealth management overview' },
+            { name: 'High-yield cash account', menuHeading: 'High-yield cash account', url: 'wealth-management', pageHeading: "How much could your money grow with dedicated wealth management?" },
+            // { name: 'Rollover', menuHeading: "Rollover", url: 'products-solutions/rollover', pageHeading: "Start your rollover with confidence" },
+            // { name: 'IRAs', menuHeading: "IRAs", url: 'products-solutions/iras', pageHeading: "The right IRA. Right now." },
+            // { name: 'Investment accounts', menuHeading: "Investment accounts", url: 'products-solutions/iras', pageHeading: "Start investing with confidence." },
+            // { name: 'Tax filing', menuHeading: "Tax filing", url: 'products-solutions/iras', pageHeading: "Tax filing" },
+
+        ]
+        for (const link of PSmenuLinks) {
+            test(`ProductService Open menu link - ${link.name}`, async ({ page }) => {
+                const individualsPage = new IndividualsPage(page);
+                await individualsPage.gotoIndividualsPage();
+                await individualsPage.clickMenuProductServices();
+
+                await individualsPage.clickOpenMenuLink(link.name);
+
+                // await expect(page).toHaveURL(new RegExp(`${link.url}(\\?|#|$)`));
+                // if (link.assert) {
+                //     await expect(page.getByText(link.assert).first()).toBeVisible();
+                // }
+            });
+        }
+    });
 });

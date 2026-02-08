@@ -77,7 +77,7 @@ test.describe('Individuals Login-v1 functionality', () => {
         await loginV1Page.clickLoginRetirementPlanFinancialProfessionals();
 
         await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/\/plamweb\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/planmweb\/|cloudflare|challenge|verify/i);
 
 
         // await expect(page).toHaveURL(/\/planweb\//);
@@ -112,7 +112,7 @@ test.describe('Individuals Open an account functionality', () => {
         await signupPage.clickScheduleACallButton();
         // await signupPage.clickContinueButton();
 
-        await expect(page).toHaveURL(/\/schedule-appointment\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/schedule-appointment|cloudflare|challenge|verify/i);
 
         // await expect(page).toHaveURL(/\/schedule-appointment/);
         // await expect(page.locator('h2.u-padding-left-from-desktop')).toHaveText("Set up a call with an advisor in just a few steps");
@@ -126,7 +126,7 @@ test.describe('Individuals Open an account functionality', () => {
         const signupPage = new IndividualsSignupPage(page);
         await signupPage.clickPersonalCashOpenAccount();
 
-        await expect(page).toHaveURL(/\/signup\/cash\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/signup\/cash|cloudflare|challenge|verify/i);
 
 
         // await expect(page).toHaveURL(/\/signup\/cash/);
@@ -142,7 +142,7 @@ test.describe('Individuals Open an account functionality', () => {
         const signupPage = new IndividualsSignupPage(page);
         await signupPage.clickPremierIRAOpenAccount();
 
-        await expect(page).toHaveURL(/\/signup\/premier-ira\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/signup\/premier-ira|cloudflare|challenge|verify/i);
 
         // await expect(page).toHaveURL(/\/signup\/premier-ira/);
         // await expect(page.locator('//strong[contains(text(), "Invest in your financial future")]')).toBeVisible();
@@ -170,7 +170,7 @@ test.describe('Individuals Open an account functionality', () => {
 
         await page.locator('a[href*="premier-investment"]').click();
 
-        await expect(page).toHaveURL(/\/signup\/premier-investment-account\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/signup\/premier-investment-account|cloudflare|challenge|verify/i);
 
         // await expect(page).toHaveURL(/\/signup\/premier-investment-account/);
         // await expect(page.locator('//strong[contains(text(), "No-strings investing")]')).toBeVisible();
@@ -184,7 +184,7 @@ test.describe('Individuals Open an account functionality', () => {
 
         await page.locator('a[href*="signup/tools"]').click();
 
-        await expect(page).toHaveURL(/\/signup\/tools\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/signup\/tools|cloudflare|challenge|verify/i);
 
         // await expect(page).toHaveURL(/\/signup\/tools/);
         // await expect(page.locator('//strong[contains(text(), "Financial freedom starts here")]')).toBeVisible();
@@ -252,7 +252,7 @@ test.describe('Financial Professionals Login functionality', () => {
         await finProfPage.clickRegisterRixtremaButton();
         await finProfPage.clickContinueButton();
 
-        await expect(page).toHaveURL(/\/planweb\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/empowerlogin|cloudflare|challenge|verify/i);
 
 
         // await expect(page).toHaveURL(/\/empowerlogin\//);

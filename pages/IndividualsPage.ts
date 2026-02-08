@@ -6,11 +6,13 @@ export class IndividualsPage extends BasePage {
 
     private loginButtonLocator: Locator
     private openAccountButton: Locator
+    private menuProductServices: Locator
 
     constructor(page: Page) {
         super(page);
         this.loginButtonLocator = this.page.locator("//header//span[text()='Login']");
         this.openAccountButton = this.page.locator("a[class='btn btn--dark btn--small primary-btn inline-flex justify-center items-center shrink-0'] span[class='z-10']");
+        this.menuProductServices = this.page.locator("[aria-label='Products & Solutions']");
     }
 
 
@@ -23,11 +25,19 @@ export class IndividualsPage extends BasePage {
         await this.openAccountButton.click();
     }
 
-    async clickLink(linkText: string) {
+    async clickFooterLink(linkText: string) {
         await this.page.getByRole('link', { name: linkText, exact: true }).click();
     }
 
     async gotoIndividualsPage() {
         await super.goto('/individuals');
     };
+
+    async clickMenuProductServices() {
+        await this.menuProductServices.click()
+    }
+
+        async clickOpenMenuLink(linkText: string) {
+        await this.page.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
 }
