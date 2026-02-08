@@ -39,7 +39,7 @@ export class IndividualsPage extends BasePage {
         await super.goto('/individuals');
     };
 
-    async clickMenuProductServices() {
+    async openProductAndServicesMenu() {
         await this.menuProductServices.click()
     }
     async clickMenuTools() {
@@ -52,9 +52,13 @@ export class IndividualsPage extends BasePage {
         await this.menuWhyEmpower.click()
     }
 
-    async clickOpenMenuLink(linkText: string) {
+    async clickMenuItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
-
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverMenuItem(linkText: string) {
+        const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
     }
 }

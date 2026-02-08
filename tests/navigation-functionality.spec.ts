@@ -128,7 +128,7 @@ test.describe('Header Menu functionality', () => {
             ]);
         });
 
-        test('Verify ProductServices menu is displayed', async ({ page }) => {
+        test('Verify Products & Services menu is displayed', async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.gotoIndividualsPage();
             await individualsPage.clickMenuProductServices();
@@ -216,42 +216,42 @@ test.describe('Header Menu functionality', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        const PSmenuLinks = [
-            // { name: 'Wealth Management', menuHeading: 'Wealth management overview' },
-            // { name: 'High-yield cash account', menuHeading: 'High-yield cash account', url: 'wealth-management', pageHeading: "How much could your money grow with dedicated wealth management?" },
-            // { name: 'Rollover', menuHeading: "Rollover", url: 'products-solutions/rollover', pageHeading: "Start your rollover with confidence" },
-            // { name: 'IRAs', menuHeading: "IRAs", url: 'products-solutions/iras', pageHeading: "The right IRA. Right now." },
-            // { name: 'Investment accounts', menuHeading: "Investment accounts", url: 'products-solutions/iras', pageHeading: "Start investing with confidence." },
-            // { name: 'Tax filing', menuHeading: "Tax filing", url: 'products-solutions/iras', pageHeading: "Tax filing" },
+        const PSLinks = [
+            { name: 'Wealth Management', menuHeading: 'Wealth management overview' },
+            { name: 'High-yield cash account', menuHeading: 'High-yield Cash Account' },
+            { name: 'Rollover', menuHeading: "Rollover", url: '/products-solutions/rollover', pageHeading: "Start your rollover with confidence" },
+            { name: 'IRAs', menuHeading: "IRAs", url: '/products-solutions/iras', pageHeading: "The right IRA. Right now." },
+            { name: 'Investment accounts', menuHeading: "Investment accounts", url: '/products-solutions/investment-accounts', pageHeading: "Start investing with confidence." },
+            { name: 'Tax filing', menuHeading: "Tax filing", url: '/products-solutions/tax-filing', pageHeading: "Finally, a less taxing tax season" },
 
         ]
-        // for (const link of PSmenuLinks) {
-        //     test(`ProductService Open menu link - ${link.name}`, async ({ page }) => {
-        //         const individualsPage = new IndividualsPage(page);
-        //         await individualsPage.gotoIndividualsPage();
-        //         await individualsPage.clickMenuProductServices();
+        for (const link of PSLinks) {
+            test(`Click P&S - ${link.name}`, async ({ page }) => {
+                const individualsPage = new IndividualsPage(page);
+                await individualsPage.gotoIndividualsPage();
+                await individualsPage.openProductAndServicesMenu();
+                await individualsPage.clickMenuItem(link.name);
 
-        //         await individualsPage.clickOpenMenuLink(link.name);
+                if (link.url) {
+                    await expect(page).toHaveURL(link.url);
+                    await expect(page.getByText(link.pageHeading, { exact: true })).toBeVisible();
+                }
+            });
 
-        //         await expect(page).toHaveURL(link.url);
-                // if (link.assert) {
-                //     await expect(page.getByText(link.assert).first()).toBeVisible();
-        //         // }
-        //     });
-        // }
+            test(`Hover P&S - ${link.name}`, async ({ page }) => {
+                const individualsPage = new IndividualsPage(page);
+                await individualsPage.gotoIndividualsPage();
+                await individualsPage.openProductAndServicesMenu();
+
+                await expect(page.locator('#solutions-dropdown')).toBeVisible();
+                await individualsPage.hoverMenuItem(link.name);
+
+                const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
+                await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+            });
+        }
+
+
     });
 
 
