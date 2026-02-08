@@ -195,3 +195,34 @@ for (const link of solutionsLinks) {
         await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
     });
 }
+
+// Data-driven tests for Experience menu items
+const experienceLinks = [
+    { name: 'Plan servicing', menuHeading: 'Plan servicing' },
+    { name: 'Participant engagement', menuHeading: 'Participant engagement' },   
+]
+for (const link of experienceLinks) {
+    // test(`Click Experience - ${link.name}`, async ({ page }) => {
+    //     const plansponsorsPage = new PlanSponsorsPage(page);
+    //     await plansponsorsPage.gotoPlanSponsorsPage();
+    //     await plansponsorsPage.openExperienceMenu();
+    //     await plansponsorsPage.clickExperienceItem(link.name);
+
+    //     if (link.url) {
+    //         await expect(page).toHaveURL(link.url);
+    //         await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+    //     }
+    // });
+
+    test(`Hover Experience - ${link.name}`, async ({ page }) => {
+        const plansponsorsPage = new PlanSponsorsPage(page);
+        await plansponsorsPage.gotoPlanSponsorsPage();
+        await plansponsorsPage.openExperienceMenu();
+
+        await expect(page.locator('#experience-dropdown')).toBeVisible();
+        await plansponsorsPage.hoverExperienceItem(link.name);
+
+        const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+    });
+}
