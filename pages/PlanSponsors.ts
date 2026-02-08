@@ -7,14 +7,18 @@ export class PlanSponsorsPage {
     private loginButton: Locator;
     private menuMarkets: Locator;
     private menuSolutions: Locator;
-    private menuExpirience: Locator;
+    private menuExperience: Locator;
+    private menuLearn: Locator;
+    private menuWhyEmpower: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.loginButton = this.page.locator("[data-once='click-secondary-dark-button empulsify-button-ripple']");
         this.menuMarkets = this.page.locator("[aria-label='Markets']");
         this.menuSolutions = this.page.locator("[aria-label='Solutions']");
-        this.menuExpirience = this.page.locator("[aria-label='Experience']");
+        this.menuExperience = this.page.locator("[aria-label='Experience']");
+        this.menuLearn = this.page.locator("[aria-label='Learn']");
+        this.menuWhyEmpower = this.page.locator("[aria-label='Why Empower']");
     }
 
     async gotoPlanSponsorsPage() {
@@ -38,6 +42,13 @@ export class PlanSponsorsPage {
         await this.menuSolutions.click();
     }
     async clickMenuExperience() {
-        await this.menuExpirience.click();
+        await this.menuExperience.click();
+    }
+    async clickMenuLearn() {
+        await this.menuLearn.click();
+    }
+
+    async clickMenuWhyEmpower() {
+        await this.menuWhyEmpower.click();
     }
 }
