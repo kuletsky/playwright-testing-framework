@@ -131,7 +131,7 @@ test.describe('Header Menu functionality', () => {
         test('Verify Products & Services menu is displayed', async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.gotoIndividualsPage();
-            await individualsPage.clickMenuProductServices();
+            await individualsPage.openProductAndServicesMenu();
 
             const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
             await expect(links).toHaveCount(6);
