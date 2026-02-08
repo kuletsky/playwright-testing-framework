@@ -35,20 +35,30 @@ export class PlanSponsorsPage {
         await this.loginButton.click();
     }
 
-    async clickMenuMarkets() {
+    async openMarketsMenu() {
         await this.menuMarkets.click();
     }
-    async clickMenuSolutions() {
+    async openSolutionsMenu() {
         await this.menuSolutions.click();
     }
-    async clickMenuExperience() {
+    async openExperienceMenu() {
         await this.menuExperience.click();
     }
-    async clickMenuLearn() {
+    async openLearnMenu() {
         await this.menuLearn.click();
     }
 
-    async clickMenuWhyEmpower() {
+    async openWhyEmpowerMenu() {
         await this.menuWhyEmpower.click();
+    }
+
+    async clickMarketsItem(linkText: string) {
+        const openMenu = this.page.locator("#markets-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverMarketsItem(linkText: string) {
+        const openMenu = this.page.locator("#markets-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
     }
 }
