@@ -178,7 +178,7 @@ test.describe('Header Menu functionality', () => {
         test('Verify Learn menu is displayed', async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.gotoIndividualsPage();
-            await individualsPage.clickMenuLearn();
+            await individualsPage.openLearnMenu();
 
             const links = page.locator("#learn-dropdown li.relative > a, #learn-dropdown li.relative > button");
             await expect(links).toHaveCount(2);
@@ -196,7 +196,7 @@ test.describe('Header Menu functionality', () => {
         test('Verify Why Empower menu is displayed', async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.gotoIndividualsPage();
-            await individualsPage.clickMenuWhyEmpower();
+            await individualsPage.openWhyEmpowerMenu();
 
             const links = page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button");
             await expect(links).toHaveCount(4);
@@ -252,7 +252,7 @@ test.describe('Header Menu functionality', () => {
         }
 
         // Data-driven tests for TOOLS menu items
-        const ToolsLinks = [
+        const toolsLinks = [
             { name: 'View All', menuHeading: "Financial tools", url: '/tools', pageHeading: "Financial freedom starts here" },
             { name: 'Retirement Planner', menuHeading: "Retirement Planner", url: '/tools/retirement-planner', pageHeading: "Plan ahead to retire your way" },
             { name: 'Net Worth', menuHeading: "Net Worth", url: '/tools/net-worth', pageHeading: "Knowing your net worth is worth it" },
@@ -263,7 +263,7 @@ test.describe('Header Menu functionality', () => {
             { name: 'Emergency Fund', menuHeading: "Emergency Fund", url: '/tools/emergency-fund', pageHeading: "Your go-to for life’s curveballs" },
             { name: 'Transactions', menuHeading: "Transactions", url: '/tools/transactions', pageHeading: "Gain insight into your spending, keep control, and help spot fraud." },
         ]
-        for (const link of ToolsLinks) {
+        for (const link of toolsLinks) {
             test(`Click TOOLS - ${link.name}`, async ({ page }) => {
                 const individualsPage = new IndividualsPage(page);
                 await individualsPage.gotoIndividualsPage();
@@ -285,6 +285,71 @@ test.describe('Header Menu functionality', () => {
                 await individualsPage.hoverToolsItem(link.name);
 
                 const dropdown = page.locator("#tools-dropdown .nav-dropdown-right");
+                await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
+            });
+        }
+
+
+        // Data-driven tests for LEARN menu items
+        const learnLinks = [
+            { name: 'Investment Insights', menuHeading: "Investment Insights", url: '/investment-insights', pageHeading: "Latest Content" },
+            { name: 'The Currency', menuHeading: "Get guidance to make better money decisions at every stage of your life.", url: '/the-currency', pageHeading: "Money" },
+        ]
+        for (const link of learnLinks) {
+            test(`Click LEARN - ${link.name}`, async ({ page }) => {
+                const individualsPage = new IndividualsPage(page);
+                await individualsPage.gotoIndividualsPage();
+                await individualsPage.openLearnMenu();
+                await individualsPage.clickLearnItem(link.name);
+
+                if (link.url) {
+                    await expect(page).toHaveURL(link.url);
+                    await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+                }
+            });
+
+            test(`Hover LEARN - ${link.name}`, async ({ page }) => {
+                const individualsPage = new IndividualsPage(page);
+                await individualsPage.gotoIndividualsPage();
+                await individualsPage.openLearnMenu();
+
+                await expect(page.locator('#learn-dropdown')).toBeVisible();
+                await individualsPage.hoverLearnItem(link.name);
+
+                const dropdown = page.locator("#learn-dropdown .nav-dropdown-right");
+                await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
+            });
+        }
+
+        // Data-driven tests for WHY EMPOWER menu items
+        const whyEmpowerLinks = [
+            { name: 'About us', menuHeading: "About us", url: '/about-us', pageHeading: "This is Empower" },
+            { name: 'Cybersecurity', menuHeading: "Cybersecurity", url: '/individuals/about-empower/cybersecurity', pageHeading: "Cybersecurity you can count on" },
+            { name: 'Press Center', menuHeading: "Press Center", url: '/press-center', pageHeading: "Latest content" },
+            { name: 'Contact us', menuHeading: "Contact us", url: '/contact', pageHeading: "We’re happy to help with whatever you need." },
+        ]
+        for (const link of whyEmpowerLinks) {
+            test(`Click WHY EMPOWER - ${link.name}`, async ({ page }) => {
+                const individualsPage = new IndividualsPage(page);
+                await individualsPage.gotoIndividualsPage();
+                await individualsPage.openWhyEmpowerMenu();
+                await individualsPage.clickWhyEmpowerItem(link.name);
+
+                if (link.url) {
+                    await expect(page).toHaveURL(link.url);
+                    await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+                }
+            });
+
+            test(`Hover WHY EMPOWER - ${link.name}`, async ({ page }) => {
+                const individualsPage = new IndividualsPage(page);
+                await individualsPage.gotoIndividualsPage();
+                await individualsPage.openWhyEmpowerMenu();
+
+                await expect(page.locator('#why-empower-dropdown')).toBeVisible();
+                await individualsPage.hoverWhyEmpowerItem(link.name);
+
+                const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
                 await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
             });
         }

@@ -45,10 +45,10 @@ export class IndividualsPage extends BasePage {
     async openToolsMenu() {
         await this.menuTools.click()
     }
-    async clickMenuLearn() {
+    async openLearnMenu() {
         await this.menuLearn.click()
     }
-    async clickMenuWhyEmpower() {
+    async openWhyEmpowerMenu() {
         await this.menuWhyEmpower.click()
     }
 
@@ -69,6 +69,26 @@ export class IndividualsPage extends BasePage {
 
     async hoverToolsItem(linkText: string) {
         const openMenu = this.page.locator("#tools-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async clickLearnItem(linkText: string) {
+        const openMenu = this.page.locator("#learn-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverLearnItem(linkText: string) {
+        const openMenu = this.page.locator("#learn-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async clickWhyEmpowerItem(linkText: string) {
+        const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverWhyEmpowerItem(linkText: string) {
+        const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
     }
 }
