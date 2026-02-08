@@ -8,6 +8,8 @@ export class IndividualsPage extends BasePage {
     private openAccountButton: Locator
     private menuProductServices: Locator
     private menuTools: Locator
+    private menuLearn: Locator
+    private menuWhyEmpower: Locator
 
     constructor(page: Page) {
         super(page);
@@ -15,6 +17,8 @@ export class IndividualsPage extends BasePage {
         this.openAccountButton = this.page.locator("a[class='btn btn--dark btn--small primary-btn inline-flex justify-center items-center shrink-0'] span[class='z-10']");
         this.menuProductServices = this.page.locator("[aria-label='Products & Solutions']");
         this.menuTools = this.page.locator("[aria-label='Tools']");
+        this.menuLearn = this.page.locator("[aria-label='Learn']");
+        this.menuWhyEmpower = this.page.locator("[aria-label='Why Empower']");
     }
 
 
@@ -40,6 +44,12 @@ export class IndividualsPage extends BasePage {
     }
     async clickMenuTools() {
         await this.menuTools.click()
+    }
+    async clickMenuLearn() {
+        await this.menuLearn.click()
+    }
+    async clickMenuWhyEmpower() {
+        await this.menuWhyEmpower.click()
     }
 
     async clickOpenMenuLink(linkText: string) {

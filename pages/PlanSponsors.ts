@@ -6,11 +6,15 @@ export class PlanSponsorsPage {
     private page: Page;
     private loginButton: Locator;
     private menuMarkets: Locator;
+    private menuSolutions: Locator;
+    private menuExpirience: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.loginButton = this.page.locator("[data-once='click-secondary-dark-button empulsify-button-ripple']");
         this.menuMarkets = this.page.locator("[aria-label='Markets']");
+        this.menuSolutions = this.page.locator("[aria-label='Solutions']");
+        this.menuExpirience = this.page.locator("[aria-label='Experience']");
     }
 
     async gotoPlanSponsorsPage() {
@@ -30,5 +34,10 @@ export class PlanSponsorsPage {
     async clickMenuMarkets() {
         await this.menuMarkets.click();
     }
-
+    async clickMenuSolutions() {
+        await this.menuSolutions.click();
+    }
+    async clickMenuExperience() {
+        await this.menuExpirience.click();
+    }
 }
