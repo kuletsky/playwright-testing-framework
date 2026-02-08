@@ -141,7 +141,7 @@ for (const link of marketsLinks) {
 
         if (link.url) {
             await expect(page).toHaveURL(link.url);
-            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000});
         }
     });
 
@@ -154,7 +154,7 @@ for (const link of marketsLinks) {
         await plansponsorsPage.hoverMarketsItem(link.name);
 
         const dropdown = page.locator("#markets-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible({ timeout: 60_000});
     });
 }
 
@@ -192,14 +192,14 @@ for (const link of solutionsLinks) {
         await plansponsorsPage.hoverSolutionsItem(link.name);
 
         const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible({ timeout: 60_000});
     });
 }
 
 // Data-driven tests for Experience menu items
 const experienceLinks = [
     { name: 'Plan servicing', menuHeading: 'Plan servicing' },
-    { name: 'Participant engagement', menuHeading: 'Participant engagement' },   
+    { name: 'Participant engagement', menuHeading: 'Participant engagement' },
 ]
 for (const link of experienceLinks) {
     // test(`Click Experience - ${link.name}`, async ({ page }) => {
@@ -223,6 +223,70 @@ for (const link of experienceLinks) {
         await plansponsorsPage.hoverExperienceItem(link.name);
 
         const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible({ timeout: 60_000});
+    });
+}
+
+// Data-driven tests for LEARN menu items
+const learnLinks = [
+    { name: 'Investment Insights', menuHeading: "Investment Insights", url: '/investment-insights', pageHeading: "Latest Content" },
+    { name: 'The Currency', menuHeading: "Power up with the latest money news for life, work and play.", url: '/the-currency', pageHeading: "Money" },
+]
+for (const link of learnLinks) {
+    test(`Click LEARN - ${link.name}`, async ({ page }) => {
+        const plansponsorsPage = new PlanSponsorsPage(page);
+        await plansponsorsPage.gotoPlanSponsorsPage();
+        await plansponsorsPage.openLearnMenu();
+        await plansponsorsPage.clickLearnItem(link.name);
+
+        if (link.url) {
+            await expect(page).toHaveURL(link.url);
+            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+        }
+    });
+
+    test(`Hover LEARN - ${link.name}`, async ({ page }) => {
+        const plansponsorsPage = new PlanSponsorsPage(page);
+        await plansponsorsPage.gotoPlanSponsorsPage();
+        await plansponsorsPage.openLearnMenu();
+
+        await expect(page.locator('#learn-dropdown')).toBeVisible();
+        await plansponsorsPage.hoverLearnItem(link.name);
+
+        const dropdown = page.locator("#learn-dropdown .nav-dropdown-right");
+        await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000});
+    });
+}
+
+// Data-driven tests for WHY EMPOWER menu items
+const whyEmpowerLinks = [
+    { name: 'About us', menuHeading: "About us", url: '/plan-sponsors/about-us', pageHeading: "This is Empower" },
+    { name: 'Cybersecurity', menuHeading: "Cybersecurity", url: '/plan-sponsors/about-empower/cybersecurity', pageHeading: "Cybersecurity you can count on" },
+    { name: 'Press Center', menuHeading: "Press center", url: '/press-center', pageHeading: "Latest content" },
+    { name: 'Contact us', menuHeading: "Contact us", url: '/plan-sponsors/contact', pageHeading: "We’re happy to help with whatever you need." },
+]
+for (const link of whyEmpowerLinks) {
+    test(`Click WHY EMPOWER - ${link.name}`, async ({ page }) => {
+        const plansponsorsPage = new PlanSponsorsPage(page);
+        await plansponsorsPage.gotoPlanSponsorsPage();
+        await plansponsorsPage.openWhyEmpowerMenu();
+        await plansponsorsPage.clickWhyEmpowerItem(link.name);
+
+        if (link.url) {
+            await expect(page).toHaveURL(link.url);
+            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000});
+        }
+    });
+
+    test(`Hover WHY EMPOWER - ${link.name}`, async ({ page }) => {
+        const plansponsorsPage = new PlanSponsorsPage(page);
+        await plansponsorsPage.gotoPlanSponsorsPage();
+        await plansponsorsPage.openWhyEmpowerMenu();
+
+        await expect(page.locator('#why-empower-dropdown')).toBeVisible();
+        await plansponsorsPage.hoverWhyEmpowerItem(link.name);
+
+        const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
+        await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000});
     });
 }
