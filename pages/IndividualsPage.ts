@@ -37,7 +37,9 @@ export class IndividualsPage extends BasePage {
         await this.menuProductServices.click()
     }
 
-        async clickOpenMenuLink(linkText: string) {
-        await this.page.getByRole('menuitem', { name: linkText, exact: true }).click();
+    async clickOpenMenuLink(linkText: string) {
+        const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
+
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
     }
 }

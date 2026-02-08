@@ -108,23 +108,23 @@ test.describe('Header Menu functionality', () => {
         ]);
     });
 
-    test('Verify Primary menu is displayed', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-
-        const links = page.locator("button[data-once*='desktopPrimaryNav']");
-        await expect(links).toHaveCount(4);
-
-        const linksText = (await links.allTextContents()).map(t => t.trim());
-        expect(linksText).toEqual([
-            "Products & Services",
-            "Tools",
-            "Learn",
-            "Why Empower"
-        ]);
-    });
-
     test.describe('Individuals menu', () => {
+
+        test('Verify Primary menu is displayed', async ({ page }) => {
+            const individualsPage = new IndividualsPage(page);
+            await individualsPage.gotoIndividualsPage();
+
+            const links = page.locator("button[data-once*='desktopPrimaryNav']");
+            await expect(links).toHaveCount(4);
+
+            const linksText = (await links.allTextContents()).map(t => t.trim());
+            expect(linksText).toEqual([
+                "Products & Services",
+                "Tools",
+                "Learn",
+                "Why Empower"
+            ]);
+        });
 
         test('Verify ProductService menu is displayed', async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
@@ -148,12 +148,7 @@ test.describe('Header Menu functionality', () => {
             await expect(dropdown.getByText("Products & services")).toBeVisible();
         });
 
-        // const menu = [
 
-        // ];
-        // test(`Verify click ${menu} ProductService menu`, async({page}) => {
-
-        // });
 
         const PSmenuLinks = [
             // { name: 'Wealth Management', menuHeading: 'Wealth management overview' },
@@ -172,11 +167,16 @@ test.describe('Header Menu functionality', () => {
 
                 await individualsPage.clickOpenMenuLink(link.name);
 
-                // await expect(page).toHaveURL(new RegExp(`${link.url}(\\?|#|$)`));
+                await expect(page).toHaveURL(link.url);
                 // if (link.assert) {
                 //     await expect(page.getByText(link.assert).first()).toBeVisible();
                 // }
             });
         }
+    });
+
+    test.describe('Plan Sponsors menu', () => {
+
+
     });
 });

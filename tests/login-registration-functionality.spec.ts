@@ -77,7 +77,7 @@ test.describe('Individuals Login-v1 functionality', () => {
         await loginV1Page.clickLoginRetirementPlanFinancialProfessionals();
 
         await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/\/planmweb\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/planmweb|cloudflare|challenge|verify/i);
 
 
         // await expect(page).toHaveURL(/\/planweb\//);
