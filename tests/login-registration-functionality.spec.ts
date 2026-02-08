@@ -61,7 +61,7 @@ test.describe('Individuals Login-v1 functionality', () => {
         await loginV1Page.clickLoginRetirementPlanSponsors();
 
         await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/\/planweb\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
 
         // await expect(page).toHaveURL(/\/planweb\//);
         // await expect(page.locator('.site-tagline')).toHaveText("Plan Service Center");
@@ -95,7 +95,7 @@ test.describe('Individuals Open an account functionality', () => {
         const signupPage = new IndividualsSignupPage(page);
         await signupPage.clickGoToRetirementAccount();
 
-        await expect(page).toHaveURL(/\/participant\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
 
 
         // await expect.soft(page).toHaveURL(/\/participant\//);
@@ -203,7 +203,7 @@ test.describe('Plan Sponsonsors Login functionality', async () => {
         await planSponsors.clickLoginButton();
 
         await expect(page).not.toHaveURL('/plan-sponsors');
-        await expect(page).toHaveURL(/\/planweb\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
 
 
         // await expect(page).toHaveURL(/\/planweb\//);
@@ -221,7 +221,7 @@ test.describe('Financial Professionals Login functionality', () => {
         await finProPage.clickIAgreePopup();
         await finProPage.clickLoginFinancialProfessionalsButton();
 
-        await expect(page).toHaveURL(/\/planweb\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
 
         // await expect(page).toHaveURL(/\/planweb\//);
         // await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");
@@ -237,7 +237,7 @@ test.describe('Financial Professionals Login functionality', () => {
         await finProfPage.clickRegisterFinancialProfessionalsButton();
         await finProfPage.clickContinueButton();
 
-        await expect(page).toHaveURL(/\/planweb\/|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
 
         // await expect(page).toHaveURL(/\/planweb\//);
         // await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");

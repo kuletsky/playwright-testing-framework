@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { IndividualsPage } from "../pages/IndividualsPage";
+import { PlanSponsorsPage } from '../pages/PlanSponsors';
 
 
 test.describe('Footer functionality', () => {
@@ -126,7 +127,7 @@ test.describe('Header Menu functionality', () => {
             ]);
         });
 
-        test('Verify ProductService menu is displayed', async ({ page }) => {
+        test('Verify ProductServices menu is displayed', async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.gotoIndividualsPage();
             await individualsPage.clickMenuProductServices();
@@ -146,6 +147,31 @@ test.describe('Header Menu functionality', () => {
 
             const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
             await expect(dropdown.getByText("Products & services")).toBeVisible();
+        });
+
+        test('Verify Tools menu is displayed', async ({ page }) => {
+            const individualsPage = new IndividualsPage(page);
+            await individualsPage.gotoIndividualsPage();
+            await individualsPage.clickMenuTools();
+
+            const links = page.locator("#tools-dropdown li.relative > a, #tools-dropdown li.relative > button");
+            await expect(links).toHaveCount(9);
+
+            const linksText = (await links.allTextContents()).map(t => t.trim());
+            expect(linksText).toEqual([
+                "View All",
+                "Retirement Planner",
+                "Net Worth",
+                "Budgeting & Cash Flow",
+                "Portfolio Analysis",
+                "Savings Planner",
+                "Debt Paydown",
+                "Emergency Fund",
+                "Transactions",
+            ]);
+
+            const dropdown = page.locator("#tools-dropdown .nav-dropdown-right h3");
+            await expect(dropdown.getByText("Financial tools", { exact: true }).first()).toBeVisible();
         });
 
 
@@ -175,7 +201,47 @@ test.describe('Header Menu functionality', () => {
         }
     });
 
+
     test.describe('Plan Sponsors menu', () => {
+
+        test('Verify Primary menu is displayed', async ({ page }) => {
+            const plansponsorPage = new PlanSponsorsPage(page);
+            await plansponsorPage.gotoPlanSponsorsPage();
+
+            const links = page.locator("button[data-once*='desktopPrimaryNav']");
+            await expect(links).toHaveCount(5);
+
+            const linksText = (await links.allTextContents()).map(t => t.trim());
+            expect(linksText).toEqual([
+                "Markets",
+                "Solutions",
+                "Experience",
+                "Learn",
+                "Why Empower"
+            ]);
+        });
+
+        test('Verify ProductService menu is displayed', async ({ page }) => {
+            const plansponsorPage = new PlanSponsorsPage(page);
+            await plansponsorPage.gotoPlanSponsorsPage();
+            await plansponsorPage.clickMenuMarkets();
+
+            const links = page.locator("#markets-dropdown li.relative > a, #markets-dropdown li.relative > button");
+            await expect(links).toHaveCount(6);
+
+            const linksText = (await links.allTextContents()).map(t => t.trim());
+            expect(linksText).toEqual([
+                "Small and growing businesses",
+                "Large and mega corporations",
+                "Multiple employer plans",
+                "Government",
+                "Not-for-profit​",
+                "Taft-Hartley​"
+            ]);
+
+            const dropdown = page.locator("#markets-dropdown .nav-dropdown-right");
+            await expect(dropdown.getByText("Markets")).toBeVisible();
+        });
 
 
     });

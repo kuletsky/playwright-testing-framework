@@ -7,12 +7,14 @@ export class IndividualsPage extends BasePage {
     private loginButtonLocator: Locator
     private openAccountButton: Locator
     private menuProductServices: Locator
+    private menuTools: Locator
 
     constructor(page: Page) {
         super(page);
         this.loginButtonLocator = this.page.locator("//header//span[text()='Login']");
         this.openAccountButton = this.page.locator("a[class='btn btn--dark btn--small primary-btn inline-flex justify-center items-center shrink-0'] span[class='z-10']");
         this.menuProductServices = this.page.locator("[aria-label='Products & Solutions']");
+        this.menuTools = this.page.locator("[aria-label='Tools']");
     }
 
 
@@ -35,6 +37,9 @@ export class IndividualsPage extends BasePage {
 
     async clickMenuProductServices() {
         await this.menuProductServices.click()
+    }
+    async clickMenuTools() {
+        await this.menuTools.click()
     }
 
     async clickOpenMenuLink(linkText: string) {

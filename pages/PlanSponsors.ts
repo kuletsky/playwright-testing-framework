@@ -5,10 +5,12 @@ import { Page, Locator } from '@playwright/test';
 export class PlanSponsorsPage {
     private page: Page;
     private loginButton: Locator;
+    private menuMarkets: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.loginButton = this.page.locator("[data-once='click-secondary-dark-button empulsify-button-ripple']");
+        this.menuMarkets = this.page.locator("[aria-label='Markets']");
     }
 
     async gotoPlanSponsorsPage() {
@@ -25,5 +27,8 @@ export class PlanSponsorsPage {
         await this.loginButton.click();
     }
 
+    async clickMenuMarkets() {
+        await this.menuMarkets.click();
+    }
 
 }
