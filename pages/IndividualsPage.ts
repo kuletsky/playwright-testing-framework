@@ -42,7 +42,7 @@ export class IndividualsPage extends BasePage {
     async openProductAndServicesMenu() {
         await this.menuProductServices.click()
     }
-    async clickMenuTools() {
+    async openToolsMenu() {
         await this.menuTools.click()
     }
     async clickMenuLearn() {
@@ -52,13 +52,23 @@ export class IndividualsPage extends BasePage {
         await this.menuWhyEmpower.click()
     }
 
-    async clickMenuItem(linkText: string) {
+    async clickPSItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
     }
 
-    async hoverMenuItem(linkText: string) {
+    async hoverPSItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async clickToolsItem(linkText: string) {
+        const openMenu = this.page.locator("#tools-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverToolsItem(linkText: string) {
+        const openMenu = this.page.locator("#tools-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
     }
 }

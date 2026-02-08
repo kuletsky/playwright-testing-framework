@@ -261,7 +261,7 @@ test.describe('Header Menu functionality', () => {
             { name: 'Savings Planner', menuHeading: "Savings Planner", url: '/tools/savings-planner', pageHeading: "Save smart, spend smarter" },
             { name: 'Debt Paydown', menuHeading: "Debt Paydown", url: '/tools/debt-paydown', pageHeading: "Paying down debt is such a good look" },
             { name: 'Emergency Fund', menuHeading: "Emergency Fund", url: '/tools/emergency-fund', pageHeading: "Your go-to for life’s curveballs" },
-            { name: 'Transactions', menuHeading: "Transactions", url: '/tools/transactions', pageHeading: "Gain insight into your spending, keep control, and help spot fraud." },
+            { name: 'Transactions', menuHeading: "Transactions", url: '/tools/transactions', pageHeading: "Every money move you makin one place" },
         ]
         for (const link of ToolsLinks) {
             test(`Click TOOLS - ${link.name}`, async ({ page }) => {
@@ -287,259 +287,265 @@ test.describe('Header Menu functionality', () => {
                 const dropdown = page.locator("#tools-dropdown .nav-dropdown-right");
                 await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
             });
+
         }
 
-    });
+
+        test.describe('Plan Sponsors menu', () => {
+
+            test('Verify Primary menu is displayed', async ({ page }) => {
+                const plansponsorPage = new PlanSponsorsPage(page);
+                await plansponsorPage.gotoPlanSponsorsPage();
+
+                const links = page.locator("button[data-once*='desktopPrimaryNav']");
+                await expect(links).toHaveCount(5);
+
+                const linksText = (await links.allTextContents()).map(t => t.trim());
+                expect(linksText).toEqual([
+                    "Markets",
+                    "Solutions",
+                    "Experience",
+                    "Learn",
+                    "Why Empower"
+
+            
+        
+    test('Verify Markets menu is displayed', async ({ page }) => {
+                        const plansponsorPage = new PlanSponsorsPage(page);
+                        await plansponsorPage.gotoPlanSponsorsPage();
+                        await plansponsorPage.clickMenuMarkets();
+
+                        const links = page.locator("#markets-dropdown li.relative > a, #markets-dropdown li.relative > button");
+                        await expect(links).toHaveCount(6);
+
+                        const linksText = (await links.allTextContents()).map(t => t.trim());
+                        expect(linksText).toEqual([
+                            "Small and growing businesses",
+                            "Large and mega corporations",
+                            "Multiple employer plans",
+                            "Government",
+                            "Not-for-profit​",
+                            "Taft-Hartley​"
+                        ]);
+        
+        t dropdown = page.locator("#markets-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.getByText("Markets", { exact: true })).toBeVisible();
+                    });
+
+                ('Verify Solutions menu is displayed', async ({ page }) => {
+
+                    const plansponsorPage = new PlanSponsorsPage(page);
+                    await plansponsorPage.gotoPlanSponsorsPage();
+                    await plansponsorPage.clickMenuSolutions();
+
+                    const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
+                    await expect(links).toHaveCount(9);
+
+                    const linksText = (await links.allTextContents()).map(t => t.trim());
+                    expect(linksText).toEqual([
+                        "Integrated workplace solutions",
+                        "Advisory services​",
+                        "Retirement solutions​",
+                        "Defined contribution plans",
+                        "Defined benefit plans",
+                        "Nonqualified plans",
+                        "Empower benefit consulting services",
+                        "Stock plan services​",
+                        "Consumer-directed health",
+                    ]);
+        
+        t dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.getByText("Solutions", { exact: true })).toBeVisible();
+                });
+
+                test('Verify Experience menu is displayed', async ({ page }) => {
+
+                    const plansponsorPage = new PlanSponsorsPage(page);
+                    await plansponsorPage.gotoPlanSponsorsPage();
+                    await plansponsorPage.clickMenuExperience();
+
+                    const links = page.locator("#experience-dropdown li.relative > a, #experience-dropdown li.relative > button");
+                    await expect(links).toHaveCount(2);
+
+                    const linksText = (await links.allTextContents()).map(t => t.trim());
+                    expect(linksText).toEqual([
+                        "Plan servicing",
+                        "Participant engagement",
+                    ]);
+    
+        t dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.getByText("Experience", { exact: true })).toBeVisible();
+                });
+
+                test('Verify Learn menu is displayed', async ({ page }) => {
+
+                    const plansponsorsPage = new PlanSponsorsPage(page);
+                    await plansponsorsPage.gotoPlanSponsorsPage();
+                    await plansponsorsPage.clickMenuLearn();
+
+                    const links = page.locator("#learn-dropdown li.relative > a, #learn-dropdown li.relative > button");
+                    await expect(links).toHaveCount(2);
+
+                    const linksText = (await links.allTextContents()).map(t => t.trim());
+                    expect(linksText).toEqual([
+                        "Investment Insights",
+                        "The Currency",
+                    ]);
+    
+        t dropdown = page.locator("#learn-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.locator('p:has-text("Learn")')).toBeVisible();
+                });
+
+                test('Verify Why Empower menu is displayed', async ({ page }) => {
+
+                    const plansponsorsPage = new PlanSponsorsPage(page);
+                    await plansponsorsPage.gotoPlanSponsorsPage();
+                    await plansponsorsPage.clickMenuWhyEmpower();
+
+                    const links = page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button");
+                    await expect(links).toHaveCount(4);
+
+                    const linksText = (await links.allTextContents()).map(t => t.trim());
+                    expect(linksText).toEqual([
+                        "About us",
+                        "Cybersecurity",
+                        "Press Center",
+                        "Contact us",
+                    ]);
+        
+        t dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.locator('p:has-text("Why Empower")')).toBeVisible();
+                });
+            });
 
 
-    test.describe('Plan Sponsors menu', () => {
+            test.describe('Financial Professionals menu', () => {
 
-        test('Verify Primary menu is displayed', async ({ page }) => {
-            const plansponsorPage = new PlanSponsorsPage(page);
-            await plansponsorPage.gotoPlanSponsorsPage();
+                test('Verify Financial Professionals menu is displayed', async ({ page }) => {
+                    const finproPage = new FinancialProfessionalsPage(page);
+                    await finproPage.gotoFinProfPage();
 
-            const links = page.locator("button[data-once*='desktopPrimaryNav']");
-            await expect(links).toHaveCount(5);
+                    const links = page.locator("button[data-once*='desktopPrimaryNav']");
+                    await expect(links).toHaveCount(5);
 
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Markets",
-                "Solutions",
-                "Experience",
-                "Learn",
-                "Why Empower"
-            ]);
-        });
-
-        test('Verify Markets menu is displayed', async ({ page }) => {
-            const plansponsorPage = new PlanSponsorsPage(page);
-            await plansponsorPage.gotoPlanSponsorsPage();
-            await plansponsorPage.clickMenuMarkets();
-
-            const links = page.locator("#markets-dropdown li.relative > a, #markets-dropdown li.relative > button");
-            await expect(links).toHaveCount(6);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Small and growing businesses",
-                "Large and mega corporations",
-                "Multiple employer plans",
-                "Government",
-                "Not-for-profit​",
-                "Taft-Hartley​"
-            ]);
-
-            const dropdown = page.locator("#markets-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText("Markets", { exact: true })).toBeVisible();
-        });
-
-        test('Verify Solutions menu is displayed', async ({ page }) => {
-            const plansponsorPage = new PlanSponsorsPage(page);
-            await plansponsorPage.gotoPlanSponsorsPage();
-            await plansponsorPage.clickMenuSolutions();
-
-            const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
-            await expect(links).toHaveCount(9);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Integrated workplace solutions",
-                "Advisory services​",
-                "Retirement solutions​",
-                "Defined contribution plans",
-                "Defined benefit plans",
-                "Nonqualified plans",
-                "Empower benefit consulting services",
-                "Stock plan services​",
-                "Consumer-directed health",
-            ]);
-
-            const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText("Solutions", { exact: true })).toBeVisible();
-        });
-
-        test('Verify Experience menu is displayed', async ({ page }) => {
-            const plansponsorPage = new PlanSponsorsPage(page);
-            await plansponsorPage.gotoPlanSponsorsPage();
-            await plansponsorPage.clickMenuExperience();
-
-            const links = page.locator("#experience-dropdown li.relative > a, #experience-dropdown li.relative > button");
-            await expect(links).toHaveCount(2);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Plan servicing",
-                "Participant engagement",
-            ]);
-
-            const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText("Experience", { exact: true })).toBeVisible();
-        });
-
-        test('Verify Learn menu is displayed', async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.clickMenuLearn();
-
-            const links = page.locator("#learn-dropdown li.relative > a, #learn-dropdown li.relative > button");
-            await expect(links).toHaveCount(2);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Investment Insights",
-                "The Currency",
-            ]);
-
-            const dropdown = page.locator("#learn-dropdown .nav-dropdown-right");
-            await expect(dropdown.locator('p:has-text("Learn")')).toBeVisible();
-        });
-
-        test('Verify Why Empower menu is displayed', async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.clickMenuWhyEmpower();
-
-            const links = page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button");
-            await expect(links).toHaveCount(4);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "About us",
-                "Cybersecurity",
-                "Press Center",
-                "Contact us",
-            ]);
-
-            const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
-            await expect(dropdown.locator('p:has-text("Why Empower")')).toBeVisible();
-        });
-    });
+                    const linksText = (await links.allTextContents()).map(t => t.trim());
+                    expect(linksText).toEqual([
+                        "Solutions",
+                        "Experience",
+                        "Resources",
+                        "Insights",
+                        "Why Empower"])
 
 
-    test.describe('Financial Professionals menu', () => {
 
-        test('Verify Financial Professionals menu is displayed', async ({ page }) => {
-            const finproPage = new FinancialProfessionalsPage(page);
-            await finproPage.gotoFinProfPage();
+                    test('Verify Solutions menu is displayed', async ({ page }) => {
+                        const finproPage = new FinancialProfessionalsPage(page);
+                        await finproPage.gotoFinProfPage();
+                        await finproPage.clickMenuSolutions();
 
-            const links = page.locator("button[data-once*='desktopPrimaryNav']");
-            await expect(links).toHaveCount(5);
+                        const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
+                        await expect(links).toHaveCount(8);
 
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Solutions",
-                "Experience",
-                "Resources",
-                "Insights",
-                "Why Empower"
-            ]);
-        });
-
-        test('Verify Solutions menu is displayed', async ({ page }) => {
-            const finproPage = new FinancialProfessionalsPage(page);
-            await finproPage.gotoFinProfPage();
-            await finproPage.clickMenuSolutions();
-
-            const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
-            await expect(links).toHaveCount(8);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Defined contribution",
-                "Integrated workplace solutions",
-                "Fiduciary advice solutions",
-                "Retirement income solutions",
-                "Stock plan services​",
-                "Empower benefit consulting services",
-                "Defined benefit plans",
-                "Consumer-directed health",
-            ]);
-
-            const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText("Solutions", { exact: true })).toBeVisible();
-        });
-
-        test('Verify Experience menu is displayed', async ({ page }) => {
-            const finproPage = new FinancialProfessionalsPage(page);
-            await finproPage.gotoFinProfPage();
-            await finproPage.clickMenuExperience();
-
-            const links = page.locator("#experience-dropdown li.relative > a, #experience-dropdown li.relative > button");
-            await expect(links).toHaveCount(5);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Markets",
-                "Participant experience",
-                "APIs",
-                "Partner advocate",
-                "Events",
-            ]);
-
-            const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText("Experience", { exact: true })).toBeVisible();
-        });
-
-        test('Verify Resources menu is displayed', async ({ page }) => {
-            const finproPage = new FinancialProfessionalsPage(page);
-            await finproPage.gotoFinProfPage();
-            await finproPage.clickMenuResources();
-
-            const links = page.locator("#resources-dropdown li.relative > a, #resources-dropdown li.relative > button");
-            await expect(links).toHaveCount(6);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Prospecting & proposals",
-                "Plan management",
-                "Advisor toolkit",
-                "TPA toolkit",
-                "Plan sponsor toolkit",
-                "Participant toolkit",
-            ]);
-
-            const dropdown = page.locator("#resources-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText("Resources", { exact: true })).toBeVisible();
-        });
-
-        test('Verify Insights menu is displayed', async ({ page }) => {
-            const finproPage = new FinancialProfessionalsPage(page);
-            await finproPage.gotoFinProfPage();
-            await finproPage.clickMenuInsights();
-
-            const links = page.locator("#insights-dropdown li.relative > a, #insights-dropdown li.relative > button");
-            await expect(links).toHaveCount(3);
-
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "Investment Insights",
-                "Legislative & regulatory news",
-                "The Currency",
-            ]);
-
-            const dropdown = page.locator("#insights-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText("Insights", { exact: true })).toBeVisible();
-        });
+                        const linksText = (await links.allTextContents()).map(t => t.trim());
+                        expect(linksText).toEqual([
+                            "Defined contribution",
+                            "Integrated workplace solutions",
+                            "Fiduciary advice solutions",
+                            "Retirement income solutions",
+                            "Stock plan services​",
+                            "Empower benefit consulting services",
+                            "Defined benefit plans",
+                            "Consumer-directed health",
 
 
-        test('Verify Why Empower menu is displayed', async ({ page }) => {
-            const finproPage = new FinancialProfessionalsPage(page);
-            await finproPage.gotoFinProfPage();
-            await finproPage.clickMenuWhyEmpower();
+                            t dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.getByText("Solutions", { exact: true })).toBeVisible();
 
-            const links = page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button");
-            await expect(links).toHaveCount(4);
 
-            const linksText = (await links.allTextContents()).map(t => t.trim());
-            expect(linksText).toEqual([
-                "About us",
-                "Contact us",
-                "Cybersecurity",
-                "Press Center",
-            ]);
+                        test('Verify Experience menu is displayed', async ({ page }) => {
 
-            const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
-            await expect(dropdown.locator('p:has-text("Why Empower")')).toBeVisible();
-        });
-    });
-});
+                            const finproPage = new FinancialProfessionalsPage(page);
+                            await finproPage.gotoFinProfPage();
+                            await finproPage.clickMenuExperience();
+
+                            const links = page.locator("#experience-dropdown li.relative > a, #experience-dropdown li.relative > button");
+                            await expect(links).toHaveCount(5);
+
+                            const linksText = (await links.allTextContents()).map(t => t.trim());
+                            expect(linksText).toEqual([
+                                "Markets",
+                                "Participant experience",
+                                "APIs",
+                                "Partner advocate",
+                                "Events",
+
+
+                                t dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.getByText("Experience", { exact: true })).toBeVisible();
+
+
+                            test('Verify Resources menu is displayed', async ({ page }) => {
+
+                                const finproPage = new FinancialProfessionalsPage(page);
+                                await finproPage.gotoFinProfPage();
+                                await finproPage.clickMenuResources();
+
+                                const links = page.locator("#resources-dropdown li.relative > a, #resources-dropdown li.relative > button");
+                                await expect(links).toHaveCount(6);
+
+                                const linksText = (await links.allTextContents()).map(t => t.trim());
+                                expect(linksText).toEqual([
+                                    "Prospecting & proposals",
+                                    "Plan management",
+                                    "Advisor toolkit",
+                                    "TPA toolkit",
+                                    "Plan sponsor toolkit",
+                                    "Participant toolkit",
+
+
+                                    t dropdown = page.locator("#resources-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.getByText("Resources", { exact: true })).toBeVisible();
+
+
+                                test('Verify Insights menu is displayed', async ({ page }) => {
+
+                                    const finproPage = new FinancialProfessionalsPage(page);
+                                    await finproPage.gotoFinProfPage();
+                                    await finproPage.clickMenuInsights();
+
+                                    const links = page.locator("#insights-dropdown li.relative > a, #insights-dropdown li.relative > button");
+                                    await expect(links).toHaveCount(3);
+
+                                    const linksText = (await links.allTextContents()).map(t => t.trim());
+                                    expect(linksText).toEqual([
+                                        "Investment Insights",
+                                        "Legislative & regulatory news",
+                                        "The Currency",
+
+
+                                        t dropdown = page.locator("#insights-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.getByText("Insights", { exact: true })).toBeVisible();
+        
+        
+    
+tes erify Why Empower menu is displayed', async ({ page }) => {
+                                    const finproPage = new FinancialProfessionalsPage(page);
+                                    await finproPage.gotoFinProfPage();
+                                    await finproPage.clickMenuWhyEmpower();
+
+                                    const links = page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button");
+                                    await expect(links).toHaveCount(4);
+
+                                    const linksText = (await links.allTextContents()).map(t => t.trim());
+                                    expect(linksText).toEqual([
+                                        "About us",
+                                        "Contact us",
+                                        "Cybersecurity",
+                                        "Press Center",
+
+
+                                        t dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
+            awa it expect(dropdown.locator('p:has-text("Why Empower")')).toBeVisible();
+
+
+                                });
