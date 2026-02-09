@@ -1,0 +1,38 @@
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
+
+projectName: EmpowerMarketingTestAutomationFramework
+buildName: Navigation Functionality tests  -->  Windows11 + Chrome | MacOS + Sequoia
+framework: playwright
+
+platforms:
+  - deviceName: Samsung Galaxy S23
+    osVersion: 13
+    browserName: chrome
+    deviceOrientation: portrait
+
+  - deviceName: iPhone 14
+    osVersion: 26
+    browserName: safari
+    deviceOrientation: portrait
+
+testOrchestrationOptions:
+  retryTestsOnFailure:
+    enabled: true
+    maxRetries: 3
+
+testOrchestrationOptions:
+  retryTestsOnFailure:
+    enabled: true
+    maxRetries: 3
+
+parallelsPerPlatform: 1
+idleTimeout: 240
+browserstackLocal: false
+
+
+debug: true
+networkLogs: true
+consoleLogs: info
+testObservability: true
+video: true

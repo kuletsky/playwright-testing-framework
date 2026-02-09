@@ -1,7 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { IndividualsPage } from "../pages/IndividualsPage";
+import { suppressCookieBanner } from '../utils/stabilize';
 
 
+test.beforeEach(async ({ page }) => {
+    await page.goto('/individuals');
+    // const individualsPage = new IndividualsPage(page);
+    // await individualsPage.gotoIndividualsPage();
+    await suppressCookieBanner(page);
+});
 
 test.describe('Footer Legal Menu links', () => {
     const legalMenuLinks = [
@@ -19,7 +26,8 @@ test.describe('Footer Legal Menu links', () => {
     for (const link of legalMenuLinks) {
         test(`Footer menu link - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
+            // await individualsPage.gotoIndividualsPage();
+            // await suppressCookieBanner(page);
 
             await individualsPage.clickFooterLink(link.name);
 
@@ -47,7 +55,7 @@ test.describe('Footer Navigation links', () => {
     for (const link of footerLinks) {
         test(`Footer menu link - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
+            // await individualsPage.gotoIndividualsPage();
 
             await individualsPage.clickFooterLink(link.name);
 
@@ -70,7 +78,8 @@ test.describe('Social links functionality', () => {
     for (const link of socialLinks) {
         test(`Footer menu link - ${link.name}`, async ({ page, context }) => {
             const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
+            // await individualsPage.gotoIndividualsPage();
+            await suppressCookieBanner(page);
 
             const pagePromise = context.waitForEvent('page');
             await individualsPage.clickFooterLink(link.name);
