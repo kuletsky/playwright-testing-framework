@@ -74,13 +74,54 @@ export class FinancialProfessionalsPage extends BasePage {
         await this.menuWhyEmpower.click();
     }
 
-    async clickFinproItem(linkText: string) {
+    async clickSolutionsItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
     }
 
-    async hoverFinproItem(linkText: string) {
+    async hoverSolutionsItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
     }
+
+    async clickExperienceItem(linkText: string) {
+        const openMenu = this.page.locator("#experience-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverExperienceItem(linkText: string) {
+        const openMenu = this.page.locator("#experience-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async clickResourcesItem(linkText: string) {
+        const openMenu = this.page.locator("#resources-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverResourcesItem(linkText: string) {
+        const openMenu = this.page.locator("#resources-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async clickInsightsItem(linkText: string) {
+        const openMenu = this.page.locator("#insights-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverInsightsItem(linkText: string) {
+        const openMenu = this.page.locator("#insights-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async clickWhyEmpowerItem(linkText: string) {
+        const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverWhyEmpowerItem(linkText: string) {
+        const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
 }

@@ -142,12 +142,10 @@ for (const link of solutionsLinks) {
         const finproPage = new FinancialProfessionalsPage(page);
         await finproPage.gotoFinProfPage();
         await finproPage.openSolutionsMenu();
-        await finproPage.clickFinproItem(link.name);
+        await finproPage.clickSolutionsItem(link.name);
 
-        if (link.url) {
-            await expect(page).toHaveURL(link.url);
-            await expect(page.getByText(link.pageHeading, { exact: true })).toBeVisible();
-        }
+        await expect(page).toHaveURL(link.url);
+        await expect(page.getByText(link.pageHeading, { exact: true })).toBeVisible();
     });
 
     test(`Hover Solutions - ${link.name}`, async ({ page }) => {
@@ -156,9 +154,78 @@ for (const link of solutionsLinks) {
         await finproPage.openSolutionsMenu();
 
         await expect(page.locator('#solutions-dropdown')).toBeVisible();
-        await finproPage.hoverFinproItem(link.name);
+        await finproPage.hoverSolutionsItem(link.name);
 
         const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+    });
+}
+
+// Data-driven tests for Experience menu items
+const experienceLinks = [
+    { name: "Markets", menuHeading: "Markets we serve", url: "/financial-professionals/what-we-offer/markets-we-serve", pageHeading: "A trusted partner in retirement solutions" },
+    { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/what-we-offer/financial-wellness-financial-overview", pageHeading: "A focus on financial wellness" },
+    { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/resources/empower-apis", pageHeading: "The next generation of APIs is here" },
+    { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
+    { name: "Events", menuHeading: "Events", url: "/financial-professionals/empower-events" },
+]
+for (const link of experienceLinks) {
+    test(`Click Experience - ${link.name}`, async ({ page }) => {
+        const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.gotoFinProfPage();
+        await finproPage.openExperienceMenu();
+        await finproPage.clickExperienceItem(link.name);
+
+        if (link.pageHeading) {
+            await expect(page).toHaveURL(link.url);
+            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+        }
+    });
+
+    test(`Hover Experience - ${link.name}`, async ({ page }) => {
+        const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.gotoFinProfPage();
+        await finproPage.openExperienceMenu();
+
+        await expect(page.locator('#experience-dropdown')).toBeVisible();
+        await finproPage.hoverExperienceItem(link.name);
+
+        const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+    });
+}
+
+// Data-driven tests for Resources menu items
+const resourcesLinks = [
+    { name: "Prospecting & proposals", menuHeading: "Prospecting & proposals", url: "/financial-professionals/what-we-offer/prospecting-proposals", pageHeading: "Empower Proposal System" },
+    { name: "Plan management", menuHeading: "Plan management" },
+    { name: "Advisor toolkit", menuHeading: "Advisor toolkit", url: "/financial-professionals/resources/your-advisor-toolkit", pageHeading: "Helping you grow client relationships" },
+    { name: "TPA toolkit", menuHeading: "TPA toolkit", url: "/financial-professionals/resources/tpa-toolkit", pageHeading: "Working together. Winning together." },
+    { name: "Plan sponsor toolkit", menuHeading: "Plan sponsor toolkit", url: "/financial-professionals/resources/plan-sponsor-toolkit", pageHeading: "The plan sponsor toolkit offers sponsors what they need most" },
+    { name: "Participant toolkit", menuHeading: "Participant toolkit", url: "/financial-professionals/resources/participant-toolkit", pageHeading: "The Empower experience" },
+]
+for (const link of resourcesLinks) {
+    test(`Click Resources - ${link.name}`, async ({ page }) => {
+        const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.gotoFinProfPage();
+        await finproPage.openResourcesMenu();
+        await finproPage.clickResourcesItem(link.name);
+
+        if(link.url) {
+            await expect(page).toHaveURL(link.url);
+            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+        }
+    });
+
+    test(`Hover Resources - ${link.name}`, async ({ page }) => {
+        const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.gotoFinProfPage();
+        await finproPage.openResourcesMenu();
+
+        await expect(page.locator('#resources-dropdown')).toBeVisible();
+        await finproPage.hoverResourcesItem(link.name);
+
+        const dropdown = page.locator("#resources-dropdown .nav-dropdown-right");
         await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
     });
 }
