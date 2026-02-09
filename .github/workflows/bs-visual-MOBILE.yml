@@ -8,7 +8,7 @@ on:
     - cron: "0 3 * * *"
 
 jobs:
-  desktop-visual:
+  mobile-visual:
     runs-on: ubuntu-latest
 
     env:
@@ -42,13 +42,13 @@ jobs:
 
       - name: Run visual spec on BrowserStack
         run: |
-          npx percy exec -- npx browserstack-node-sdk playwright test visual.spec.ts
+          npx percy exec -- npx browserstack-node-sdk playwright test visual-mobile.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-visual-artifacts
+          name: mobile-visual-artifacts
           path: |
             playwright-report/
             test-results/

@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  test:
+  navigation-functionality:
     runs-on: ubuntu-latest
 
     steps:

@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  test:
+  marketing-params:
     runs-on: ubuntu-latest
 
     steps:
