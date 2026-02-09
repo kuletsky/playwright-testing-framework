@@ -237,7 +237,7 @@ test.describe('Financial Professionals Login functionality', () => {
         await finProfPage.clickRegisterFinancialProfessionalsButton();
         await finProfPage.clickContinueButton();
 
-        await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
+        await expect(page).toHaveURL(/\/planweb|partnerlink|cloudflare|challenge|verify/i);
 
         // await expect(page).toHaveURL(/\/planweb\//);
         // await expect(page.locator('.site-tagline-Partner')).toHaveText("Partner");
