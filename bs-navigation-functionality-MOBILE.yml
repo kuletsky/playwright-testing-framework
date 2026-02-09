@@ -14,16 +14,18 @@ platforms:
   # - deviceName: iPhone 14
   #   osVersion: 17
   #   browserName: safari
-  #   playwrightConfigOptions:
-  #     use:
-  #       trace: "off" 
-  #   deviceOrientation: portrait
+    # playwrightConfigOptions:
+    #   use:
+    #     trace: "off" 
+    # deviceOrientation: portrait
 
   - deviceName: iPhone 14
     osVersion: 18
     browserName: safari
     playwrightConfigOptions:
       name: ios-iphone14
+      use:
+        trace: "off" 
 
 testOrchestrationOptions:
   retryTestsOnFailure:
