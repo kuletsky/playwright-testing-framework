@@ -165,136 +165,143 @@ for (const link of solutionsLinks) {
 }
 
 // Data-driven tests for Experience menu items
-test.describe('Experience menu items', () => {});
-const experienceLinks = [
-    { name: "Markets", menuHeading: "Markets we serve", url: "/financial-professionals/what-we-offer/markets-we-serve", pageHeading: "A trusted partner in retirement solutions" },
-    { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/what-we-offer/financial-wellness-financial-overview", pageHeading: "A focus on financial wellness" },
-    { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/resources/empower-apis", pageHeading: "The next generation of APIs is here" },
-    { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
-    { name: "Events", menuHeading: "Events", url: "/financial-professionals/empower-events" },
-]
-for (const link of experienceLinks) {
-    test(`Click Experience - ${link.name}`, async ({ page }) => {
-        const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.gotoFinProfPage();
-        await finproPage.openExperienceMenu();
-        await finproPage.clickExperienceItem(link.name);
+test.describe('Experience menu functionality', () => {
 
-        if (link.pageHeading) {
-            await expect(page).toHaveURL(link.url);
-            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
-        }
-    });
+    const experienceLinks = [
+        { name: "Markets", menuHeading: "Markets we serve", url: "/financial-professionals/what-we-offer/markets-we-serve", pageHeading: "A trusted partner in retirement solutions" },
+        { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/what-we-offer/financial-wellness-financial-overview", pageHeading: "A focus on financial wellness" },
+        { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/resources/empower-apis", pageHeading: "The next generation of APIs is here" },
+        { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
+        { name: "Events", menuHeading: "Events", url: "/financial-professionals/empower-events" },
+    ]
+    for (const link of experienceLinks) {
+        test(`Click Experience - ${link.name}`, async ({ page }) => {
+            const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.gotoFinProfPage();
+            await finproPage.openExperienceMenu();
+            await finproPage.clickExperienceItem(link.name);
 
-    test(`Hover Experience - ${link.name}`, async ({ page }) => {
-        const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.gotoFinProfPage();
-        await finproPage.openExperienceMenu();
+            if (link.pageHeading) {
+                await expect(page).toHaveURL(link.url);
+                await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+            }
+        });
 
-        await expect(page.locator('#experience-dropdown')).toBeVisible();
-        await finproPage.hoverExperienceItem(link.name);
+        test(`Hover Experience - ${link.name}`, async ({ page }) => {
+            const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.gotoFinProfPage();
+            await finproPage.openExperienceMenu();
 
-        const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
-    });
-}
+            await expect(page.locator('#experience-dropdown')).toBeVisible();
+            await finproPage.hoverExperienceItem(link.name);
 
+            const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
+            await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+        });
+    }
+});
 // Data-driven tests for Resources menu items
-const resourcesLinks = [
-    { name: "Prospecting & proposals", menuHeading: "Prospecting & proposals", url: "/financial-professionals/what-we-offer/prospecting-proposals", pageHeading: "Empower Proposal System" },
-    { name: "Plan management", menuHeading: "Plan management" },
-    { name: "Advisor toolkit", menuHeading: "Advisor toolkit", url: "/financial-professionals/resources/your-advisor-toolkit", pageHeading: "Helping you grow client relationships" },
-    { name: "TPA toolkit", menuHeading: "TPA toolkit", url: "/financial-professionals/resources/tpa-toolkit", pageHeading: "Working together. Winning together." },
-    { name: "Plan sponsor toolkit", menuHeading: "Plan sponsor toolkit", url: "/financial-professionals/resources/plan-sponsor-toolkit", pageHeading: "The plan sponsor toolkit offers sponsors what they need most" },
-    { name: "Participant toolkit", menuHeading: "Participant toolkit", url: "/financial-professionals/resources/participant-toolkit", pageHeading: "The Empower experience" },
-]
-for (const link of resourcesLinks) {
-    test(`Click Resources - ${link.name}`, async ({ page }) => {
-        const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.gotoFinProfPage();
-        await finproPage.openResourcesMenu();
-        await finproPage.clickResourcesItem(link.name);
+test.describe('Resources menu functionality', () => {
+    const resourcesLinks = [
+        { name: "Prospecting & proposals", menuHeading: "Prospecting & proposals", url: "/financial-professionals/what-we-offer/prospecting-proposals", pageHeading: "Empower Proposal System" },
+        { name: "Plan management", menuHeading: "Plan management" },
+        { name: "Advisor toolkit", menuHeading: "Advisor toolkit", url: "/financial-professionals/resources/your-advisor-toolkit", pageHeading: "Helping you grow client relationships" },
+        { name: "TPA toolkit", menuHeading: "TPA toolkit", url: "/financial-professionals/resources/tpa-toolkit", pageHeading: "Working together. Winning together." },
+        { name: "Plan sponsor toolkit", menuHeading: "Plan sponsor toolkit", url: "/financial-professionals/resources/plan-sponsor-toolkit", pageHeading: "The plan sponsor toolkit offers sponsors what they need most" },
+        { name: "Participant toolkit", menuHeading: "Participant toolkit", url: "/financial-professionals/resources/participant-toolkit", pageHeading: "The Empower experience" },
+    ]
+    for (const link of resourcesLinks) {
+        test(`Click Resources - ${link.name}`, async ({ page }) => {
+            const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.gotoFinProfPage();
+            await finproPage.openResourcesMenu();
+            await finproPage.clickResourcesItem(link.name);
 
-        if (link.url) {
-            await expect(page).toHaveURL(link.url);
-            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
-        }
-    });
+            if (link.url) {
+                await expect(page).toHaveURL(link.url);
+                await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+            }
+        });
 
-    test(`Hover Resources - ${link.name}`, async ({ page }) => {
-        const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.gotoFinProfPage();
-        await finproPage.openResourcesMenu();
+        test(`Hover Resources - ${link.name}`, async ({ page }) => {
+            const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.gotoFinProfPage();
+            await finproPage.openResourcesMenu();
 
-        await expect(page.locator('#resources-dropdown')).toBeVisible();
-        await finproPage.hoverResourcesItem(link.name);
+            await expect(page.locator('#resources-dropdown')).toBeVisible();
+            await finproPage.hoverResourcesItem(link.name);
 
-        const dropdown = page.locator("#resources-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
-    });
-}
+            const dropdown = page.locator("#resources-dropdown .nav-dropdown-right");
+            await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+        });
+    }
+});
 
-// Data-driven tests for Insights menu items
-const insightsLinks = [
-    { name: "Investment Insights", menuHeading: "Investment Insights", url: "/investment-insights", pageHeading: "Latest Content" },
-    { name: "Legislative & regulatory news", menuHeading: "Legislative & regulatory news", url: "/financial-professionals/insights/legislative-regulatory", pageHeading: "Legislative and regulatory affairs" },
-    { name: "The Currency", menuHeading: "The Currency", url: "/the-currency", pageHeading: "Money" },
-]
-for (const link of insightsLinks) {
-    test(`Click Insights - ${link.name}`, async ({ page }) => {
-        const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.gotoFinProfPage();
-        await finproPage.openInsightsMenu();
-        await finproPage.clickInsightsItem(link.name);
+test.describe('Insights menu functionality', () => {
+    // Data-driven tests for Insights menu items
+    const insightsLinks = [
+        { name: "Investment Insights", menuHeading: "Investment Insights", url: "/investment-insights", pageHeading: "Latest Content" },
+        { name: "Legislative & regulatory news", menuHeading: "Legislative & regulatory news", url: "/financial-professionals/insights/legislative-regulatory", pageHeading: "Legislative and regulatory affairs" },
+        { name: "The Currency", menuHeading: "The Currency", url: "/the-currency", pageHeading: "Money" },
+    ]
+    for (const link of insightsLinks) {
+        test(`Click Insights - ${link.name}`, async ({ page }) => {
+            const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.gotoFinProfPage();
+            await finproPage.openInsightsMenu();
+            await finproPage.clickInsightsItem(link.name);
 
-        if (link.url) {
-            await expect(page).toHaveURL(link.url);
-            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
-        }
-    });
+            if (link.url) {
+                await expect(page).toHaveURL(link.url);
+                await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+            }
+        });
 
-    test(`Hover Insights - ${link.name}`, async ({ page }) => {
-        const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.gotoFinProfPage();
-        await finproPage.openInsightsMenu();
+        test(`Hover Insights - ${link.name}`, async ({ page }) => {
+            const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.gotoFinProfPage();
+            await finproPage.openInsightsMenu();
 
-        await expect(page.locator('#insights-dropdown')).toBeVisible();
-        await finproPage.hoverInsightsItem(link.name);
+            await expect(page.locator('#insights-dropdown')).toBeVisible();
+            await finproPage.hoverInsightsItem(link.name);
 
-        const dropdown = page.locator("#insights-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
-    });
-}
+            const dropdown = page.locator("#insights-dropdown .nav-dropdown-right");
+            await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+        });
+    }
+});
 
-// Data-driven tests for Why Empower menu items
-const whyEmpowerLinks = [
-    { name: "About us", menuHeading: "About us", url: "/financial-professionals/about-us", pageHeading: "This is Empower" },
-    { name: "Contact us", menuHeading: "Contact us", url: "/financial-professionals/contact", pageHeading: "We’re happy to help with whatever you need." },
-    { name: "Cybersecurity", menuHeading: "Cybersecurity", url: "/financial-professionals/about-empower/cybersecurity", pageHeading: "Cybersecurity you can count on" },
-    { name: "Press Center", menuHeading: "Stay in the know with the latest Empower news.", url: "/press-center", pageHeading: "Latest content" },
-]
-for (const link of whyEmpowerLinks) {
-    test(`Click Why Empower - ${link.name}`, async ({ page }) => {
-        const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.gotoFinProfPage();
-        await finproPage.openWhyEmpowerMenu();
-        await finproPage.clickWhyEmpowerItem(link.name);
+test.describe('Why Empower menu functionality', () => {
+    // Data-driven tests for Why Empower menu items
+    const whyEmpowerLinks = [
+        { name: "About us", menuHeading: "About us", url: "/financial-professionals/about-us", pageHeading: "This is Empower" },
+        { name: "Contact us", menuHeading: "Contact us", url: "/financial-professionals/contact", pageHeading: "We’re happy to help with whatever you need." },
+        { name: "Cybersecurity", menuHeading: "Cybersecurity", url: "/financial-professionals/about-empower/cybersecurity", pageHeading: "Cybersecurity you can count on" },
+        { name: "Press Center", menuHeading: "Stay in the know with the latest Empower news.", url: "/press-center", pageHeading: "Latest content" },
+    ]
+    for (const link of whyEmpowerLinks) {
+        test(`Click Why Empower - ${link.name}`, async ({ page }) => {
+            const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.gotoFinProfPage();
+            await finproPage.openWhyEmpowerMenu();
+            await finproPage.clickWhyEmpowerItem(link.name);
 
-        if (link.url) {
-            await expect(page).toHaveURL(link.url);
-            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
-        }
-    });
+            if (link.url) {
+                await expect(page).toHaveURL(link.url);
+                await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+            }
+        });
 
-    test(`Hover Why Empower - ${link.name}`, async ({ page }) => {
-        const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.gotoFinProfPage();
-        await finproPage.openWhyEmpowerMenu();
+        test(`Hover Why Empower - ${link.name}`, async ({ page }) => {
+            const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.gotoFinProfPage();
+            await finproPage.openWhyEmpowerMenu();
 
-        await expect(page.locator('#why-empower-dropdown')).toBeVisible();
-        await finproPage.hoverWhyEmpowerItem(link.name);
+            await expect(page.locator('#why-empower-dropdown')).toBeVisible();
+            await finproPage.hoverWhyEmpowerItem(link.name);
 
-        const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
-    });
-}
+            const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
+            await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+        });
+    }
+});
