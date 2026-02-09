@@ -11,21 +11,23 @@ platforms:
   #   browserName: chrome
   #   deviceOrientation: portrait
 
+  - os: "OS X"
+    osVersion: "Ventura"
+    browserName: "playwright-webkit"
+    browserVersion: "latest"
+    playwrightConfigOptions:
+      name: "emu-iphone14-webkit"
+      use:
+        deviceName: "iPhone 14"
+
   # - deviceName: iPhone 14
   #   osVersion: 17
   #   browserName: safari
-    # playwrightConfigOptions:
-    #   use:
-    #     trace: "off" 
-    # deviceOrientation: portrait
-
-  - deviceName: iPhone 14
-    osVersion: 17
-    browserName: safari
-    playwrightConfigOptions:
-      name: ios-iphone14
-      use:
-        trace: "off" 
+  #   playwrightConfigOptions:
+  #     name: ios-iphone14
+  #     use:
+  #       trace: "off"
+  #       video: "off" 
 
 testOrchestrationOptions:
   retryTestsOnFailure:
