@@ -11,8 +11,9 @@ export class FinancialProfessionalsPage extends BasePage {
     private menuSolutions: Locator
     private menuExperience: Locator
     private menuResources: Locator
-    private menuInsights: Locator   
+    private menuInsights: Locator
     private menuWhyEmpower: Locator
+    private menuFinancialProfessionals: Locator
 
     constructor(page: Page) {
         super(page);
@@ -26,7 +27,7 @@ export class FinancialProfessionalsPage extends BasePage {
         this.menuResources = this.page.locator("[aria-label='Resources']");
         this.menuInsights = this.page.locator("[aria-label='Insights']");
         this.menuWhyEmpower = this.page.locator("[aria-label='Why Empower']");
-
+        this.menuFinancialProfessionals = this.page.locator("[aria-label='Financial Professionals']");
     }
 
     async gotoFinProfPage() {
@@ -41,7 +42,6 @@ export class FinancialProfessionalsPage extends BasePage {
         await this.registerRixtremaButton.click();
     }
 
-    
     async clickIAgreePopup() {
         await this.iagreePopupButton.click();
     }
@@ -54,23 +54,33 @@ export class FinancialProfessionalsPage extends BasePage {
         await this.registerFinancialProfessionalsButton.click();
     }
 
-    async clickMenuSolutions() {
+    async openSolutionsMenu() {
         await this.menuSolutions.click();
     }
 
-    async clickMenuExperience() {
+    async openExperienceMenu() {
         await this.menuExperience.click();
     }
 
-    async clickMenuResources() {
+    async openResourcesMenu() {
         await this.menuResources.click();
     }
 
-    async clickMenuInsights() {
+    async openInsightsMenu() {
         await this.menuInsights.click();
     }
 
-    async clickMenuWhyEmpower() {
+    async openWhyEmpowerMenu() {
         await this.menuWhyEmpower.click();
+    }
+
+    async clickFinproItem(linkText: string) {
+        const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async hoverFinproItem(linkText: string) {
+        const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
+        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
     }
 }
