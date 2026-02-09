@@ -229,3 +229,35 @@ for (const link of resourcesLinks) {
         await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
     });
 }
+
+// Data-driven tests for Insights menu items
+const insightsLinks = [
+    { name: "Investment Insights", menuHeading: "Investment Insights", url: "/investment-insights", pageHeading: "Latest Content" },
+    { name: "Legislative & regulatory news", menuHeading: "Legislative & regulatory news", url: "/financial-professionals/insights/legislative-regulatory", pageHeading: "Legislative and regulatory affairs" },
+    { name: "The Currency", menuHeading: "The Currency", url: "/the-currency", pageHeading: "Money" },
+]
+for (const link of insightsLinks) {
+    test(`Click Insights - ${link.name}`, async ({ page }) => {
+        const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.gotoFinProfPage();
+        await finproPage.openInsightsMenu();
+        await finproPage.clickInsightsItem(link.name);
+
+        if(link.url) {
+            await expect(page).toHaveURL(link.url);
+            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+        }
+    });
+
+    test(`Hover Insights - ${link.name}`, async ({ page }) => {
+        const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.gotoFinProfPage();
+        await finproPage.openInsightsMenu();
+
+        await expect(page.locator('#insights-dropdown')).toBeVisible();
+        await finproPage.hoverInsightsItem(link.name);
+
+        const dropdown = page.locator("#insights-dropdown .nav-dropdown-right");
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+    });
+}
