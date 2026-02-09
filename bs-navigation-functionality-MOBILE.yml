@@ -2,7 +2,7 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: Navigation Functionality tests  -->  Samsung Galaxy S23(os13) + Chrome / iPhone 14(os26) + Safari
+buildName: Navigation Functionality tests  -->  Samsung Galaxy S23(os13) + Chrome / iPhone 15(os17) + Safari
 framework: playwright
 
 platforms:
@@ -11,8 +11,8 @@ platforms:
     browserName: chrome
     deviceOrientation: portrait
 
-  - deviceName: iPhone 14
-    osVersion: 26
+  - deviceName: iPhone 15
+    osVersion: 17
     browserName: safari
     deviceOrientation: portrait
 
