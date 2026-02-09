@@ -20,7 +20,7 @@ platforms:
     # deviceOrientation: portrait
 
   - deviceName: iPhone 14
-    osVersion: 18
+    osVersion: 17
     browserName: safari
     playwrightConfigOptions:
       name: ios-iphone14
@@ -41,4 +41,4 @@ debug: true
 networkLogs: true
 consoleLogs: info
 testObservability: true
-video: true
+video: false
