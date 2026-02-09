@@ -10,6 +10,8 @@ export class IndividualsPage extends BasePage {
     private menuTools: Locator
     private menuLearn: Locator
     private menuWhyEmpower: Locator
+    readonly header: Locator;
+    readonly footer: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -19,6 +21,9 @@ export class IndividualsPage extends BasePage {
         this.menuTools = this.page.locator("[aria-label='Tools']");
         this.menuLearn = this.page.locator("[aria-label='Learn']");
         this.menuWhyEmpower = this.page.locator("[aria-label='Why Empower']");
+        this.header = this.page.locator("#main-header-nav");
+        this.footer = this.page.locator('footer');
+
     }
 
 
@@ -90,5 +95,30 @@ export class IndividualsPage extends BasePage {
     async hoverWhyEmpowerItem(linkText: string) {
         const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+    }
+
+    async scrollToBottom() {
+        await this.footer.evaluate(el =>
+            el.scrollIntoView({ behavior: 'smooth', block: 'end' })
+        );
+
+        await this.waitForScrollToSettle();
+    }
+
+    async scrollToTop() {
+        await this.header.evaluate(el =>
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        );
+
+        await this.waitForScrollToSettle();
+    }
+
+    private async waitForScrollToSettle(timeoutMs = 5000): Promise<void> {
+        await this.page.waitForFunction(() => {
+            const y1 = window.scrollY;
+            return new Promise<boolean>(resolve => {
+                requestAnimationFrame(() => resolve(window.scrollY === y1));
+            });
+        }, { timeout: timeoutMs });
     }
 }
