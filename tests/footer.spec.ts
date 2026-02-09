@@ -79,7 +79,6 @@ test.describe('Social links functionality', () => {
         test(`Footer menu link - ${link.name}`, async ({ page, context }) => {
             const individualsPage = new IndividualsPage(page);
             // await individualsPage.gotoIndividualsPage();
-            await suppressCookieBanner(page);
 
             const pagePromise = context.waitForEvent('page');
             await individualsPage.clickFooterLink(link.name);

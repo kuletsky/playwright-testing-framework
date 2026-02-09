@@ -80,37 +80,6 @@ export async function suppressCookieBanner(page: Page): Promise<void> {
       `,
   });
 
-
-
-  // const css = `
-  //   #onetrust-banner-sdk,
-  //   .ot-sdk-container,
-  //   .otFloatingRoundedCorner,
-  //   .otFlat {
-  //     display: none !important;
-  //     visibility: hidden !important;
-  //     opacity: 0 !important;
-  //     pointer-events: none !important;
-  //   }
-  //   body { overflow: auto !important; }
-  // `;
-
-  // // iOS on BrowserStack doesn't support page.addStyleTag(), so inject via evaluate()
-  // await page.evaluate((cssText) => {
-  //   const id = '__e2e_cookie_suppress__';
-  //   let style = document.getElementById(id) as HTMLStyleElement | null;
-
-  //   if (!style) {
-  //     style = document.createElement('style');
-  //     style.id = id;
-  //     style.type = 'text/css';
-  //     document.head.appendChild(style);
-  //   }
-
-  //   style.textContent = cssText;
-  // }, css);
-
-
 }
 
 
