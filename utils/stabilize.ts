@@ -55,15 +55,15 @@ export async function waitForLayoutStable(page: Page, stableMs = 1000, timeout =
 }
 
 export async function freezeMotion(page: Page) {
-  //   await page.addStyleTag({
-  //     content: `
-  //       *,*::before,*::after{animation:none!important;transition:none!important}
-  //       html{scroll-behavior:auto!important}
-  //     `
-  //   });
-  // }
+  await page.addStyleTag({
+    content: `
+        *,*::before,*::after{animation:none!important;transition:none!important}
+        html{scroll-behavior:auto!important}
+      `
+  });
+}
 
-  // export async function suppressCookieBanner(page: Page): Promise<void> {
+export async function suppressCookieBanner(page: Page): Promise<void> {
   //   // Add as early as possible after navigation starts/finishes
   //   await page.addStyleTag({
   //     content: `
