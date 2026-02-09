@@ -11,13 +11,19 @@ platforms:
     browserName: chrome
     deviceOrientation: portrait
 
+  # - deviceName: iPhone 14
+  #   osVersion: 17
+  #   browserName: safari
+  #   playwrightConfigOptions:
+  #     use:
+  #       trace: "off" 
+  #   deviceOrientation: portrait
+
   - deviceName: iPhone 14
-    osVersion: 17
+    osVersion: 18
     browserName: safari
-        playwrightConfigOptions:
-      use:
-        trace: "off" 
-    deviceOrientation: portrait
+    playwrightConfigOptions:
+      name: ios-iphone14
 
 testOrchestrationOptions:
   retryTestsOnFailure:
