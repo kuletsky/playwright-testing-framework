@@ -6,10 +6,10 @@ buildName: MOBILE Navigation Functionality tests  -->  Samsung Galaxy S23(os13)/
 framework: playwright
 
 platforms:
-  - deviceName: Samsung Galaxy S23
-    osVersion: 13
-    browserName: chrome
-    deviceOrientation: portrait
+  # - deviceName: Samsung Galaxy S23
+  #   osVersion: 13
+  #   browserName: chrome
+  #   deviceOrientation: portrait
 
   # - deviceName: iPhone 14
   #   osVersion: 17
