@@ -261,3 +261,36 @@ for (const link of insightsLinks) {
         await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
     });
 }
+
+// Data-driven tests for Why Empower menu items
+const whyEmpowerLinks = [
+    { name: "About us", menuHeading: "About us", url: "/financial-professionals/about-us", pageHeading: "This is Empower" },
+    { name: "Contact us", menuHeading: "Contact us", url: "/financial-professionals/contact", pageHeading: "We’re happy to help with whatever you need." },
+    { name: "Cybersecurity", menuHeading: "Cybersecurity", url: "/financial-professionals/about-empower/cybersecurity", pageHeading: "Cybersecurity you can count on" },
+    { name: "Press Center", menuHeading: "Stay in the know with the latest Empower news.", url: "/press-center", pageHeading: "Latest content" },
+]
+for (const link of whyEmpowerLinks) {
+    test(`Click Why Empower - ${link.name}`, async ({ page }) => {
+        const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.gotoFinProfPage();
+        await finproPage.openWhyEmpowerMenu();
+        await finproPage.clickWhyEmpowerItem(link.name);
+
+        if(link.url) {
+            await expect(page).toHaveURL(link.url);
+            await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+        }
+    });
+
+    test(`Hover Why Empower - ${link.name}`, async ({ page }) => {
+        const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.gotoFinProfPage();
+        await finproPage.openWhyEmpowerMenu();
+
+        await expect(page.locator('#why-empower-dropdown')).toBeVisible();
+        await finproPage.hoverWhyEmpowerItem(link.name);
+
+        const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
+        await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
+    });
+}
