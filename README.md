@@ -23,7 +23,7 @@ All jobs run daily on automated schedules and can also be triggered manually via
 
 ### Schedule Summary
 
-All jobs run once per day (`* * *` = every day, every month, every day of week):
+All jobs run once per day (`0 <hour> * * *` = at minute 0 of the specified hour, every day of the month, every month, every day of the week):
 - Jobs are staggered by 1 hour intervals starting at midnight UTC
 - Complete test cycle runs from 12:00 AM to 5:00 AM UTC
 - In America/New_York timezone, tests run from 8:00 PM to 1:00 AM ET
@@ -85,7 +85,7 @@ Each test suite has its own BrowserStack configuration file:
 - `bs-navigation-functionality.yml`
 - `bs-visual-DESKTOP.yml`
 - `bs-visual-MOBILE.yml`
-- `login-registration-functionality.spec.yml`
+- `login-registration-functionality.spec.yml` (note: different naming convention)
 
 ## Technologies
 
