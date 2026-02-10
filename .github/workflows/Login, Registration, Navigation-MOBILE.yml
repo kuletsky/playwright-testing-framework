@@ -32,7 +32,7 @@ jobs:
 
       - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-navigation-functionality-MOBILE.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" login-registration-navigation-MOBILE.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
@@ -41,9 +41,9 @@ jobs:
           npx browserstack-node-sdk playwright test
           tests/login-registration.spec.ts
           tests/footer.spec.ts
-          # tests/header-individuals.spec.ts
-          # tests/header-plan-sponsors.spec.ts
-          # tests/header-financial-professionals.spec.ts
+          tests/MOBILE-header-individuals.spec.ts
+          tests/MOBILE-header-plan-sponsors.spec.ts
+          # tests/MOBILE-header-financial-professionals.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()

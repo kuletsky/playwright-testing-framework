@@ -1,9 +1,10 @@
 import { Page, Locator } from '@playwright/test';
+import { BasePage } from './BasePage';
 
 
 
-export class PlanSponsorsPage {
-    private page: Page;
+export class PlanSponsorsPage extends BasePage{
+    // private page: Page;
     private loginButton: Locator;
     private menuMarkets: Locator;
     private menuSolutions: Locator;
@@ -12,7 +13,7 @@ export class PlanSponsorsPage {
     private menuWhyEmpower: Locator;
 
     constructor(page: Page) {
-        this.page = page;
+        super(page);
         this.loginButton = this.page.locator("[data-once='click-secondary-dark-button empulsify-button-ripple']");
         this.menuMarkets = this.page.locator("[aria-label='Markets']");
         this.menuSolutions = this.page.locator("[aria-label='Solutions']");

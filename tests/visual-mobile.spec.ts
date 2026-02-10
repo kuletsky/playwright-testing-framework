@@ -15,7 +15,7 @@ test.describe('Login pages', () => {
     await page.goto('/login-v1');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Individuals Login page', { fullPage: true });
     expect(true).toBeTruthy();
@@ -27,7 +27,7 @@ test.describe('Login pages', () => {
     await new FinancialProfessionalsPage(page).clickIAgreePopup();
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Financial Professionals Login page', { fullPage: true });
     expect(true).toBeTruthy();
@@ -38,7 +38,7 @@ test.describe('Login pages', () => {
     await page.goto('/plan-sponsors');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Plan Sponsors Login page', { fullPage: true });
     expect(true).toBeTruthy();
@@ -56,7 +56,7 @@ test.describe('Individuals Signup Form pages', () => {
     await page.goto('/signup');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Individuals Open account page', { fullPage: true });
     expect(true).toBeTruthy();
@@ -67,7 +67,7 @@ test.describe('Individuals Signup Form pages', () => {
     await page.goto('/signup/personal-strategy?marketing_param=ao_personalstrategy');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Personal Strategy account', { fullPage: true });
     expect(true).toBeTruthy();
@@ -78,7 +78,7 @@ test.describe('Individuals Signup Form pages', () => {
     await page.goto('/signup/cash?marketing_param=ao_personalcash');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Personal Cash account', { fullPage: true });
     expect(true).toBeTruthy();
@@ -89,7 +89,7 @@ test.describe('Individuals Signup Form pages', () => {
     await page.goto('/signup/premier-ira?marketing_param=ao_premierira');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Premier IRA account', { fullPage: true });
     expect(true).toBeTruthy();
@@ -100,7 +100,7 @@ test.describe('Individuals Signup Form pages', () => {
     await page.goto('/signup/premier-investment-account?marketing_param=ao_premierinvestmentaccount');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Premier Investment Account', { fullPage: true });
     expect(true).toBeTruthy();
@@ -111,7 +111,7 @@ test.describe('Individuals Signup Form pages', () => {
     await page.goto('/signup/tools?marketing_param=zs_tools');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Personal Dashboard account', { fullPage: true });
     expect(true).toBeTruthy();
@@ -125,7 +125,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-accordion');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Accordion (v3)', { fullPage: true });
     expect(true).toBeTruthy();
@@ -136,7 +136,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-bento-box');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Bento Box', { fullPage: true });
     expect(true).toBeTruthy();
@@ -148,7 +148,7 @@ test.describe('Components', () => {
 
     await suppressCookieBanner(page);
     await page.waitForTimeout(60_000);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Breadcrumbs (Light theme)', { fullPage: true });
     expect(true).toBeTruthy();
@@ -159,7 +159,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-buttons ');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Buttons', { fullPage: true });
     expect(true).toBeTruthy();
@@ -170,7 +170,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-circle-cards');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Circle Card Box', { fullPage: true });
     expect(true).toBeTruthy();
@@ -181,7 +181,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-comparison-table');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Comparison Table', { fullPage: true });
     expect(true).toBeTruthy();
@@ -192,7 +192,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-disclaimer-above-footer');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Disclaimer Block', { fullPage: true });
     expect(true).toBeTruthy();
@@ -203,7 +203,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-final-cta');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Final CTA', { fullPage: true });
     expect(true).toBeTruthy();
@@ -214,7 +214,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-hero-header');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Hero Header', { fullPage: true });
     expect(true).toBeTruthy();
@@ -225,7 +225,7 @@ test.describe('Components', () => {
     await page.goto('/empulsify/tp-hero-side-by-form');
 
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
 
     await percyScreenshot(page, 'Hero Side By Header + SFD registration form', { fullPage: true });
     expect(true).toBeTruthy();
@@ -235,7 +235,7 @@ test.describe('Components', () => {
     test.setTimeout(240_000);
     await page.goto('/empulsify/tp-multi-card-container-icon-cards');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Multi card container (Icon card)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -244,7 +244,7 @@ test.describe('Components', () => {
     test.setTimeout(240_000);
     await page.goto('/empulsify/tp-multi-card-container-standard-cards');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Multi card container (Standard card)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -254,7 +254,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-multi-card-container-fbi-cards');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Multi card container (FBI card)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -264,7 +264,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-multiple-card-plan-cards');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Multi card container (Plan card)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -273,7 +273,7 @@ test.describe('Components', () => {
     test.setTimeout(240_000);
     await page.goto('/empulsify/tp-side-quote-media');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Side By (Quote & Media)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -282,7 +282,7 @@ test.describe('Components', () => {
     test.setTimeout(240_000);
     await page.goto('/empulsify/tp-side-image-html-table');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Side By (Text & Media)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -292,7 +292,7 @@ test.describe('Components', () => {
 
     await page.goto('/tp-signuplogin-container');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Signup / Login card Container', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -302,7 +302,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-social-proof');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Social Proof (v3)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -312,7 +312,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-standard-block');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Standard Block', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -322,7 +322,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-stat-banner');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Stat Banner', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -330,10 +330,9 @@ test.describe('Components', () => {
   test('Testimonial', async ({ page }) => {
     test.setTimeout(240_000);
 
-
     await page.goto('/empulsify/tp-testimonial');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Testimonial', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -343,7 +342,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-thought-leadership');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Thought Leadership', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -353,7 +352,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-tools-carousel-icon-cards');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Tools Carousel (Icon card)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -363,7 +362,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-tools-carousel-standard-cards');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Tools Carousel (Standard card)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -373,7 +372,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-tools-carousel-fbi-cards');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Tools Carousel (FBI card)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -383,7 +382,7 @@ test.describe('Components', () => {
 
     await page.goto('/empulsify/tp-tools-carousel-plan-cards');
     await suppressCookieBanner(page);
-    // await removeShaking(page);
+    await removeShaking(page);
     await percyScreenshot(page, 'Tools Carousel (Plan card)', { fullPage: true });
     expect(true).toBeTruthy();
   });
@@ -411,7 +410,7 @@ test.describe('Empower pages on Stage', () => {
       await suppressCookieBanner(page);
       await waitCarousel(page);
       await page.waitForTimeout(60_000);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Individuals page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -422,7 +421,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/wealth-management');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'High-yield cash account', { fullPage: true });
       expect(true).toBeTruthy();
@@ -433,7 +432,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/products-solutions/rollover');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Rollover page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -444,7 +443,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/products-solutions/iras');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'IRAs page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -455,7 +454,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/products-solutions/investment-accounts');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Investment Accounts page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -466,7 +465,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/products-solutions/private-client');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Private Client page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -478,7 +477,7 @@ test.describe('Empower pages on Stage', () => {
 
       await suppressCookieBanner(page);
       await page.waitForTimeout(60_000);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Tools View All page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -489,7 +488,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/tools/retirement-planner');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Tools Retirement plan page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -500,7 +499,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/investment-insights');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Learn Investment Insights page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -511,7 +510,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/the-currency');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Learn The Currency page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -522,7 +521,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/individuals/about-empower/cybersecurity');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Why Empower Cybersecurity page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -533,7 +532,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/press-center');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Why Empower Press Center page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -550,7 +549,7 @@ test.describe('Empower pages on Stage', () => {
       await suppressCookieBanner(page);
       await waitCarousel(page);
       await page.waitForTimeout(60_000);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Plan Sponsors page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -561,7 +560,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/plan-sponsors/what-we-offer/government');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Markets Government page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -572,7 +571,7 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('/plan-sponsors/what-we-offer/taft-hartley-plans');
 
       await suppressCookieBanner(page);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Markets Taft-Hartley Plans page', { fullPage: true });
       expect(true).toBeTruthy();
@@ -589,7 +588,7 @@ test.describe('Empower pages on Stage', () => {
 
       await suppressCookieBanner(page);
       await page.waitForTimeout(60_000);
-      // await removeShaking(page);
+      await removeShaking(page);
 
       await percyScreenshot(page, 'Financial Professionals page', { fullPage: true });
       expect(true).toBeTruthy();

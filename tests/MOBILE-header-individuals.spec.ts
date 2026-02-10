@@ -12,6 +12,7 @@ test.describe('Menu visibility', () => {
     test('Verify Heading menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.openHamburger();
+        await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
         const headingText = (await page.locator(".h-10").textContent())?.trim();
         expect(headingText).toBe("Individuals");
@@ -20,6 +21,8 @@ test.describe('Menu visibility', () => {
     test('Verify Contextual menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.openHamburger();
+        await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
         const links = page.locator(".mobile-contextual-nav [role='menuitem']");
         await expect(links).toHaveCount(2);
 
@@ -34,14 +37,14 @@ test.describe('Menu visibility', () => {
     test('Verify Primary menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.openHamburger();
+        await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
-        const links = page.locator(".mobile-nav-primary-menu button");
-        await expect(links).toHaveCount(5);
+        const links = page.locator(".mobile-nav-primary-menu > button");
+        await expect(links).toHaveCount(4);
 
         const linksText = (await links.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
             "Products & Services",
-            "Wealth Management",
             "Tools",
             "Learn",
             "Why Empower"
@@ -51,13 +54,16 @@ test.describe('Menu visibility', () => {
     test('Verify Products & Services submenu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.openHamburger();
+        await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
         await individualsPage.openFirstSubmenu();
 
         const submenuLinks = await individualsPage.getLinksFirstSubmenu();
-        await expect(submenuLinks).toHaveCount(7);
+        await expect(submenuLinks).toHaveCount(8);
 
         const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
+            "Wealth Management",
             "Private Client",
             "Personal Strategy",
             "High-yield cash account",
@@ -71,6 +77,8 @@ test.describe('Menu visibility', () => {
     test('Verify Tools submenu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.openHamburger();
+        await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
         await individualsPage.openSecondSubmenu();
 
         const submenuLinks = await individualsPage.getLinksSecondSubmenu();
@@ -93,6 +101,8 @@ test.describe('Menu visibility', () => {
     test('Verify Learn menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.openHamburger();
+        await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
         await individualsPage.openThirdSubmenu();
 
         const submenuLinks = await individualsPage.getLinksThirdSubmenu();
@@ -108,6 +118,8 @@ test.describe('Menu visibility', () => {
     test('Verify Why Empower menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.openHamburger();
+        await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
         await individualsPage.openForthSubmenu();
 
         const submenuLinks = await individualsPage.getLinksForthSubmenu();
@@ -133,12 +145,13 @@ test.describe('Menu Products & Services functionality', () => {
         { name: 'IRAs', menuHeading: "IRAs", url: '/products-solutions/iras', pageHeading: "The right IRA. Right now." },
         { name: 'Investment accounts', menuHeading: "Investment accounts", url: '/products-solutions/investment-accounts', pageHeading: "Start investing with confidence." },
         { name: 'Tax filing', menuHeading: "Tax filing", url: '/products-solutions/tax-filing', pageHeading: "Finally, a less taxing tax season" },
-
     ]
     for (const link of PSLinks) {
         test(`Click P&S - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.openHamburger();
+            await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
             await individualsPage.openFirstSubmenu();
             await individualsPage.clickFirstSubmenuItem(link.name);
 
@@ -167,6 +180,8 @@ test.describe('Menu Tools functionality', () => {
         test(`Click TOOLS - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.openHamburger();
+            await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
             await individualsPage.openSecondSubmenu();
             await individualsPage.clickSecondSubmenuItem(link.name);
 
@@ -189,6 +204,8 @@ test.describe('Menu Learn functionality', () => {
         test(`Click LEARN - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.openHamburger();
+            await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
             await individualsPage.openThirdSubmenu();
             await individualsPage.clickThirdSubmenuItem(link.name);
 
@@ -212,6 +229,8 @@ test.describe('Menu Why Empower functionality', () => {
         test(`Click WHY EMPOWER - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
             await individualsPage.openHamburger();
+            await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
+
             await individualsPage.openForthSubmenu();
             await individualsPage.clickForthSubmenuItem(link.name);
 
