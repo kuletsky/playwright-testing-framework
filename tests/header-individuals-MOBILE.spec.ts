@@ -9,68 +9,74 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('Menu visibility', () => {
+    test('Verify Heading menu is displayed', async ({ page }) => {
+        const individualsPage = new IndividualsPage(page);
+        await individualsPage.openHamburger();
+
+        const headingText = (await page.locator(".h-10").textContent())?.trim();
+        expect(headingText).toBe("Individuals");
+    });
+
     test('Verify Contextual menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
-        // await individualsPage.gotoIndividualsPage();
-
-        const links = page.locator("li a[data-once='nav-main-contextual-link-click']");
-        await expect(links).toHaveCount(3);
+        await individualsPage.openHamburger();
+        const links = page.locator(".mobile-contextual-nav [role='menuitem']");
+        await expect(links).toHaveCount(2);
 
         const linksText = (await links.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
-            "Individuals",
             "Plan Sponsors",
             "Financial Professionals"
         ]);
     });
 
+
     test('Verify Primary menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
+        await individualsPage.openHamburger();
 
-        const links = page.locator("button[data-once*='desktopPrimaryNav']");
-        await expect(links).toHaveCount(4);
+        const links = page.locator(".mobile-nav-primary-menu button");
+        await expect(links).toHaveCount(5);
 
         const linksText = (await links.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
             "Products & Services",
+            "Wealth Management",
             "Tools",
             "Learn",
             "Why Empower"
         ]);
     });
 
-    test('Verify Products & Services menu is displayed', async ({ page }) => {
+    test('Verify Products & Services submenu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.openProductAndServicesMenu();
+        await individualsPage.openHamburger();
+        await individualsPage.openFirstSubmenu();
 
-        const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
-        await expect(links).toHaveCount(6);
+        const submenuLinks = await individualsPage.getLinksFirstSubmenu();
+        await expect(submenuLinks).toHaveCount(7);
 
-        const linksText = (await links.allTextContents()).map(t => t.trim());
+        const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
-            "Wealth Management",
+            "Private Client",
+            "Personal Strategy",
             "High-yield cash account",
             "Rollover",
             "IRAs",
             "Investment accounts",
             "Tax filing"
         ]);
-
-        const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText("Products & services")).toBeVisible();
     });
 
-    test('Verify Tools menu is displayed', async ({ page }) => {
+    test('Verify Tools submenu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.openToolsMenu();
+        await individualsPage.openHamburger();
+        await individualsPage.openSecondSubmenu();
 
-        const links = page.locator("#tools-dropdown li.relative > a, #tools-dropdown li.relative > button");
-        await expect(links).toHaveCount(9);
+        const submenuLinks = await individualsPage.getLinksSecondSubmenu();
+        await expect(submenuLinks).toHaveCount(9);
 
-        const linksText = (await links.allTextContents()).map(t => t.trim());
+        const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
             "View All",
             "Retirement Planner",
@@ -82,52 +88,43 @@ test.describe('Menu visibility', () => {
             "Emergency Fund",
             "Transactions",
         ]);
-
-        const dropdown = page.locator("#tools-dropdown .nav-dropdown-right h3");
-        await expect(dropdown.getByText("Financial tools", { exact: true }).first()).toBeVisible();
     });
 
     test('Verify Learn menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.openLearnMenu();
+        await individualsPage.openHamburger();
+        await individualsPage.openThirdSubmenu();
 
-        const links = page.locator("#learn-dropdown li.relative > a, #learn-dropdown li.relative > button");
-        await expect(links).toHaveCount(2);
+        const submenuLinks = await individualsPage.getLinksThirdSubmenu();
+        await expect(submenuLinks).toHaveCount(2);
 
-        const linksText = (await links.allTextContents()).map(t => t.trim());
+        const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
             "Investment Insights",
             "The Currency",
         ]);
-
-        const dropdown = page.locator("#learn-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText("The CurrencyTM", { exact: true }).first()).toBeVisible();
     });
 
     test('Verify Why Empower menu is displayed', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.openWhyEmpowerMenu();
+        await individualsPage.openHamburger();
+        await individualsPage.openForthSubmenu();
 
-        const links = page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button");
-        await expect(links).toHaveCount(4);
+        const submenuLinks = await individualsPage.getLinksForthSubmenu();
+        await expect(submenuLinks).toHaveCount(4);
 
-        const linksText = (await links.allTextContents()).map(t => t.trim());
+        const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
             "About us",
             "Cybersecurity",
             "Press Center",
             "Contact us",
         ]);
-
-        const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText("About us", { exact: true }).first()).toBeVisible();
     });
 });
 
 
-test.describe('Menu Wealth Management functionality', () => {
+test.describe('Menu Products & Services functionality', () => {
     // Data-driven tests for P&S menu items
     const PSLinks = [
         { name: 'Wealth Management', menuHeading: 'Wealth management overview' },
@@ -141,25 +138,14 @@ test.describe('Menu Wealth Management functionality', () => {
     for (const link of PSLinks) {
         test(`Click P&S - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
-            await individualsPage.openProductAndServicesMenu();
-            await individualsPage.clickPSItem(link.name);
+            await individualsPage.openHamburger();
+            await individualsPage.openFirstSubmenu();
+            await individualsPage.clickFirstSubmenuItem(link.name);
 
             if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true })).toBeVisible();
             }
-        });
-        test(`Hover P&S - ${link.name}`, async ({ page }) => {
-            const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
-            await individualsPage.openProductAndServicesMenu();
-
-            await expect(page.locator('#solutions-dropdown')).toBeVisible();
-            await individualsPage.hoverPSItem(link.name);
-
-            const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible();
         });
     }
 });
@@ -180,25 +166,14 @@ test.describe('Menu Tools functionality', () => {
     for (const link of toolsLinks) {
         test(`Click TOOLS - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
-            await individualsPage.openToolsMenu();
-            await individualsPage.clickToolsItem(link.name);
+            await individualsPage.openHamburger();
+            await individualsPage.openSecondSubmenu();
+            await individualsPage.clickSecondSubmenuItem(link.name);
 
             if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true })).toBeVisible();
             }
-        });
-        test(`Hover TOOLS - ${link.name}`, async ({ page }) => {
-            const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
-            await individualsPage.openToolsMenu();
-
-            await expect(page.locator('#tools-dropdown')).toBeVisible();
-            await individualsPage.hoverToolsItem(link.name);
-
-            const dropdown = page.locator("#tools-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
         });
     }
 });
@@ -208,30 +183,19 @@ test.describe('Menu Learn functionality', () => {
     // Data-driven tests for LEARN menu items
     const learnLinks = [
         { name: 'Investment Insights', menuHeading: "Investment Insights", url: '/investment-insights', pageHeading: "Latest Content" },
-        { name: 'The Currency', menuHeading: "Get guidance to make better money decisions at every stage of your life.", url: '/the-currency', pageHeading: "Money" },
+        { name: 'The Currency', menuHeading: "Get guidance to make better money decisions at every stage of your life.", url: '/the-currency', pageHeading: "Get insights and intel on your money." },
     ]
     for (const link of learnLinks) {
         test(`Click LEARN - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
-            await individualsPage.openLearnMenu();
-            await individualsPage.clickLearnItem(link.name);
+            await individualsPage.openHamburger();
+            await individualsPage.openThirdSubmenu();
+            await individualsPage.clickThirdSubmenuItem(link.name);
 
             if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
             }
-        });
-        test(`Hover LEARN - ${link.name}`, async ({ page }) => {
-            const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
-            await individualsPage.openLearnMenu();
-
-            await expect(page.locator('#learn-dropdown')).toBeVisible();
-            await individualsPage.hoverLearnItem(link.name);
-
-            const dropdown = page.locator("#learn-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
         });
     }
 });
@@ -247,25 +211,14 @@ test.describe('Menu Why Empower functionality', () => {
     for (const link of whyEmpowerLinks) {
         test(`Click WHY EMPOWER - ${link.name}`, async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
-            await individualsPage.openWhyEmpowerMenu();
-            await individualsPage.clickWhyEmpowerItem(link.name);
+            await individualsPage.openHamburger();
+            await individualsPage.openForthSubmenu();
+            await individualsPage.clickForthSubmenuItem(link.name);
 
             if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
             }
-        });
-        test(`Hover WHY EMPOWER - ${link.name}`, async ({ page }) => {
-            const individualsPage = new IndividualsPage(page);
-            await individualsPage.gotoIndividualsPage();
-            await individualsPage.openWhyEmpowerMenu();
-
-            await expect(page.locator('#why-empower-dropdown')).toBeVisible();
-            await individualsPage.hoverWhyEmpowerItem(link.name);
-
-            const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
         });
     }
 });

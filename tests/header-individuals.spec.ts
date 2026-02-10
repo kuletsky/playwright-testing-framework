@@ -121,7 +121,7 @@ test.describe('Menu visibility', () => {
 });
 
 
-test.describe('Menu Wealth Management functionality', () => {
+test.describe('Menu Products & Services functionality', () => {
     // Data-driven tests for P&S menu items
     const PSLinks = [
         { name: 'Wealth Management', menuHeading: 'Wealth management overview' },

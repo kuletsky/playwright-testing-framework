@@ -12,6 +12,8 @@ export class IndividualsPage extends BasePage {
     private menuWhyEmpower: Locator
     readonly header: Locator;
     readonly footer: Locator;
+    private hamburgerMenu: Locator;
+
 
     constructor(page: Page) {
         super(page);
@@ -23,7 +25,7 @@ export class IndividualsPage extends BasePage {
         this.menuWhyEmpower = this.page.locator("[aria-label='Why Empower']");
         this.header = this.page.locator("#main-header-nav");
         this.footer = this.page.locator('footer');
-
+        this.hamburgerMenu = this.page.locator("#hamburger-menu");
     }
 
 
@@ -120,5 +122,39 @@ export class IndividualsPage extends BasePage {
                 requestAnimationFrame(() => resolve(window.scrollY === y1));
             });
         }, { timeout: timeoutMs });
+    }
+
+
+    //MOBILE LOCATORS AND METHODS
+    async openHamburger() {
+        await this.hamburgerMenu.click();
+    }
+
+    // async openSubmenuProductsAndServices() {
+    //     await this.submenuProductsAndServices.click();
+    // }
+
+    async clickHamburgerLink(linkText: string) {
+        await this.page.getByRole('link', { name: linkText, exact: true }).click();
+    }
+
+    async clickFirstSubmenuItem(linkText: string) {
+        const submenu = this.page.locator("#dropdown-mobile-0");
+        await submenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async clickSecondSubmenuItem(linkText: string) {
+        const submenu = this.page.locator("#dropdown-mobile-1");
+        await submenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async clickThirdSubmenuItem(linkText: string) {
+        const submenu = this.page.locator("#dropdown-mobile-2");
+        await submenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+    }
+
+    async clickForthSubmenuItem(linkText: string) {
+        const submenu = this.page.locator("#dropdown-mobile-3");
+        await submenu.getByRole('menuitem', { name: linkText, exact: true }).click();
     }
 }
