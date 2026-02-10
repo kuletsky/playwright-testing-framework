@@ -1,0 +1,37 @@
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
+
+projectName: EmpowerMarketingTestAutomationFramework
+buildName: TABLET Navigation Functionality tests  -->  Galaxy Tab S10 Plus(os15)/Chrome, iPad Pro 11(osVentura)/Safari
+framework: playwright
+
+platforms:
+  - deviceName: Galaxy Tab S10 Plus
+    osVersion: 15
+    browserName: chrome
+    deviceOrientation: portrait
+
+  - os: "OS X"
+    osVersion: "Ventura"
+    browserName: "playwright-webkit"
+    browserVersion: "latest"
+    playwrightConfigOptions:
+      name: "emu-ipad-pro-webkit"
+      use:
+        deviceName: "iPad Pro 11"
+
+testOrchestrationOptions:
+  retryTestsOnFailure:
+    enabled: true
+    maxRetries: 3
+
+parallelsPerPlatform: 1
+idleTimeout: 240
+browserstackLocal: false
+
+
+debug: true
+networkLogs: true
+consoleLogs: info
+testObservability: true
+video: true

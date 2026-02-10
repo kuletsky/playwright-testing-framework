@@ -56,6 +56,16 @@ export default defineConfig({
       use: { ...devices['iPhone 14'] },
     },
 
+    /* Test against TABLET viewports. */
+    {
+      name: 'iPad Pro 11',
+      use: { ...devices['iPad Pro 11'] }, // Emulates iOS tablet
+    },
+    // {
+    //   name: 'Galaxy Tab S4',
+    //   use: { ...devices['Galaxy Tab S4'] }, // Emulates Android tablet
+    // },
+
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
