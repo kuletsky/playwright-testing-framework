@@ -1,4 +1,4 @@
-name: BS Navigation Functionality MOBILE tests
+name: MOBILE Login, Registration, Navigation tests
 
 on:
   workflow_dispatch:
