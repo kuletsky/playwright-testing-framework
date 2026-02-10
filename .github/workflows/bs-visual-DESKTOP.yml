@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   schedule:
     
-    # 10:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 2 * * *"
+    # 9:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
+    - cron: "0 1 * * *"
 
 jobs:
   desktop-visual:

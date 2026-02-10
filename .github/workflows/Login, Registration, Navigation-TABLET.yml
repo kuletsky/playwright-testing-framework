@@ -5,7 +5,7 @@ on:
   schedule:
 
     # 1:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 6 * * *"  
+    - cron: "0 8 * * *"  
 
 
 jobs:
