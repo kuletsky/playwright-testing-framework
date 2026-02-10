@@ -2,7 +2,7 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: Login/Registration Functionality tests  -->  Windows11/Chrome, MacOS/Sequoia/Safari
+buildName: DESKTOP Login, Registration, Navigation tests  -->  Windows11/Chrome, MacOS/Sequoia/Safari
 framework: playwright
 
 platforms:
@@ -10,6 +10,7 @@ platforms:
     osVersion: 11
     browserName: chrome
     browserVersion: latest
+  
   - os: OS X
     osVersion: Sequoia
     browserName: playwright-webkit

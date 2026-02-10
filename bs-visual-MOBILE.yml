@@ -2,7 +2,7 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: VISUAL MOBILE tests  -->  Samsung Galaxy S23 (Android 13) Chrome
+buildName: VISUAL MOBILE tests  -->  iPhone14/Safari
 framework: playwright
 
 platforms:
