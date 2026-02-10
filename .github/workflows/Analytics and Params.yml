@@ -1,15 +1,15 @@
-name: DESKTOP Login, Registration, Navigation tests
+name: Analytics and Params tests
 
 on:
   workflow_dispatch:
   schedule:
 
-    # 1:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 5 * * *"  
+    # 9:00 PM America/New_York is usually 01:00 UTC (during Standard Time).
+    - cron: "0 1 * * *"  
 
 
 jobs:
-  login-registration-navigation:
+  analytic-events:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,19 +32,12 @@ jobs:
 
       - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" login-registration-navigation-DESKTOP.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" bs-analytic-events.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
       - name: Run Playwright tests on BrowserStack
-        run: >
-          npx browserstack-node-sdk playwright test
-          tests/login-registration.spec.ts
-          tests/footer.spec.ts
-          tests/header-individuals.spec.ts
-          tests/header-plan-sponsors.spec.ts
-          tests/header-financial-professionals.spec.ts
-
+        run: npx browserstack-node-sdk playwright test analytics-events.spec.ts, marketing-params.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()
