@@ -39,6 +39,7 @@ jobs:
       - name: Run Playwright tests on BrowserStack
         run: >
           npx browserstack-node-sdk playwright test
+          tests/login-registration.spec.ts
           tests/footer.spec.ts
           # tests/header-individuals.spec.ts
           # tests/header-plan-sponsors.spec.ts

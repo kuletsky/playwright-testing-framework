@@ -2,7 +2,7 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: Analytic Events tests --> < Windows11/Chrome | MacOS/Sequoia/Safari >
+buildName: Analytics and Params tests --> < Windows11/Chrome | MacOS/Sequoia/Safari >
 framework: playwright
 
 platforms:
@@ -10,6 +10,7 @@ platforms:
     osVersion: 11
     browserName: chrome
     browserVersion: latest
+    
   - os: OS X
     osVersion: Sequoia
     browserName: playwright-webkit
