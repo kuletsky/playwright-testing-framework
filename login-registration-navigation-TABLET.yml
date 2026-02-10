@@ -6,10 +6,11 @@ buildName: TABLET Navigation Functionality tests  -->  Galaxy Tab S10 Plus(os15)
 framework: playwright
 
 platforms:
-  - deviceName: Galaxy Tab S10 Plus
+  - device: Galaxy Tab S10 Plus
     osVersion: 15
     browserName: chrome
     deviceOrientation: portrait
+    realMobile: true
 
   - os: "OS X"
     osVersion: "Ventura"
