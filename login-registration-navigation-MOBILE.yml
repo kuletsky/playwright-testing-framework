@@ -6,11 +6,11 @@ buildName: MOBILE Navigation Functionality tests  -->  GalaxyS23/Chrome, iPhone1
 framework: playwright
 
 platforms:
-  - device: Samsung Galaxy S23
-    osVersion: 13
-    browserName: chrome
-    deviceOrientation: portrait
-    realMobile: true
+  # - device: Samsung Galaxy S23
+  #   osVersion: 13
+  #   browserName: chrome
+  #   deviceOrientation: portrait
+  #   realMobile: true
 
   # - os: "OS X"
   #   osVersion: "Ventura"
@@ -21,14 +21,14 @@ platforms:
   #     use:
   #       deviceName: "iPhone 14"
 
-  # - deviceName: iPhone 14
-  #   osVersion: 17
-  #   browserName: safari
-  #   playwrightConfigOptions:
-  #     name: ios-iphone14
-  #     use:
-  #       trace: "off"
-  #       video: "off" 
+  - os: "Windows"
+    osVersion: "11"
+    browserName: "playwright-chromium"
+    browserVersion: "latest"
+    playwrightConfigOptions:
+      name: "emu-galaxy-s22-chromium"
+      use:
+        deviceName: "Galaxy S22"
 
 testOrchestrationOptions:
   retryTestsOnFailure:
