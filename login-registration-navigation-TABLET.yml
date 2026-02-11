@@ -21,14 +21,14 @@ platforms:
       use:
         deviceName: Galaxy Tab S4
 
-  # - os: OS X
-  #   osVersion: Ventura
-  #   browserName: playwright-webkit
-  #   browserVersion: latest
-  #   playwrightConfigOptions:
-  #     name: emu-ipad-pro-webkit
-  #     use:
-  #       deviceName: iPad Pro 11
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-webkit
+    browserVersion: latest
+    playwrightConfigOptions:
+      name: emu-ipad-pro-webkit
+      use:
+        deviceName: iPad Pro 11
 
 testOrchestrationOptions:
   retryTestsOnFailure:
