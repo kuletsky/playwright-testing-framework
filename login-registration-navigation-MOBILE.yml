@@ -52,4 +52,4 @@ debug: true
 networkLogs: true
 consoleLogs: info
 testObservability: true
-video: false
+video: true
