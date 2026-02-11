@@ -12,14 +12,14 @@ platforms:
   #   deviceOrientation: portrait
   #   realMobile: true
 
-  # - os: OS X
-  #   osVersion: Ventura
-  #   browserName: playwright-webkit
-  #   browserVersion: latest
-  #   playwrightConfigOptions:
-  #     name: emu-iphone14-webkit
-  #     use:
-  #       deviceName: iPhone 14
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-webkit
+    browserVersion: latest
+    playwrightConfigOptions:
+      name: emu-iphone14-webkit
+      use:
+        deviceName: iPhone 14
 
   - os: OS X
     osVersion: Sonoma
