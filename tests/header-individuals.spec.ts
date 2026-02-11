@@ -161,7 +161,7 @@ test.describe('Menu Products & Services functionality', () => {
 test.describe('Menu Tools functionality', () => {
     // Data-driven tests for TOOLS menu items
     const toolsLinks = [
-        { name: 'View All', menuHeading: "Financial tools", url: '/tools', pageHeading: "Financial freedom starts here" },
+        { name: 'View All', menuHeading: "Make budgeting, planning and retirement decisions all in one place.", url: '/tools', pageHeading: "Financial freedom starts here" },
         { name: 'Retirement Planner', menuHeading: "Retirement Planner", url: '/tools/retirement-planner', pageHeading: "Plan ahead to retire your way" },
         { name: 'Net Worth', menuHeading: "Net Worth", url: '/tools/net-worth', pageHeading: "Knowing your net worth is worth it" },
         { name: 'Budgeting & Cash Flow', menuHeading: "Budgeting & Cash Flow", url: '/tools/budgeting-cash-flow', pageHeading: "Better budgeting for your best life" },

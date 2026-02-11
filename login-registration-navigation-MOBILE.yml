@@ -12,23 +12,31 @@ platforms:
   #   deviceOrientation: portrait
   #   realMobile: true
 
-  # - os: "OS X"
-  #   osVersion: "Ventura"
-  #   browserName: "playwright-webkit"
+  # - os: OS X
+  #   osVersion: Ventura
+  #   browserName: playwright-webkit
+  #   browserVersion: latest
+  #   playwrightConfigOptions:
+  #     name: emu-iphone14-webkit
+  #     use:
+  #       deviceName: iPhone 14
+
+  - os: OS X
+    osVersion: Sonoma
+    browserName: chrome
+    browserVersion: latest
+    playwrightConfigOptions:
+      use:
+        deviceName: Pixel 7
+
+  # - os: "Windows"
+  #   osVersion: "11"
+  #   browserName: "playwright-chromium"
   #   browserVersion: "latest"
   #   playwrightConfigOptions:
-  #     name: "emu-iphone14-webkit"
+  #     name: "emu-galaxy-s22-chromium"
   #     use:
-  #       deviceName: "iPhone 14"
-
-  - os: "Windows"
-    osVersion: "11"
-    browserName: "playwright-chromium"
-    browserVersion: "latest"
-    playwrightConfigOptions:
-      name: "emu-galaxy-s22-chromium"
-      use:
-        deviceName: "Galaxy S22"
+  #       deviceName: "Galaxy S22"
 
 testOrchestrationOptions:
   retryTestsOnFailure:
@@ -44,4 +52,4 @@ debug: true
 networkLogs: true
 consoleLogs: info
 testObservability: true
-video: true
+video: false
