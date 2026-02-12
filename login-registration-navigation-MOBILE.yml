@@ -2,7 +2,7 @@ userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: MOBILE Navigation Functionality tests  -->  GalaxyS23/Chrome, iPhone14/Safari
+buildName: MOBILE Login, Registration, Navigation tests  -->  Pixel_7/Chrome, iPhone_14/Safari
 framework: playwright
 
 platforms:
