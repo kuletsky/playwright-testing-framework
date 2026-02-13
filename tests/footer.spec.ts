@@ -46,7 +46,7 @@ test.describe('Footer Navigation links', () => {
         { name: "Diversity, Equity, Inclusion & Belonging", url: "/diversity-equity-inclusion-belonging", assert: "Empowered by difference" },
         { name: "The Currency™", url: "/the-currency", assert: "Subscribe" },
         { name: "Press center", url: "/press-center", assert: "Latest content" },
-        { name: "About us", url: "/about-us", assert: "This is Empower" },
+        { name: "About us", url: "/about-us", assert: "We are Empower" },
         { name: "Our history", url: "/our-history", assert: "Since the beginning, Empower has been guided by a vision to revolutionize how people save, invest and plan for their future" },
         { name: "Contact us", url: "/contact", assert: "We’re happy to help with whatever you need." },
         { name: "Financial professional", url: "/financial-professionals", assert: "Solutions, support, success" },

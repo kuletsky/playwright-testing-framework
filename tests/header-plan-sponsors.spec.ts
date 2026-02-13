@@ -272,7 +272,7 @@ test.describe('Learn menu functionality', () => {
 test.describe('Why Empower menu functionality', () => {
     // Data-driven tests for WHY EMPOWER menu items
     const whyEmpowerLinks = [
-        { name: 'About us', menuHeading: "About us", url: '/plan-sponsors/about-us', pageHeading: "This is Empower" },
+        { name: 'About us', menuHeading: "About us", url: '/plan-sponsors/about-us', pageHeading: "We are Empower" },
         { name: 'Cybersecurity', menuHeading: "Cybersecurity", url: '/plan-sponsors/about-empower/cybersecurity', pageHeading: "Cybersecurity you can count on" },
         { name: 'Press Center', menuHeading: "Press center", url: '/press-center', pageHeading: "Latest content" },
         { name: 'Contact us', menuHeading: "Contact us", url: '/plan-sponsors/contact', pageHeading: "We’re happy to help with whatever you need." },

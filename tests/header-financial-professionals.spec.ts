@@ -33,7 +33,7 @@ test.describe('Menu visibility', () => {
             "Defined contribution",
             "Integrated workplace solutions",
             "Fiduciary advice solutions",
-            "Retirement income solutions",
+            "Private market investments",
             "Stock plan services​",
             "Empower benefit consulting services",
             "Defined benefit plans",
@@ -135,7 +135,7 @@ test.describe('Solutions menu functionality', () => {
         // { name: "Defined contribution", menuHeading: "Defined contribution", url: "/financial-professionals/solutions/defined-contribution", pageHeading: "Defined contribution" },
         { name: "Integrated workplace solutions", menuHeading: "Integrated workplace solutions", url: "/financial-professionals/what-we-offer/integrated-workplace-solutions", pageHeading: "The future of workplace is here" },
         { name: "Fiduciary advice solutions", menuHeading: "Fiduciary advice solutions", url: "/financial-professionals/what-we-offer/fiduciary-advice-solutions-overview", pageHeading: "We believe everyone deserves access to fiduciary advice" },
-        { name: "Retirement income solutions", menuHeading: "Retirement income solutions", url: "/financial-professionals/what-we-offer/retirement-income", pageHeading: "Helping to convert lifetime savings into a retirement income stream" },
+        { name: "Private market investments", menuHeading: "Private market investments", url: "/financial-professionals/what-we-offer/retirement-income", pageHeading: "Helping to convert lifetime savings into a retirement income stream" },
         { name: "Stock plan services​", menuHeading: "Stock plan services​", url: "/financial-professionals/what-we-offer/stock-plan-services", pageHeading: "Global stock plans simplified. Yes, really." },
         { name: "Empower benefit consulting services", menuHeading: "Empower benefit consulting services", url: "/financial-professionals/what-we-offer/empower-benefit-consulting-services", pageHeading: "Trusted excellence. Proven expertise." },
         { name: "Defined benefit plans", menuHeading: "Defined benefit plans", url: "/financial-professionals/what-we-offer/defined-benefit-plans", pageHeading: "Defined benefit plans. Smarter for you. Simpler for them." },
@@ -275,7 +275,7 @@ test.describe('Insights menu functionality', () => {
 test.describe('Why Empower menu functionality', () => {
     // Data-driven tests for Why Empower menu items
     const whyEmpowerLinks = [
-        { name: "About us", menuHeading: "About us", url: "/financial-professionals/about-us", pageHeading: "This is Empower" },
+        { name: "About us", menuHeading: "About us", url: "/financial-professionals/about-us", pageHeading: "We are Empower" },
         { name: "Contact us", menuHeading: "Contact us", url: "/financial-professionals/contact", pageHeading: "We’re happy to help with whatever you need." },
         { name: "Cybersecurity", menuHeading: "Cybersecurity", url: "/financial-professionals/about-empower/cybersecurity", pageHeading: "Cybersecurity you can count on" },
         { name: "Press Center", menuHeading: "Stay in the know with the latest Empower news.", url: "/press-center", pageHeading: "Latest content" },
