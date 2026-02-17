@@ -14,7 +14,8 @@ export class IndividualsLoginV1Page {
         this.page = page;
         this.loginRetirementButtonLocator = this.page.locator("[aria-label='Log in to retirement plan']");
         this.loginPersonalDashboardButtonLocator = this.page.locator("[aria-label='Log in to dashboard']");
-        this.loginPersonalWealthButtonLocator = this.page.locator("[aria-label='Log in to individual account']");
+        // this.loginPersonalWealthButtonLocator = this.page.locator("[aria-label='Log in to individual account']");
+        this.loginPersonalWealthButtonLocator = this.page.locator("a[href*='participant.empower-retirement.com/participant/?']");
         this.loginRetirementPlanSponsorsButtonLocator = this.page.locator("[aria-label='Log in as a retirement plan sponsor']");
         this.loginRetirementPlanFinancialProfessionalsButtonLocator = this.page.locator("[aria-label='Log in as a financial professional']");
 
