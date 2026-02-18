@@ -10,6 +10,12 @@ platforms:
     osVersion: 11
     browserName: chrome
     browserVersion: latest
+    resolution: "1280x800"                 
+    playwrightConfigOptions:
+      use:
+        viewport:
+          width: 1200
+          height: 800
 
 testOrchestrationOptions:
   retryTestsOnFailure:
