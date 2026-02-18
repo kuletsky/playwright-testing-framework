@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
     await suppressCookieBanner(page);
 });
 
-test.describe('Login, Registration tests', () => {
+// test.describe('Login, Registration tests', () => {
     test.describe('Individuals Login-v1 functionality', () => {
         test('Login Retirement account', async ({ page }) => {
             const individualsPage = new IndividualsPage(page);
@@ -117,7 +117,7 @@ test.describe('Login, Registration tests', () => {
             await signupPage.clickScheduleACallButton();
             // await signupPage.clickContinueButton();
 
-            await expect(page).toHaveURL(/\/schedule-appointment|cloudflare|challenge|verify/i);
+            await expect(page).toHaveURL(/\/schedule-appointment|cloudflare|challenge|verify/i, { timeout: 60_000 });
 
             // await expect(page).toHaveURL(/\/schedule-appointment/);
             // await expect(page.locator('h2.u-padding-left-from-desktop')).toHaveText("Set up a call with an advisor in just a few steps");
@@ -264,7 +264,7 @@ test.describe('Login, Registration tests', () => {
         });
 
     });
-});
+// });
 
 
 

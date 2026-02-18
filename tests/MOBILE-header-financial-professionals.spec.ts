@@ -185,7 +185,7 @@ test.describe('Experience menu functionality', () => {
     const experienceLinks = [
         { name: "Markets", menuHeading: "Markets we serve", url: "/financial-professionals/what-we-offer/markets-we-serve", pageHeading: "A trusted partner in retirement solutions" },
         { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/what-we-offer/financial-wellness-financial-overview", pageHeading: "A focus on financial wellness" },
-        { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/resources/empower-apis", pageHeading: "The next generation of APIs is here" },
+        { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/resources/apis", pageHeading: "The next generation of APIs is here" },
         { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
         { name: "Events", menuHeading: "Events", url: "/financial-professionals/empower-events" },
     ]
