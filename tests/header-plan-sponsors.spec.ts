@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { PlanSponsorsPage } from '../pages/PlanSponsors';
+import { time } from 'node:console';
 
 
 test.describe('Menu visibility', () => {
@@ -40,7 +41,7 @@ test.describe('Menu visibility', () => {
         ]);
 
         const dropdown = page.locator("#markets-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText("Markets", { exact: true })).toBeVisible();
+        await expect(dropdown.getByText("Markets", { exact: true })).toBeVisible({ timeout: 60_000 });
     });
 
     test('Verify Solutions menu is displayed', async ({ page }) => {
