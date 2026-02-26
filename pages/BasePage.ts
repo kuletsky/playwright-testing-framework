@@ -14,7 +14,7 @@ export class BasePage {
 
     constructor(page: Page) {
         this.page = page;
-        this.continueButton = this.page.locator('button:has-text("Continue")');
+        this.continueButton = this.page.locator('button:has-text("Continue")').first();
         // this.firstSubmenu = this.page.locator('[aria-controls="dropdown-mobile-0"]');
         // this.secondSubmenu = this.page.locator('[aria-controls="dropdown-mobile-1"]');
         // this.linksSubmenu = this.page.locator("#dropdown-mobile-0 a");
