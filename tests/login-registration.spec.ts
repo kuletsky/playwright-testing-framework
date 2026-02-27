@@ -115,7 +115,7 @@ test.beforeEach(async ({ page }) => {
 
             const signupPage = new IndividualsSignupPage(page);
             await signupPage.clickScheduleACallButton();
-            await signupPage.clickContinueButton();
+            // await signupPage.clickContinueButton();
 
             await expect(page).toHaveURL(/\/schedule-appointment|cloudflare|challenge|verify/i, { timeout: 60_000 });
 

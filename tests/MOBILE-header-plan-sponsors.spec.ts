@@ -278,16 +278,18 @@ test.describe('Learn menu functionality', () => {
         test(`Click LEARN - ${link.name}`, async ({ page }) => {
             const plansponsorsPage = new PlanSponsorsPage(page);
             await plansponsorsPage.gotoPlanSponsorsPage();
+            await suppressCookieBanner(page);
+
             await plansponsorsPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
             await plansponsorsPage.openForthSubmenu();
             await plansponsorsPage.clickForthSubmenuItem(link.name);
 
-            if (link.url) {
+            // if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
-            }
+            // }
         });
     }
 });
