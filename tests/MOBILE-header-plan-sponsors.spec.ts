@@ -119,7 +119,7 @@ test.describe('Menu visibility', () => {
             "Service",
             "Technology",
             "Plan administration",
-            "Public policy",
+            "Webinars and events",
             "APIs",
             "Participant engagement",
             "Personal experience",
