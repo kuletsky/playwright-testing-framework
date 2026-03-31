@@ -236,7 +236,7 @@ test.describe('Insights menu functionality', () => {
     // Data-driven tests for Insights menu items
     const insightsLinks = [
         { name: "Investment Insights", menuHeading: "Investment Insights", url: "/investment-insights", pageHeading: "Latest Content" },
-        { name: "Legislative & regulatory news", menuHeading: "Legislative & regulatory news", url: "/financial-professionals/insights/legislative-regulatory", pageHeading: "Legislative and regulatory affairs" },
+        { name: "Legislative & regulatory news", menuHeading: "Legislative & regulatory news", url: "/financial-professionals/insights/legislative-and-regulatory-news", pageHeading: "Legislative and regulatory affairs" },
         { name: "The Currency", menuHeading: "The Currency", url: "/the-currency", pageHeading: "Get insights and intel on your money." },
     ]
     for (const link of insightsLinks) {
