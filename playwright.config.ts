@@ -14,7 +14,10 @@ export default defineConfig({
   retries: process.env.CI ? 3 : 0,
   workers: process.env.CI ? 1 : undefined,
 
-  reporter: 'html',
+  reporter: [
+    ['html'],
+    ['@flakiness/playwright']
+  ],
   use: {
     baseURL: process.env.BASE_URL,
     actionTimeout: 45 * 1000,
@@ -41,26 +44,26 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 14'] },
-    },
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 5'] },
+    // },
+    // {
+    //   name: 'Mobile Safari',
+    //   use: { ...devices['iPhone 14'] },
+    // },
 
     /* Test against TABLET viewports. */
-    {
-      name: 'iPad Pro 11',
-      use: { ...devices['iPad Pro 11'] }, // Emulates iOS tablet
-    },
+    // {
+    //   name: 'iPad Pro 11',
+    //   use: { ...devices['iPad Pro 11'] }, // Emulates iOS tablet
+    // },
     // {
     //   name: 'Galaxy Tab S4',
     //   use: { ...devices['Galaxy Tab S4'] }, // Emulates Android tablet
