@@ -16,7 +16,7 @@ export default defineConfig({
 
   reporter: [
     ['html'],
-    ['@flakiness/playwright']
+    ['@flakiness/playwright',  { flakinessProject: 'emp/emp' }]
   ],
   use: {
     baseURL: process.env.BASE_URL,
@@ -44,10 +44,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
 
     /* Test against mobile viewports. */
     // {
