@@ -25,6 +25,8 @@ parallelsPerPlatform: 1
 idleTimeout: 240
 browserstackLocal: false
 
+selfHeal: true
+aiAuthoring: true
 
 debug: true
 networkLogs: true
