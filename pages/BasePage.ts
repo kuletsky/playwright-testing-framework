@@ -6,20 +6,9 @@ export class BasePage {
     protected readonly page: Page;
     protected readonly continueButton: Locator;
 
-    // protected readonly firstSubmenu: Locator;
-    // protected readonly secondSubmenu: Locator;
-    // protected readonly linksSubmenu: Locator;
-    // protected readonly thirdSubmenu: Locator;
-    // protected readonly forthSubmenu: Locator;
-
     constructor(page: Page) {
         this.page = page;
         this.continueButton = this.page.locator('button:has-text("Continue")').first();
-        // this.firstSubmenu = this.page.locator('[aria-controls="dropdown-mobile-0"]');
-        // this.secondSubmenu = this.page.locator('[aria-controls="dropdown-mobile-1"]');
-        // this.linksSubmenu = this.page.locator("#dropdown-mobile-0 a");
-        // this.thirdSubmenu = this.page.locator('[aria-controls="dropdown-mobile-2"]');
-        // this.forthSubmenu = this.page.locator('[aria-controls="dropdown-mobile-3"]');
     }
 
 
