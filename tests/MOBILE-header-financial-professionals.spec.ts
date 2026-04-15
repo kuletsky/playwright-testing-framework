@@ -73,7 +73,7 @@ test.describe('Menu visibility', () => {
             "Private market investments",
             "Stock plan services​",
             "Empower benefit consulting services",
-            "The edge in workplace wealth",
+            "Nonqualified plans",
             "Defined benefit plans",
             "Consumer-directed health",
         ]);
