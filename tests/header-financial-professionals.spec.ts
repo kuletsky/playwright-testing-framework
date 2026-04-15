@@ -36,6 +36,7 @@ test.describe('Menu visibility', () => {
             "Private market investments",
             "Stock plan services​",
             "Empower benefit consulting services",
+            "Nonqualified plans",
             "Defined benefit plans",
             "Consumer-directed health",
         ]);
@@ -138,6 +139,7 @@ test.describe('Solutions menu functionality', () => {
         { name: "Private market investments", menuHeading: "Private market investments", url: "/financial-professionals/what-we-offer/private-market-investments", pageHeading: "Private markets, new possibilities" },
         { name: "Stock plan services​", menuHeading: "Stock plan services​", url: "/financial-professionals/what-we-offer/stock-plan-services", pageHeading: "Global stock plans simplified. Yes, really." },
         { name: "Empower benefit consulting services", menuHeading: "Empower benefit consulting services", url: "/financial-professionals/what-we-offer/empower-benefit-consulting-services", pageHeading: "Trusted excellence. Proven expertise." },
+        { name: "Nonqualified plans", menuHeading: "Nonqualified plans", url: "/financial-professionals/what-we-offer/nonqualified-plans", pageHeading: "The edge in workplace wealth"},
         { name: "Defined benefit plans", menuHeading: "Defined benefit plans", url: "/financial-professionals/what-we-offer/defined-benefit-plans", pageHeading: "Defined benefit plans. Smarter for you. Simpler for them." },
         { name: "Consumer-directed health", menuHeading: "Consumer-directed health", url: "/financial-professionals/what-we-offer/consumer-directed-health", pageHeading: "Integrated health and wealth" },
     ]
