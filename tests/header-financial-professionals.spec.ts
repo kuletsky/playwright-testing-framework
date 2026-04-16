@@ -26,7 +26,7 @@ test.describe('Menu visibility', () => {
         await finproPage.openSolutionsMenu();
 
         const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
-        await expect(links).toHaveCount(8);
+        await expect(links).toHaveCount(9);
 
         const linksText = (await links.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
