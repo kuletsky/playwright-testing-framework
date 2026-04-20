@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { PlanSponsorsPage } from '../pages/PlanSponsors';
-import { time } from 'node:console';
 
 
 test.describe('Menu visibility', () => {
