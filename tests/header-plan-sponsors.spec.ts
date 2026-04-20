@@ -133,7 +133,7 @@ test.describe('Markets menu functionality', () => {
         { name: 'Large and mega corporations', menuHeading: 'Large and mega corporations', url: '/plan-sponsors/what-we-offer/large-and-mega-corporations', pageHeading: "Built on partnership. Defined by results." },
         { name: 'Multiple employer plans', menuHeading: "Multiple employer plans", url: '/plan-sponsors/what-we-offer/multiple-employer', pageHeading: "Multiple-Employer" },
         { name: 'Government', menuHeading: "Government", url: '/plan-sponsors/what-we-offer/government', pageHeading: "Built on experience. Focused on results." },
-        { name: 'Not-for-profit​', menuHeading: "Not-for-profit", url: '/plan-sponsors/what-we-offer/not-for-profit-overview', pageHeading: "Put our 60+ years of experience to work for you" },
+        { name: 'Not-for-profit​', menuHeading: "Not-for-profit", url: '/plan-sponsors/markets/not-for-profit', pageHeading: "Built for good. Ready to perform." },
         { name: 'Taft-Hartley​', menuHeading: "Taft-Hartley", url: '/plan-sponsors/what-we-offer/taft-hartley-plans', pageHeading: "Backing members. Securing futures." },
     ]
     for (const link of marketsLinks) {
