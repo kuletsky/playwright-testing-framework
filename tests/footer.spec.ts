@@ -5,8 +5,6 @@ import { suppressCookieBanner } from '../utils/stabilize';
 
 test.beforeEach(async ({ page }) => {
     await page.goto('/individuals');
-    // const individualsPage = new IndividualsPage(page);
-    // await individualsPage.gotoIndividualsPage();
     await suppressCookieBanner(page);
 });
 

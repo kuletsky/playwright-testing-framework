@@ -48,6 +48,7 @@ jobs:
           tests/header-individuals.spec.ts
           tests/header-plan-sponsors.spec.ts
           tests/header-financial-professionals.spec.ts
+          tests/security-tests.spec.ts
 
 
       - name: Upload artifacts on failure

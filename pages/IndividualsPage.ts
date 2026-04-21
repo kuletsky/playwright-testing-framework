@@ -123,34 +123,4 @@ export class IndividualsPage extends BasePage {
             });
         }, { timeout: timeoutMs });
     }
-
-
-    //MOBILE LOCATORS AND METHODS
-    // async openHamburger() {
-    //     await this.page.locator("#hamburger-menu").click();
-    // }
-
-    // async clickHamburgerLink(linkText: string) {
-    //     await this.page.getByRole('link', { name: linkText, exact: true }).click();
-    // }
-
-    // async clickFirstSubmenuItem(linkText: string) {
-    //     const submenu = this.page.locator("#dropdown-mobile-0");
-    //     await submenu.getByRole('menuitem', { name: linkText, exact: true }).click();
-    // }
-
-    // async clickSecondSubmenuItem(linkText: string) {
-    //     const submenu = this.page.locator("#dropdown-mobile-1");
-    //     await submenu.getByRole('menuitem', { name: linkText, exact: true }).click();
-    // }
-
-    // async clickThirdSubmenuItem(linkText: string) {
-    //     const submenu = this.page.locator("#dropdown-mobile-2");
-    //     await submenu.getByRole('menuitem', { name: linkText, exact: true }).click();
-    // }
-
-    // async clickForthSubmenuItem(linkText: string) {
-    //     const submenu = this.page.locator("#dropdown-mobile-3");
-    //     await submenu.getByRole('menuitem', { name: linkText, exact: true }).click();
-    // }
 }

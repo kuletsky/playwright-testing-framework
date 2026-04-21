@@ -48,6 +48,7 @@ jobs:
           tests/MOBILE-header-individuals.spec.ts
           tests/MOBILE-header-plan-sponsors.spec.ts
           tests/MOBILE-header-financial-professionals.spec.ts
+          tests/security-tests.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()
