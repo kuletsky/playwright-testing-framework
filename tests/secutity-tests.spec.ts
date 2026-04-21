@@ -50,3 +50,27 @@ test('Verify Forgot your password navigate to HP', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Invest well. Live a little.™', level: 1 })).toBeVisible();
     await expect(page).toHaveURL('/');
 });
+
+test('Verify SSO Login button on Login form', async ({ page }) => {
+    await page.goto('/user/login?loginkey=Gtrv3qg6xk');
+
+    const SSOloginButton = page.getByRole('link', { name: 'Login using SSO' });
+    await expect(SSOloginButton).toBeVisible();
+    await SSOloginButton.click();
+
+    await expect(page.getByRole('heading', { name: 'Sign In' })).toBeVisible();
+    await expect(page).toHaveURL(/empower\.okta\.com\/app\/empower_empowercorporatesitestg_1/);
+    await expect(page.getByRole('textbox')).toBeVisible();
+});
+
+test('Verify counting attempts to Login form', async ({ page }) => {
+    for (let i = 1; i <= 5; i++) {
+        await page.goto('/user/login?loginkey=Gtrv3qg6xk');
+        await page.getByLabel('Username').fill('crmc');
+        await page.getByLabel('Password').fill(`Test${Math.random().toString(36).slice(2, 10)}!1`);
+
+        await page.getByRole('button', { name: 'Log in' }).click();
+        await expect(page.getByText('Unrecognized username or password')).toBeVisible();
+        await expect(page.locator('.massages.messages--warning')).toContainText(`You have used ${i} out of 5 login attempts. After all 5 have been used, you will be unable to login.`);
+    }
+})
