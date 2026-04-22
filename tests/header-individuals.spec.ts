@@ -263,3 +263,9 @@ test.describe('Menu Why Empower functionality', () => {
         });
     }
 });
+
+test('Verify loginBox displayed as expected', async ({ page }) => {
+    await page.goto('/lp/empower-my-options');
+
+    await expect(page.getByRole('link', { name: 'Sign In/Register' })).toBeVisible();
+});

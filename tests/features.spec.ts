@@ -24,3 +24,4 @@ test('Verify Page anchor functionality', async ({ page }) => {
     await expect(page.getByText('Email is required')).toBeVisible();
     await expect(page.getByText('Company name is required')).toBeVisible();
 });
+
