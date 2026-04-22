@@ -71,6 +71,10 @@ test('Verify counting attempts to Login form', async ({ page }) => {
 
         await page.getByRole('button', { name: 'Log in' }).click();
         await expect(page.getByText('Unrecognized username or password')).toBeVisible();
-        await expect(page.locator('.massages.messages--warning')).toContainText(`You have used ${i} out of 5 login attempts. After all 5 have been used, you will be unable to login.`);
+
+        const rawText = await page.locator('.messages.messages--warning').textContent();
+        const cleanText = rawText?.trim().replace(/\s+/g, ' ').replace('Warning message', '').trim() ?? '';
+        console.log(cleanText);
+        await expect(page.locator('.messages.messages--warning')).toContainText(`You have used ${i} out of 5 login attempts. After all 5 have been used, you will be unable to login.`);
     }
 })

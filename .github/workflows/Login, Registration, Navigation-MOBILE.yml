@@ -43,12 +43,13 @@ jobs:
       - name: Run Playwright tests on BrowserStack
         run: >
           npx browserstack-node-sdk playwright test
+          tests/secutity-tests.spec.ts
+          tests/features.spec.ts
           tests/login-registration.spec.ts
           tests/footer.spec.ts
           tests/MOBILE-header-individuals.spec.ts
           tests/MOBILE-header-plan-sponsors.spec.ts
           tests/MOBILE-header-financial-professionals.spec.ts
-          tests/security-tests.spec.ts
 
 
       - name: Upload artifacts on failure
