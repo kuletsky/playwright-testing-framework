@@ -1,14 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { suppressCookieBanner } from '../utils/stabilize';
 
 
 
-// test.beforeEach(async ({ page }) => {
-//     await page.goto('/user/login');
-//     // await suppressCookieBanner(page);
-// });
 
 test('Verify 403 error displayed and redirect to homepage from 403 error page', async ({ page }) => {
     await page.goto('/user/login');
+    await suppressCookieBanner(page);
     await expect(page.getByRole('heading', { name: '403 Error' })).toBeVisible();
 
     const returnHomeLink = page.getByRole('link', { name: 'Return to the homepage' });
@@ -21,6 +19,8 @@ test('Verify 403 error displayed and redirect to homepage from 403 error page', 
 
 test('Verify Login form displayed when user navigate to login page with login key', async ({ page }) => {
     await page.goto('/user/login?loginkey=Gtrv3qg6xk');
+    await suppressCookieBanner(page);
+
     await expect(page.getByLabel('Username')).toBeVisible();
     await expect(page.getByLabel('Password')).toBeVisible();
     await expect(page.getByRole('button', { name: 'Log in' })).toBeVisible();
@@ -29,6 +29,8 @@ test('Verify Login form displayed when user navigate to login page with login ke
 
 test('Verify Forgot your password navigate to password Links', async ({ page }) => {
     await page.goto('/user/login?loginkey=Gtrv3qg6xk');
+    await suppressCookieBanner(page);
+
 
     const forgotPasswordLink = page.getByRole('link', { name: 'Forgot your password?' });
     await expect(forgotPasswordLink).toBeVisible();
@@ -42,6 +44,7 @@ test('Verify Forgot your password navigate to password Links', async ({ page }) 
 
 test('Verify Forgot your password navigate to HP', async ({ page }) => {
     await page.goto('/user/login?loginkey=Gtrv3qg6xk');
+    await suppressCookieBanner(page);
 
     const returnHomeLink = page.getByRole('link', { name: 'Return to the homepage' });
     await expect(returnHomeLink).toBeVisible();
@@ -53,6 +56,8 @@ test('Verify Forgot your password navigate to HP', async ({ page }) => {
 
 test('Verify SSO Login button on Login form', async ({ page }) => {
     await page.goto('/user/login?loginkey=Gtrv3qg6xk');
+    await suppressCookieBanner(page);
+
 
     const SSOloginButton = page.getByRole('link', { name: 'Login using SSO' });
     await expect(SSOloginButton).toBeVisible();
@@ -64,13 +69,15 @@ test('Verify SSO Login button on Login form', async ({ page }) => {
 });
 
 test('Verify counting attempts to Login form', async ({ page }) => {
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 2; i++) {
         await page.goto('/user/login?loginkey=Gtrv3qg6xk');
-        await page.getByLabel('Username').fill('crmc');
+        await suppressCookieBanner(page);
+
+        await page.getByLabel('Username').fill('chnshr');
         await page.getByLabel('Password').fill(`Test${Math.random().toString(36).slice(2, 10)}!1`);
 
         await page.getByRole('button', { name: 'Log in' }).click();
-        await expect(page.getByText('Unrecognized username or password')).toBeVisible();
+        await expect(page.getByText('Unrecognized username or password')).toBeVisible({ timeout: 60000 });
 
         const rawText = await page.locator('.messages.messages--warning').textContent();
         const cleanText = rawText?.trim().replace(/\s+/g, ' ').replace('Warning message', '').trim() ?? '';

@@ -64,7 +64,7 @@ test.describe('Menu visibility', () => {
         expect(linksText).toEqual([
             "Defined contribution",
             "Overview",
-            "Empower Select™",
+            "Small business retirement plans",
             "Empower Ready Select™",
             "PEPs, MEPs, and PEOs",
             "Empower Standard offer",

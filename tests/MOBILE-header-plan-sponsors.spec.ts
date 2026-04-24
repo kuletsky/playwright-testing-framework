@@ -111,7 +111,7 @@ test.describe('Menu visibility', () => {
         await plansponsorsPage.openThirdSubmenu();
 
         const submenuLinks = await plansponsorsPage.getLinksThirdSubmenu();
-        await expect(submenuLinks).toHaveCount(11);
+        await expect(submenuLinks).toHaveCount(12);
 
         const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
@@ -121,6 +121,7 @@ test.describe('Menu visibility', () => {
             "Plan administration",
             "Webinars and events",
             "APIs",
+            "Lagislative & regulatory news",
             "Participant engagement",
             "Personal experience",
             "Advice & guidance",
