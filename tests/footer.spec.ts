@@ -40,8 +40,7 @@ test.describe('Footer Legal Menu links', () => {
 test.describe('Footer Navigation links', () => {
     const footerLinks = [
         { name: "Cybersecurity", url: "/cybersecurity", assert: "Cybersecurity you can count on" },
-        { name: "Community impact", url: "/empower-community-impact", assert: "Our volunteer impact" },
-        { name: "Diversity, Equity, Inclusion & Belonging", url: "/diversity-equity-inclusion-belonging", assert: "Empowered by difference" },
+        { name: "Culture & Community impact", url: "/empower-community-impact", assert: "Our volunteer impact" },
         { name: "The Currency™", url: "/the-currency", assert: "Subscribe" },
         { name: "Press center", url: "/press-center", assert: "Latest content" },
         { name: "About us", url: "/about-us", assert: "We are Empower" },

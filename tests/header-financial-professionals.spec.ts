@@ -51,12 +51,15 @@ test.describe('Menu visibility', () => {
         await finproPage.openExperienceMenu();
 
         const links = page.locator("#experience-dropdown li.relative > a, #experience-dropdown li.relative > button");
-        await expect(links).toHaveCount(5);
+        await expect(links).toHaveCount(8);
 
         const linksText = (await links.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
             "Markets",
             "Participant experience",
+            "Financial wellness",
+            "Education & action",
+            "Advice & guidance",
             "APIs",
             "Partner advocate",
             "Events",
@@ -172,7 +175,10 @@ test.describe('Experience menu functionality', () => {
 
     const experienceLinks = [
         { name: "Markets", menuHeading: "Markets we serve", url: "/financial-professionals/what-we-offer/markets-we-serve", pageHeading: "A trusted partner in retirement solutions" },
-        { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/what-we-offer/financial-wellness-financial-overview", pageHeading: "A focus on financial wellness" },
+        { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/experience/personal-experience", pageHeading: "The full picture — connected and clear" },
+        { name: "Financial wellness", menuHeading: "Financial wellness", url: "/financial-professionals/experience/financial-wellness", pageHeading: "Financial wellness. A built-in benefit." },
+        { name: "Education & action", menuHeading: "Education & action", url: "/financial-professionals/experience/education-action", pageHeading: "A powerful, personal experience." },
+        { name: "Advice & guidance", menuHeading: "Advice & guidance", url: "/financial-professionals/experience/advice-guidance", pageHeading: "The advice advantage. Day one through retirement." },
         { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/experience/apis", pageHeading: "Bridges to innovation" },
         { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
         { name: "Events", menuHeading: "Events", url: "/financial-professionals/empower-events" },
