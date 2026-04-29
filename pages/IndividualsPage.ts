@@ -18,7 +18,8 @@ export class IndividualsPage extends BasePage {
     constructor(page: Page) {
         super(page);
         this.loginButtonLocator = this.page.locator("//header//span[text()='Login']");
-        this.openAccountButton = this.page.locator("a[class='btn btn--dark btn--small primary-btn inline-flex justify-center items-center shrink-0'] span[class='z-10']");
+        // this.openAccountButton = this.page.locator("a[class='btn btn--dark btn--small primary-btn inline-flex justify-center items-center shrink-0'] span[class='z-10']");
+        this.openAccountButton = this.page.getByRole('link', { name: 'Open an account' }).first();
         this.menuProductServices = this.page.locator("[aria-label='Products & Solutions']");
         this.menuTools = this.page.locator("[aria-label='Tools']");
         this.menuLearn = this.page.locator("[aria-label='Learn']");
