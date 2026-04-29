@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  login-registration-navigation:
+  sequrity:
     runs-on: ubuntu-latest
     
     permissions:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" sequrity-tests.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" security-tests.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
