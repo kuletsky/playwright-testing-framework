@@ -409,8 +409,8 @@ test.describe('Empower pages on Stage', () => {
       await page.goto('');
 
       await suppressCookieBanner(page);
-      await waitCarousel(page);
-      await page.waitForTimeout(60_000);
+      // await waitCarousel(page);
+      // await page.waitForTimeout(60_000);
       await removeShaking(page);
 
       await percyScreenshot(page, 'Individuals page', { fullPage: true });

@@ -16,7 +16,7 @@ export class IndividualsSignupPage extends BasePage {
         this.goToRetirementAccount = this.page.locator(':text-is("Continue")');
         this.scheduleAcallButton = this.page.getByText('Schedule a call');
         // this.continueButton = this.page.locator('button:has-text("Continue")');
-        this.personalCashButton = this.page.locator('a').filter({ hasText: 'Open account' }).first();
+        this.personalCashButton = this.page.getByRole('link', { name: 'Open account' }).nth(2);
         this.premierIRAButton = this.page.locator('a[href*="premier-ira"]');
     }
 
