@@ -6,6 +6,24 @@ A comprehensive Playwright testing framework for automated browser testing with 
 
 This repository contains automated test suites that run on scheduled intervals to ensure continuous quality assurance. All tests run on BrowserStack infrastructure and include visual regression testing capabilities.
 
+## What this project demonstrates
+
+- Scalable Playwright + TypeScript test framework
+- Cross-browser execution through BrowserStack
+- Visual regression testing with Percy
+- Scheduled and manual CI execution with GitHub Actions
+- Page Object Model structure
+- Test artifacts and HTML reports
+- Environment-based configuration
+
+  ## Framework Architecture
+
+- `tests/` — UI, navigation, login, analytics, and visual regression test suites
+- `pages/` — Page Object Model classes
+- `utils/` — reusable helpers and shared utilities
+- `.github/workflows/` — scheduled and manual CI workflows
+- `data/` — test data and configuration inputs
+
 ## Scheduled Jobs
 
 All jobs run daily on automated schedules and can also be triggered manually via GitHub Actions workflow dispatch.
