@@ -115,17 +115,6 @@ export class AnalyticsPage {
       throw new Error(`Unknown element: ${name}`);
     }
 
-    // Handle indexed elements
-    // if (name === 'primaryButton') {
-    //   return this.page.locator(selector).first();
-    // }
-    // if (name === 'primaryButton_PC') {
-    //   return this.page.locator(this.locators['primaryButton']).nth(1);
-    // }
-    // if (name === 'secondaryButton') {
-    //   return this.page.locator(selector).first();
-    // }
-
     return this.page.locator(selector);
   }
 
