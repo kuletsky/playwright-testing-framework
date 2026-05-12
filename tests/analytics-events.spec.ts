@@ -29,10 +29,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.clickAndCapture(element, data.event, data.eventName);
 
         expect(event, `Event not captured for: ${data.element}`).not.toBeNull();
-        expect(event.event).toBe(data.event);
-        expect(event.event_name).toBe(data.eventName);
-        expect(event.event_category).toBe(elementText);
-        expect(event.event_detail).toBe(data.eventDetail);
+        expect(event!.event).toBe(data.event);
+        expect(event!.event_name).toBe(data.eventName);
+        expect(event!.event_category).toBe(elementText);
+        expect(event!.event_detail).toBe(data.eventDetail);
       });
     }
   });
@@ -53,10 +53,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.clickAndCapture(element, 'social_click', 'social_click');
 
         expect(event).not.toBeNull();
-        expect(event.event).toBe('social_click');
-        expect(event.event_name).toBe('social_click');
-        expect(event.event_category).toBe(elementTitle);
-        expect(event.event_detail).toBe(data.eventDetail);
+        expect(event!.event).toBe('social_click');
+        expect(event!.event_name).toBe('social_click');
+        expect(event!.event_category).toBe(elementTitle);
+        expect(event!.event_detail).toBe(data.eventDetail);
       });
     }
   });
@@ -78,10 +78,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.clickAndCapture(element, 'navigation_click', data.eventName);
 
         expect(event).not.toBeNull();
-        expect(event.event).toBe('navigation_click');
-        expect(event.event_name).toBe(data.eventName);
-        expect(event.event_category).toBe(elementText);
-        expect(event.event_detail).toBe(elementLabel);
+        expect(event!.event).toBe('navigation_click');
+        expect(event!.event_name).toBe(data.eventName);
+        expect(event!.event_category).toBe(elementText);
+        expect(event!.event_detail).toBe(elementLabel);
       });
     }
   });
@@ -101,10 +101,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.clickAndCapture(element, data.event, data.eventName);
 
         expect(event).not.toBeNull();
-        expect(event.event).toBe(data.event);
-        expect(event.event_name).toBe(data.eventName);
-        expect(event.event_category).toBe(data.category);
-        expect(event.event_detail).toBe(data.detail);
+        expect(event!.event).toBe(data.event);
+        expect(event!.event_name).toBe(data.eventName);
+        expect(event!.event_category).toBe(data.category);
+        expect(event!.event_detail).toBe(data.detail);
       });
     }
   });
@@ -124,10 +124,10 @@ test.describe('Analytics Events', () => {
       const event = await analyticsPage.clickAndCapture(element, 'expand_contract', 'expand_contract');
 
       expect(event).not.toBeNull();
-      expect(event.event).toBe('expand_contract');
-      expect(event.event_name).toBe('expand_contract');
-      expect(event.event_category).toBe('faq');
-      expect(event.event_detail).toBe(elementText);
+      expect(event!.event).toBe('expand_contract');
+      expect(event!.event_name).toBe('expand_contract');
+      expect(event!.event_category).toBe('faq');
+      expect(event!.event_detail).toBe(elementText);
     });
 
     test('FAQ Contract', async ({ page }) => {
@@ -141,10 +141,10 @@ test.describe('Analytics Events', () => {
       const event = await analyticsPage.clickAndCapture(element, 'expand_contract', 'expand_contract');
 
       expect(event).not.toBeNull();
-      expect(event.event).toBe('expand_contract');
-      expect(event.event_name).toBe('expand_contract');
-      expect(event.event_category).toBe('faq');
-      expect(event.event_detail).toBe(elementText);
+      expect(event!.event).toBe('expand_contract');
+      expect(event!.event_name).toBe('expand_contract');
+      expect(event!.event_category).toBe('faq');
+      expect(event!.event_detail).toBe(elementText);
     });
   });
 
@@ -165,10 +165,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.clickAndCapture(element, 'navigation_click', data.eventName);
 
         expect(event).not.toBeNull();
-        expect(event.event).toBe('navigation_click');
-        expect(event.event_name).toBe(data.eventName);
-        expect(event.event_category).toBe(elementText);
-        expect(event.event_detail).toBe(data.detail);
+        expect(event!.event).toBe('navigation_click');
+        expect(event!.event_name).toBe(data.eventName);
+        expect(event!.event_category).toBe(elementText);
+        expect(event!.event_detail).toBe(data.detail);
       });
     }
   });
@@ -191,10 +191,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.clickAndCapture(element, 'navigation_click', data.eventName);
 
         expect(event).not.toBeNull();
-        expect(event.event).toBe('navigation_click');
-        expect(event.event_name).toBe(data.eventName);
-        expect(event.event_category).toBe(elementText);
-        expect(event.event_detail).toBe(data.detail);
+        expect(event!.event).toBe('navigation_click');
+        expect(event!.event_name).toBe(data.eventName);
+        expect(event!.event_category).toBe(elementText);
+        expect(event!.event_detail).toBe(data.detail);
       });
     }
   });
@@ -216,10 +216,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.clickAndCapture(element, 'button_click', 'button_click_modal');
 
         expect(event).not.toBeNull();
-        expect(event.event).toBe('button_click');
-        expect(event.event_name).toBe('button_click_modal');
-        expect(event.event_category).toBe(elementText);
-        expect(event.event_detail).toBe(data.detail);
+        expect(event!.event).toBe('button_click');
+        expect(event!.event_name).toBe('button_click_modal');
+        expect(event!.event_category).toBe(elementText);
+        expect(event!.event_detail).toBe(data.detail);
       });
     }
   });
@@ -242,10 +242,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.hoverAndCapture(element, 'navigation_hover', 'navigation_hover');
 
         expect(event).not.toBeNull();
-        expect(event.event).toBe('navigation_hover');
-        expect(event.event_name).toBe('navigation_hover');
-        expect(event.event_category).toBe(elementText);
-        expect(event.event_detail).toBe(data.detail);
+        expect(event!.event).toBe('navigation_hover');
+        expect(event!.event_name).toBe('navigation_hover');
+        expect(event!.event_category).toBe(elementText);
+        expect(event!.event_detail).toBe(data.detail);
       });
     }
 
@@ -263,10 +263,10 @@ test.describe('Analytics Events', () => {
         const event = await analyticsPage.hoverAndCapture(element, 'navigation_hover', 'navigation_hover');
 
         expect(event).not.toBeNull();
-        expect(event.event).toBe('navigation_hover');
-        expect(event.event_name).toBe('navigation_hover');
-        expect(event.event_category).toBe(elementText);
-        expect(event.event_detail).toBe(data.detail);
+        expect(event!.event).toBe('navigation_hover');
+        expect(event!.event_name).toBe('navigation_hover');
+        expect(event!.event_category).toBe(elementText);
+        expect(event!.event_detail).toBe(data.detail);
       });
     }
 
@@ -280,10 +280,10 @@ test.describe('Analytics Events', () => {
       const event = await analyticsPage.hoverAndCapture(element, 'hover_event', 'bento_hover');
 
       expect(event).not.toBeNull();
-      expect(event.event).toBe('hover_event');
-      expect(event.event_name).toBe('bento_hover');
-      expect(event.event_category).toBe(elementText);
-      expect(event.event_detail).toBe('');
+      expect(event!.event).toBe('hover_event');
+      expect(event!.event_name).toBe('bento_hover');
+      expect(event!.event_category).toBe(elementText);
+      expect(event!.event_detail).toBe('');
     });
   });
 });
