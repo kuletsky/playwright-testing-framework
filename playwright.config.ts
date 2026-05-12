@@ -1,7 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { config } from './config/env';
 
 export default defineConfig({
   testDir: './tests',
@@ -16,17 +14,17 @@ export default defineConfig({
 
   reporter: [
     ['html'],
-    ['@flakiness/playwright',  { flakinessProject: 'emp/emp' }]
+    ['@flakiness/playwright', { flakinessProject: 'emp/emp' }]
   ],
   use: {
-    baseURL: process.env.BASE_URL,
+    baseURL: config.baseURL,
     actionTimeout: 45 * 1000,
     navigationTimeout: 60 * 1000,
 
     // HTTP credentials
     httpCredentials: {
-      username: process.env.AUTH_USER || '',
-      password: process.env.AUTH_PASS || '',
+      username: config.auth.authUser,
+      password: config.auth.authPass,
     },
 
     trace: 'on-first-retry',
