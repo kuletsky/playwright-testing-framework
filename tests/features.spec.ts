@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 
-test('Verify Page anchor functionality', async ({ page }) => {
+test('Verify Page anchor functionality @smoke', async ({ page }) => {
     await page.goto('/plan-sponsors/what-we-offer/nonqualified-plans');
     await page.locator('[aria-label="Contact Empower"]').first().click();
 
