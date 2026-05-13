@@ -1,4 +1,4 @@
-name: Marketing Params - DEV
+name: DEV - Smoke run
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  marketing-params-dev:
+  dev-smoke-run:
     runs-on: ubuntu-latest
 
     env:
