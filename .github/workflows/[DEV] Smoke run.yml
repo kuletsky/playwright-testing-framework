@@ -44,7 +44,7 @@ jobs:
           sed -i "s/buildName: .*/buildName: \"[DEV] Smoke - run ${{ github.run_number }}\"/" browserstack.yml
 
       - name: Run Playwright tests on BrowserStack
-        run: npx browserstack-node-sdk playwright test marketing-params.spec.ts --grep @smoke
+        run: npx browserstack-node-sdk playwright test --grep @smoke
 
       - name: Upload artifacts on failure
         if: failure()
