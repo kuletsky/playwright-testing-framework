@@ -11,8 +11,7 @@ test.beforeEach(async ({ page }) => {
     await suppressCookieBanner(page);
 });
 
-// test.describe('Login, Registration tests', () => {
-test.describe('Individuals Login-v1 functionality', () => {
+test.describe('Individuals Login-v1 functionality @smoke', () => {
     test('Login Retirement account', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
@@ -91,7 +90,7 @@ test.describe('Individuals Login-v1 functionality', () => {
     });
 });
 
-test.describe('Individuals Open an account functionality', () => {
+test.describe('Individuals Open an account functionality @smoke', () => {
     test('Go to retirement account', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
         await individualsPage.gotoIndividualsPage();
@@ -201,7 +200,7 @@ test.describe('Individuals Open an account functionality', () => {
 
 });
 
-test.describe('Plan Sponsonsors Login functionality', async () => {
+test.describe('Plan Sponsonsors Login functionality @smoke', async () => {
     test('Login Retirement plan sponsors', async ({ page }) => {
         const planSponsors = new PlanSponsorsPage(page);
         await planSponsors.gotoPlanSponsorsPage();
@@ -217,7 +216,7 @@ test.describe('Plan Sponsonsors Login functionality', async () => {
     });
 });
 
-test.describe('Financial Professionals Login functionality', () => {
+test.describe('Financial Professionals Login functionality @smoke', () => {
     test('Login Finansial Professionals', async ({ page }) => {
         const finProPage = new FinancialProfessionalsPage(page);
         await finProPage.gotoFinProfPage();
