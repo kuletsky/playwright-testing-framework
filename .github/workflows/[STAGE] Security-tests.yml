@@ -1,21 +1,21 @@
-name: Analytics and Params tests
+name: STAGE Security tests
 
 on:
   workflow_dispatch:
   schedule:
 
-    # 8:00 PM America/New_York is usually 00:00 UTC (during Standard Time).
-    - cron: "0 0 * * *" 
+    # 01:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
+    - cron: "0 4 * * *"  
 
 
 jobs:
-  analytics-and-params:
+  stage-security:
     runs-on: ubuntu-latest
-
+    
     permissions:
       contents: read
       id-token: write
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,15 +36,14 @@ jobs:
 
       - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" analytics-and-params.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" security-tests.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
       - name: Run Playwright tests on BrowserStack
-        run: > 
-          npx browserstack-node-sdk playwright test 
-          tests/analytics-events.spec.ts
-          tests/marketing-params.spec.ts
+        run: >
+          npx browserstack-node-sdk playwright test
+          tests/secutity-tests.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()

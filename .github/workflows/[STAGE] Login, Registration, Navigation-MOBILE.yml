@@ -1,17 +1,17 @@
-name: Security tests
+name: STAGE MOBILE Login, Registration, Navigation tests
 
 on:
   workflow_dispatch:
   schedule:
 
-    # 01:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 4 * * *"  
+    # 1:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
+    - cron: "0 6 * * *"  
 
 
 jobs:
-  sequrity:
+  stage-navigation-functionality-MOBILE:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: read
       id-token: write
@@ -36,14 +36,19 @@ jobs:
 
       - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" security-tests.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" login-registration-navigation-MOBILE.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
       - name: Run Playwright tests on BrowserStack
         run: >
           npx browserstack-node-sdk playwright test
-          tests/secutity-tests.spec.ts
+          tests/login-registration.spec.ts
+          tests/footer.spec.ts
+          tests/MOBILE-header-individuals.spec.ts
+          tests/MOBILE-header-plan-sponsors.spec.ts
+          tests/MOBILE-header-financial-professionals.spec.ts
+
 
       - name: Upload artifacts on failure
         if: failure()

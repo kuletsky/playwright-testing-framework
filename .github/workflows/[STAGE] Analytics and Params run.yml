@@ -1,15 +1,15 @@
-name: TABLET Login, Registration, Navigation tests
+name: STAGE Analytics and Params run
 
 on:
   workflow_dispatch:
   schedule:
 
-    # 1:00 AM America/New_York is usually 01:00 UTC (during Standard Time).
-    - cron: "0 8 * * *"  
+    # 8:00 PM America/New_York is usually 00:00 UTC (during Standard Time).
+    - cron: "0 0 * * *" 
 
 
 jobs:
-  navigation-functionality-TABLET:
+  stage-analytics-and-params-run:
     runs-on: ubuntu-latest
 
     permissions:
@@ -36,19 +36,15 @@ jobs:
 
       - name: Create BrowserStack config
         run: |
-          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" login-registration-navigation-TABLET.yml > browserstack.yml
+          sed "s/\${BROWSERSTACK_USERNAME}/${{ secrets.BROWSERSTACK_USERNAME }}/g" analytics-and-params.yml > browserstack.yml
           sed -i "s/\${BROWSERSTACK_ACCESS_KEY}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g" browserstack.yml
           sed -i "s/\${BUILD_NUMBER}/${{ github.run_number }}/g" browserstack.yml
 
       - name: Run Playwright tests on BrowserStack
-        run: >
-          npx browserstack-node-sdk playwright test
-          tests/features.spec.ts          
-          tests/login-registration.spec.ts
-          tests/footer.spec.ts
-          tests/MOBILE-header-individuals.spec.ts
-          tests/MOBILE-header-plan-sponsors.spec.ts
-          tests/MOBILE-header-financial-professionals.spec.ts
+        run: > 
+          npx browserstack-node-sdk playwright test 
+          tests/analytics-events.spec.ts
+          tests/marketing-params.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()
