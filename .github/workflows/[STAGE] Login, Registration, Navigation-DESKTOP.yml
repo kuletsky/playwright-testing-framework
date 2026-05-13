@@ -1,4 +1,4 @@
-name: STAGE DESKTOP Login, Registration, Navigation tests
+name: STAGE - DESKTOP Login, Registration, Navigation tests
 
 on:
   workflow_dispatch:

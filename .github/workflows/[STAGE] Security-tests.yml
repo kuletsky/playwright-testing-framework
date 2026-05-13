@@ -1,4 +1,4 @@
-name: STAGE Security tests
+name: STAGE - Security tests
 
 on:
   workflow_dispatch:

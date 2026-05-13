@@ -1,4 +1,4 @@
-name: STAGE TABLET Login, Registration, Navigation tests
+name: STAGE - TABLET Login, Registration, Navigation tests
 
 on:
   workflow_dispatch:

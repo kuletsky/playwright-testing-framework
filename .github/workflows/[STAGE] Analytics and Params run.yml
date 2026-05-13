@@ -1,4 +1,4 @@
-name: STAGE Analytics and Params run
+name: STAGE - Analytics and Params run
 
 on:
   workflow_dispatch:
