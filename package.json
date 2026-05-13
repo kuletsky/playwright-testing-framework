@@ -11,7 +11,7 @@
     "@flakiness/playwright": "^1.6.0",
     "@percy/cli": "^1.31.8",
     "@percy/playwright": "^1.0.10",
-    "@playwright/test": "latest",
+    "@playwright/test": "1.49.1",
     "@types/node": "^25.2.0",
     "browserstack-node-sdk": "^1.52.1",
     "dotenv": "^17.2.3"
