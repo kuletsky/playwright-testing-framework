@@ -1,18 +1,13 @@
-import { test, expect } from '@playwright/test';
-import { PlanSponsorsPage } from '../pages/PlanSponsors';
-
+import { test, expect } from '../fixtures';
 
 test.describe('Menu visibility', () => {
+    test('Verify Primary menu is displayed', async ({ planSponsorsPage }) => {
+        const links = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+            .then(p => p.getPrimaryMenuLinks());
 
-    test('Verify Primary menu is displayed', async ({ page }) => {
-        const plansponsorsPage = new PlanSponsorsPage(page);
-        await plansponsorsPage.gotoPlanSponsorsPage();
-
-        const links = page.locator("button[data-once*='desktopPrimaryNav']");
         await expect(links).toHaveCount(5);
-
-        const linksText = (await links.allTextContents()).map(t => t.trim());
-        expect(linksText).toEqual([
+        await expect(links).toHaveText([
             "Markets",
             "Solutions",
             "Experience",
@@ -21,16 +16,14 @@ test.describe('Menu visibility', () => {
         ]);
     });
 
-    test('Verify Markets menu is displayed', async ({ page }) => {
-        const plansponsorsPage = new PlanSponsorsPage(page);
-        await plansponsorsPage.gotoPlanSponsorsPage();
-        await plansponsorsPage.openMarketsMenu();
+    test('Verify Markets menu is displayed', async ({ planSponsorsPage }) => {
+        const { links, pane } = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+            .then(p => p.openMarketsMenu())
+            .then(p => p.getMarketsMenuLinks());
 
-        const links = page.locator("#markets-dropdown li.relative > a, #markets-dropdown li.relative > button");
         await expect(links).toHaveCount(6);
-
-        const linksText = (await links.allTextContents()).map(t => t.trim());
-        expect(linksText).toEqual([
+        await expect(links).toHaveText([
             "Small and growing businesses",
             "Large and mega corporations",
             "Multiple employer plans",
@@ -38,21 +31,17 @@ test.describe('Menu visibility', () => {
             "Not-for-profit​",
             "Taft-Hartley​"
         ]);
-
-        const dropdown = page.locator("#markets-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText("Markets", { exact: true })).toBeVisible({ timeout: 60_000 });
+        await expect(pane.getByText("Markets", { exact: true })).toBeVisible();
     });
 
-    test('Verify Solutions menu is displayed', async ({ page }) => {
-        const plansponsorsPage = new PlanSponsorsPage(page);
-        await plansponsorsPage.gotoPlanSponsorsPage();
-        await plansponsorsPage.openSolutionsMenu();
+    test('Verify Solutions menu is displayed', async ({ planSponsorsPage }) => {
+        const { links, pane } = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+            .then(p => p.openSolutionsMenu())
+            .then(p => p.getSolutionsMenuLinks());
 
-        const links = page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
         await expect(links).toHaveCount(9);
-
-        const linksText = (await links.allTextContents()).map(t => t.trim());
-        expect(linksText).toEqual([
+        await expect(links).toHaveText([
             "Integrated workplace solutions",
             "Advisory services​",
             "Retirement solutions​",
@@ -63,65 +52,53 @@ test.describe('Menu visibility', () => {
             "Stock plan services​",
             "Consumer-directed health",
         ]);
-
-        const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText("Solutions", { exact: true })).toBeVisible();
+        await expect(pane.getByText("Solutions", { exact: true })).toBeVisible();
     });
 
-    test('Verify Experience menu is displayed', async ({ page }) => {
-        const plansponsorsPage = new PlanSponsorsPage(page);
-        await plansponsorsPage.gotoPlanSponsorsPage();
-        await plansponsorsPage.openExperienceMenu();
+    test('Verify Experience menu is displayed', async ({ planSponsorsPage }) => {
+        const { links, pane } = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+            .then(p => p.openExperienceMenu())
+            .then(p => p.getExperienceMenuLinks());
 
-        const links = page.locator("#experience-dropdown li.relative > a, #experience-dropdown li.relative > button");
         await expect(links).toHaveCount(2);
-
-        const linksText = (await links.allTextContents()).map(t => t.trim());
-        expect(linksText).toEqual([
+        await expect(links).toHaveText([
             "Plan servicing",
             "Participant engagement",
         ]);
 
-        const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
-        await expect(dropdown.getByText("Experience", { exact: true })).toBeVisible();
+        await expect(pane.getByText("Experience", { exact: true })).toBeVisible();
     });
 
-    test('Verify Learn menu is displayed', async ({ page }) => {
-        const plansponsorsPage = new PlanSponsorsPage(page);
-        await plansponsorsPage.gotoPlanSponsorsPage();
-        await plansponsorsPage.openLearnMenu();
+    test('Verify Learn menu is displayed', async ({ planSponsorsPage }) => {
+        const { links, pane } = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+            .then(p => p.openLearnMenu())
+            .then(p => p.getLearnMenuLinks());
 
-        const links = page.locator("#learn-dropdown li.relative > a, #learn-dropdown li.relative > button");
         await expect(links).toHaveCount(2);
-
-        const linksText = (await links.allTextContents()).map(t => t.trim());
-        expect(linksText).toEqual([
+        await expect(links).toHaveText([
             "Investment Insights",
             "The Currency",
         ]);
 
-        const dropdown = page.locator("#learn-dropdown .nav-dropdown-right");
-        await expect(dropdown.locator('p:has-text("Learn")')).toBeVisible();
+        await expect(pane.getByText("Learn", { exact: true })).toBeVisible();
     });
 
-    test('Verify Why Empower menu is displayed', async ({ page }) => {
-        const plansponsorsPage = new PlanSponsorsPage(page);
-        await plansponsorsPage.gotoPlanSponsorsPage();
-        await plansponsorsPage.openWhyEmpowerMenu();
+    test('Verify Why Empower menu is displayed', async ({ planSponsorsPage }) => {
+        const { links, pane } = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+            .then(p => p.openWhyEmpowerMenu())
+            .then(p => p.getWhyEmpowerMenuLinks());
 
-        const links = page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button");
         await expect(links).toHaveCount(4);
-
-        const linksText = (await links.allTextContents()).map(t => t.trim());
-        expect(linksText).toEqual([
+        await expect(links).toHaveText([
             "About us",
             "Cybersecurity",
             "Press Center",
             "Contact us",
         ]);
-
-        const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
-        await expect(dropdown.locator('p:has-text("Why Empower")')).toBeVisible();
+        await expect(pane.getByText("Why Empower", { exact: true })).toBeVisible();
     });
 });
 
@@ -136,28 +113,26 @@ test.describe('Markets menu functionality', () => {
         { name: 'Taft-Hartley​', menuHeading: "Taft-Hartley", url: '/plan-sponsors/what-we-offer/taft-hartley-plans', pageHeading: "Backing members. Securing futures." },
     ]
     for (const link of marketsLinks) {
-        test(`Click Markets - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openMarketsMenu();
-            await plansponsorsPage.clickMarketsItem(link.name);
-
+        test(`Click Markets - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            await planSponsorsPage
+                .gotoPlanSponsorsPage()
+                .then(p => p.openMarketsMenu())
+                .then(p => p.clickMarketsItem(link.name));
+                
             if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
             }
         });
 
-        test(`Hover Markets - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openMarketsMenu();
+        test(`Hover Markets - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            const pane = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+            .then(p => p.openMarketsMenu())
+            .then(p => p.hoverMarketsItem(link.name))
+            .then(p => p.getDropdownRightPane("markets"));
 
-            await expect(page.locator('#markets-dropdown')).toBeVisible();
-            await plansponsorsPage.hoverMarketsItem(link.name);
-
-            const dropdown = page.locator("#markets-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible({ timeout: 60_000 });
+            await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
         });
     }
 });
@@ -176,11 +151,11 @@ test.describe('Solutions menu functionality', () => {
         { name: 'Consumer-directed health', menuHeading: 'Consumer-directed health', url: '/plan-sponsors/what-we-offer/consumer-directed-health', pageHeading: "Integrated health and wealth" },
     ]
     for (const link of solutionsLinks) {
-        test(`Click Solutions - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openSolutionsMenu();
-            await plansponsorsPage.clickSolutionsItem(link.name);
+        test(`Click Solutions - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            await planSponsorsPage
+                .gotoPlanSponsorsPage()
+                .then(p => p.openSolutionsMenu())
+                .then(p => p.clickSolutionsItem(link.name));
 
             if (link.url) {
                 await expect(page).toHaveURL(link.url);
@@ -188,16 +163,14 @@ test.describe('Solutions menu functionality', () => {
             }
         });
 
-        test(`Hover Solutions - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openSolutionsMenu();
+        test(`Hover Solutions - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            const pane = await planSponsorsPage
+                .gotoPlanSponsorsPage()
+                .then(p => p.openSolutionsMenu())
+                .then(p => p.hoverSolutionsItem(link.name))
+                .then(p => p.getDropdownRightPane("solutions"));
 
-            await expect(page.locator('#solutions-dropdown')).toBeVisible();
-            await plansponsorsPage.hoverSolutionsItem(link.name);
-
-            const dropdown = page.locator("#solutions-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible({ timeout: 60_000 });
+            await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
         });
     }
 });
@@ -209,28 +182,14 @@ test.describe('Experience menu functionality', () => {
         { name: 'Participant engagement', menuHeading: 'Participant engagement' },
     ]
     for (const link of experienceLinks) {
-        // test(`Click Experience - ${link.name}`, async ({ page }) => {
-        //     const plansponsorsPage = new PlanSponsorsPage(page);
-        //     await plansponsorsPage.gotoPlanSponsorsPage();
-        //     await plansponsorsPage.openExperienceMenu();
-        //     await plansponsorsPage.clickExperienceItem(link.name);
+        test(`Hover Experience - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            const pane = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+                .then(p => p.openExperienceMenu())
+                .then(p => p.hoverExperienceItem(link.name))
+                .then(p => p.getDropdownRightPane("experience"));
 
-        //     if (link.url) {
-        //         await expect(page).toHaveURL(link.url);
-        //         await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
-        //     }
-        // });
-
-        test(`Hover Experience - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openExperienceMenu();
-
-            await expect(page.locator('#experience-dropdown')).toBeVisible();
-            await plansponsorsPage.hoverExperienceItem(link.name);
-
-            const dropdown = page.locator("#experience-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true })).toBeVisible({ timeout: 60_000 });
+            await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
         });
     }
 });
@@ -243,28 +202,26 @@ test.describe('Learn menu functionality', () => {
         { name: 'The Currency', menuHeading: "Power up with the latest money news for life, work and play.", url: '/the-currency', pageHeading: "Money" },
     ]
     for (const link of learnLinks) {
-        test(`Click LEARN - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openLearnMenu();
-            await plansponsorsPage.clickLearnItem(link.name);
+        test(`Click LEARN - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            await planSponsorsPage
+                .gotoPlanSponsorsPage()
+                .then(p => p.openLearnMenu())
+                .then(p => p.clickLearnItem(link.name));
 
-            if (link.url) {
+             if (link.url) {
                 await expect(page).toHaveURL(link.url);
-                await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
+                await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
             }
         });
 
-        test(`Hover LEARN - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openLearnMenu();
+        test(`Hover LEARN - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            const pane = await planSponsorsPage             
+                .gotoPlanSponsorsPage()
+                .then(p => p.openLearnMenu())
+                .then(p => p.hoverLearnItem(link.name))
+                .then(p => p.getDropdownRightPane("learn"));
 
-            await expect(page.locator('#learn-dropdown')).toBeVisible();
-            await plansponsorsPage.hoverLearnItem(link.name);
-
-            const dropdown = page.locator("#learn-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
+            await expect(pane.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
         });
     }
 });
@@ -278,28 +235,26 @@ test.describe('Why Empower menu functionality', () => {
         { name: 'Contact us', menuHeading: "Contact us", url: '/plan-sponsors/contact', pageHeading: "We’re happy to help with whatever you need." },
     ]
     for (const link of whyEmpowerLinks) {
-        test(`Click WHY EMPOWER - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openWhyEmpowerMenu();
-            await plansponsorsPage.clickWhyEmpowerItem(link.name);
+        test(`Click WHY EMPOWER - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            await planSponsorsPage
+                .gotoPlanSponsorsPage()
+                .then(p => p.openWhyEmpowerMenu())
+                .then(p => p.clickWhyEmpowerItem(link.name));
 
-            if (link.url) {
+             if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
             }
         });
 
-        test(`Hover WHY EMPOWER - ${link.name}`, async ({ page }) => {
-            const plansponsorsPage = new PlanSponsorsPage(page);
-            await plansponsorsPage.gotoPlanSponsorsPage();
-            await plansponsorsPage.openWhyEmpowerMenu();
+        test(`Hover WHY EMPOWER - ${link.name}`, async ({ planSponsorsPage, page }) => {
+            const pane = await planSponsorsPage
+            .gotoPlanSponsorsPage()
+            .then(p => p.openWhyEmpowerMenu())
+            .then(p => p.hoverWhyEmpowerItem(link.name))
+            .then(p => p.getDropdownRightPane("why-empower"));
 
-            await expect(page.locator('#why-empower-dropdown')).toBeVisible();
-            await plansponsorsPage.hoverWhyEmpowerItem(link.name);
-
-            const dropdown = page.locator("#why-empower-dropdown .nav-dropdown-right");
-            await expect(dropdown.getByText(link.menuHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
+            await expect(pane.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
         });
     }
 });

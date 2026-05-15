@@ -14,7 +14,7 @@ export class BasePage {
 
     async goto(path: string) {
         try {
-            await this.page.goto(path, { timeout: 45_000 });
+            await this.page.goto(path, { timeout: 20_000 });
         } catch (error) {
             console.log("Page took too long, stopping navigation manually.");
             await this.page.evaluate(() => window.stop());
@@ -25,6 +25,13 @@ export class BasePage {
         await this.continueButton.click();
     }
 
+    getPrimaryMenuLinks(): Locator {
+        return this.page.locator("button[data-once*='desktopPrimaryNav']");
+    }
+
+    getDropdownRightPane(context: string): Locator {
+        return this.page.locator(`#${context}-dropdown .nav-dropdown-right`);
+    }
 
     //MOBILE LOCATORS AND METHODS
 

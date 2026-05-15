@@ -1,11 +1,13 @@
 import { Page, Locator } from '@playwright/test';
 import { captureClickEvent, captureHoverEvent } from '../utils/dataLayer';
+import { BasePage } from './BasePage';
 
-export class AnalyticsPage {
-  private page: Page;
+export class AnalyticsPage extends BasePage {
+  // private page: Page;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
+    // this.page = page;
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -14,13 +16,13 @@ export class AnalyticsPage {
 
   private locators: Record<string, string> = {
     // Buttons
-    primaryButton: "[data-once='click-primary-button empulsify-button-ripple']:nth-of-type(1) [class]",
-    primaryButton_PC: "[data-once='click-primary-button empulsify-button-ripple']:nth-of-type(2) [class]",
-    brandedGoldButton: '.layout__region.layout__region--second .branded-btn',
-    secondaryButton: "[data-once='click-secondary-light-button empulsify-button-ripple']:nth-of-type(1) [class]",
-    secondaryButton_PC: ".btn.btn--large.btn--light.inline-flex.items-center.justify-center.private-client.secondary-btn.shrink-0 > .z-10",
-    secondaryBentoButton: "[data-once='click-bento-secondary-button click-secondary-light-button empulsify-button-ripple']",
-    PrimaryBentoButton: "[data-once='click-bento-primary-button click-primary-button empulsify-button-ripple']",
+    primaryButton: ".primary_button_blue",
+    // primaryButton_PC: "[data-once='click-primary-button empulsify-button-ripple']:nth-of-type(2) [class]",
+    // brandedGoldButton: '.layout__region.layout__region--second .branded-btn',
+    secondaryButton: ".secondary_white_button",
+    // secondaryButton_PC: ".btn.btn--large.btn--light.inline-flex.items-center.justify-center.private-client.secondary-btn.shrink-0 > .z-10",
+    // secondaryBentoButton: "[data-once='click-bento-secondary-button click-secondary-light-button empulsify-button-ripple']",
+    // PrimaryBentoButton: "[data-once='click-bento-primary-button click-primary-button empulsify-button-ripple']",
 
     // Tiles
     tile_1: "[data-history-node-id='4421'] .card__heading",
@@ -100,9 +102,10 @@ export class AnalyticsPage {
   // NAVIGATION
   // ═══════════════════════════════════════════════════════════════════════════
 
-  async goto() {
-    await this.page.goto('/empulsify/tp-analytics-events-empulsify');
+  async gotoEventsPage() {
+    await super.goto('/empulsify/tp-analytic-events');
     await this.page.waitForLoadState('domcontentloaded');
+    return this;
   }
 
   // ═══════════════════════════════════════════════════════════════════════════

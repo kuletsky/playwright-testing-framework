@@ -43,7 +43,7 @@ jobs:
       - name: Run Playwright tests on BrowserStack
         run: >
           npx browserstack-node-sdk playwright test
-          tests/secutity-tests.spec.ts
+          tests/security-tests.spec.ts
 
       - name: Upload artifacts on failure
         if: failure()

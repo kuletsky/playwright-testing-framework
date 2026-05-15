@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -11,10 +11,9 @@
     "rootDir": ".",
     "resolveJsonModule": true,
     "declaration": true,
-    "baseUrl": ".",
     "paths": {
-      "@pages/*": ["pages/*"],
-      "@utils/*": ["utils/*"]
+      "@pages/*": ["./pages/*"],
+      "@utils/*": ["./utils/*"]
     }
   },
   "include": ["**/*.ts"],

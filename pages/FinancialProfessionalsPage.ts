@@ -31,7 +31,8 @@ export class FinancialProfessionalsPage extends BasePage {
     }
 
     async gotoFinProfPage() {
-        await this.page.goto('/financial-professionals');
+        await super.goto('/financial-professionals');
+        return this;
     }
 
     async clickLoginButton() {
@@ -56,22 +57,27 @@ export class FinancialProfessionalsPage extends BasePage {
 
     async openSolutionsMenu() {
         await this.menuSolutions.click();
+        return this;
     }
 
     async openExperienceMenu() {
         await this.menuExperience.click();
+        return this;
     }
 
     async openResourcesMenu() {
         await this.menuResources.click();
+        return this;
     }
 
     async openInsightsMenu() {
         await this.menuInsights.click();
+        return this;
     }
 
     async openWhyEmpowerMenu() {
         await this.menuWhyEmpower.click();
+        return this;
     }
 
     async clickSolutionsItem(linkText: string) {
@@ -82,6 +88,7 @@ export class FinancialProfessionalsPage extends BasePage {
     async hoverSolutionsItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickExperienceItem(linkText: string) {
@@ -92,6 +99,7 @@ export class FinancialProfessionalsPage extends BasePage {
     async hoverExperienceItem(linkText: string) {
         const openMenu = this.page.locator("#experience-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickResourcesItem(linkText: string) {
@@ -102,6 +110,7 @@ export class FinancialProfessionalsPage extends BasePage {
     async hoverResourcesItem(linkText: string) {
         const openMenu = this.page.locator("#resources-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickInsightsItem(linkText: string) {
@@ -112,6 +121,7 @@ export class FinancialProfessionalsPage extends BasePage {
     async hoverInsightsItem(linkText: string) {
         const openMenu = this.page.locator("#insights-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickWhyEmpowerItem(linkText: string) {
@@ -122,6 +132,41 @@ export class FinancialProfessionalsPage extends BasePage {
     async hoverWhyEmpowerItem(linkText: string) {
         const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
+    getSolutionsMenuLinks() {
+        return {
+            links: this.page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button"),
+            pane: this.page.locator("#solutions-dropdown .nav-dropdown-right")
+        }
+    }
+
+    getExperienceMenuLinks() {
+        return {
+            links: this.page.locator("#experience-dropdown li.relative > a, #experience-dropdown li.relative > button"),
+            pane: this.page.locator("#experience-dropdown .nav-dropdown-right")
+        }
+    }
+
+    getResourcesMenuLinks() {
+        return {
+            links: this.page.locator("#resources-dropdown li.relative > a, #resources-dropdown li.relative > button"),
+            pane: this.page.locator("#resources-dropdown .nav-dropdown-right")
+        }
+    }
+
+    getInsightsMenuLinks() {
+        return {
+            links: this.page.locator("#insights-dropdown li.relative > a, #insights-dropdown li.relative > button"),
+            pane: this.page.locator("#insights-dropdown .nav-dropdown-right")
+        }
+    }
+
+    getWhyEmpowerMenuLinks() {
+        return {
+            links: this.page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button"),
+            pane: this.page.locator("#why-empower-dropdown .nav-dropdown-right")
+        }
+    }
 }

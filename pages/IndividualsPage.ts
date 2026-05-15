@@ -4,12 +4,14 @@ import { BasePage } from "./BasePage";
 
 export class IndividualsPage extends BasePage {
 
-    private loginButtonLocator: Locator
-    private openAccountButton: Locator
-    private menuProductServices: Locator
-    private menuTools: Locator
-    private menuLearn: Locator
-    private menuWhyEmpower: Locator
+    private readonly loginButtonLocator: Locator
+    private readonly openAccountButton: Locator
+    private readonly menuProductServices: Locator
+    private readonly menuTools: Locator
+    private readonly menuLearn: Locator
+    private readonly menuWhyEmpower: Locator
+    private readonly productServicesLinks: Locator
+    private readonly dropdownRightPane: Locator
     readonly header: Locator;
     readonly footer: Locator;
     // private hamburgerMenu: Locator;
@@ -26,10 +28,49 @@ export class IndividualsPage extends BasePage {
         this.menuWhyEmpower = this.page.locator("[aria-label='Why Empower']");
         this.header = this.page.locator("#main-header-nav");
         this.footer = this.page.locator('footer');
-        // this.hamburgerMenu = this.page.locator("#hamburger-menu");
+        this.productServicesLinks = this.page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
+        this.dropdownRightPane = this.page.locator("#solutions-dropdown .nav-dropdown-right");
     }
 
+    getPSMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.productServicesLinks,
+            pane: this.dropdownRightPane
+        };
+    }
 
+    getToolsMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.page.locator("#tools-dropdown li.relative > a, #tools-dropdown li.relative > button"),
+            pane: this.page.locator("#tools-dropdown .nav-dropdown-right")
+        };
+    }
+
+    getLearnMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.page.locator("#learn-dropdown li.relative > a, #learn-dropdown li.relative > button"),
+            pane: this.page.locator("#learn-dropdown .nav-dropdown-right")
+        };
+    }
+
+    getWhyEmpowerMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button"),
+            pane: this.page.locator("#why-empower-dropdown .nav-dropdown-right")
+        };
+    }
+
+    getContextualLinks(): Locator {
+        return this.page.locator("li a[data-once='nav-main-contextual-link-click']");
+    }
+
+    getProductAndServicesMenuLinks(): Locator {
+        return this.page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button");
+    }
+
+    // getDropdownRightPane(context: string): Locator {
+    //     return this.page.locator(`#${context}-dropdown .nav-dropdown-right`);
+    // }
 
     async clickLoginButton() {
         await this.loginButtonLocator.click();
@@ -37,27 +78,34 @@ export class IndividualsPage extends BasePage {
 
     async clickOpenAccountButton() {
         await this.openAccountButton.click();
+        return this;
     }
 
     async clickFooterLink(linkText: string) {
         await this.page.getByRole('link', { name: linkText, exact: true }).click();
+        return this;
     }
 
     async gotoIndividualsPage() {
         await super.goto('/individuals');
+        return this;
     };
 
-    async openProductAndServicesMenu() {
+    async openPSMenu() {
         await this.menuProductServices.click()
+        return this;
     }
     async openToolsMenu() {
         await this.menuTools.click()
+        return this;
     }
     async openLearnMenu() {
         await this.menuLearn.click()
+        return this;
     }
     async openWhyEmpowerMenu() {
         await this.menuWhyEmpower.click()
+        return this;
     }
 
     async clickPSItem(linkText: string) {
@@ -68,6 +116,7 @@ export class IndividualsPage extends BasePage {
     async hoverPSItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickToolsItem(linkText: string) {
@@ -77,7 +126,8 @@ export class IndividualsPage extends BasePage {
 
     async hoverToolsItem(linkText: string) {
         const openMenu = this.page.locator("#tools-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
+        return this;
     }
 
     async clickLearnItem(linkText: string) {
@@ -88,6 +138,7 @@ export class IndividualsPage extends BasePage {
     async hoverLearnItem(linkText: string) {
         const openMenu = this.page.locator("#learn-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickWhyEmpowerItem(linkText: string) {
@@ -98,6 +149,7 @@ export class IndividualsPage extends BasePage {
     async hoverWhyEmpowerItem(linkText: string) {
         const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async scrollToBottom() {

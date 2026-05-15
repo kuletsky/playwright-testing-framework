@@ -1,10 +1,10 @@
 import { Locator, Page } from "@playwright/test";
+import { BasePage } from "./BasePage";
 
-export class MarketingParamsPage {
-    private page: Page;
+export class MarketingParamsPage extends BasePage {
 
     constructor(page: Page) {
-        this.page = page;
+        super(page);
     }
 
     get getMarketingParamLocator() { return this.page.locator('.js-form__marketing-param'); }
@@ -33,14 +33,11 @@ export class MarketingParamsPage {
         impact_partner: "[aria-label='View form with impact cookie set']",
         referral: "[aria-label='View form with referral cookie set']",
         investment_checkup: "[aria-label='View zero state form without marketing_param custom URL query']",
-
-
-
     };
 
-    async goto() {
-        await this.page.goto('/demo-single-front-door-ctas');
-        // await this.page.waitForLoadState('domcontentloaded');
+    async gotoMarketingParamsPage() {
+        await super.goto('/demo-single-front-door-ctas');
+        return this;
     }
 
     async clickElement(selector: string) {
@@ -63,7 +60,7 @@ export class MarketingParamsPage {
         if (elementName == 'investment_checkup') {
             return this.page.locator('h4 p span span');
         }
-        
+
         return this.page.locator('h4 p span');
 
     }

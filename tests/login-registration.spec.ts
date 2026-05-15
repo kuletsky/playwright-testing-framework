@@ -200,7 +200,7 @@ test.describe('Individuals Open an account functionality @smoke', () => {
 
 });
 
-test.describe('Plan Sponsonsors Login functionality @smoke', async () => {
+test.describe('Plan Sponsonsors Login functionality @smoke', () => {
     test('Login Retirement plan sponsors', async ({ page }) => {
         const planSponsors = new PlanSponsorsPage(page);
         await planSponsors.gotoPlanSponsorsPage();

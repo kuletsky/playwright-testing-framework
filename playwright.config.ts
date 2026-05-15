@@ -9,7 +9,7 @@ export default defineConfig({
 
 
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 3 : 0,
+  retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
 
   reporter: [
@@ -85,3 +85,4 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+

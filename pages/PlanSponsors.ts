@@ -23,13 +23,43 @@ export class PlanSponsorsPage extends BasePage{
     }
 
     async gotoPlanSponsorsPage() {
-        try {
-            await this.page.goto('/plan-sponsors', { timeout: 20_000 });
-        } catch (error) {
-            console.log("Page took too long, stopping navigation manually.");
-            // This stops the 'spinning' in the browser
-            await this.page.evaluate(() => window.stop());
-        }
+        await super.goto('/plan-sponsors');
+        return this;
+    }
+
+    getMarketsMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.page.locator("#markets-dropdown li.relative > a, #markets-dropdown li.relative > button"),
+            pane: this.page.locator("#markets-dropdown .nav-dropdown-right")
+        };
+    }
+
+    getSolutionsMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.page.locator("#solutions-dropdown li.relative > a, #solutions-dropdown li.relative > button"),
+            pane: this.page.locator("#solutions-dropdown .nav-dropdown-right")
+        };
+    }
+
+    getExperienceMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.page.locator("#experience-dropdown li.relative > a, #experience-dropdown li.relative > button"),
+            pane: this.page.locator("#experience-dropdown .nav-dropdown-right")
+        };
+    }
+
+    getLearnMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.page.locator("#learn-dropdown li.relative > a, #learn-dropdown li.relative > button"),
+            pane: this.page.locator("#learn-dropdown .nav-dropdown-right")
+        };
+    }
+
+    getWhyEmpowerMenuLinks(): { links: Locator; pane: Locator } {
+        return {
+            links: this.page.locator("#why-empower-dropdown li.relative > a, #why-empower-dropdown li.relative > button"),
+            pane: this.page.locator("#why-empower-dropdown .nav-dropdown-right")
+        };
     }
 
     async clickLoginButton() {
@@ -38,19 +68,24 @@ export class PlanSponsorsPage extends BasePage{
 
     async openMarketsMenu() {
         await this.menuMarkets.click();
+        return this;
     }
     async openSolutionsMenu() {
         await this.menuSolutions.click();
+        return this;
     }
     async openExperienceMenu() {
         await this.menuExperience.click();
+        return this;
     }
     async openLearnMenu() {
         await this.menuLearn.click();
+        return this;
     }
 
     async openWhyEmpowerMenu() {
         await this.menuWhyEmpower.click();
+        return this;
     }
 
     async clickMarketsItem(linkText: string) {
@@ -61,6 +96,7 @@ export class PlanSponsorsPage extends BasePage{
     async hoverMarketsItem(linkText: string) {
         const openMenu = this.page.locator("#markets-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickSolutionsItem(linkText: string) {
@@ -71,6 +107,7 @@ export class PlanSponsorsPage extends BasePage{
     async hoverSolutionsItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickExperienceItem(linkText: string) {
@@ -81,6 +118,7 @@ export class PlanSponsorsPage extends BasePage{
     async hoverExperienceItem(linkText: string) {
         const openMenu = this.page.locator("#experience-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
     async clickLearnItem(linkText: string) {
@@ -91,6 +129,7 @@ export class PlanSponsorsPage extends BasePage{
     async hoverLearnItem(linkText: string) {
         const openMenu = this.page.locator("#learn-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 
      async clickWhyEmpowerItem(linkText: string) {
@@ -101,5 +140,6 @@ export class PlanSponsorsPage extends BasePage{
     async hoverWhyEmpowerItem(linkText: string) {
         const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
         await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        return this;
     }
 }
