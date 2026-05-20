@@ -1,10 +1,10 @@
-import { test, expect } from '../fixtures';
+import { test, expect } from '@playwright/test';
 import { IndividualsPage } from "../pages/IndividualsPage";
 import { suppressCookieBanner } from '../utils/stabilize';
 
 
 test.beforeEach(async ({ page }) => {
-    // await page.goto('/individuals');
+    await page.goto('/');
     await suppressCookieBanner(page);
 });
 
@@ -22,11 +22,11 @@ test.describe('Footer Legal Menu links', () => {
         { name: 'Empower representative compensation', url: 'rep-comp-disclosure', assert: "Empower Representative Compensation" },
     ]
     for (const link of legalMenuLinks) {
-        test(`Footer menu link - ${link.name}`, async ({ individualsPage, page }) => {
-            await individualsPage
+        test(`Footer menu link - ${link.name}`, async ({ page }) => {
+            await new IndividualsPage(page)
                 .gotoIndividualsPage()
                 .then(p => p.clickFooterLink(link.name));
-                
+
             await expect(page).toHaveURL(new RegExp(`${link.url}(\\?|#|$)`));
             if (link.assert) {
                 await expect(page.getByText(link.assert).first()).toBeVisible();
@@ -48,8 +48,8 @@ test.describe('Footer Navigation links', () => {
         { name: "Plan sponsor", url: "/plan-sponsors", assert: "Trusted leader. Proven innovator." }
     ]
     for (const link of footerLinks) {
-        test(`Footer menu link - ${link.name}`, async ({ individualsPage, page }) => {
-            await individualsPage
+        test(`Footer menu link - ${link.name}`, async ({ page }) => {
+            await new IndividualsPage(page)
                 .gotoIndividualsPage()
                 .then(p => p.clickFooterLink(link.name));
 
@@ -70,12 +70,12 @@ test.describe('Social links functionality', () => {
         { name: "TikTok", url: "tiktok.com/@empowertoday" },
     ]
     for (const link of socialLinks) {
-        test(`Footer menu link - ${link.name}`, async ({ individualsPage, context }) => {
+        test(`Footer menu link - ${link.name}`, async ({ page, context }) => {
+            const individualsPage = new IndividualsPage(page);
             const pagePromise = context.waitForEvent('page');
 
             await individualsPage
-                .gotoIndividualsPage()
-                .then(p => p.clickFooterLink(link.name))
+                .clickFooterLink(link.name)
                 .then(p => p.clickContinueButton());
 
             const newPage = await pagePromise;
