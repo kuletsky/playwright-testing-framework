@@ -15,9 +15,9 @@ export const clickEventsData = [
   { element: 'PrimaryBentoButton',   event: 'button_click', eventName: 'button_click_bento_blue',      eventDetail: '/' },
 
   // // Tiles
-  { element: 'tile_1', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/life/making-progress-money-goals' },
-  { element: 'tile_2', event: 'tile_event', eventName: 'tile_click', eventDetail: '/press-center/empower-achieves-62-billion-organic-retirement-plan-sales-during-first-half-2022' },
-  { element: 'tile_3', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/money/american-retirement-and-investment-planning' },
+  { element: 'tile_1', event: 'tile_event', eventName: 'tile_click', eventDetail: '/press-center/empower-closes-acquisition-prudential-financial-retirement-business' },
+  { element: 'tile_2', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/work/what-to-do-with-your-401k-when-leave-job' },
+  { element: 'tile_3', event: 'tile_event', eventName: 'tile_click', eventDetail: '/press-center/empower-appoints-carol-waddell-lead-individual-investors' },
 
   // // Links
   { element: 'linkText_Card1',     event: 'link_click', eventName: 'link_click', eventDetail: '/' },

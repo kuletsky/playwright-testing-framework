@@ -69,7 +69,6 @@ test.describe('Primary Menu Click', () => {
   for (const data of primaryMenuData) {
     test(`${data.element}`, async ({ page }) => {
       const analyticsPage = new AnalyticsPage(page);
-      // await analyticsPage.goto();
 
       const element = analyticsPage.getElement(data.element);
       const elementText = await analyticsPage.getText(element);
@@ -178,7 +177,6 @@ test.describe('Submenu Navigation Click', () => {
   for (const data of submenuData) {
     test(`${data.element}`, async ({ page }) => {
       const analyticsPage = new AnalyticsPage(page);
-      // await analyticsPage.goto();
       await analyticsPage.openProductsMenu();
       await analyticsPage.openWealthManagementSubmenu();
 
