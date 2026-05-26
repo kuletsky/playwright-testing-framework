@@ -17,24 +17,28 @@ export class AnalyticsPage extends BasePage {
   private locators: Record<string, string> = {
     // Buttons
     primaryButton: ".primary_button_blue",
-    // primaryButton_PC: "[data-once='click-primary-button empulsify-button-ripple']:nth-of-type(2) [class]",
-    // brandedGoldButton: '.layout__region.layout__region--second .branded-btn',
     secondaryButton: ".secondary_white_button",
-    // secondaryButton_PC: ".btn.btn--large.btn--light.inline-flex.items-center.justify-center.private-client.secondary-btn.shrink-0 > .z-10",
-    // secondaryBentoButton: "[data-once='click-bento-secondary-button click-secondary-light-button empulsify-button-ripple']",
-    // PrimaryBentoButton: "[data-once='click-bento-primary-button click-primary-button empulsify-button-ripple']",
+    secondaryWhiteButton: ".secondary_white_button_with_icon",
+    primaryButton_PC: ".primary_button_blue_PC",
+    secondaryButton_PC: ".secondary_white_button_PC",
+    brandedGoldButton_PC: ".branded_gold_button_PC",
+
+    secondaryBentoButton: ".secondary_bento_button",
+    PrimaryBentoButton: ".primary_bento_button",
 
     // Tiles
-    tile_1: "[data-history-node-id='4421'] .card__heading",
-    tile_2: "[data-history-node-id='10426'] .card__heading",
-    tile_3: "[data-history-node-id='10316'] .card__heading",
+    tile_1: "[data-history-node-id='9226'] .card__heading",
+    tile_2: "[data-history-node-id='4471'] .card__heading",
+    tile_3: "[data-history-node-id='4601'] .card__heading",
 
     // Links
-    linkText: 'ol a',
-    linkCardText: '.prose.prose-base.row-start-2 > p > a',
+    linkText_Card1: '[data-once="tools-carousel-card-link-click click-primary-button empulsify-button-ripple"]',
+    linkText_Card2: '[data-once="tools-carousel-card-link-click click-secondary-light-button empulsify-button-ripple"]',
+    linkText_Card3: '[data-once="tools-carousel-card-link-click empulsify-button-ripple"]',
+    linkText_Card4: '[data-once="tools-carousel-card-link-click click-branded-button empulsify-button-ripple"]',
 
     // Carousel
-    carouselNext: "[aria-label='Next slide'] [role]",
+    carouselNext: "#emp-layouts-linear-gradient--5 .owl-tools-next > span[role='presentation']",
     carouselPrev: '.owl-tools-prev > span[role="presentation"]',
 
     // Modal
@@ -95,7 +99,7 @@ export class AnalyticsPage extends BasePage {
     investmentMenu: "nav[aria-label='Products & Services Secondary'] [aria-label='Investment accounts']",
 
     // Bento
-    expectedBentoBox: "[data-drupal-paragraph-name='card_v3']:nth-of-type(3) p",
+    expectedBentoBox: "[data-drupal-paragraph-name='card_v3']:nth-of-type(1) p",
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -154,7 +158,7 @@ export class AnalyticsPage extends BasePage {
   // ═══════════════════════════════════════════════════════════════════════════
 
   async openLinkModal() {
-    await this.page.locator(this.locators['linkText']).click();
+    await this.page.locator("[data-once='click-app-store-icon-apple'] .svg").click();
   }
 
   async openProductsMenu() {

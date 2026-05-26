@@ -53,7 +53,7 @@ test.describe('Menu visibility', () => {
             "Advice & guidance",
             "APIs",
             "Partner advocate",
-            "Events",
+            "Webinars and events",
         ]);
         await expect(pane.getByText("Experience", { exact: true })).toBeVisible();
     });
@@ -155,7 +155,7 @@ test.describe('Experience menu functionality', () => {
             name: "Advice & guidance", menuHeading: "Advice & guidance", url: "/financial-professionals/experience/advice-guidance", pageHeading: "The advice advantage. Day one through retirement." },
         { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/experience/apis", pageHeading: "Bridges to innovation" },
         { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
-        { name: "Events", menuHeading: "Events", url: "/financial-professionals/empower-events" },
+        { name: "Webinars and events", menuHeading: "Webinars and events", url: "/financial-professionals/empower-events" },
     ]
     for (const link of experienceLinks) {
         test(`Click Experience - ${link.name}`, async ({ finProfPage, page }) => {
