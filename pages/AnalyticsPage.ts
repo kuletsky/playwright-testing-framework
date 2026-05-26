@@ -40,6 +40,7 @@ export class AnalyticsPage extends BasePage {
     // Carousel
     carouselNext: "#emp-layouts-linear-gradient--5 .owl-tools-next > span[role='presentation']",
     carouselPrev: '.owl-tools-prev > span[role="presentation"]',
+    carouselPause: "[data-emp-carousel='playpause']",
 
     // Modal
     continueButton: '.ui-dialog-buttonset > button:nth-of-type(1)',
@@ -99,7 +100,7 @@ export class AnalyticsPage extends BasePage {
     investmentMenu: "nav[aria-label='Products & Services Secondary'] [aria-label='Investment accounts']",
 
     // Bento
-    expectedBentoBox: "[data-drupal-paragraph-name='card_v3']:nth-of-type(1) p",
+    expectedBentoBox: "li:has(p:has-text('Card 0'))",
   };
 
   // ═══════════════════════════════════════════════════════════════════════════

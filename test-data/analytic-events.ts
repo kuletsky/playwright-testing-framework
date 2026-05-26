@@ -78,6 +78,8 @@ export const fixedCategoryData = [
   { element: 'empowerLogo', event: 'social_click', eventName: 'social_click', category: 'Empower logo', detail: '/' },
   { element: 'carouselNext', event: 'tile_event', eventName: 'tile_move', category: 'prev_next', detail: '' },
   { element: 'carouselPrev', event: 'tile_event', eventName: 'tile_move', category: 'prev_next', detail: '' },
+  { element: 'carouselPause', event: 'carousel_event', eventName: 'carousel', category: 'pause' },
+
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
