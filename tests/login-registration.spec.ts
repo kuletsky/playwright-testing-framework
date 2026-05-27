@@ -7,10 +7,6 @@ import { PlanSponsorsPage } from '../pages/PlanSponsors';
 import { suppressCookieBanner } from '../utils/stabilize';
 
 
-test.beforeEach(async ({ page }) => {
-    await suppressCookieBanner(page);
-});
-
 test.describe('Individuals Login-v1 functionality @smoke', () => {
     test('Login Retirement account', async ({ page }) => {
         const individualsPage = new IndividualsPage(page);
@@ -22,6 +18,8 @@ test.describe('Individuals Login-v1 functionality @smoke', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+
 
     });
 
@@ -35,6 +33,8 @@ test.describe('Individuals Login-v1 functionality @smoke', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/page\/login\/goHome|cloudflare|challenge|verify/i);
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+
     });
 
     test('Login Personal Wealth', async ({ page }) => {
@@ -47,6 +47,8 @@ test.describe('Individuals Login-v1 functionality @smoke', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+
     });
 
     test('Login Retirement plan sponsors', async ({ page }) => {
@@ -59,6 +61,8 @@ test.describe('Individuals Login-v1 functionality @smoke', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+
     });
 
     test('Login Retirement plan financial professionals', async ({ page }) => {
@@ -71,6 +75,8 @@ test.describe('Individuals Login-v1 functionality @smoke', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/planweb|cloudflare|challenge|verify/i);
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+
     });
 });
 
@@ -84,6 +90,8 @@ test.describe('Individuals Open an account functionality @smoke', () => {
         await signupPage.clickGoToRetirementAccount();
 
         await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+
     });
 
     test("Let's schedule a call", async ({ page }) => {
@@ -96,6 +104,8 @@ test.describe('Individuals Open an account functionality @smoke', () => {
         // await signupPage.clickContinueButton();
 
         await expect(page).toHaveURL(/\/schedule-appointment|cloudflare|challenge|verify/i, { timeout: 60_000 });
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+
     });
 
     test("Personal Cash open account", async ({ page }) => {
@@ -110,8 +120,8 @@ test.describe('Individuals Open an account functionality @smoke', () => {
 
 
         // await expect(page).toHaveURL(/\/signup\/cash/);
-        // await expect(page.locator('//strong[contains(text(), "Make your cash count")]')).toBeVisible();
-        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+        await expect(page.locator('//strong[contains(text(), "Make your cash count")]')).toBeVisible();
+        await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 
     test("Premier IRA open account", async ({ page }) => {
@@ -140,7 +150,7 @@ test.describe('Individuals Open an account functionality @smoke', () => {
 
 
         // await expect(page).toHaveURL(/\/nxi\/account/);
-        // await expect(page.getByText('Open an account and start investing!')).toBeVisible;
+        // await expect(page.getByText('Open an account and start investing!')).toBeVisible();
     });
 
     test("Premier Investment open account", async ({ page }) => {
@@ -168,7 +178,7 @@ test.describe('Individuals Open an account functionality @smoke', () => {
 
         // await expect(page).toHaveURL(/\/signup\/tools/);
         // await expect(page.locator('//strong[contains(text(), "Financial freedom starts here")]')).toBeVisible();
-        // await expect(page.locator('button[type="submit"]')).toBeVisible({ timeout: 60_000 });
+        // await expect(page.locator('button[type="submit"]')).toBeVisible();
     });
 
 
@@ -246,24 +256,3 @@ test('Verify 404 page displayed correctly', async ({ page }) => {
     await expect(page.locator('.site-logo')).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Footer menu' })).toBeVisible();
 });
-
-test.describe('Verify form functionality @smoke', () => {
-    test("Verify personal cash open account", async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.clickOpenAccountButton();
-
-        const signupPage = new IndividualsSignupPage(page);
-        await signupPage.clickPersonalCashOpenAccount();
-        await suppressCookieBanner(page);
-
-        await expect(page).toHaveURL(/\/signup\/cash|cloudflare|challenge|verify/i);
-
-
-        // await expect(page).toHaveURL(/\/signup\/cash/);
-        await expect(page.locator('//strong[contains(text(), "Make your cash count")]')).toBeVisible();
-        await expect(page.locator('button[type="submit"]')).toBeVisible();
-    });
-});
-
-
