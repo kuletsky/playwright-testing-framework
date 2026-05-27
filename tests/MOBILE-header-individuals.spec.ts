@@ -242,14 +242,10 @@ test.describe('Menu Why Empower functionality', () => {
     }
 });
 
-test.skip('Verify loginBox displayed as expected', async ({ page }) => {
+test('Verify loginBox displayed as expected', async ({ page }) => {
     await page.goto('/lp/empower-my-options');
+    await suppressCookieBanner(page);
 
-    await expect(page.locator('#block-wealth-management-v2-content iframe').contentFrame().getByRole('heading', { name: 'Log in as an individual' })).toContainText('Log in as an individual');
-    await expect(page.locator('#block-wealth-management-v2-content iframe').contentFrame().getByTestId('Username')).toBeVisible();
-    await expect(page.locator('#block-wealth-management-v2-content iframe').contentFrame().getByTestId('Password')).toBeVisible();
-    await expect(page.locator('#block-wealth-management-v2-content iframe').contentFrame().getByRole('button', { name: 'Log in' })).toBeVisible();
-
-    await page.locator('#block-wealth-management-v2-content iframe').contentFrame().getByRole('button', { name: 'Log in' }).click();
-    await expect(page.locator('#block-wealth-management-v2-content iframe').contentFrame().getByText('Error: The system was not')).toBeVisible();
+    await expect(page.locator('h1 p')).toContainText('It’s time to decide what to do with your old retirement plan');
+    await expect(page.locator('a[aria-label="Sign In/Register"]')).toBeVisible();
 });
