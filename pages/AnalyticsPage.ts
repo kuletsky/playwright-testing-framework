@@ -89,7 +89,7 @@ export class AnalyticsPage extends BasePage {
 
     // Submenu
     privetClientMenu: "#dropdown-desktop-0-0 [aria-label='Private Client']",
-    personalStrategyMenu: "[data-once='click-secondary-light-button empulsify-button-ripple']:nth-of-type(2) [class]",
+    // personalStrategyMenu: "[data-once='click-secondary-light-button empulsify-button-ripple']:nth-of-type(2) [class]",
 
     //Menu
     expendSubmenuMain: "[aria-label='Products \\& Services Secondary'] [type] .items-center",
