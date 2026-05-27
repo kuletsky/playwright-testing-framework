@@ -255,6 +255,7 @@ test.describe('Verify form functionality @smoke', () => {
 
         const signupPage = new IndividualsSignupPage(page);
         await signupPage.clickPersonalCashOpenAccount();
+        await suppressCookieBanner(page);
 
         await expect(page).toHaveURL(/\/signup\/cash|cloudflare|challenge|verify/i);
 
