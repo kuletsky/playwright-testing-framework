@@ -11,6 +11,7 @@ export class SfdPage extends BasePage {
     readonly emailInput: Locator;
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
+    readonly disclaimer: Locator;
 
     readonly isSubmitButton: Locator;
     readonly firstNameValidationRule: Locator;
@@ -19,11 +20,13 @@ export class SfdPage extends BasePage {
     readonly emailValidationRule: Locator;
     readonly usernameValidationRules: { [key: string]: Locator };
     readonly passwordValidationRules: { [key: string]: Locator };
+    readonly mobileNumberValidationRulePositive: Locator;
 
 
     constructor(page: Page) {
         super(page);
         this.heading = page.getByText('Open an Empower Personal Cash™ account');
+        this.disclaimer = page.getByText(/and to receive marketing calls and text messages to the mobile number provided/);
 
         this.firstNameInput = page.getByRole('textbox', { name: 'First name' });
         this.lastNameInput = page.getByRole('textbox', { name: 'Last name' });
@@ -37,6 +40,7 @@ export class SfdPage extends BasePage {
         this.firstNameValidationRule = page.getByText('Error: Enter a valid first');
         this.lastNameValidationRule = page.getByText('Error: Enter a valid last');
         this.mobileNumberValidationRule = page.getByText('Error: Please enter a valid');
+        this.mobileNumberValidationRulePositive = page.getByText('Used to verify for security purposes and to contact you about your account');
         this.emailValidationRule = page.getByText('Error: Enter a valid email');
         this.usernameValidationRules = {
             general: page.getByText('Username must meet the following requirements:'),
@@ -86,5 +90,10 @@ export class SfdPage extends BasePage {
 
     async sideClck() {
         await this.page.locator('.c-form').click();
+    }
+
+    async clickIconPasswordVisibilityToggle() {
+        const visibilityToggle = this.page.getByRole('button', { name: /Password visibility/i });
+        await visibilityToggle.click();
     }
 }
