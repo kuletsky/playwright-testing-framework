@@ -4,13 +4,17 @@ import { PlanSponsorsPage } from './pages/PlanSponsors';
 import { FinancialProfessionalsPage } from './pages/FinancialProfessionalsPage';
 import { AnalyticsPage } from './pages/AnalyticsPage';
 import { MarketingParamsPage } from './pages/MarketingParamsPage';
+import { SfdPage } from './pages/SfdPage';
+import { IndividualsSignupPage } from '@pages/IndividualsSignupPage';
 
 type Fixtures = {
   individualsPage: IndividualsPage;
+  individualsSignupPage: IndividualsSignupPage;
   planSponsorsPage: PlanSponsorsPage;
   finProfPage: FinancialProfessionalsPage;
   analyticsPage: AnalyticsPage;
   marketingParamsPage: MarketingParamsPage;
+  sfdPage: SfdPage;
 };
 
 export const test = base.extend<Fixtures>({
@@ -29,6 +33,12 @@ export const test = base.extend<Fixtures>({
   },
   marketingParamsPage: async ({ page }, use) => {
     await use(new MarketingParamsPage(page));
+  },
+  sfdPage: async ({ page }, use) => {
+    await use(new SfdPage(page));
+  },
+  individualsSignupPage: async ({ page }, use) => {
+    await use(new IndividualsSignupPage(page));
   },
 });
 
