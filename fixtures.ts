@@ -6,6 +6,7 @@ import { AnalyticsPage } from './pages/AnalyticsPage';
 import { MarketingParamsPage } from './pages/MarketingParamsPage';
 import { SfdPage } from './pages/SfdPage';
 import { IndividualsSignupPage } from '@pages/IndividualsSignupPage';
+import { theCurrency } from '@pages/theCurrency';
 
 type Fixtures = {
   individualsPage: IndividualsPage;
@@ -15,6 +16,7 @@ type Fixtures = {
   analyticsPage: AnalyticsPage;
   marketingParamsPage: MarketingParamsPage;
   sfdPage: SfdPage;
+  theCurrency: theCurrency;
 };
 
 export const test = base.extend<Fixtures>({
@@ -40,6 +42,9 @@ export const test = base.extend<Fixtures>({
   individualsSignupPage: async ({ page }, use) => {
     await use(new IndividualsSignupPage(page));
   },
+  theCurrency: async ({ page }, use) => {
+    await use(new theCurrency(page));
+  }
 });
 
 export { expect } from '@playwright/test';
