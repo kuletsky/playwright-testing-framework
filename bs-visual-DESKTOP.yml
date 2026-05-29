@@ -1,8 +1,8 @@
-userName: ${BROWSERSTACK_USERNAME}
-accessKey: ${BROWSERSTACK_ACCESS_KEY}
+# userName: ${BROWSERSTACK_USERNAME}
+# accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: VISUAL DESKTOP tests  -->  Windows11/Chrome
+buildName: "VISUAL DESKTOP #${BUILD_NUMBER}  -->  Windows11/Chrome"
 framework: playwright
 
 platforms:
@@ -17,10 +17,13 @@ platforms:
           width: 1200
           height: 800
 
-testOrchestrationOptions:
-  retryTestsOnFailure:
-    enabled: true
-    maxRetries: 3
+percy: true
+percyCaptureMode: manual
+
+# testOrchestrationOptions:
+#   retryTestsOnFailure:
+#     enabled: true
+#     maxRetries: 3
 
 parallelsPerPlatform: 1
 idleTimeout: 240

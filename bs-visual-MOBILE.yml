@@ -1,8 +1,8 @@
-userName: ${BROWSERSTACK_USERNAME}
-accessKey: ${BROWSERSTACK_ACCESS_KEY}
+# userName: ${BROWSERSTACK_USERNAME}
+# accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
 projectName: EmpowerMarketingTestAutomationFramework
-buildName: VISUAL MOBILE tests  -->  iPhone14/Safari
+buildName: "VISUAL MOBILE #${BUILD_NUMBER}  -->  iPhone14/Safari"
 framework: playwright
 
 platforms:
@@ -20,11 +20,13 @@ platforms:
       use:
         deviceName: "iPhone 14"
 
+percy: true
+percyCaptureMode: manual
 
-testOrchestrationOptions:
-  retryTestsOnFailure:
-    enabled: true
-    maxRetries: 3
+# testOrchestrationOptions:
+#   retryTestsOnFailure:
+#     enabled: true
+#     maxRetries: 3
 
 parallelsPerPlatform: 1
 idleTimeout: 240
