@@ -44,7 +44,7 @@ jobs:
         run: >
           npx browserstack-node-sdk playwright test
           tests/features.spec.ts
-          tests/sfdForm.spec.ts
+          tests/sfd-form.spec.ts
           tests/login-registration.spec.ts
           tests/footer.spec.ts
           tests/header-individuals.spec.ts
