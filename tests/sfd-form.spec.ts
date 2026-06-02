@@ -52,8 +52,7 @@ test.describe("SFD Form functionality", () => {
     test("Verify error red messages are displayed when invalid data is entered", async ({ sfdPage }) => {
         await sfdPage.goto();
         await sfdPage.doNotFillOutSfdForm();
-        await sfdPage.sideClck();
-
+        await sfdPage.passwordInput.blur();
 
         await expect(sfdPage.firstNameValidationRule).toBeVisible();
         await expect(sfdPage.lastNameValidationRule).toBeVisible();
