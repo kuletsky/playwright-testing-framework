@@ -41,7 +41,7 @@ browserstackLocal: false
 
 
 debug: true
-networkLogs: true
-consoleLogs: info
+networkLogs: false
+consoleLogs: errors
 testObservability: true
 video: true
