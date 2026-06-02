@@ -19,7 +19,8 @@ test.describe("SFD Form functionality", () => {
     test("Verify submit button 'Start now' is enabled", async ({ sfdPage }) => {
         await sfdPage.goto();
         await sfdPage.fillOutSfdForm();
-        await sfdPage.sideClck();
+        await sfdPage.passwordInput.blur();
+        // await sfdPage.sideClck();
 
         await expect(sfdPage.isSubmitButton).toBeVisible();
         await expect(sfdPage.isSubmitButton).toBeEnabled();
@@ -28,7 +29,8 @@ test.describe("SFD Form functionality", () => {
     test("Verify there is no Validation rules when form is filled out", async ({ sfdPage }) => {
         await sfdPage.goto();
         await sfdPage.fillOutSfdForm();
-        await sfdPage.sideClck();
+        await sfdPage.passwordInput.blur();
+        // await sfdPage.sideClck();
 
         await expect(sfdPage.firstNameValidationRule).not.toBeVisible();
         await expect(sfdPage.lastNameValidationRule).not.toBeVisible();

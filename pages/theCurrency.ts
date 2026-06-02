@@ -21,6 +21,10 @@ export class theCurrency extends BasePage {
     readonly positiveSearchResult: Locator;
     readonly negativeSearchResult: Locator;
     readonly breadCrumbItems: Locator;
+    readonly emailSubscribeInput: Locator;
+    readonly subscribeButton: Locator;
+    readonly emailSubscribeValidationMessage: Locator;
+    readonly boxAgreement: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -41,8 +45,12 @@ export class theCurrency extends BasePage {
         this.positiveSearchResult = page.locator('.h3-alt.result-summary-search');
         this.negativeSearchResult = page.locator('.field.field--name-title.field--type-string.field--label-hidden');
         this.breadCrumbItems = page.locator('.breadcrumb li');
+        this.emailSubscribeInput = page.locator('#email');
+        this.boxAgreement = page.locator('#confirm');
+        this.subscribeButton = page.getByRole('button', { name: 'Subscribe' });
+        this.emailSubscribeValidationMessage = page.locator('.email_error__other');
     }
-    
+
 
     async goto() {
         await super.goto("/the-currency");
@@ -67,28 +75,40 @@ export class theCurrency extends BasePage {
         return await this.pressCenterImage.evaluate(
             (img: HTMLImageElement) => img.complete && img.naturalWidth > 0
         );
-     }
+    }
 
-     async isInvestmentInsightsImageLoaded() {
+    async isInvestmentInsightsImageLoaded() {
         return await this.investmentInsightsImage.evaluate(
             (img: HTMLImageElement) => img.complete && img.naturalWidth > 0
         );
-     }
+    }
 
-     async clickSearchIcon() {
+    async clickSearchIcon() {
         await this.searchIcon.click();
-     }
+    }
 
-     async enterSearchQuery(query: string) {
+    async enterSearchQuery(query: string) {
         await this.searchInput.fill(query);
         await this.searchInput.press('Enter');
-     }
+    }
 
-     async clickGlossaryLink() {
+    async clickGlossaryLink() {
         await this.glossary.click();
-     }
+    }
 
-     async clickLetterL() {
+    async clickLetterL() {
         await this.page.getByRole('link', { name: /^L$/ }).click();
-     }
+    }
+
+    // async fillEmailSubscribeInput(email: string) {
+    //     await this.emailSubscribeInput.fill(email);
+    // }
+
+    async checkOnBoxAgreement() {
+        await this.boxAgreement.check();
+    }
+
+    async clickSubscribeButton() {
+        await this.subscribeButton.click();
+    }
 }
