@@ -9,6 +9,7 @@ export class IndividualsSignupPage extends BasePage {
     // private continueButton: Locator
     private personalCashButton: Locator;
     private premierIRAButton: Locator;
+    readonly optionalPopup: Locator;
 
 
     constructor(page: Page) {
@@ -18,6 +19,7 @@ export class IndividualsSignupPage extends BasePage {
         // this.continueButton = this.page.locator('button:has-text("Continue")');
         this.personalCashButton = this.page.getByRole('link', { name: 'Open account' }).nth(2);
         this.premierIRAButton = this.page.locator('a[href*="premier-ira"]');
+        this.optionalPopup = this.page.locator('.ui-dialog');
     }
 
     async clickGoToRetirementAccount() {
@@ -40,4 +42,12 @@ export class IndividualsSignupPage extends BasePage {
         await this.premierIRAButton.click();
     }
 
+    async handleOptionalPopup() {
+        try {
+            await this.optionalPopup.waitFor({ state: 'visible', timeout: 5000 });
+            await this.continueButton.click();
+        } catch (error) {
+            console.log("Optional popup did not appear, proceeding with the test.");
+        }
+    }
 }

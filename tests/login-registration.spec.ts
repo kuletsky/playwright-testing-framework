@@ -47,8 +47,6 @@ test.describe('Individuals Login-v1 functionality @smoke', () => {
 
         await expect(page).not.toHaveURL('/login-v1');
         await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
-        // await expect(page.locator('button[type="submit"]')).toBeVisible();
-
     });
 
     test('Login Retirement plan sponsors', async ({ page }) => {
@@ -101,7 +99,9 @@ test.describe('Individuals Open an account functionality @smoke', () => {
 
         const signupPage = new IndividualsSignupPage(page);
         await signupPage.clickScheduleACallButton();
-        // await signupPage.clickContinueButton();
+
+        await signupPage.handleOptionalPopup();
+        
 
         await expect(page).toHaveURL(/\/schedule-appointment|cloudflare|challenge|verify/i, { timeout: 60_000 });
         // await expect(page.locator('button[type="submit"]')).toBeVisible();
