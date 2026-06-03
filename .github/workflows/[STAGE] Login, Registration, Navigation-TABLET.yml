@@ -1,4 +1,4 @@
-name: STAGE - TABLET Login, Registration, Navigation tests
+name: STAGE - TABLET Regression
 
 on:
   workflow_dispatch:
