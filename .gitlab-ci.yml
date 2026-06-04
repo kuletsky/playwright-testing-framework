@@ -77,7 +77,7 @@ default:
     - sed -i "s|\${BUILD_NUMBER}|$CI_PIPELINE_IID|g" browserstack.yml
     - npx browserstack-node-sdk playwright test $TEST_ARGS
     # The SDK can exit 0 without running anything; require a report as proof it ran.
-    - test -f playwright-report/index.html || { echo 'ERROR: no Playwright report — tests did not run'; exit 1; }
+    - 'test -f playwright-report/index.html || { echo "ERROR: no Playwright report, tests did not run"; exit 1; }'
 
 # ── base for visual suites: env-var auth + Percy (matches the GitHub visual jobs) ──
 .visual_bs:
@@ -92,7 +92,7 @@ default:
     - printf 'AUTH_USER=%s\nAUTH_PASS=%s\nBASE_URL=%s\n' "$AUTH_USER" "$AUTH_PASS" "$BASE_URL" > .env
     - sed "s|\${BUILD_NUMBER}|$CI_PIPELINE_IID|g" "$BS_TEMPLATE" > browserstack.yml
     - npx percy exec -- npx browserstack-node-sdk playwright test $SPEC
-    - test -f playwright-report/index.html || { echo 'ERROR: no Playwright report — tests did not run'; exit 1; }
+    - 'test -f playwright-report/index.html || { echo "ERROR: no Playwright report, tests did not run"; exit 1; }'
 
 # ════════════════════════════════════ JOBS ════════════════════════════════════
 
@@ -108,7 +108,7 @@ dev-smoke:
     - sed -i "s|\${BROWSERSTACK_ACCESS_KEY}|$BROWSERSTACK_ACCESS_KEY|g" browserstack.yml
     - 'sed -i "s|buildName: .*|buildName: \"[DEV] Smoke - run $CI_PIPELINE_IID\"|" browserstack.yml'
     - npx browserstack-node-sdk playwright test --grep @smoke
-    - test -f playwright-report/index.html || { echo 'ERROR: no Playwright report — tests did not run'; exit 1; }
+    - 'test -f playwright-report/index.html || { echo "ERROR: no Playwright report, tests did not run"; exit 1; }'
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "dev-smoke"'
     - if: '$CI_PIPELINE_SOURCE == "web"'
