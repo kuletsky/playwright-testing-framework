@@ -99,6 +99,7 @@ test.describe('Individuals Open an account functionality @smoke', () => {
 
         const signupPage = new IndividualsSignupPage(page);
         await signupPage.clickScheduleACallButton();
+        await suppressCookieBanner(page);
 
         await signupPage.handleOptionalPopup();
         

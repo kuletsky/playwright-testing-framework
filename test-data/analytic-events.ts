@@ -15,9 +15,9 @@ export const clickEventsData = [
   { element: 'PrimaryBentoButton',   event: 'button_click', eventName: 'button_click_bento_blue',      eventDetail: '/' },
 
   // // Tiles
-  { element: 'tile_1', event: 'tile_event', eventName: 'tile_click', eventDetail: '/press-center/empower-closes-acquisition-prudential-financial-retirement-business' },
-  { element: 'tile_2', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/work/what-to-do-with-your-401k-when-leave-job' },
-  { element: 'tile_3', event: 'tile_event', eventName: 'tile_click', eventDetail: '/press-center/empower-appoints-carol-waddell-lead-individual-investors' },
+  { element: 'tile_1', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/work/can-you-have-multiple-iras' },
+  { element: 'tile_2', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/work/can-contribute-401k-ira' },
+  { element: 'tile_3', event: 'tile_event', eventName: 'tile_click', eventDetail: '/investment-insights/taking-stock-jobs-report-september-5-2025' },
 
   // // Links
   { element: 'linkText_Card1',     event: 'link_click', eventName: 'link_click', eventDetail: '/' },

@@ -112,7 +112,6 @@ test.describe('Click with Fixed Category', () => {
 test.describe('FAQ Expand/Contract', () => {
   test('FAQ Expand', async ({ page }) => {
     const analyticsPage = new AnalyticsPage(page);
-    // await analyticsPage.goto();
 
     const element = analyticsPage.getElement('faqExpendContract');
     const elementText = await analyticsPage.getText(element);
@@ -128,7 +127,6 @@ test.describe('FAQ Expand/Contract', () => {
 
   test('FAQ Contract', async ({ page }) => {
     const analyticsPage = new AnalyticsPage(page);
-    // await analyticsPage.goto();
     await analyticsPage.expandFAQ();
 
     const element = analyticsPage.getElement('faqExpendContract');

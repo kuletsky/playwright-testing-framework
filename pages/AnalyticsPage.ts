@@ -27,9 +27,9 @@ export class AnalyticsPage extends BasePage {
     PrimaryBentoButton: ".primary_bento_button",
 
     // Tiles
-    tile_1: "[data-history-node-id='4371'] .card__heading",
-    tile_2: "[data-history-node-id='4391'] .card__heading",
-    tile_3: "[data-history-node-id='4366'] .card__heading",
+    tile_1: "[data-history-node-id='9001'] .card__heading",
+    tile_2: "[data-history-node-id='4971'] .card__heading",
+    tile_3: "[data-history-node-id='14336'] .card__heading",
 
     // Links
     linkText_Card1: '[data-once="tools-carousel-card-link-click click-primary-button empulsify-button-ripple"]',
