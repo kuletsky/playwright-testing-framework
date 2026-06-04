@@ -38,7 +38,10 @@ workflow:
     - when: never
 
 default:
-  image: node:24
+  # Ubuntu-based Playwright image (matches the pinned @playwright/test version and
+  # mirrors GitHub's ubuntu-latest); the BrowserStack CLI initializes here, unlike
+  # the minimal node:24 Debian image.
+  image: mcr.microsoft.com/playwright:v1.59.1-noble
   cache:
     key:
       files:
@@ -62,6 +65,7 @@ default:
     paths:
       - test-results/
       - playwright-report/
+      - log/          # BrowserStack SDK detailed logs — for diagnosing CLI startup
 
 # ── base for STAGE suites: write .env + render browserstack.yml from a template ──
 .stage_bs:
