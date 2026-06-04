@@ -39,6 +39,8 @@ export class BasePage {
         await this.page.locator("#hamburger-menu").click();
     }
 
+    
+
     async getLinksFirstSubmenu() {
         return this.page.locator("#dropdown-mobile-0 a, #dropdown-mobile-0 button");
     }

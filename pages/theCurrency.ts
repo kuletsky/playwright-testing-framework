@@ -25,6 +25,7 @@ export class theCurrency extends BasePage {
     readonly subscribeButton: Locator;
     readonly emailSubscribeValidationMessage: Locator;
     readonly boxAgreement: Locator;
+    readonly hamburgerHeaderLinks: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -49,6 +50,7 @@ export class theCurrency extends BasePage {
         this.boxAgreement = page.locator('#confirm');
         this.subscribeButton = page.getByRole('button', { name: 'Subscribe' });
         this.emailSubscribeValidationMessage = page.locator('.email_error__other');
+        this.hamburgerHeaderLinks = page.locator('.the-currency--mobile-nav--menu.menu--level-1');
     }
 
 
@@ -100,9 +102,9 @@ export class theCurrency extends BasePage {
         await this.page.getByRole('link', { name: /^L$/ }).click();
     }
 
-    // async fillEmailSubscribeInput(email: string) {
-    //     await this.emailSubscribeInput.fill(email);
-    // }
+    async openHamburgerTheCurrency() {
+        await this.page.locator('button.mobile-trigger').click();
+    }
 
     async checkOnBoxAgreement() {
         await this.boxAgreement.check();

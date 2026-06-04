@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures';
+// import { test, expect } from '@playwright/test';
 import { IndividualsPage } from "../pages/IndividualsPage";
 import { suppressCookieBanner } from '../utils/stabilize';
 
@@ -9,8 +10,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('Menu visibility', () => {
-    test('Verify Heading menu is displayed', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
+    test('Verify Heading menu is displayed', async ({ individualsPage, page }) => {
         await individualsPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -18,8 +18,7 @@ test.describe('Menu visibility', () => {
         expect(headingText).toBe("Individuals");
     });
 
-    test('Verify Contextual menu is displayed', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
+    test('Verify Contextual menu is displayed', async ({ individualsPage, page }) => {
         await individualsPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -34,8 +33,7 @@ test.describe('Menu visibility', () => {
     });
 
 
-    test('Verify Primary menu is displayed', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
+    test('Verify Primary menu is displayed', async ({ individualsPage, page }) => {
         await individualsPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -51,8 +49,7 @@ test.describe('Menu visibility', () => {
         ]);
     });
 
-    test('Verify Products & Services submenu is displayed', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
+    test('Verify Products & Services submenu is displayed', async ({ individualsPage, page }) => {
         await individualsPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -74,8 +71,7 @@ test.describe('Menu visibility', () => {
         ]);
     });
 
-    test('Verify Tools submenu is displayed', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
+    test('Verify Tools submenu is displayed', async ({ individualsPage, page }) => {
         await individualsPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -98,8 +94,8 @@ test.describe('Menu visibility', () => {
         ]);
     });
 
-    test('Verify Learn menu is displayed', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
+
+    test('Verify Learn menu is displayed', async ({ individualsPage, page }) => {
         await individualsPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -115,8 +111,7 @@ test.describe('Menu visibility', () => {
         ]);
     });
 
-    test('Verify Why Empower menu is displayed', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
+    test('Verify Why Empower menu is displayed', async ({ individualsPage, page }) => {
         await individualsPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -147,8 +142,7 @@ test.describe('Menu Products & Services functionality', () => {
         { name: 'Tax filing', menuHeading: "Tax filing", url: '/products-solutions/tax-filing', pageHeading: "Finally, a less taxing tax season" },
     ]
     for (const link of PSLinks) {
-        test(`Click P&S - ${link.name}`, async ({ page }) => {
-            const individualsPage = new IndividualsPage(page);
+        test(`Click P&S - ${link.name}`, async ({ individualsPage, page }) => {
             await individualsPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -177,8 +171,7 @@ test.describe('Menu Tools functionality', () => {
         { name: 'Transactions', menuHeading: "Transactions", url: '/tools/transactions', pageHeading: "Gain insight into your spending, keep control, and help spot fraud." },
     ]
     for (const link of toolsLinks) {
-        test(`Click TOOLS - ${link.name}`, async ({ page }) => {
-            const individualsPage = new IndividualsPage(page);
+        test(`Click TOOLS - ${link.name}`, async ({ individualsPage, page }) => {
             await individualsPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -201,8 +194,7 @@ test.describe('Menu Learn functionality', () => {
         { name: 'The Currency', menuHeading: "Get guidance to make better money decisions at every stage of your life.", url: '/the-currency', pageHeading: "Get insights and intel on your money." },
     ]
     for (const link of learnLinks) {
-        test(`Click LEARN - ${link.name}`, async ({ page }) => {
-            const individualsPage = new IndividualsPage(page);
+        test(`Click LEARN - ${link.name}`, async ({ individualsPage, page }) => {
             await individualsPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -226,8 +218,7 @@ test.describe('Menu Why Empower functionality', () => {
         { name: 'Contact us', menuHeading: "Contact us", url: '/contact', pageHeading: "We’re happy to help with whatever you need." },
     ]
     for (const link of whyEmpowerLinks) {
-        test(`Click WHY EMPOWER - ${link.name}`, async ({ page }) => {
-            const individualsPage = new IndividualsPage(page);
+        test(`Click WHY EMPOWER - ${link.name}`, async ({ individualsPage, page }) => {
             await individualsPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -249,3 +240,173 @@ test('Verify loginBox displayed as expected', async ({ page }) => {
     await expect(page.locator('h1 p')).toContainText('It’s time to decide what to do with your old retirement plan');
     await expect(page.locator('a[aria-label="Sign In/Register"]')).toBeVisible();
 });
+
+
+
+
+
+
+// test.describe("The Currency functionality", () => {
+
+//     test("Verify theCurrency page loads correctly", async ({ theCurrency }) => {
+//         await theCurrency.goto();
+
+//         await expect(theCurrency.title).toHaveTitle('The Currency | Empower');
+
+//         await expect(theCurrency.logo).toBeVisible();
+//         await expect(theCurrency.logo).toHaveAttribute('alt', "The Currency homepage. Power up with today's financial news.");
+//         await expect(theCurrency.logo).toHaveAttribute('src', /.*\/Untitled%20design.*\.png/);
+//         expect(await theCurrency.isImageLoaded()).toBeTruthy();
+
+//         await expect(theCurrency.empowerLogo).toBeVisible();
+
+//         await theCurrency.openHamburgerTheCurrency();
+
+//         await expect(theCurrency.hamburgerHeaderLinks).toBeVisible();
+//         await expect(theCurrency.hamburgerHeaderLinks).toHaveText([
+//             "The Currency",
+//             "Press center",
+//             "Investment Insights"
+//         ]);
+
+//         await expect(theCurrency.glossary).toBeVisible();
+//         await expect(theCurrency.glossary).toHaveAttribute('href', '/the-currency/glossary');
+//         await expect(theCurrency.glossary).toHaveText('Glossary');
+
+//         // await expect(theCurrency.navMenuLinks).toBeVisible();
+//         await expect(theCurrency.navMenuLinks).toHaveText([
+//             "Money",
+//             "Life",
+//             "Work",
+//             "Play",
+//         ]);
+
+//         await expect(theCurrency.recentArticles.first()).toBeVisible();
+
+//     });
+
+//     test("Verify Date block displays current date and updates correctly", async ({ theCurrency }) => {
+//         await theCurrency.goto();
+
+//         const expectedDate = new Intl.DateTimeFormat('en-US', {
+//             weekday: 'long',
+//             month: 'long',
+//             day: '2-digit',
+//             year: 'numeric'
+//         }).format(new Date()); // Example output: "Friday, May 29, 2026"
+
+//         await expect(theCurrency.todaysDateBlock).toHaveText(expectedDate);
+//     });
+
+//     test("Verify Press center page loads correctly", async ({ theCurrency }) => {
+//         await theCurrency.goto();
+//         await theCurrency.regionHeaderLinks.nth(1).click();
+
+//         await expect(theCurrency.url).toHaveURL(/press-center/);
+
+//         await expect(theCurrency.title).toHaveTitle('Press Center Homepage | Empower');
+//         await expect(theCurrency.regionHeader).toBeVisible();
+//         await expect(theCurrency.regionHeaderLinks).toHaveText([
+//             "The Currency",
+//             "Press center",
+//             "Investment Insights"
+//         ]);
+
+//         await expect(theCurrency.pressCenterImage).toHaveJSProperty('complete', true);
+//         await expect(theCurrency.empowerLogo).toBeVisible();
+//         await expect(theCurrency.latestContent).toBeVisible();
+//     });
+
+//     test("Verify Investment Insights page loads correctly", async ({ theCurrency }) => {
+//         await theCurrency.goto();
+//         await theCurrency.regionHeaderLinks.nth(2).click();
+
+//         await expect(theCurrency.url).toHaveURL(/investment-insights/);
+//         await expect(theCurrency.title).toHaveTitle('Investment Insights | Empower');
+
+//         await expect(theCurrency.regionHeader).toBeVisible();
+//         await expect(theCurrency.regionHeaderLinks).toHaveText([
+//             "The Currency",
+//             "Press center",
+//             "Investment Insights"
+//         ]);
+
+//         await expect(theCurrency.navMenuInvestmentLinks).toHaveText([
+//             "Outlook",
+//             "Trends",
+//             "Research",
+//             "Volatility",
+//         ]);
+
+//         await expect(theCurrency.investmentInsightsImage).toHaveJSProperty('complete', true);
+//         await expect(theCurrency.empowerLogo).toBeVisible();
+//         await expect(theCurrency.latestContent).toBeVisible();
+
+//     });
+
+//     test("Verify Positive search functionality on The Currency", async ({ theCurrency }) => {
+//         await theCurrency.goto();
+
+//         await theCurrency.clickSearchIcon();
+//         await theCurrency.enterSearchQuery('market trends');
+
+//         await expect(theCurrency.url).toHaveURL(/search\?search=market\+trends/);
+//         await expect(theCurrency.positiveSearchResult).toHaveText("1 results found for “market trends”.");
+//     });
+
+//     test("Verify Negative search functionality on The Currency", async ({ theCurrency }) => {
+//         await theCurrency.goto();
+
+//         await theCurrency.clickSearchIcon();
+//         await theCurrency.enterSearchQuery('safwdfgweg');
+
+//         await expect(theCurrency.url).toHaveURL(/search\?search=safwdfgweg/);
+//         await expect(theCurrency.negativeSearchResult).toHaveText("No results found");
+//     });
+
+//     test("Verify Glossary page", async ({ theCurrency }) => {
+//         await theCurrency.goto();
+//         await theCurrency.clickGlossaryLink();
+
+//         await expect(theCurrency.url).toHaveURL(/the-currency\/glossary/);
+//         await expect(theCurrency.title).toHaveTitle('Glossary | Empower');
+//         await expect(theCurrency.empowerLogo).toBeVisible();
+//         await expect(theCurrency.regionHeader).toBeVisible();
+//         await expect(theCurrency.regionHeaderLinks).toHaveText([
+//             "The Currency",
+//             "Press center",
+//             "Investment Insights"
+//         ]);
+
+//         await expect(theCurrency.glossary).toHaveText('Glossary');
+
+//         await expect(theCurrency.navMenuLinks).toHaveText([
+//             "Money",
+//             "Life",
+//             "Work",
+//             "Play",
+//         ]);
+
+//         await expect(theCurrency.breadCrumbItems).toHaveText([
+//             "The Currency",
+//             "Glossary"
+//         ]);
+//     });
+
+//     test("Verify Glossary functionality", async ({ theCurrency }) => {
+//         await theCurrency.goto();
+//         await theCurrency.clickGlossaryLink();
+
+//         await theCurrency.clickLetterL();
+//     });
+// });
+
+// test("Verify subscribe functionality ", async ({ theCurrency }) => {
+//     await theCurrency.goto();
+//     await theCurrency.emailSubscribeInput.fill("qwdqwfqwf");
+//     await theCurrency.emailSubscribeInput.blur();
+//     await theCurrency.checkOnBoxAgreement();
+//     await theCurrency.clickSubscribeButton();
+
+//     await expect(theCurrency.emailSubscribeValidationMessage).toHaveText("Please enter a valid email address that's not already on the list.");
+// });
