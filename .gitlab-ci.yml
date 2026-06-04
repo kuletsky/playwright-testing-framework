@@ -1,0 +1,192 @@
+# GitLab CI/CD — Playwright + BrowserStack
+# Port of the GitHub Actions workflows in .github/workflows/.
+#
+# SCHEDULING (differs from GitHub Actions):
+#   GitHub put each workflow's `schedule: cron` in the file itself.
+#   GitLab keeps crons in the UI. Create one Pipeline Schedule per suite
+#   (Build → Pipeline schedules → New schedule) and give each a variable
+#   SUITE=<id>. Each job below runs only when its SUITE matches, or when you
+#   click "Run pipeline" in the UI (the equivalent of workflow_dispatch).
+#
+#   Suite id            Cron (UTC, from GitHub)   Was
+#   ------------------  ------------------------  --------------------------------
+#   dev-smoke           0 0 * * *                 [DEV] Smoke run
+#   stage-analytics     0 0 * * *                 [STAGE] Analytics and Params
+#   stage-security      0 4 * * *                 [STAGE] Security tests
+#   stage-desktop       0 6 * * *                 [STAGE] DESKTOP Regression
+#   stage-mobile        0 7 * * *                 [STAGE] MOBILE Regression
+#   stage-tablet        0 8 * * *                 [STAGE] TABLET Regression
+#   visual-desktop      0 1 * * *                 BS Visual DESKTOP
+#   visual-mobile       0 2 * * *                 BS Visual MOBILE
+#
+# REQUIRED CI/CD VARIABLES (Settings → CI/CD → Variables; mark Masked, and
+# Protected if you only run from protected branches):
+#   AUTH_USER, AUTH_PASS, BASE_URL                 (STAGE suites)
+#   AUTH_USER_DEV, AUTH_PASS_DEV, BASE_URL_DEV     (dev-smoke)
+#   BROWSERSTACK_USERNAME, BROWSERSTACK_ACCESS_KEY
+#   PERCY_TOKEN                                    (visual suites)
+
+stages:
+  - test
+
+# Only create pipelines for schedules or manual "Run pipeline" — never on
+# plain pushes/MRs (mirrors the GitHub triggers: workflow_dispatch + schedule).
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - when: never
+
+default:
+  image: node:24
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+
+# ── shared artifacts (uploaded only on failure, like upload-artifact if: failure) ──
+.artifacts: &artifacts
+  artifacts:
+    when: on_failure
+    expire_in: 1 week
+    paths:
+      - test-results/
+      - playwright-report/
+
+# ── base for STAGE suites: write .env + render browserstack.yml from a template ──
+.stage_bs:
+  stage: test
+  <<: *artifacts
+  variables:
+    TEST_ENV: stage
+  script:
+    - printf 'AUTH_USER=%s\nAUTH_PASS=%s\nBASE_URL=%s\n' "$AUTH_USER" "$AUTH_PASS" "$BASE_URL" > .env
+    - sed "s|\${BROWSERSTACK_USERNAME}|$BROWSERSTACK_USERNAME|g" "$BS_TEMPLATE" > browserstack.yml
+    - sed -i "s|\${BROWSERSTACK_ACCESS_KEY}|$BROWSERSTACK_ACCESS_KEY|g" browserstack.yml
+    - sed -i "s|\${BUILD_NUMBER}|$CI_PIPELINE_IID|g" browserstack.yml
+    - npx browserstack-node-sdk playwright test $TEST_ARGS
+
+# ── base for visual suites: env-var auth + Percy (matches the GitHub visual jobs) ──
+.visual_bs:
+  stage: test
+  <<: *artifacts
+  variables:
+    BROWSERSTACK_USERNAME: $BROWSERSTACK_USERNAME
+    BROWSERSTACK_ACCESS_KEY: $BROWSERSTACK_ACCESS_KEY
+    PERCY_TOKEN: $PERCY_TOKEN
+  script:
+    - printf 'AUTH_USER=%s\nAUTH_PASS=%s\nBASE_URL=%s\n' "$AUTH_USER" "$AUTH_PASS" "$BASE_URL" > .env
+    - sed "s|\${BUILD_NUMBER}|$CI_PIPELINE_IID|g" "$BS_TEMPLATE" > browserstack.yml
+    - npx percy exec -- npx browserstack-node-sdk playwright test $SPEC
+
+# ════════════════════════════════════ JOBS ════════════════════════════════════
+
+dev-smoke:
+  stage: test
+  <<: *artifacts
+  variables:
+    TEST_ENV: dev
+  script:
+    - printf 'AUTH_USER=%s\nAUTH_PASS=%s\nBASE_URL=%s\n' "$AUTH_USER_DEV" "$AUTH_PASS_DEV" "$BASE_URL_DEV" > .env.dev
+    - sed "s|\${BROWSERSTACK_USERNAME}|$BROWSERSTACK_USERNAME|g" analytics-and-params.yml > browserstack.yml
+    - sed -i "s|\${BROWSERSTACK_ACCESS_KEY}|$BROWSERSTACK_ACCESS_KEY|g" browserstack.yml
+    - 'sed -i "s|buildName: .*|buildName: \"[DEV] Smoke - run $CI_PIPELINE_IID\"|" browserstack.yml'
+    - npx browserstack-node-sdk playwright test --grep @smoke
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "dev-smoke"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+
+stage-analytics:
+  extends: .stage_bs
+  variables:
+    BS_TEMPLATE: analytics-and-params.yml
+    TEST_ARGS: tests/analytics-events.spec.ts tests/marketing-params.spec.ts
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "stage-analytics"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+
+stage-security:
+  extends: .stage_bs
+  variables:
+    BS_TEMPLATE: security-tests.yml
+    TEST_ARGS: tests/security-tests.spec.ts
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "stage-security"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+
+stage-desktop:
+  extends: .stage_bs
+  variables:
+    BS_TEMPLATE: login-registration-navigation-DESKTOP.yml
+    TEST_ARGS: >-
+      tests/features.spec.ts
+      tests/sfd-form.spec.ts
+      tests/login-registration.spec.ts
+      tests/footer.spec.ts
+      tests/header-individuals.spec.ts
+      tests/header-plan-sponsors.spec.ts
+      tests/header-financial-professionals.spec.ts
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "stage-desktop"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+
+stage-mobile:
+  extends: .stage_bs
+  variables:
+    BS_TEMPLATE: login-registration-navigation-MOBILE.yml
+    TEST_ARGS: >-
+      tests/login-registration.spec.ts
+      tests/sfd-form.spec.ts
+      tests/footer.spec.ts
+      tests/MOBILE-header-individuals.spec.ts
+      tests/MOBILE-header-plan-sponsors.spec.ts
+      tests/MOBILE-header-financial-professionals.spec.ts
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "stage-mobile"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+
+stage-tablet:
+  extends: .stage_bs
+  variables:
+    BS_TEMPLATE: login-registration-navigation-TABLET.yml
+    TEST_ARGS: >-
+      tests/features.spec.ts
+      tests/sfd-form.spec.ts
+      tests/login-registration.spec.ts
+      tests/footer.spec.ts
+      tests/MOBILE-header-individuals.spec.ts
+      tests/MOBILE-header-plan-sponsors.spec.ts
+      tests/MOBILE-header-financial-professionals.spec.ts
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "stage-tablet"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+
+visual-desktop:
+  extends: .visual_bs
+  variables:
+    BS_TEMPLATE: bs-visual-DESKTOP.yml
+    SPEC: visual.spec.ts
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "visual-desktop"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+
+visual-mobile:
+  extends: .visual_bs
+  variables:
+    BS_TEMPLATE: bs-visual-MOBILE.yml
+    SPEC: visual-mobile.spec.ts
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $SUITE == "visual-mobile"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
