@@ -67,7 +67,7 @@ test.describe('Menu visibility', () => {
             "Empower Select™",
             "Small business retirement plans",
             "PEPs, MEPs, and PEOs",
-            "Empower Standard offer",
+            "Empower Standard",
             "Integrated workplace solutions",
             "Fiduciary advice solutions",
             "Private market investments",

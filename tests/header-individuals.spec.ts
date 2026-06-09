@@ -251,7 +251,7 @@ test.describe("The Currency functionality", () => {
         expect(await theCurrency.isImageLoaded()).toBeTruthy();
 
         await expect(theCurrency.empowerLogo).toBeVisible();
-        await expect(theCurrency.regionHeaderLinks).toBeVisible();
+        await expect(theCurrency.regionHeader).toBeVisible();
         await expect(theCurrency.regionHeaderLinks).toHaveText([
             "The Currency",
             "Press center",
@@ -262,7 +262,6 @@ test.describe("The Currency functionality", () => {
         await expect(theCurrency.glossary).toHaveAttribute('href', '/the-currency/glossary');
         await expect(theCurrency.glossary).toHaveText('Glossary');
 
-        await expect(theCurrency.navMenuLinks).toBeVisible();
         await expect(theCurrency.navMenuLinks).toHaveText([
             "Money",
             "Life",
