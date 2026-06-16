@@ -187,12 +187,12 @@ test.describe('Individuals Open an account functionality @smoke', () => {
 
 });
 
-test.describe('Plan Sponsonsors Login functionality @smoke', () => {
+test.describe('Plan Sponsonsors Login functionality', () => {
     test('Login Retirement plan sponsors', async ({ page }) => {
         const planSponsors = new PlanSponsorsPage(page);
         await planSponsors.gotoPlanSponsorsPage();
         await planSponsors.clickLoginButton();
-
+        
         await expect(page).not.toHaveURL('/plan-sponsors');
         await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
 
