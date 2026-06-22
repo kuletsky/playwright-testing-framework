@@ -13,7 +13,7 @@ test.describe('Footer Legal Menu links', () => {
         { name: 'Security center', url: 'securityCenter' },
         { name: 'Accessibility', url: 'accessibility' },
         { name: 'System requirements', url: 'system-requirements', assert: "System requirements and security" },
-        { name: 'Privacy', url: 'privacy', assert: "Empower Privacy Policy" },
+        { name: 'Privacy', url: 'privacy', assert: "Empower Privacy Center" },
         { name: 'Terms and conditions', url: 'terms', assert: "Terms and conditions" },
         { name: 'Business continuity plan', url: 'business-continuity', assert: "Business Continuity Plan Notice" },
         { name: 'Market timing and excessive trading policies', url: 'market-timing-and-trading', assert: "Procedures for complying with fund company market and excessive trading policies" },

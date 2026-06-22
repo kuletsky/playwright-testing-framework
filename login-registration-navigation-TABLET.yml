@@ -19,7 +19,7 @@ platforms:
     playwrightConfigOptions:
       name: emu-galaxy-tab-s4
       use:
-        deviceName: Galaxy Tab S4
+        device: Galaxy Tab S4
 
   - os: OS X
     osVersion: Ventura
