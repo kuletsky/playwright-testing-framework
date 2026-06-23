@@ -35,7 +35,7 @@ export class AnalyticsPage extends BasePage {
     linkText_Card1: '[data-once="tools-carousel-card-link-click click-primary-button empulsify-button-ripple emp-amplitude-deviceid"]',
     linkText_Card2: '[data-once="tools-carousel-card-link-click click-secondary-light-button empulsify-button-ripple emp-amplitude-deviceid"]',
     linkText_Card3: '[data-once="tools-carousel-card-link-click empulsify-button-ripple emp-amplitude-deviceid"]',
-    linkText_Card4: 'data-once="tools-carousel-card-link-click click-branded-button empulsify-button-ripple emp-amplitude-deviceid"]',
+    linkText_Card4: '[data-once="tools-carousel-card-link-click click-branded-button empulsify-button-ripple emp-amplitude-deviceid"]',
 
     // Carousel
     carouselNext: "#emp-layouts-linear-gradient--5 .owl-tools-next > span[role='presentation']",
@@ -43,8 +43,8 @@ export class AnalyticsPage extends BasePage {
     carouselPause: "[data-emp-carousel='playpause']",
 
     // Modal
-    // continueButton: '.ui-dialog-buttonset > button:nth-of-type(1)',
-    // cancelButton: '.ui-dialog-buttonset > button:nth-of-type(2)',
+    continueButton: '.ui-dialog-buttonset > button:nth-of-type(1)',
+    cancelButton: '.ui-dialog-buttonset > button:nth-of-type(2)',
 
     // FAQ
     faqExpendContract: '#accordion-button div:nth-of-type(1) div',

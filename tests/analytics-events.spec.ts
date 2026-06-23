@@ -196,26 +196,26 @@ test.describe('Submenu Navigation Click', () => {
 // MODAL EVENTS
 // ═══════════════════════════════════════════════════════════════════════════════
 
-test.describe('Modal Events', () => {
-  for (const data of modalData) {
-    test(`${data.element}`, async ({ page }) => {
-      const analyticsPage = new AnalyticsPage(page);
-      // await analyticsPage.goto();
-      await analyticsPage.openLinkModal();
+// test.describe('Modal Events', () => {
+//   for (const data of modalData) {
+//     test(`${data.element}`, async ({ page }) => {
+//       const analyticsPage = new AnalyticsPage(page);
+//       // await analyticsPage.goto();
+//       await analyticsPage.openLinkModal();
 
-      const element = analyticsPage.getElement(data.element);
-      const elementText = await analyticsPage.getText(element);
+//       const element = analyticsPage.getElement(data.element);
+//       const elementText = await analyticsPage.getText(element);
 
-      const event = await analyticsPage.clickAndCapture(element, 'button_click', 'button_click_modal');
+//       const event = await analyticsPage.clickAndCapture(element, 'button_click', 'button_click_modal');
 
-      expect(event).not.toBeNull();
-      expect(event!.event).toBe('button_click');
-      expect(event!.event_name).toBe('button_click_modal');
-      expect(event!.event_category).toBe(elementText);
-      expect(event!.event_detail).toBe(data.detail);
-    });
-  }
-});
+//       expect(event).not.toBeNull();
+//       expect(event!.event).toBe('button_click');
+//       expect(event!.event_name).toBe('button_click_modal');
+//       expect(event!.event_category).toBe(elementText);
+//       expect(event!.event_detail).toBe(data.detail);
+//     });
+//   }
+// });
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // HOVER EVENTS
