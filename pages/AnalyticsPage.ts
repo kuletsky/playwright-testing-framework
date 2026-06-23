@@ -32,10 +32,10 @@ export class AnalyticsPage extends BasePage {
     tile_3: "[data-history-node-id='14336'] .card__heading",
 
     // Links
-    linkText_Card1: '[data-once="tools-carousel-card-link-click click-primary-button empulsify-button-ripple"]',
-    linkText_Card2: '[data-once="tools-carousel-card-link-click click-secondary-light-button empulsify-button-ripple"]',
-    linkText_Card3: '[data-once="tools-carousel-card-link-click empulsify-button-ripple"]',
-    linkText_Card4: '[data-once="tools-carousel-card-link-click click-branded-button empulsify-button-ripple"]',
+    linkText_Card1: '[data-once="tools-carousel-card-link-click click-primary-button empulsify-button-ripple emp-amplitude-deviceid"]',
+    linkText_Card2: '[data-once="tools-carousel-card-link-click click-secondary-light-button empulsify-button-ripple emp-amplitude-deviceid"]',
+    linkText_Card3: '[data-once="tools-carousel-card-link-click empulsify-button-ripple emp-amplitude-deviceid"]',
+    linkText_Card4: 'data-once="tools-carousel-card-link-click click-branded-button empulsify-button-ripple emp-amplitude-deviceid"]',
 
     // Carousel
     carouselNext: "#emp-layouts-linear-gradient--5 .owl-tools-next > span[role='presentation']",
@@ -43,15 +43,15 @@ export class AnalyticsPage extends BasePage {
     carouselPause: "[data-emp-carousel='playpause']",
 
     // Modal
-    continueButton: '.ui-dialog-buttonset > button:nth-of-type(1)',
-    cancelButton: '.ui-dialog-buttonset > button:nth-of-type(2)',
+    // continueButton: '.ui-dialog-buttonset > button:nth-of-type(1)',
+    // cancelButton: '.ui-dialog-buttonset > button:nth-of-type(2)',
 
     // FAQ
     faqExpendContract: '#accordion-button div:nth-of-type(1) div',
 
     // App Store
-    downloadAppStore: "[data-once='click-app-store-icon-apple'] .svg",
-    downloadGooglePlay: "[data-once='click-app-store-icon-google'] .svg",
+    downloadAppStore: "[data-once='click-app-store-icon-apple emp-amplitude-deviceid'] .svg",
+    downloadGooglePlay: "[data-once='click-app-store-icon-google emp-amplitude-deviceid'] .svg",
 
     // Logo
     empowerLogo: '.empower-logo',
@@ -73,8 +73,8 @@ export class AnalyticsPage extends BasePage {
     contactUsButton: "div:nth-of-type(4) > .flex.flex-col.gap-4 .leading-6",
 
     // Login/Register
-    loginButton: "[data-once='nav-main-login-register-link click-secondary-light-button empulsify-button-ripple'] [class]",
-    registerButton: "[data-once='nav-main-login-register-link click-primary-button empulsify-button-ripple']",
+    loginButton: "[data-once='nav-main-login-register-link click-secondary-light-button empulsify-button-ripple emp-amplitude-deviceid'] [class]",
+    registerButton: "[data-once='nav-main-login-register-link click-primary-button empulsify-button-ripple emp-amplitude-deviceid'] [class]",
 
     // Primary Menu
     ProdAndServMenu: "[aria-label='Products & Solutions']",
