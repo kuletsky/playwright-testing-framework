@@ -12,14 +12,14 @@ platforms:
   #   deviceOrientation: portrait
   #   realMobile: true
 
-  - os: OS X
-    osVersion: Ventura
-    browserName: playwright-chromium
-    browserVersion: latest
-    playwrightConfigOptions:
-      name: emu-galaxy-tab-s4
-      use:
-        device: Galaxy Tab S4
+  # - os: OS X
+  #   osVersion: Ventura
+  #   browserName: playwright-chromium
+  #   browserVersion: latest
+  #   playwrightConfigOptions:
+  #     name: emu-galaxy-tab-s4
+  #     use:
+  #       device: Galaxy Tab S4
 
   - os: OS X
     osVersion: Ventura
