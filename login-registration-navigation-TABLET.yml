@@ -28,7 +28,16 @@ platforms:
     playwrightConfigOptions:
       name: emu-ipad-pro-webkit
       use:
-        deviceName: iPad Pro 11
+        deviceName: "iPad Pro 11"
+
+  - os: Windows
+    osVersion: 11                
+    browserName: chrome
+    browserVersion: latest
+    playwrightConfigOptions:
+      name: emu-galaxy-tab-chrome
+      use:
+        deviceName: "Galaxy Tab S4"
 
 testOrchestrationOptions:
   retryTestsOnFailure:
