@@ -42,7 +42,7 @@ jobs:
 
       - name: Run Playwright tests on BrowserStack
         run: >
-          npx browserstack-node-sdk playwright test
+          npx browserstack-node-sdk playwright test --local
           tests/features.spec.ts
           tests/sfd-form.spec.ts
           tests/login-registration.spec.ts
