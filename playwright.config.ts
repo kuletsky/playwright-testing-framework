@@ -13,8 +13,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   reporter: [
-    ['html'],
-    ['@flakiness/playwright', { flakinessProject: 'emp/emp' }]
+    ['html', { open: 'never' }],
+    // ['@flakiness/playwright', { flakinessProject: 'emp/emp' }]
   ],
   use: {
     baseURL: config.baseURL,

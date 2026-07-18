@@ -32,4 +32,4 @@ debug: true
 networkLogs: false
 consoleLogs: errors
 testObservability: true
-video: true
+video: false
