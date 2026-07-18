@@ -15,14 +15,14 @@ export const clickEventsData = [
   { element: 'PrimaryBentoButton',   event: 'button_click', eventName: 'button_click_bento_blue',      eventDetail: '/?btn=20' },
 
   // // Tiles
-  { element: 'tile_1', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/work/can-you-have-multiple-iras' },
-  { element: 'tile_2', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/work/can-contribute-401k-ira' },
-  { element: 'tile_3', event: 'tile_event', eventName: 'tile_click', eventDetail: '/investment-insights/taking-stock-jobs-report-september-5-2025' },
+  // { element: 'tile_1', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/work/can-you-have-multiple-iras' },
+  // { element: 'tile_2', event: 'tile_event', eventName: 'tile_click', eventDetail: '/the-currency/work/can-contribute-401k-ira' },
+  // { element: 'tile_3', event: 'tile_event', eventName: 'tile_click', eventDetail: '/investment-insights/taking-stock-jobs-report-september-5-2025' },
 
   // // Links
   { element: 'linkText_Card1',     event: 'link_click', eventName: 'link_click', eventDetail: '/?btn=21' },
   { element: 'linkText_Card2',     event: 'link_click', eventName: 'link_click', eventDetail: '/?btn=22' },
-  { element: 'linkText_Card3',     event: 'link_click', eventName: 'link_click', eventDetail: '/' },
+  // { element: 'linkText_Card3',     event: 'link_click', eventName: 'link_click', eventDetail: '/?btn=23' },
   { element: 'linkText_Card4',     event: 'link_click', eventName: 'link_click', eventDetail: '/?btn=24' },
 
   // // Footer
