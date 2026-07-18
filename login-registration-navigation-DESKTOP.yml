@@ -6,15 +6,18 @@ buildName: DESKTOP Login, Registration, Navigation tests  -->  Windows11/Chrome,
 framework: playwright
 
 platforms:
-  - os: Windows
-    osVersion: 11
-    browserName: chrome
+  # - os: Windows
+  #   osVersion: 11
+  #   browserName: chrome
+  #   browserVersion: latest
+
+  - browserName: playwright-webkit
     browserVersion: latest
-  
-  - os: OS X
-    osVersion: Sequoia
-    browserName: playwright-webkit
-    browserVersion: latest
+
+  # - os: OS X
+  #   osVersion: Sequoia
+  #   browserName: playwright-webkit
+  #   browserVersion: latest
 
 testOrchestrationOptions:
   retryTestsOnFailure:
