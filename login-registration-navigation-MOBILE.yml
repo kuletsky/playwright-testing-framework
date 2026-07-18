@@ -21,22 +21,22 @@ platforms:
       use:
         deviceName: iPhone 14
 
+  # - os: Windows
+  #   osVersion: 11   
+  #   browserName: chrome
+  #   browserVersion: latest
+  #   playwrightConfigOptions:
+  #     use:
+  #       deviceName: Pixel 7
+
   - os: Windows
-    osVersion: 11   
-    browserName: chrome
+    osVersion: 11
+    browserName: playwright-chromium
     browserVersion: latest
     playwrightConfigOptions:
+      name: emu-galaxy-s22-chromium
       use:
-        deviceName: Pixel 7
-
-  # - os: "Windows"
-  #   osVersion: "11"
-  #   browserName: "playwright-chromium"
-  #   browserVersion: "latest"
-  #   playwrightConfigOptions:
-  #     name: "emu-galaxy-s22-chromium"
-  #     use:
-  #       deviceName: "Galaxy S22"
+        deviceName: Galaxy S22
 
 testOrchestrationOptions:
   retryTestsOnFailure:
