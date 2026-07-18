@@ -6,10 +6,10 @@ buildName: DESKTOP Login, Registration, Navigation tests  -->  Windows11/Chrome,
 framework: playwright
 
 platforms:
-  # - os: Windows
-  #   osVersion: 11
-  #   browserName: chrome
-  #   browserVersion: latest
+  - os: Windows
+    osVersion: 11
+    browserName: chrome
+    browserVersion: latest
 
   - browserName: playwright-webkit
     browserVersion: latest
@@ -26,7 +26,7 @@ testOrchestrationOptions:
 
 parallelsPerPlatform: 1
 idleTimeout: 240
-browserstackLocal: false
+browserstackLocal: true
 
 selfHeal: true
 aiAuthoring: true
@@ -35,4 +35,4 @@ debug: true
 networkLogs: false
 consoleLogs: errors
 testObservability: true
-video: false
+video: true
