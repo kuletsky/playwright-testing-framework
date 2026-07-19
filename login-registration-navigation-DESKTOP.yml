@@ -22,9 +22,11 @@ platforms:
   #   browserName: safari
   #   browserVersion: latest
   - os: OS X
-    osVersion: Tahoe
+    osVersion: Sequoia
     browserName: playwright-webkit
     browserVersion: latest
+    client.playwrightVersion: "1.59.1"
+
     
 testOrchestrationOptions:
   retryTestsOnFailure:
