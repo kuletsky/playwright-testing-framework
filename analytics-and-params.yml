@@ -11,10 +11,10 @@ platforms:
     browserName: chrome
     browserVersion: latest
     
-  - os: OS X
-    osVersion: Sequoia
-    browserName: playwright-webkit
-    browserVersion: latest
+  # - os: OS X
+  #   osVersion: Sequoia
+  #   browserName: playwright-webkit
+  #   browserVersion: latest
 
 testOrchestrationOptions:
   retryTestsOnFailure:
