@@ -23,8 +23,8 @@ platforms:
   #   browserVersion: latest
   - os: OS X
     osVersion: Tahoe
-    browserName: Safari
-    browserVersion: 26.4
+    browserName: playwright-webkit
+    browserVersion: latest
     
 testOrchestrationOptions:
   retryTestsOnFailure:
