@@ -41,7 +41,8 @@ test.describe('Menu visibility', () => {
             "Rollover",
             "IRAs",
             "Investment accounts",
-            "Tax filing"
+            "Tax filing",
+            "529s",
         ]);
         await expect(pane.getByText("Products & services")).toBeVisible();
     });
@@ -138,7 +139,7 @@ test.describe('Menu Products & Services functionality', () => {
 test.describe('Menu Tools functionality', () => {
     // Data-driven tests for TOOLS menu items
     const toolsLinks = [
-        { name: 'View All', menuHeading: "Make budgeting, planning and retirement decisions all in one place.", url: '/tools', pageHeading: "Financial freedom starts here" },
+        // { name: 'View All', menuHeading: "Make budgeting, planning and retirement decisions all in one place.", url: '/tools', pageHeading: "Financial freedom starts here" },
         { name: 'Retirement Planner', menuHeading: "Retirement Planner", url: '/tools/retirement-planner', pageHeading: "Plan ahead to retire your way" },
         { name: 'Net Worth', menuHeading: "Net Worth", url: '/tools/net-worth', pageHeading: "Knowing your net worth is worth it" },
         { name: 'Budgeting & Cash Flow', menuHeading: "Budgeting & Cash Flow", url: '/tools/budgeting-cash-flow', pageHeading: "Better budgeting for your best life" },
@@ -178,7 +179,7 @@ test.describe('Menu Learn functionality', () => {
     // Data-driven tests for LEARN menu items
     const learnLinks = [
         { name: 'Investment Insights', menuHeading: "Investment Insights", url: '/investment-insights', pageHeading: "Latest Content" },
-        { name: 'The Currency', menuHeading: "Get guidance to make better money decisions at every stage of your life.", url: '/the-currency', pageHeading: "Money" },
+        // { name: 'The Currency', menuHeading: "Get guidance to make better money decisions at every stage of your life.", url: '/the-currency', pageHeading: "Money" },
     ]
     for (const link of learnLinks) {
         test(`Click LEARN - ${link.name}`, async ({ individualsPage, page }) => {

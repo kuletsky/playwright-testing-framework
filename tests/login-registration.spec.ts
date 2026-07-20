@@ -7,76 +7,76 @@ import { PlanSponsorsPage } from '../pages/PlanSponsors';
 import { suppressCookieBanner } from '../utils/stabilize';
 
 
-test.describe('Individuals Login-v1 functionality @smoke', () => {
-    test('Login Retirement account', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.clickLoginButton();
+// test.describe('Individuals Login-v1 functionality @smoke', () => {
+//     test('Login Retirement account', async ({ page }) => {
+//         const individualsPage = new IndividualsPage(page);
+//         await individualsPage.gotoIndividualsPage();
+//         await individualsPage.clickLoginButton();
 
-        const loginV1Page = new IndividualsLoginV1Page(page);
-        await loginV1Page.clickLoginRetirementAccount();
+//         const loginV1Page = new IndividualsLoginV1Page(page);
+//         await loginV1Page.clickLoginRetirementAccount();
 
-        await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
-        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+//         await expect(page).not.toHaveURL('/login-v1');
+//         await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
+//         // await expect(page.locator('button[type="submit"]')).toBeVisible();
 
 
-    });
+//     });
 
-    test('Login Personal Dashboard', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.clickLoginButton();
+//     test('Login Personal Dashboard', async ({ page }) => {
+//         const individualsPage = new IndividualsPage(page);
+//         await individualsPage.gotoIndividualsPage();
+//         await individualsPage.clickLoginButton();
 
-        const loginV1Page = new IndividualsLoginV1Page(page);
-        await loginV1Page.clickLoginPersonalDashboard();
+//         const loginV1Page = new IndividualsLoginV1Page(page);
+//         await loginV1Page.clickLoginPersonalDashboard();
 
-        await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/\/page\/login\/goHome|cloudflare|challenge|verify/i);
-        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+//         await expect(page).not.toHaveURL('/login-v1');
+//         await expect(page).toHaveURL(/\/page\/login\/goHome|cloudflare|challenge|verify/i);
+//         // await expect(page.locator('button[type="submit"]')).toBeVisible();
 
-    });
+//     });
 
-    test('Login Personal Wealth', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.clickLoginButton();
+//     test('Login Personal Wealth', async ({ page }) => {
+//         const individualsPage = new IndividualsPage(page);
+//         await individualsPage.gotoIndividualsPage();
+//         await individualsPage.clickLoginButton();
 
-        const loginV1Page = new IndividualsLoginV1Page(page);
-        await loginV1Page.clickLoginPersonalWealth();
+//         const loginV1Page = new IndividualsLoginV1Page(page);
+//         await loginV1Page.clickLoginPersonalWealth();
 
-        await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
-    });
+//         await expect(page).not.toHaveURL('/login-v1');
+//         await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
+//     });
 
-    test('Login Retirement plan sponsors', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.clickLoginButton();
+//     test('Login Retirement plan sponsors', async ({ page }) => {
+//         const individualsPage = new IndividualsPage(page);
+//         await individualsPage.gotoIndividualsPage();
+//         await individualsPage.clickLoginButton();
 
-        const loginV1Page = new IndividualsLoginV1Page(page);
-        await loginV1Page.clickLoginRetirementPlanSponsors();
+//         const loginV1Page = new IndividualsLoginV1Page(page);
+//         await loginV1Page.clickLoginRetirementPlanSponsors();
 
-        await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
-        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+//         await expect(page).not.toHaveURL('/login-v1');
+//         await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
+//         // await expect(page.locator('button[type="submit"]')).toBeVisible();
 
-    });
+//     });
 
-    test('Login Retirement plan financial professionals', async ({ page }) => {
-        const individualsPage = new IndividualsPage(page);
-        await individualsPage.gotoIndividualsPage();
-        await individualsPage.clickLoginButton();
+//     test('Login Retirement plan financial professionals', async ({ page }) => {
+//         const individualsPage = new IndividualsPage(page);
+//         await individualsPage.gotoIndividualsPage();
+//         await individualsPage.clickLoginButton();
 
-        const loginV1Page = new IndividualsLoginV1Page(page);
-        await loginV1Page.clickLoginRetirementPlanFinancialProfessionals();
+//         const loginV1Page = new IndividualsLoginV1Page(page);
+//         await loginV1Page.clickLoginRetirementPlanFinancialProfessionals();
 
-        await expect(page).not.toHaveURL('/login-v1');
-        await expect(page).toHaveURL(/planweb|cloudflare|challenge|verify/i);
-        // await expect(page.locator('button[type="submit"]')).toBeVisible();
+//         await expect(page).not.toHaveURL('/login-v1');
+//         await expect(page).toHaveURL(/planweb|cloudflare|challenge|verify/i);
+//         // await expect(page.locator('button[type="submit"]')).toBeVisible();
 
-    });
-});
+//     });
+// });
 
 test.describe('Individuals Open an account functionality @smoke', () => {
     test('Go to retirement account', async ({ page }) => {

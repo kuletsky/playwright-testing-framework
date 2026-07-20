@@ -17,7 +17,7 @@ export class FinancialProfessionalsPage extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.loginButton = this.page.locator("li a[href='/financial-professionals-login']");
+        this.loginButton = this.page.locator("li a[href='/financial-professionals-login?btn=1']");
         this.registerRixtremaButton = this.page.locator(".card-3 [type='button-v2']");
         this.iagreePopupButton = this.page.locator('.swal2-confirm');
         this.loginFinancialProfessionalsButton = this.page.locator(".card-1 [type='button-v2']");

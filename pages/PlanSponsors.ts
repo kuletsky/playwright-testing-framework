@@ -29,7 +29,7 @@ export class PlanSponsorsPage extends BasePage{
 
     getMarketsMenuLinks(): { links: Locator; pane: Locator } {
         return {
-            links: this.page.locator("#markets-dropdown li.relative > a, #markets-dropdown li.relative > button"),
+            links: this.page.locator("#markets-dropdown li.relative > a:visible, #markets-dropdown li.relative > button:visible"),
             pane: this.page.locator("#markets-dropdown .nav-dropdown-right")
         };
     }

@@ -26,7 +26,7 @@ test.describe('Menu visibility', () => {
         await expect(links).toHaveText([
             "Small and growing businesses",
             "Large and mega corporations",
-            "Multiple employer plans",
+            "Pooled workplace plans",
             "Government",
             "Not-for-profit​",
             "Taft-Hartley​"
@@ -107,7 +107,7 @@ test.describe('Markets menu functionality', () => {
     const marketsLinks = [
         { name: 'Small and growing businesses', menuHeading: 'Small and growing businesses', url: '/plan-sponsors/what-we-offer/small-and-growing-businesses', pageHeading: "Plan management made simple with flexible service, expert support, and smart solutions. " },
         { name: 'Large and mega corporations', menuHeading: 'Large and mega corporations', url: '/plan-sponsors/what-we-offer/large-and-mega-corporations', pageHeading: "Built on partnership. Defined by results." },
-        { name: 'Multiple employer plans', menuHeading: "Multiple employer plans", url: '/plan-sponsors/what-we-offer/multiple-employer', pageHeading: "Multiple-Employer" },
+        { name: 'Pooled workplace plans', menuHeading: "Pooled workplace plans", url: '/plan-sponsors/markets/pooled-workplace-plans', pageHeading: "Pooled plans that reduce complexity" },
         { name: 'Government', menuHeading: "Government", url: '/plan-sponsors/what-we-offer/government', pageHeading: "Built on experience. Focused on results." },
         { name: 'Not-for-profit​', menuHeading: "Not-for-profit", url: '/plan-sponsors/markets/not-for-profit', pageHeading: "Built for good. Ready to perform." },
         { name: 'Taft-Hartley​', menuHeading: "Taft-Hartley", url: '/plan-sponsors/what-we-offer/taft-hartley-plans', pageHeading: "Backing members. Securing futures." },
@@ -118,7 +118,7 @@ test.describe('Markets menu functionality', () => {
                 .gotoPlanSponsorsPage()
                 .then(p => p.openMarketsMenu())
                 .then(p => p.clickMarketsItem(link.name));
-                
+
             if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
@@ -127,10 +127,10 @@ test.describe('Markets menu functionality', () => {
 
         test(`Hover Markets - ${link.name}`, async ({ planSponsorsPage, page }) => {
             const pane = await planSponsorsPage
-            .gotoPlanSponsorsPage()
-            .then(p => p.openMarketsMenu())
-            .then(p => p.hoverMarketsItem(link.name))
-            .then(p => p.getDropdownRightPane("markets"));
+                .gotoPlanSponsorsPage()
+                .then(p => p.openMarketsMenu())
+                .then(p => p.hoverMarketsItem(link.name))
+                .then(p => p.getDropdownRightPane("markets"));
 
             await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
         });
@@ -184,7 +184,7 @@ test.describe('Experience menu functionality', () => {
     for (const link of experienceLinks) {
         test(`Hover Experience - ${link.name}`, async ({ planSponsorsPage, page }) => {
             const pane = await planSponsorsPage
-            .gotoPlanSponsorsPage()
+                .gotoPlanSponsorsPage()
                 .then(p => p.openExperienceMenu())
                 .then(p => p.hoverExperienceItem(link.name))
                 .then(p => p.getDropdownRightPane("experience"));
@@ -208,14 +208,14 @@ test.describe('Learn menu functionality', () => {
                 .then(p => p.openLearnMenu())
                 .then(p => p.clickLearnItem(link.name));
 
-             if (link.url) {
+            if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
             }
         });
 
         test(`Hover LEARN - ${link.name}`, async ({ planSponsorsPage, page }) => {
-            const pane = await planSponsorsPage             
+            const pane = await planSponsorsPage
                 .gotoPlanSponsorsPage()
                 .then(p => p.openLearnMenu())
                 .then(p => p.hoverLearnItem(link.name))
@@ -241,7 +241,7 @@ test.describe('Why Empower menu functionality', () => {
                 .then(p => p.openWhyEmpowerMenu())
                 .then(p => p.clickWhyEmpowerItem(link.name));
 
-             if (link.url) {
+            if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible({ timeout: 60_000 });
             }
@@ -249,10 +249,10 @@ test.describe('Why Empower menu functionality', () => {
 
         test(`Hover WHY EMPOWER - ${link.name}`, async ({ planSponsorsPage, page }) => {
             const pane = await planSponsorsPage
-            .gotoPlanSponsorsPage()
-            .then(p => p.openWhyEmpowerMenu())
-            .then(p => p.hoverWhyEmpowerItem(link.name))
-            .then(p => p.getDropdownRightPane("why-empower"));
+                .gotoPlanSponsorsPage()
+                .then(p => p.openWhyEmpowerMenu())
+                .then(p => p.hoverWhyEmpowerItem(link.name))
+                .then(p => p.getDropdownRightPane("why-empower"));
 
             await expect(pane.getByText(link.menuHeading, { exact: true }).first()).toBeVisible();
         });

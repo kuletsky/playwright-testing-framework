@@ -67,7 +67,8 @@ test.describe('Menu visibility', () => {
             "Rollover",
             "IRAs",
             "Investment accounts",
-            "Tax filing"
+            "Tax filing",
+            "529s",
         ]);
     });
 
