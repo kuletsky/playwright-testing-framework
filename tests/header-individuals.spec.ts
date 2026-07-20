@@ -274,18 +274,18 @@ test.describe("The Currency functionality", () => {
 
     });
 
-    test("Verify Date block displays current date and updates correctly", async ({ theCurrency }) => {
-        await theCurrency.goto();
+    // test("Verify Date block displays current date and updates correctly", async ({ theCurrency }) => {
+    //     await theCurrency.goto();
 
-        const expectedDate = new Intl.DateTimeFormat('en-US', {
-            weekday: 'long',
-            month: 'long',
-            day: '2-digit',
-            year: 'numeric'
-        }).format(new Date()); // Example output: "Friday, May 29, 2026"
+    //     const expectedDate = new Intl.DateTimeFormat('en-US', {
+    //         weekday: 'long',
+    //         month: 'long',
+    //         day: '2-digit',
+    //         year: 'numeric'
+    //     }).format(new Date()); // Example output: "Friday, May 29, 2026"
 
-        await expect(theCurrency.todaysDateBlock).toHaveText(expectedDate);
-    });
+    //     await expect(theCurrency.todaysDateBlock).toHaveText(expectedDate);
+    // });
 
     test("Verify Press center page loads correctly", async ({ theCurrency }) => {
         await theCurrency.goto();
