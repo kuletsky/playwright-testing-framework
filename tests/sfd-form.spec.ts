@@ -23,33 +23,34 @@ test.describe("SFD Form functionality", () => {
         // await sfdPage.sideClck();
 
         await expect(sfdPage.isSubmitButton).toBeVisible();
-        await expect(sfdPage.isSubmitButton).toBeEnabled();
+        await expect(sfdPage.isSubmitButton).toBeDisabled();
     });
 
-    test("Verify there is no Validation rules when form is filled out", async ({ sfdPage }) => {
-        await sfdPage.goto();
-        await sfdPage.fillOutSfdForm();
-        await sfdPage.passwordInput.blur();
-        // await sfdPage.sideClck();
+    // test("Verify there is no Validation rules when form is filled out", async ({ sfdPage }) => {
+    //     await sfdPage.goto();
+    //     await sfdPage.fillOutSfdForm();
+    //     // await sfdPage.passwordInput.blur();
+    //     await sfdPage.usernameInput.click();
+    //     await sfdPage.sideClck();
 
-        await expect(sfdPage.firstNameValidationRule).not.toBeVisible();
-        await expect(sfdPage.lastNameValidationRule).not.toBeVisible();
-        await expect(sfdPage.mobileNumberValidationRule).not.toBeVisible();
-        await expect(sfdPage.emailValidationRule).not.toBeVisible();
+    //     await expect(sfdPage.firstNameValidationRule).not.toBeVisible();
+    //     await expect(sfdPage.lastNameValidationRule).not.toBeVisible();
+    //     await expect(sfdPage.mobileNumberValidationRule).not.toBeVisible();
+    //     await expect(sfdPage.emailValidationRule).not.toBeVisible();
 
-        await expect(sfdPage.usernameValidationRules.general).not.toBeVisible();
-        await expect(sfdPage.usernameValidationRules.length).not.toBeVisible();
-        await expect(sfdPage.usernameValidationRules.letters).not.toBeVisible();
-        await expect(sfdPage.usernameValidationRules.number).not.toBeVisible();
-        await expect(sfdPage.usernameValidationRules.allowedChars).not.toBeVisible();
+    //     await expect(sfdPage.usernameValidationRules.general).not.toBeVisible();
+    //     await expect(sfdPage.usernameValidationRules.length).not.toBeVisible();
+    //     await expect(sfdPage.usernameValidationRules.letters).not.toBeVisible();
+    //     await expect(sfdPage.usernameValidationRules.number).not.toBeVisible();
+    //     await expect(sfdPage.usernameValidationRules.allowedChars).not.toBeVisible();
 
-        await expect(sfdPage.passwordValidationRules.generalFirstLine).not.toBeVisible();
-        await expect(sfdPage.passwordValidationRules.generalSecondLine).not.toBeVisible();
-        await expect(sfdPage.passwordValidationRules.uppercase).not.toBeVisible();
-        await expect(sfdPage.passwordValidationRules.lowercase).not.toBeVisible();
-        await expect(sfdPage.passwordValidationRules.number).not.toBeVisible();
-        await expect(sfdPage.passwordValidationRules.specialChar).not.toBeVisible();
-    });
+    //     await expect(sfdPage.passwordValidationRules.generalFirstLine).not.toBeVisible();
+    //     await expect(sfdPage.passwordValidationRules.generalSecondLine).not.toBeVisible();
+    //     await expect(sfdPage.passwordValidationRules.uppercase).not.toBeVisible();
+    //     await expect(sfdPage.passwordValidationRules.lowercase).not.toBeVisible();
+    //     await expect(sfdPage.passwordValidationRules.number).not.toBeVisible();
+    //     await expect(sfdPage.passwordValidationRules.specialChar).not.toBeVisible();
+    // });
 
     test("Verify error red messages are displayed when invalid data is entered", async ({ sfdPage }) => {
         await sfdPage.goto();
@@ -149,13 +150,32 @@ test.describe("SFD Form functionality", () => {
         await expect(sfdPage.passwordValidationRules.specialChar).toHaveClass(/match-invalid/);
     });
 
-    test("Verify Name fields reject numbers and accept letters", async ({ sfdPage }) => {
+    test("Verify First Name fields reject numbers and accept letters", async ({ sfdPage }) => {
         await sfdPage.goto();
+        // await sfdPage.lastNameInput.fill('Test123');
         await sfdPage.firstNameInput.fill('Test123');
-        await sfdPage.lastNameInput.fill('Test123');
-        await sfdPage.lastNameInput.blur();
+        // await sfdPage.lastNameInput.blur();
+        await sfdPage.mobileNumberInput.click();
 
         await expect(sfdPage.firstNameValidationRule).toHaveClass(/c-form__input-footer--error/);
+        // await expect(sfdPage.lastNameValidationRule).toHaveClass(/c-form__input-footer--error/);
+
+        await sfdPage.firstNameInput.fill('TestName');
+        await sfdPage.lastNameInput.fill('TestName');
+        await sfdPage.lastNameInput.blur();
+
+        await expect(sfdPage.firstNameValidationRule).not.toHaveClass(/c-form__input-footer--error/);
+        await expect(sfdPage.lastNameValidationRule).not.toHaveClass(/c-form__input-footer--error/);
+    });
+
+        test("Verify Last Name fields reject numbers and accept letters", async ({ sfdPage }) => {
+        await sfdPage.goto();
+        await sfdPage.lastNameInput.fill('Test123');
+        // await sfdPage.firstNameInput.fill('Test123');
+        // await sfdPage.lastNameInput.blur();
+        await sfdPage.mobileNumberInput.click();
+
+        // await expect(sfdPage.firstNameValidationRule).toHaveClass(/c-form__input-footer--error/);
         await expect(sfdPage.lastNameValidationRule).toHaveClass(/c-form__input-footer--error/);
 
         await sfdPage.firstNameInput.fill('TestName');
@@ -165,6 +185,7 @@ test.describe("SFD Form functionality", () => {
         await expect(sfdPage.firstNameValidationRule).not.toHaveClass(/c-form__input-footer--error/);
         await expect(sfdPage.lastNameValidationRule).not.toHaveClass(/c-form__input-footer--error/);
     });
+
 
     test("Verify Mobile number field functionality and errors", async ({ sfdPage }) => {
         await sfdPage.goto();

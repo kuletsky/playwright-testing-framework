@@ -56,7 +56,7 @@ test.describe('Menu visibility', () => {
         await individualsPage.openFirstSubmenu();
 
         const submenuLinks = await individualsPage.getLinksFirstSubmenu();
-        await expect(submenuLinks).toHaveCount(8);
+        await expect(submenuLinks).toHaveCount(9);
 
         const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([

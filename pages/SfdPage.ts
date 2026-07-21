@@ -55,7 +55,8 @@ export class SfdPage extends BasePage {
             uppercase: page.getByText('Uppercase letter'),
             lowercase: page.getByText('Lowercase letter'),
             number: page.locator('.password-param--num'),
-            specialChar: page.getByText('Special character: @ - _'),
+            // specialChar: page.getByText('Special character: @ - _'),
+            specialChar: page.getByText('Special character: !@#$%&*-_+=.?'),
         }
     }
 
@@ -89,7 +90,7 @@ export class SfdPage extends BasePage {
     }
 
     async sideClck() {
-        await this.page.locator('.c-form').click();
+        await this.page.locator('.c-form__disclosure.js-hide-on-mobile-reg .u-copy-tiny p').click();
     }
 
     async clickIconPasswordVisibilityToggle() {
