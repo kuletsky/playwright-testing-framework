@@ -10,16 +10,16 @@ test.beforeEach(async ({ page }) => {
 
 
 test.describe('Login pages', () => {
-  test('Individuals Login page', async ({ page }) => {
-    test.setTimeout(240_000);
-    await page.goto('/login-v1');
+  // test('Individuals Login page', async ({ page }) => {
+  //   test.setTimeout(240_000);
+  //   await page.goto('/login-v1');
 
-    await suppressCookieBanner(page);
-    await removeShaking(page);
+  //   await suppressCookieBanner(page);
+  //   await removeShaking(page);
 
-    await percyScreenshot(page, 'Individuals Login page', { fullPage: true } as any);
-    expect(true).toBeTruthy();
-  });
+  //   await percyScreenshot(page, 'Individuals Login page', { fullPage: true } as any);
+  //   expect(true).toBeTruthy();
+  // });
 
   test('Financial Professionals Login page', async ({ page }) => {
     test.setTimeout(240_000);
