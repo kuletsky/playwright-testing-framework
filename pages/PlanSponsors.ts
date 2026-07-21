@@ -14,7 +14,7 @@ export class PlanSponsorsPage extends BasePage{
 
     constructor(page: Page) {
         super(page);
-        this.loginButton = this.page.locator("[data-once='nav-fp-ps-login-link click-secondary-dark-button empulsify-button-ripple']");
+        this.loginButton = this.page.locator("[data-once='nav-fp-ps-login-link click-secondary-dark-button empulsify-button-ripple emp-amplitude-deviceid']");
         this.menuMarkets = this.page.locator("[aria-label='Markets']");
         this.menuSolutions = this.page.locator("[aria-label='Solutions']");
         this.menuExperience = this.page.locator("[aria-label='Experience']");
