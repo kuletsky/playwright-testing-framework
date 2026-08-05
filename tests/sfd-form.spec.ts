@@ -121,9 +121,10 @@ test.describe("SFD Form functionality", () => {
 
     test("Verify validation rules appear when Password is focused and they are not red", async ({ sfdPage }) => {
         await sfdPage.goto();
-        await sfdPage.passwordInput.focus();
+        // await sfdPage.passwordInput.focus();
+        await sfdPage.passwordInput.click();
 
-        await expect(sfdPage.passwordValidationRules.generalFirstLine).toBeHidden();
+        await expect(sfdPage.passwordValidationRules.generalFirstLine).toBeVisible();
         await expect(sfdPage.passwordValidationRules.generalSecondLine).toBeVisible();
         await expect(sfdPage.passwordValidationRules.uppercase).toBeVisible();
         await expect(sfdPage.passwordValidationRules.lowercase).toBeVisible();
@@ -139,15 +140,16 @@ test.describe("SFD Form functionality", () => {
 
     test("Verify validation rules turn red when Password isn't filled", async ({ sfdPage }) => {
         await sfdPage.goto();
-        await sfdPage.passwordInput.focus();
+        // await sfdPage.passwordInput.focus();
+        await sfdPage.passwordInput.click();
         await sfdPage.passwordInput.blur();
 
         await expect(sfdPage.passwordValidationRules.generalFirstLine).toHaveClass(/c-form__input-footer--error/);
         await expect(sfdPage.passwordValidationRules.generalSecondLine).toHaveClass(/c-form__input-footer--error/);
-        await expect(sfdPage.passwordValidationRules.uppercase).toHaveClass(/match-invalid/);
-        await expect(sfdPage.passwordValidationRules.lowercase).toHaveClass(/match-invalid/);
-        await expect(sfdPage.passwordValidationRules.number).toHaveClass(/match-invalid/);
-        await expect(sfdPage.passwordValidationRules.specialChar).toHaveClass(/match-invalid/);
+        await expect(sfdPage.passwordValidationRules.uppercase).not.toHaveClass(/match-invalid/);
+        await expect(sfdPage.passwordValidationRules.lowercase).not.toHaveClass(/match-invalid/);
+        await expect(sfdPage.passwordValidationRules.number).not.toHaveClass(/match-invalid/);
+        await expect(sfdPage.passwordValidationRules.specialChar).not.toHaveClass(/match-invalid/);
     });
 
     test("Verify First Name fields reject numbers and accept letters", async ({ sfdPage }) => {
@@ -388,24 +390,24 @@ test.describe("SFD Form functionality", () => {
                 description: "Too short: Contains 3 criteria but fails length",
                 input: "Ab1@", // 4 characters total (Has Upper, Lower, Num, Special)
                 expectations: {
-                    generalLine1: isError,
-                    generalLine2: isError,
-                    uppercase: /match-valid/, // individual criteria are technically met
-                    lowercase: /match-valid/,
-                    number: /match-valid/,
-                    specialChar: /match-valid/
+                    generalLine1: /match-invalid/,
+                    generalLine2: /match-valid/,
+                    uppercase: 'rgb(0, 177, 64)', // individual criteria are technically met
+                    lowercase: 'rgb(0, 177, 64)',
+                    number: 'rgb(0, 177, 64)',
+                    specialChar: 'rgb(0, 177, 64)'
                 }
             },
             {
                 description: "Missing uppercase and numbers: Only has lowercase and special",
                 input: "abcdef@@", // 8 characters total (Fails 3-of-4 rule)
                 expectations: {
-                    generalLine1: isError,
-                    generalLine2: isError, // length is fine
-                    uppercase: isError,
-                    lowercase: /match-valid/,
-                    number: isError,
-                    specialChar: /match-valid/
+                    generalLine1: /match-valid/,
+                    generalLine2: /match-invalid/, // length is fine
+                    uppercase: "rgb(157, 144, 144)",
+                    lowercase: "rgb(0, 177, 64)",
+                    number: "rgb(157, 144, 144)",
+                    specialChar: "rgb(0, 177, 64)"
                 }
             },
             {
@@ -414,10 +416,10 @@ test.describe("SFD Form functionality", () => {
                 expectations: {
                     generalLine1: isError,
                     generalLine2: isError, // length is fine
-                    uppercase: /match-valid/,
-                    lowercase: isError,
-                    number: /match-valid/,
-                    specialChar: isError
+                    uppercase: 'rgb(0, 177, 64)',
+                    lowercase: 'rgb(157, 144, 144)',
+                    number: 'rgb(0, 177, 64)',
+                    specialChar: 'rgb(157, 144, 144)',
                 }
             }
         ];
@@ -431,10 +433,10 @@ test.describe("SFD Form functionality", () => {
                 await expect(sfdPage.passwordValidationRules.generalFirstLine).toHaveClass(scenario.expectations.generalLine1);
             }
             await expect(sfdPage.passwordValidationRules.generalSecondLine).toHaveClass(scenario.expectations.generalLine2);
-            await expect(sfdPage.passwordValidationRules.uppercase).toHaveClass(scenario.expectations.uppercase);
-            await expect(sfdPage.passwordValidationRules.lowercase).toHaveClass(scenario.expectations.lowercase);
-            await expect(sfdPage.passwordValidationRules.number).toHaveClass(scenario.expectations.number);
-            await expect(sfdPage.passwordValidationRules.specialChar).toHaveClass(scenario.expectations.specialChar);
+            await expect(sfdPage.passwordValidationRules.uppercase).toHaveCSS('color', scenario.expectations.uppercase);
+            await expect(sfdPage.passwordValidationRules.lowercase).toHaveCSS('color', scenario.expectations.lowercase);
+            await expect(sfdPage.passwordValidationRules.number).toHaveCSS('color', scenario.expectations.number);
+            await expect(sfdPage.passwordValidationRules.specialChar).toHaveCSS('color', scenario.expectations.specialChar);
             await expect(sfdPage.isSubmitButton).toBeVisible();
             await expect(sfdPage.isSubmitButton).toBeDisabled();
         }

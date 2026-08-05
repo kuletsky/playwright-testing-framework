@@ -50,13 +50,13 @@ export class SfdPage extends BasePage {
             allowedChars: page.getByText('Other allowed characters: @ - _'),
         }
         this.passwordValidationRules = {
-            generalFirstLine: page.getByText('Password must be at least 8 characters.'),
-            generalSecondLine: page.getByText('Password must be 8-63 characters and contain 3 of the following:'),
+            generalFirstLine: page.getByText('Password must be at least 8 characters'),
+            generalSecondLine: page.getByText('Contains 3 of the following:'),
             uppercase: page.getByText('Uppercase letter'),
             lowercase: page.getByText('Lowercase letter'),
             number: page.locator('.password-param--num'),
             // specialChar: page.getByText('Special character: @ - _'),
-            specialChar: page.getByText('Special character: !@#$%&*-_+=.?'),
+            specialChar: page.getByText('Special characters allowed: !@#$%&*-_+=.?'),
         }
     }
 
