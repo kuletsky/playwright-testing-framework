@@ -86,7 +86,7 @@ test.describe('Menu visibility', () => {
         await plansponsorsPage.openSecondSubmenu();
 
         const submenuLinks = await plansponsorsPage.getLinksSecondSubmenu();
-        await expect(submenuLinks).toHaveCount(9);
+        await expect(submenuLinks).toHaveCount(11);
 
         const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
@@ -99,6 +99,8 @@ test.describe('Menu visibility', () => {
             "Empower benefit consulting services",
             "Stock plan services​",
             "Consumer-directed health",
+            "Health and welfare benefits administration",
+            "MARC Pension Administration System"
         ]);
     });
 

@@ -40,7 +40,7 @@ test.describe('Menu visibility', () => {
             .then(p => p.openSolutionsMenu())
             .then(p => p.getSolutionsMenuLinks());
 
-        await expect(links).toHaveCount(9);
+        await expect(links).toHaveCount(11);
         await expect(links).toHaveText([
             "Integrated workplace solutions",
             "Advisory services​",
@@ -51,6 +51,8 @@ test.describe('Menu visibility', () => {
             "Empower benefit consulting services",
             "Stock plan services​",
             "Consumer-directed health",
+            "Health and welfare benefits administration",
+            "MARC Pension Administration System"
         ]);
         await expect(pane.getByText("Solutions", { exact: true })).toBeVisible();
     });

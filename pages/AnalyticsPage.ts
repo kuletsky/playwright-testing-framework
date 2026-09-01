@@ -38,8 +38,8 @@ export class AnalyticsPage extends BasePage {
     linkText_Card4: '[data-once="tools-carousel-card-link-click click-branded-button empulsify-button-ripple emp-amplitude-deviceid"]',
 
     // Carousel
-    carouselNext: "#emp-layouts-linear-gradient--5 .owl-tools-next > span[role='presentation']",
-    carouselPrev: '#emp-layouts-linear-gradient--5 .owl-tools-prev > span[role="presentation"]',
+    carouselNext: ".owl-next.group > span[role='presentation']",
+    carouselPrev: ".owl-prev.group > span[role='presentation']",
     carouselPause: "[data-emp-carousel='playpause']",
 
     // Modal
