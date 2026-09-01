@@ -38,8 +38,8 @@ export class AnalyticsPage extends BasePage {
     linkText_Card4: '[data-once="tools-carousel-card-link-click click-branded-button empulsify-button-ripple emp-amplitude-deviceid"]',
 
     // Carousel
-    carouselNext: ".owl-next.group > span[role='presentation']",
-    carouselPrev: ".owl-prev.group > span[role='presentation']",
+    carouselNext: ".emp-tools-carousel-header button[aria-label='Next slide']",
+    carouselPrev: ".emp-tools-carousel-header button[aria-label='Previous slide']",
     carouselPause: "[data-emp-carousel='playpause']",
 
     // Modal
