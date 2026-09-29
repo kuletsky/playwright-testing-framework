@@ -26,6 +26,8 @@ export class theCurrency extends BasePage {
     readonly emailSubscribeValidationMessage: Locator;
     readonly boxAgreement: Locator;
     readonly hamburgerHeaderLinks: Locator;
+    readonly currencyHeaderLinks: Locator;
+    readonly currencyHeader: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -36,7 +38,7 @@ export class theCurrency extends BasePage {
         this.regionHeaderLinks = this.regionHeader.locator('a');
         this.glossary = page.locator('.glossary-link a');
         this.navMenuLinks = page.locator('.menu--currency-categories .menu-item');
-        this.navMenuInvestmentLinks = page.locator('.menu--investmentinsightscategories .menu-item');
+        this.navMenuInvestmentLinks = page.locator('nav[aria-label="Primary navigation"] > ul a');
         this.recentArticles = page.locator('.recent-articles');
         this.pressCenterImage = page.getByRole('img', { name: "Press Center homepage" });
         this.latestContent = page.getByText('Latest Content');
@@ -51,6 +53,8 @@ export class theCurrency extends BasePage {
         this.subscribeButton = page.getByRole('button', { name: 'Subscribe' });
         this.emailSubscribeValidationMessage = page.locator('.email_error__other');
         this.hamburgerHeaderLinks = page.locator('.the-currency--mobile-nav--menu.menu--level-1');
+        this.currencyHeader = page.locator('[aria-label="Contextual navigation"]');
+        this.currencyHeaderLinks = this.currencyHeader.locator('a');
     }
 
 

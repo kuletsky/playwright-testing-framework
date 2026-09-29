@@ -11,6 +11,7 @@ test.beforeEach(async ({ page }) => {
 test.describe('Menu visibility', () => {
     test('Verify Heading menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.clickAcceptButton();
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -20,6 +21,7 @@ test.describe('Menu visibility', () => {
 
     test('Verify Contextual menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.clickAcceptButton();
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -36,6 +38,7 @@ test.describe('Menu visibility', () => {
 
     test('Verify Financial Professionals menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.clickAcceptButton();
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -54,6 +57,7 @@ test.describe('Menu visibility', () => {
 
     test('Verify Solutions menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.clickAcceptButton();
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -81,6 +85,7 @@ test.describe('Menu visibility', () => {
 
     test('Verify Experience menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.clickAcceptButton();
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -102,6 +107,7 @@ test.describe('Menu visibility', () => {
 
     test('Verify Resources menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.clickAcceptButton();
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -121,6 +127,7 @@ test.describe('Menu visibility', () => {
 
     test('Verify Insights menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.clickAcceptButton();       
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -138,6 +145,7 @@ test.describe('Menu visibility', () => {
 
     test('Verify Why Empower menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
+        await finproPage.clickAcceptButton();
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -172,6 +180,7 @@ test.describe('Solutions menu functionality', () => {
     for (const link of solutionsLinks) {
         test(`Click Solutions - ${link.name}`, async ({ page }) => {
             const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.clickAcceptButton();
             await finproPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -200,6 +209,7 @@ test.describe('Experience menu functionality', () => {
     for (const link of experienceLinks) {
         test(`Click Experience - ${link.name}`, async ({ page }) => {
             const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.clickAcceptButton();
             await finproPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -226,6 +236,7 @@ test.describe('Resources menu functionality', () => {
     for (const link of resourcesLinks) {
         test(`Click Resources - ${link.name}`, async ({ page }) => {
             const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.clickAcceptButton();
             await finproPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -250,6 +261,7 @@ test.describe('Insights menu functionality', () => {
     for (const link of insightsLinks) {
         test(`Click Insights - ${link.name}`, async ({ page }) => {
             const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.clickAcceptButton();
             await finproPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -275,6 +287,7 @@ test.describe('Why Empower menu functionality', () => {
     for (const link of whyEmpowerLinks) {
         test(`Click Why Empower - ${link.name}`, async ({ page }) => {
             const finproPage = new FinancialProfessionalsPage(page);
+            await finproPage.clickAcceptButton();
             await finproPage.openHamburger();
             await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 

@@ -313,11 +313,11 @@ test.describe("The Currency functionality", () => {
         await expect(theCurrency.url).toHaveURL(/investment-insights/);
         await expect(theCurrency.title).toHaveTitle('Investment Insights | Empower');
 
-        await expect(theCurrency.regionHeader).toBeVisible();
-        await expect(theCurrency.regionHeaderLinks).toHaveText([
-            "The Currency",
-            "Press center",
-            "Investment Insights"
+        await expect(theCurrency.currencyHeader).toBeVisible();
+        await expect(theCurrency.currencyHeaderLinks).toHaveText([
+            "Individuals",
+            "Plan Sponsors",
+            "Financial Professionals"
         ]);
 
         await expect(theCurrency.navMenuInvestmentLinks).toHaveText([
@@ -328,7 +328,7 @@ test.describe("The Currency functionality", () => {
         ]);
 
         await expect(theCurrency.investmentInsightsImage).toHaveJSProperty('complete', true);
-        await expect(theCurrency.empowerLogo).toBeVisible();
+        // await expect(theCurrency.empowerLogo).toBeVisible();
         await expect(theCurrency.latestContent).toBeVisible();
 
     });

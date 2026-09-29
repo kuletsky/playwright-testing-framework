@@ -5,6 +5,7 @@ test.describe('Menu visibility', () => {
     test('Verify Financial Professionals menu is displayed', async ({ finProfPage }) => {
         const links = await finProfPage
             .gotoFinProfPage()
+            .then(p => p.clickAcceptButton())
             .then(p => p.getPrimaryMenuLinks());
 
         await expect(links).toHaveCount(5);
@@ -20,6 +21,7 @@ test.describe('Menu visibility', () => {
     test('Verify Solutions menu is displayed', async ({ finProfPage }) => {
         const { links, pane } = await finProfPage
             .gotoFinProfPage()
+            .then(p => p.clickAcceptButton())
             .then(p => p.openSolutionsMenu())
             .then(p => p.getSolutionsMenuLinks());
 
@@ -41,6 +43,7 @@ test.describe('Menu visibility', () => {
     test('Verify Experience menu is displayed', async ({ finProfPage }) => {
         const { links, pane } = await finProfPage
             .gotoFinProfPage()
+            .then(p => p.clickAcceptButton())
             .then(p => p.openExperienceMenu())
             .then(p => p.getExperienceMenuLinks());
 
@@ -61,6 +64,7 @@ test.describe('Menu visibility', () => {
     test('Verify Resources menu is displayed', async ({ finProfPage }) => {
         const { links, pane } = await finProfPage
             .gotoFinProfPage()
+            .then(p => p.clickAcceptButton())
             .then(p => p.openResourcesMenu())
             .then(p => p.getResourcesMenuLinks());
 
@@ -79,6 +83,7 @@ test.describe('Menu visibility', () => {
     test('Verify Insights menu is displayed', async ({ finProfPage }) => {
         const { links, pane } = await finProfPage
             .gotoFinProfPage()
+            .then(p => p.clickAcceptButton())
             .then(p => p.openInsightsMenu())
             .then(p => p.getInsightsMenuLinks());
 
@@ -95,6 +100,7 @@ test.describe('Menu visibility', () => {
     test('Verify Why Empower menu is displayed', async ({ finProfPage }) => {
         const { links, pane } = await finProfPage
             .gotoFinProfPage()
+            .then(p => p.clickAcceptButton())           
             .then(p => p.openWhyEmpowerMenu())
             .then(p => p.getWhyEmpowerMenuLinks());
 
@@ -108,6 +114,7 @@ test.describe('Menu visibility', () => {
         await expect(pane.getByText("Why Empower", { exact: true })).toBeVisible();
         });
 });
+
 
 test.describe('Solutions menu functionality', () => {
     const solutionsLinks = [
@@ -125,6 +132,7 @@ test.describe('Solutions menu functionality', () => {
         test(`Click Solutions - ${link.name}`, async ({ finProfPage, page }) => {
             await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openSolutionsMenu())
                 .then(p => p.clickSolutionsItem(link.name));
 
@@ -135,6 +143,7 @@ test.describe('Solutions menu functionality', () => {
         test(`Hover Solutions - ${link.name}`, async ({ finProfPage, page }) => {
             const pane = await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openSolutionsMenu())
                 .then(p => p.hoverSolutionsItem(link.name))
                 .then(p => p.getDropdownRightPane('solutions'));
@@ -143,9 +152,9 @@ test.describe('Solutions menu functionality', () => {
         });
     }
 });
-// Data-driven tests for Experience menu items
-test.describe('Experience menu functionality', () => {
 
+
+test.describe('Experience menu functionality', () => {
     const experienceLinks = [
         { name: "Markets", menuHeading: "Markets we serve", url: "/financial-professionals/what-we-offer/markets-we-serve", pageHeading: "A trusted partner in retirement solutions" },
         { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/experience/personal-experience", pageHeading: "The full picture — connected and clear" },
@@ -161,6 +170,7 @@ test.describe('Experience menu functionality', () => {
         test(`Click Experience - ${link.name}`, async ({ finProfPage, page }) => {
             await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openExperienceMenu())
                 .then(p => p.clickExperienceItem(link.name));
 
@@ -173,6 +183,7 @@ test.describe('Experience menu functionality', () => {
         test(`Hover Experience - ${link.name}`, async ({ finProfPage, page }) => {
             const pane = await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openExperienceMenu())
                 .then(p => p.hoverExperienceItem(link.name))
                 .then(p => p.getDropdownRightPane('experience'));
@@ -181,6 +192,7 @@ test.describe('Experience menu functionality', () => {
         });
     }
 });
+
 
 test.describe('Resources menu functionality', () => {
     const resourcesLinks = [
@@ -195,6 +207,7 @@ test.describe('Resources menu functionality', () => {
         test(`Click Resources - ${link.name}`, async ({ finProfPage, page }) => {
             await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openResourcesMenu())
                 .then(p => p.clickResourcesItem(link.name));
 
@@ -207,6 +220,7 @@ test.describe('Resources menu functionality', () => {
         test(`Hover Resources - ${link.name}`, async ({ finProfPage, page }) => {
             const pane = await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openResourcesMenu())
                 .then(p => p.hoverResourcesItem(link.name))
                 .then(p => p.getDropdownRightPane('resources'));
@@ -227,6 +241,7 @@ test.describe('Insights menu functionality', () => {
         test(`Click Insights - ${link.name}`, async ({ finProfPage, page }) => {
             await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openInsightsMenu())
                 .then(p => p.clickInsightsItem(link.name));
 
@@ -239,6 +254,7 @@ test.describe('Insights menu functionality', () => {
         test(`Hover Insights - ${link.name}`, async ({ finProfPage, page }) => {
             const pane = await finProfPage                
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openInsightsMenu())
                 .then(p => p.hoverInsightsItem(link.name))
                 .then(p => p.getDropdownRightPane('insights'));
@@ -260,6 +276,7 @@ test.describe('Why Empower menu functionality', () => {
         test(`Click Why Empower - ${link.name}`, async ({ finProfPage, page }) => {
             await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openWhyEmpowerMenu())
                 .then(p => p.clickWhyEmpowerItem(link.name));
 
@@ -272,6 +289,7 @@ test.describe('Why Empower menu functionality', () => {
         test(`Hover Why Empower - ${link.name}`, async ({ finProfPage, page }) => {
             const pane = await finProfPage
                 .gotoFinProfPage()
+                .then(p => p.clickAcceptButton())
                 .then(p => p.openWhyEmpowerMenu())
                 .then(p => p.hoverWhyEmpowerItem(link.name))
                 .then(p => p.getDropdownRightPane('why-empower'));

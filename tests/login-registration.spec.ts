@@ -7,76 +7,6 @@ import { PlanSponsorsPage } from '../pages/PlanSponsors';
 import { suppressCookieBanner } from '../utils/stabilize';
 
 
-// test.describe('Individuals Login-v1 functionality @smoke', () => {
-//     test('Login Retirement account', async ({ page }) => {
-//         const individualsPage = new IndividualsPage(page);
-//         await individualsPage.gotoIndividualsPage();
-//         await individualsPage.clickLoginButton();
-
-//         const loginV1Page = new IndividualsLoginV1Page(page);
-//         await loginV1Page.clickLoginRetirementAccount();
-
-//         await expect(page).not.toHaveURL('/login-v1');
-//         await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
-//         // await expect(page.locator('button[type="submit"]')).toBeVisible();
-
-
-//     });
-
-//     test('Login Personal Dashboard', async ({ page }) => {
-//         const individualsPage = new IndividualsPage(page);
-//         await individualsPage.gotoIndividualsPage();
-//         await individualsPage.clickLoginButton();
-
-//         const loginV1Page = new IndividualsLoginV1Page(page);
-//         await loginV1Page.clickLoginPersonalDashboard();
-
-//         await expect(page).not.toHaveURL('/login-v1');
-//         await expect(page).toHaveURL(/\/page\/login\/goHome|cloudflare|challenge|verify/i);
-//         // await expect(page.locator('button[type="submit"]')).toBeVisible();
-
-//     });
-
-//     test('Login Personal Wealth', async ({ page }) => {
-//         const individualsPage = new IndividualsPage(page);
-//         await individualsPage.gotoIndividualsPage();
-//         await individualsPage.clickLoginButton();
-
-//         const loginV1Page = new IndividualsLoginV1Page(page);
-//         await loginV1Page.clickLoginPersonalWealth();
-
-//         await expect(page).not.toHaveURL('/login-v1');
-//         await expect(page).toHaveURL(/\/participant|cloudflare|challenge|verify/i);
-//     });
-
-//     test('Login Retirement plan sponsors', async ({ page }) => {
-//         const individualsPage = new IndividualsPage(page);
-//         await individualsPage.gotoIndividualsPage();
-//         await individualsPage.clickLoginButton();
-
-//         const loginV1Page = new IndividualsLoginV1Page(page);
-//         await loginV1Page.clickLoginRetirementPlanSponsors();
-
-//         await expect(page).not.toHaveURL('/login-v1');
-//         await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
-//         // await expect(page.locator('button[type="submit"]')).toBeVisible();
-
-//     });
-
-//     test('Login Retirement plan financial professionals', async ({ page }) => {
-//         const individualsPage = new IndividualsPage(page);
-//         await individualsPage.gotoIndividualsPage();
-//         await individualsPage.clickLoginButton();
-
-//         const loginV1Page = new IndividualsLoginV1Page(page);
-//         await loginV1Page.clickLoginRetirementPlanFinancialProfessionals();
-
-//         await expect(page).not.toHaveURL('/login-v1');
-//         await expect(page).toHaveURL(/planweb|cloudflare|challenge|verify/i);
-//         // await expect(page.locator('button[type="submit"]')).toBeVisible();
-
-//     });
-// });
 
 test.describe('Individuals Open an account functionality @smoke', () => {
     test('Go to retirement account', async ({ page }) => {
@@ -207,8 +137,9 @@ test.describe('Financial Professionals Login functionality @smoke', () => {
     test('Login Finansial Professionals', async ({ page }) => {
         const finProPage = new FinancialProfessionalsPage(page);
         await finProPage.gotoFinProfPage();
+        await finProPage.clickAcceptButton();
         await finProPage.clickLoginButton();
-        await finProPage.clickIAgreePopup();
+        // await finProPage.clickIAgreePopup();
         await finProPage.clickLoginFinancialProfessionalsButton();
 
         await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
@@ -222,8 +153,9 @@ test.describe('Financial Professionals Login functionality @smoke', () => {
     test('Register Financial Professionals', async ({ page }) => {
         const finProfPage = new FinancialProfessionalsPage(page);
         await finProfPage.gotoFinProfPage();
+        await finProfPage.clickAcceptButton();
         await finProfPage.clickLoginButton();
-        await finProfPage.clickIAgreePopup();
+        // await finProfPage.clickIAgreePopup();
         await finProfPage.clickRegisterFinancialProfessionalsButton();
         await finProfPage.clickContinueButton();
 
@@ -237,8 +169,9 @@ test.describe('Financial Professionals Login functionality @smoke', () => {
     test('Register Rixtrema', async ({ page }) => {
         const finProfPage = new FinancialProfessionalsPage(page);
         await finProfPage.gotoFinProfPage();
+        await finProfPage.clickAcceptButton();
         await finProfPage.clickLoginButton();
-        await finProfPage.clickIAgreePopup();
+        // await finProfPage.clickIAgreePopup();
         await finProfPage.clickRegisterRixtremaButton();
         await finProfPage.clickContinueButton();
 

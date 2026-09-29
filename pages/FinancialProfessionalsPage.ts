@@ -14,6 +14,7 @@ export class FinancialProfessionalsPage extends BasePage {
     private menuInsights: Locator
     private menuWhyEmpower: Locator
     private menuFinancialProfessionals: Locator
+    private acceptButton: Locator
 
     constructor(page: Page) {
         super(page);
@@ -28,6 +29,7 @@ export class FinancialProfessionalsPage extends BasePage {
         this.menuInsights = this.page.locator("[aria-label='Insights']");
         this.menuWhyEmpower = this.page.locator("[aria-label='Why Empower']");
         this.menuFinancialProfessionals = this.page.locator("[aria-label='Financial Professionals']");
+        this.acceptButton = this.page.locator('button.emp-fin-modal-accept');
     }
 
     async gotoFinProfPage() {
@@ -57,6 +59,11 @@ export class FinancialProfessionalsPage extends BasePage {
 
     async openSolutionsMenu() {
         await this.menuSolutions.click();
+        return this;
+    }
+
+    async clickAcceptButton() {
+        await this.acceptButton.click();
         return this;
     }
 
