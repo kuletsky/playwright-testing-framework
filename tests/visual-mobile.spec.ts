@@ -24,7 +24,7 @@ test.describe('Login pages', () => {
   test('Financial Professionals Login page', async ({ page }) => {
     test.setTimeout(240_000);
     await page.goto('/financial-professionals-login');
-    await new FinancialProfessionalsPage(page).clickAcceptButton();
+    // await new FinancialProfessionalsPage(page).clickAcceptButton();
 
     await suppressCookieBanner(page);
     await removeShaking(page);

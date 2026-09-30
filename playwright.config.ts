@@ -62,10 +62,10 @@ export default defineConfig({
     //   name: 'iPad Pro 11',
     //   use: { ...devices['iPad Pro 11'] }, // Emulates iOS tablet
     // },
-    // {
-    //   name: 'Galaxy Tab S4',
-    //   use: { ...devices['Galaxy Tab S4'] }, // Emulates Android tablet
-    // },
+    {
+      name: 'Galaxy Tab S4',
+      use: { ...devices['Galaxy Tab S4'] }, // Emulates Android tablet
+    },
 
     /* Test against branded browsers. */
     // {

@@ -137,6 +137,7 @@ test.describe('Financial Professionals Login functionality @smoke', () => {
     test('Login Finansial Professionals', async ({ page }) => {
         const finProPage = new FinancialProfessionalsPage(page);
         await finProPage.gotoFinProfPage();
+        await suppressCookieBanner(page);
         await finProPage.clickAcceptButton();
         await finProPage.clickLoginButton();
         // await finProPage.clickIAgreePopup();
@@ -153,6 +154,7 @@ test.describe('Financial Professionals Login functionality @smoke', () => {
     test('Register Financial Professionals', async ({ page }) => {
         const finProfPage = new FinancialProfessionalsPage(page);
         await finProfPage.gotoFinProfPage();
+        await suppressCookieBanner(page);
         await finProfPage.clickAcceptButton();
         await finProfPage.clickLoginButton();
         // await finProfPage.clickIAgreePopup();
@@ -169,6 +171,7 @@ test.describe('Financial Professionals Login functionality @smoke', () => {
     test('Register Rixtrema', async ({ page }) => {
         const finProfPage = new FinancialProfessionalsPage(page);
         await finProfPage.gotoFinProfPage();
+        await suppressCookieBanner(page);
         await finProfPage.clickAcceptButton();
         await finProfPage.clickLoginButton();
         // await finProfPage.clickIAgreePopup();
