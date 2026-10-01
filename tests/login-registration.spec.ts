@@ -140,7 +140,6 @@ test.describe('Financial Professionals Login functionality @smoke', () => {
         await suppressCookieBanner(page);
         await finProPage.clickAcceptButton();
         await finProPage.clickLoginButton();
-        // await finProPage.clickIAgreePopup();
         await finProPage.clickLoginFinancialProfessionalsButton();
 
         await expect(page).toHaveURL(/\/planweb|cloudflare|challenge|verify/i);
