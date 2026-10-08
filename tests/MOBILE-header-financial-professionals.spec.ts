@@ -62,24 +62,28 @@ test.describe('Menu visibility', () => {
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
         const submenuLinks = await finproPage.getLinksFirstSubmenu();
-        await expect(submenuLinks).toHaveCount(14);
+        await expect(submenuLinks).toHaveCount(18);
 
         const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
             "Defined contribution",
             "Overview",
-            "Empower Select™",
-            "Small business retirement plans",
             "PEPs, MEPs, and PEOs",
+            "Small business retirement plans",
+            "Empower Select™",
             "Empower Standard",
+            "Defined benefit",
+            "Defined benefit plans",
+            "MARC™ Pension Administration System",
+            "Nonqualified plans",
             "Integrated workplace solutions",
-            "Fiduciary advice solutions",
-            "Private market investments",
+            "Overview",
             "Stock plan services​",
             "Empower benefit consulting services",
-            "Nonqualified plans",
-            "Defined benefit plans",
             "Consumer-directed health",
+            "Health and welfare benefits administration",
+            "Fiduciary advice solutions",
+            "Private market investments",
         ]);
     });
 
@@ -127,7 +131,7 @@ test.describe('Menu visibility', () => {
 
     test('Verify Insights menu is displayed', async ({ page }) => {
         const finproPage = new FinancialProfessionalsPage(page);
-        await finproPage.clickAcceptButton();       
+        await finproPage.clickAcceptButton();
         await finproPage.openHamburger();
         await expect(page.locator(".mobile-navigation-dropdown")).toBeVisible();
 
@@ -173,7 +177,7 @@ test.describe('Solutions menu functionality', () => {
         { name: "Private market investments", menuHeading: "Private market investments", url: "/financial-professionals/what-we-offer/private-market-investments", pageHeading: "Private markets, new possibilities" },
         { name: "Stock plan services​", menuHeading: "Stock plan services​", url: "/financial-professionals/what-we-offer/stock-plan-services", pageHeading: "Global stock plans simplified. Yes, really." },
         { name: "Empower benefit consulting services", menuHeading: "Empower benefit consulting services", url: "/financial-professionals/what-we-offer/empower-benefit-consulting-services", pageHeading: "Trusted excellence. Proven expertise." },
-        { name: "Nonqualified plans", menuHeading: "Nonqualified plans", url: "/financial-professionals/what-we-offer/nonqualified-plans", pageHeading: "The edge in workplace wealth"},
+        { name: "Nonqualified plans", menuHeading: "Nonqualified plans", url: "/financial-professionals/what-we-offer/nonqualified-plans", pageHeading: "The edge in workplace wealth" },
         { name: "Defined benefit plans", menuHeading: "Defined benefit plans", url: "/financial-professionals/what-we-offer/defined-benefit-plans", pageHeading: "Defined benefit plans. Smarter for you. Simpler for them." },
         { name: "Consumer-directed health", menuHeading: "Consumer-directed health", url: "/financial-professionals/what-we-offer/consumer-directed-health", pageHeading: "Integrated health and wealth" },
     ]
@@ -201,7 +205,8 @@ test.describe('Experience menu functionality', () => {
         { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/experience/personal-experience", pageHeading: "The full picture — connected and clear" },
         { name: "Financial wellness", menuHeading: "Financial wellness", url: "/financial-professionals/experience/financial-wellness", pageHeading: "Financial wellness. A built-in benefit." },
         { name: "Education & action", menuHeading: "Education & action", url: "/financial-professionals/experience/education-action", pageHeading: "A powerful, personal experience." },
-        { name: "Advice & guidance", menuHeading: "Advice & guidance", url: "/financial-professionals/experience/advice-guidance", pageHeading: "The advice advantage. Day one through retirement." },
+        {
+            name: "Advice & guidance", menuHeading: "Advice & guidance", url: "/financial-professionals/experience/advice-guidance", pageHeading: "The advice advantage. Day one through retirement." },
         { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/experience/apis", pageHeading: "Bridges to innovation" },
         { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
         { name: "Webinars and events", menuHeading: "Webinars and events", url: "/financial-professionals/empower-events" },
@@ -268,7 +273,7 @@ test.describe('Insights menu functionality', () => {
             await finproPage.openForthSubmenu();
             await finproPage.clickForthSubmenuItem(link.name);
             
-            if (link.url) {
+if (link.url) {
                 await expect(page).toHaveURL(link.url);
                 await expect(page.getByText(link.pageHeading, { exact: true }).first()).toBeVisible();
             }

@@ -25,17 +25,14 @@ test.describe('Menu visibility', () => {
             .then(p => p.openSolutionsMenu())
             .then(p => p.getSolutionsMenuLinks());
 
-        await expect(links).toHaveCount(9);
+        await expect(links).toHaveCount(6);
         await expect(links).toHaveText([
             "Defined contribution",
+            "Defined benefit",
+            "Nonqualified plans",
             "Integrated workplace solutions",
             "Fiduciary advice solutions",
-            "Private market investments",
-            "Stock plan services​",
-            "Empower benefit consulting services",
-            "Nonqualified plans",
-            "Defined benefit plans",
-            "Consumer-directed health",
+            "Private market investments"
         ]);
         await expect(pane.getByText("Solutions", { exact: true })).toBeVisible();
     });
@@ -87,9 +84,9 @@ test.describe('Menu visibility', () => {
             .then(p => p.openInsightsMenu())
             .then(p => p.getInsightsMenuLinks());
 
-        await expect(links).toHaveCount(3); 
+        await expect(links).toHaveCount(3);
         await expect(links).toHaveText([
-            "Investment Insights", 
+            "Investment Insights",
             "Legislative & regulatory news",
             "The Currency"
         ]);
@@ -100,7 +97,7 @@ test.describe('Menu visibility', () => {
     test('Verify Why Empower menu is displayed', async ({ finProfPage }) => {
         const { links, pane } = await finProfPage
             .gotoFinProfPage()
-            .then(p => p.clickAcceptButton())           
+            .then(p => p.clickAcceptButton())
             .then(p => p.openWhyEmpowerMenu())
             .then(p => p.getWhyEmpowerMenuLinks());
 
@@ -112,21 +109,21 @@ test.describe('Menu visibility', () => {
             "Press Center",
         ]);
         await expect(pane.getByText("Why Empower", { exact: true })).toBeVisible();
-        });
+    });
 });
 
 
 test.describe('Solutions menu functionality', () => {
     const solutionsLinks = [
         // { name: "Defined contribution", menuHeading: "Defined contribution", url: "/financial-professionals/solutions/defined-contribution", pageHeading: "Defined contribution" },
-        { name: "Integrated workplace solutions", menuHeading: "Integrated workplace solutions", url: "/financial-professionals/what-we-offer/integrated-workplace-solutions", pageHeading: "The future of workplace is here" },
+        // { name: "Integrated workplace solutions", menuHeading: "Integrated workplace solutions", url: "/financial-professionals/what-we-offer/integrated-workplace-solutions", pageHeading: "The future of workplace is here" },
+        // { name: "Stock plan services​", menuHeading: "Stock plan services​", url: "/financial-professionals/what-we-offer/stock-plan-services", pageHeading: "Global stock plans simplified. Yes, really." },
+        // { name: "Empower benefit consulting services", menuHeading: "Empower benefit consulting services", url: "/financial-professionals/what-we-offer/empower-benefit-consulting-services", pageHeading: "Trusted excellence. Proven expertise." },
+        { name: "Nonqualified plans", menuHeading: "Nonqualified plans", url: "/financial-professionals/what-we-offer/nonqualified-plans", pageHeading: "The edge in workplace wealth" },
         { name: "Fiduciary advice solutions", menuHeading: "Fiduciary advice solutions", url: "/financial-professionals/what-we-offer/fiduciary-advice-solutions-overview", pageHeading: "We believe everyone deserves access to fiduciary advice" },
         { name: "Private market investments", menuHeading: "Private market investments", url: "/financial-professionals/what-we-offer/private-market-investments", pageHeading: "Private markets, new possibilities" },
-        { name: "Stock plan services​", menuHeading: "Stock plan services​", url: "/financial-professionals/what-we-offer/stock-plan-services", pageHeading: "Global stock plans simplified. Yes, really." },
-        { name: "Empower benefit consulting services", menuHeading: "Empower benefit consulting services", url: "/financial-professionals/what-we-offer/empower-benefit-consulting-services", pageHeading: "Trusted excellence. Proven expertise." },
-        { name: "Nonqualified plans", menuHeading: "Nonqualified plans", url: "/financial-professionals/what-we-offer/nonqualified-plans", pageHeading: "The edge in workplace wealth" },
-        { name: "Defined benefit plans", menuHeading: "Defined benefit plans", url: "/financial-professionals/what-we-offer/defined-benefit-plans", pageHeading: "Defined benefit plans. Smarter for you. Simpler for them." },
-        { name: "Consumer-directed health", menuHeading: "Consumer-directed health", url: "/financial-professionals/what-we-offer/consumer-directed-health", pageHeading: "Integrated health and wealth" },
+        // { name: "Defined benefit plans", menuHeading: "Defined benefit plans", url: "/financial-professionals/what-we-offer/defined-benefit-plans", pageHeading: "Defined benefit plans. Smarter for you. Simpler for them." },
+        // { name: "Consumer-directed health", menuHeading: "Consumer-directed health", url: "/financial-professionals/what-we-offer/consumer-directed-health", pageHeading: "Integrated health and wealth" },
     ]
     for (const link of solutionsLinks) {
         test(`Click Solutions - ${link.name}`, async ({ finProfPage, page }) => {
@@ -148,7 +145,7 @@ test.describe('Solutions menu functionality', () => {
                 .then(p => p.hoverSolutionsItem(link.name))
                 .then(p => p.getDropdownRightPane('solutions'));
 
-            await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();  
+            await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
         });
     }
 });
@@ -188,7 +185,7 @@ test.describe('Experience menu functionality', () => {
                 .then(p => p.hoverExperienceItem(link.name))
                 .then(p => p.getDropdownRightPane('experience'));
             
-            await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
+await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
         });
     }
 });
@@ -294,7 +291,7 @@ test.describe('Why Empower menu functionality', () => {
                 .then(p => p.hoverWhyEmpowerItem(link.name))
                 .then(p => p.getDropdownRightPane('why-empower'));
             
-            await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
+await expect(pane.getByText(link.menuHeading, { exact: true })).toBeVisible();
         });
     }
 });
