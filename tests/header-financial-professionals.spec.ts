@@ -153,14 +153,14 @@ test.describe('Solutions menu functionality', () => {
 
 test.describe('Experience menu functionality', () => {
     const experienceLinks = [
-        { name: "Markets", menuHeading: "Markets we serve", url: "/financial-professionals/what-we-offer/markets-we-serve", pageHeading: "A trusted partner in retirement solutions" },
+        { name: "Markets we serve", menuHeading: "Markets we serve", url: "/financial-professionals/experience/markets-we-serve", pageHeading: "Workplace solutions designed around the clients you support" },
         { name: "Participant experience", menuHeading: "Participant experience", url: "/financial-professionals/experience/personal-experience", pageHeading: "The full picture — connected and clear" },
         { name: "Financial wellness", menuHeading: "Financial wellness", url: "/financial-professionals/experience/financial-wellness", pageHeading: "Financial wellness. A built-in benefit." },
         { name: "Education & action", menuHeading: "Education & action", url: "/financial-professionals/experience/education-action", pageHeading: "A powerful, personal experience." },
         {
             name: "Advice & guidance", menuHeading: "Advice & guidance", url: "/financial-professionals/experience/advice-guidance", pageHeading: "The advice advantage. Day one through retirement." },
         { name: "APIs", menuHeading: "APIs", url: "/financial-professionals/experience/apis", pageHeading: "Bridges to innovation" },
-        { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
+        // { name: "Partner advocate", menuHeading: "Partner advocate", url: "/financial-professionals/resources/partner-advocate" },
         { name: "Webinars and events", menuHeading: "Webinars and events", url: "/financial-professionals/empower-events" },
     ]
     for (const link of experienceLinks) {
@@ -195,9 +195,9 @@ test.describe('Resources menu functionality', () => {
     const resourcesLinks = [
         { name: "Prospecting & proposals", menuHeading: "Prospecting & proposals", url: "/financial-professionals/what-we-offer/prospecting-proposals", pageHeading: "Empower Proposal System" },
         { name: "Plan management", menuHeading: "Plan management" },
-        { name: "Advisor toolkit", menuHeading: "Advisor toolkit", url: "/financial-professionals/resources/your-advisor-toolkit", pageHeading: "Helping you grow client relationships" },
+        { name: "Advisor toolkit", menuHeading: "Advisor toolkit", url: "/financial-professionals/resources/advisor-toolkit", pageHeading: "Resources for your workplace client conversations" },
         { name: "TPA toolkit", menuHeading: "TPA toolkit", url: "/financial-professionals/resources/tpa-toolkit", pageHeading: "Working together. Winning together." },
-        { name: "Plan sponsor toolkit", menuHeading: "Plan sponsor toolkit", url: "/financial-professionals/resources/plan-sponsor-toolkit", pageHeading: "The plan sponsor toolkit offers sponsors what they need most" },
+        { name: "Plan sponsor toolkit", menuHeading: "Plan sponsor toolkit", url: "/financial-professionals/resources/plan-sponsor-toolkit", pageHeading: "Solutions and support for every  client conversation" },
         { name: "Participant toolkit", menuHeading: "Participant toolkit", url: "/financial-professionals/resources/participant-toolkit", pageHeading: "The Empower experience" },
     ]
     for (const link of resourcesLinks) {
@@ -232,7 +232,7 @@ test.describe('Insights menu functionality', () => {
     const insightsLinks = [
         { name: "Investment Insights", menuHeading: "Investment Insights", url: "/investment-insights", pageHeading: "Latest Content" },
         { name: "Legislative & regulatory news", menuHeading: "Legislative & regulatory news", url: "/financial-professionals/insights/legislative-and-regulatory-news", pageHeading: "Legislative and regulatory news" },
-        { name: "The Currency", menuHeading: "The Currency", url: "/the-currency", pageHeading: "Money" },
+        { name: "The Currency", menuHeading: "The Currency", url: "/the-currency/life/homeowners-35-trillion-equity", pageHeading: "The Currency" },
     ]
     for (const link of insightsLinks) {
         test(`Click Insights - ${link.name}`, async ({ finProfPage, page }) => {

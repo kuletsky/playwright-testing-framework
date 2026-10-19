@@ -90,12 +90,14 @@ export class PlanSponsorsPage extends BasePage{
 
     async clickMarketsItem(linkText: string) {
         const openMenu = this.page.locator("#markets-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverMarketsItem(linkText: string) {
         const openMenu = this.page.locator("#markets-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 

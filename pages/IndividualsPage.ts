@@ -110,45 +110,55 @@ export class IndividualsPage extends BasePage {
 
     async clickPSItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverPSItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
+        
         return this;
     }
 
     async clickToolsItem(linkText: string) {
         const openMenu = this.page.locator("#tools-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverToolsItem(linkText: string) {
         const openMenu = this.page.locator("#tools-dropdown .nav-dropdown-left");
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();   
         await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 
     async clickLearnItem(linkText: string) {
         const openMenu = this.page.locator("#learn-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverLearnItem(linkText: string) {
         const openMenu = this.page.locator("#learn-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 
     async clickWhyEmpowerItem(linkText: string) {
         const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverWhyEmpowerItem(linkText: string) {
         const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 

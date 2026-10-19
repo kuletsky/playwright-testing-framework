@@ -89,56 +89,67 @@ export class FinancialProfessionalsPage extends BasePage {
 
     async clickSolutionsItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverSolutionsItem(linkText: string) {
         const openMenu = this.page.locator("#solutions-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 
     async clickExperienceItem(linkText: string) {
         const openMenu = this.page.locator("#experience-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverExperienceItem(linkText: string) {
         const openMenu = this.page.locator("#experience-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 
     async clickResourcesItem(linkText: string) {
         const openMenu = this.page.locator("#resources-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverResourcesItem(linkText: string) {
         const openMenu = this.page.locator("#resources-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 
     async clickInsightsItem(linkText: string) {
         const openMenu = this.page.locator("#insights-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverInsightsItem(linkText: string) {
         const openMenu = this.page.locator("#insights-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 
     async clickWhyEmpowerItem(linkText: string) {
         const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).click();
+        await openMenu.getByText(linkText, { exact: true }).click();
     }
 
     async hoverWhyEmpowerItem(linkText: string) {
         const openMenu = this.page.locator("#why-empower-dropdown .nav-dropdown-left");
-        await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        // await openMenu.getByRole('menuitem', { name: linkText, exact: true }).hover();
+        await openMenu.getByText(linkText, { exact: true }).hover();
         return this;
     }
 
