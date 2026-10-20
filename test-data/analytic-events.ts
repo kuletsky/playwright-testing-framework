@@ -33,7 +33,7 @@ export const clickEventsData = [
   { element: 'contactUsButton', event: 'navigation_click', eventName: 'footer_navigation_click', eventDetail: '/contact' },
 
   // // Login/Register
-  { element: 'loginButton', event: 'navigation_click', eventName: 'login_register_click', eventDetail: '/participant/?btn=1#/login' },
+  { element: 'loginButton', event: 'navigation_click', eventName: 'login_register_click', eventDetail: '/participant/?btn=1#/login?accu=Empower' },
   { element: 'registerButton', event: 'navigation_click', eventName: 'login_register_click', eventDetail: '/signup?btn=2' },
 
   // // Contextual Menu
@@ -51,7 +51,7 @@ export const socialButtonsData = [
   { element: 'facebookButton', eventDetail: '/officialempowertoday' },
   { element: 'xButton', eventDetail: '/empowertoday?lang=en' },
   { element: 'snapchatButton', eventDetail: '/add/empowertoday' },
-  { element: 'linkedinButton', eventDetail: '/company/empowertoday' },
+  { element: 'linkedinButton', eventDetail: '/company/empower' },
   { element: 'instagramButton', eventDetail: '/officialempowertoday/' },
   { element: 'youtubeButton', eventDetail: '/channel/UCFPLlGp16vPjBb-G7SnUWhQ' },
   { element: 'tiktokButton', eventDetail: '/@empowertoday?lang=en' },
