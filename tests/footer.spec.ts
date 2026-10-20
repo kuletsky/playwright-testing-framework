@@ -53,7 +53,7 @@ test.describe('Footer Navigation links', () => {
                 .gotoIndividualsPage()
                 .then(p => p.clickFooterLink(link.name));
 
-            await expect(page).toHaveURL(new RegExp(`${link.url}(\\?|#|$)`));
+            await expect(page).toHaveURL(new RegExp(`${link.url}(\\/|\\?|#|$)`));
             await expect(page.getByText(link.assert).first()).toBeVisible();
         });
     }

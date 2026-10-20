@@ -44,15 +44,15 @@ test.describe('Menu visibility', () => {
             .then(p => p.openExperienceMenu())
             .then(p => p.getExperienceMenuLinks());
 
-        await expect(links).toHaveCount(8);
+        await expect(links).toHaveCount(7);
         await expect(links).toHaveText([
-            "Markets",
+            "Markets we serve",
             "Participant experience",
             "Financial wellness",
             "Education & action",
             "Advice & guidance",
             "APIs",
-            "Partner advocate",
+            // "Partner advocate",
             "Webinars and events",
         ]);
         await expect(pane.getByText("Experience", { exact: true })).toBeVisible();

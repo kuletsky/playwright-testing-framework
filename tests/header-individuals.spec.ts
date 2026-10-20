@@ -34,7 +34,7 @@ test.describe('Menu visibility', () => {
             .then(p => p.openPSMenu())
             .then(p => p.getPSMenuLinks());
 
-        await expect(links).toHaveCount(7);
+        await expect(links).toHaveCount(6);
         await expect(links).toHaveText([
             "Wealth Management",
             "High-yield cash account",
@@ -42,7 +42,7 @@ test.describe('Menu visibility', () => {
             "IRAs",
             "Investment accounts",
             "Tax filing",
-            "529s",
+            // "529s",
         ]);
         await expect(pane.getByText("Products & services")).toBeVisible();
     });

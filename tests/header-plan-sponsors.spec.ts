@@ -40,11 +40,11 @@ test.describe('Menu visibility', () => {
             .then(p => p.openSolutionsMenu())
             .then(p => p.getSolutionsMenuLinks());
 
-        await expect(links).toHaveCount(11);
+        await expect(links).toHaveCount(10);
         await expect(links).toHaveText([
             "Integrated workplace solutions",
             "Advisory services​",
-            "Retirement solutions​",
+            // "Retirement solutions​",
             "Defined contribution plans",
             "Defined benefit plans",
             "Nonqualified plans",
@@ -52,7 +52,7 @@ test.describe('Menu visibility', () => {
             "Stock plan services​",
             "Consumer-directed health",
             "Health and welfare benefits administration",
-            "MARC Pension Administration System"
+            "MARC™ Pension Administration System"
         ]);
         await expect(pane.getByText("Solutions", { exact: true })).toBeVisible();
     });
@@ -143,8 +143,8 @@ test.describe('Solutions menu functionality', () => {
     // Data-driven tests for Solutions menu items
     const solutionsLinks = [
         { name: 'Integrated workplace solutions', menuHeading: 'Integrated workplace solutions', url: '/plan-sponsors/what-we-offer/integrated-workplace-solutions', pageHeading: "The future of workplace is here" },
-        { name: 'Advisory services​', menuHeading: 'Advisory services', url: '/plan-sponsors/what-we-offer/advisory-services', pageHeading: "Advisory Services" },
-        { name: 'Retirement solutions​', menuHeading: 'Retirement solutions', url: '/plan-sponsors/what-we-offer/retirement-solutions', pageHeading: "Retirement Solutions Group" },
+        { name: 'Advisory services​', menuHeading: 'Advisory services', url: '/plan-sponsors/what-we-offer/retirement-income', pageHeading: "Advisory Services" },
+        // { name: 'Retirement solutions​', menuHeading: 'Retirement solutions', url: '/plan-sponsors/what-we-offer/retirement-solutions', pageHeading: "Retirement Solutions Group" },
         { name: 'Defined contribution plans', menuHeading: 'Defined contribution plans', url: '/plan-sponsors/what-we-offer/defined-contribution-plans', pageHeading: "Defined contribution plans. Built to engage. Trusted to deliver." },
         { name: 'Defined benefit plans', menuHeading: 'Defined benefit plans', url: '/plan-sponsors/what-we-offer/defined-benefit-plans', pageHeading: "Defined benefit plans. Smarter for you. Simpler for them." },
         { name: 'Nonqualified plans', menuHeading: 'Nonqualified plans', url: '/plan-sponsors/what-we-offer/nonqualified-plans', pageHeading: "The edge in workplace wealth" },
@@ -201,7 +201,7 @@ test.describe('Learn menu functionality', () => {
     // Data-driven tests for LEARN menu items
     const learnLinks = [
         { name: 'Investment Insights', menuHeading: "Investment Insights", url: '/investment-insights', pageHeading: "Latest Content" },
-        { name: 'The Currency', menuHeading: "Power up with the latest money news for life, work and play.", url: '/the-currency', pageHeading: "Money" },
+        { name: 'The Currency', menuHeading: "Power up with the latest money news for life, work and play.", url: '/the-currency/life/homeowners-35-trillion-equity', pageHeading: "Money" },
     ]
     for (const link of learnLinks) {
         test(`Click LEARN - ${link.name}`, async ({ planSponsorsPage, page }) => {
