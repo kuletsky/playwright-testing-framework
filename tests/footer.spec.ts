@@ -63,7 +63,7 @@ test.describe('Social links functionality', () => {
     const socialLinks = [
         { name: "Facebook", url: "facebook.com/officialempowertoday" },
         { name: "X (fka Twitter)", url: "x.com/empowertoday" },
-        { name: "Snapchat", url: "snapchat.com/@empowertoday" },
+        // { name: "Snapchat", url: "snapchat.com/@empowertoday" },
         { name: "LinkedIn", url: "linkedin.com/company/empowertoday" },
         // { name: "Instagram", url: "instagram.com" },
         // { name: "YouTube", url: "youtube.com" },

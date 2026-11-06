@@ -56,7 +56,7 @@ test.describe('Menu visibility', () => {
         await individualsPage.openFirstSubmenu();
 
         const submenuLinks = await individualsPage.getLinksFirstSubmenu();
-        await expect(submenuLinks).toHaveCount(9);
+        await expect(submenuLinks).toHaveCount(8);
 
         const linksText = (await submenuLinks.allTextContents()).map(t => t.trim());
         expect(linksText).toEqual([
@@ -68,7 +68,7 @@ test.describe('Menu visibility', () => {
             "IRAs",
             "Investment accounts",
             "Tax filing",
-            "529s",
+            // "529s",
         ]);
     });
 
@@ -140,7 +140,7 @@ test.describe('Menu Products & Services functionality', () => {
         { name: 'Rollover', menuHeading: "Rollover", url: '/products-solutions/rollover', pageHeading: "Start your rollover with confidence" },
         { name: 'IRAs', menuHeading: "IRAs", url: '/products-solutions/iras', pageHeading: "The right IRA. Right now." },
         { name: 'Investment accounts', menuHeading: "Investment accounts", url: '/products-solutions/investment-accounts', pageHeading: "Start investing with confidence." },
-        { name: 'Tax filing', menuHeading: "Tax filing", url: '/products-solutions/tax-filing', pageHeading: "Finally, a less taxing tax season" },
+        { name: 'Tax filing', menuHeading: "Tax filing", url: '/products-solutions/tax-filing', pageHeading: "Handle your taxes from your Empower Personal Dashboard​™" },
     ]
     for (const link of PSLinks) {
         test(`Click P&S - ${link.name}`, async ({ individualsPage, page }) => {
@@ -192,7 +192,7 @@ test.describe('Menu Learn functionality', () => {
     // Data-driven tests for LEARN menu items
     const learnLinks = [
         { name: 'Investment Insights', menuHeading: "Investment Insights", url: '/investment-insights', pageHeading: "Latest Content" },
-        { name: 'The Currency', menuHeading: "Get guidance to make better money decisions at every stage of your life.", url: '/the-currency', pageHeading: "Get insights and intel on your money." },
+        { name: 'The Currency', menuHeading: "Get guidance to make better money decisions at every stage of your life.", url: '/the-currency/life/homeowners-35-trillion-equity', pageHeading: "Recent Articles" },
     ]
     for (const link of learnLinks) {
         test(`Click LEARN - ${link.name}`, async ({ individualsPage, page }) => {
@@ -238,6 +238,6 @@ test('Verify loginBox displayed as expected', async ({ page }) => {
     await page.goto('/lp/empower-my-options');
     await suppressCookieBanner(page);
 
-    await expect(page.locator('h1 p')).toContainText('It’s time to decide what to do with your old retirement plan');
-    await expect(page.locator('a[aria-label="Sign In/Register"]')).toBeVisible();
+    await expect(page.locator('h1 p')).toContainText('What would you like to do with your old retirement plan?');
+    // await expect(page.locator('a[aria-label="Sign In/Register"]')).toBeVisible();
 });

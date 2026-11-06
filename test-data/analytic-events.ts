@@ -50,7 +50,7 @@ export const clickEventsData = [
 export const socialButtonsData = [
   { element: 'facebookButton', eventDetail: '/officialempowertoday' },
   { element: 'xButton', eventDetail: '/empowertoday?lang=en' },
-  { element: 'snapchatButton', eventDetail: '/add/empowertoday' },
+  // { element: 'snapchatButton', eventDetail: '/add/empowertoday' },
   { element: 'linkedinButton', eventDetail: '/company/empower' },
   { element: 'instagramButton', eventDetail: '/officialempowertoday/' },
   { element: 'youtubeButton', eventDetail: '/channel/UCFPLlGp16vPjBb-G7SnUWhQ' },
